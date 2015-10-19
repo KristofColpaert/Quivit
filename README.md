@@ -17,14 +17,14 @@
 |URL           |https://github.com/KristofColpaert/NMCTBackFront|
 |Login         |Docenten zijn collaborators                     |
 
-##Gebruikereisen
+##Gebruikerseisen
 
 1. Nog in te vullen.
 2. Nog in te vullen.
 3. Nog in te vullen.
 
-##Benodigdeheden (materiaal)
+##Benodigdheden (materiaal)
 
-1. Raspberry Pi (liefst één of twee). 
-2. BlueTooth-dongles voor Raspberry Pi (vijf).
-3. Estimote beacons (drie).
+1. Raspberry Pi (2x)
+2. BlueTooth-dongles voor Raspberry Pi (5x)
+3. Estimote beacons (3x)
