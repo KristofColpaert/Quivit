@@ -1,15 +1,13 @@
 #Real time sportwedstrijd
 
-##Projectteam
+##Inleiding
+###Team
+We werken met 4 personen aan dit project.
+De taakverdeling is als volgt:
+**Kristof Colpaert** en **Martijn Loth** volgen backend en frontend en zullen beide doen in het team. **Pieter-Jan Vandenbussche** volgt backend en **Bart Callant** volgt enkel frontend.*
+Verder helpen we elkaar bij moeilijkheden.
 
-|Naam en voornaam         |Volgt BE|Volgt FE|Functie binnen het team|
-|-------------------------|--------|--------|-----------------------|
-|Martijn Loth             |OK      |OK      |BE en FE               |
-|Bart Callant             |NOK     |OK      |FE                     |
-|Pieter-Jan Vandenbussche |OK      |NOK     |BE                     |
-|Kristof Colpaert         |OK      |OK      |BE en FE               |
-
-##Deployment parameters
+###Deployment parameters
 
 |Key           |Value                                           |
 |--------------|------------------------------------------------|
