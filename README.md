@@ -1,4 +1,4 @@
-#Real time tracking en weergave van een sportwedstrijd
+#Real time sportwedstrijd
 
 ##Projectteam
 
