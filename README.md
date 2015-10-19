@@ -1,7 +1,7 @@
 #Real time sportwedstrijd
 
 ##Inleiding
-Dit document is de leidraad voor ons project.
+Dit document is de leidraad voor ons project. Hier staat de verantwoording voor alle technische keuzes en verder randinformatie over het project.
 ###Team
 We werken met 4 personen aan dit project.
 De taakverdeling is als volgt:
