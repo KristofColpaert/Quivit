@@ -23,8 +23,20 @@
 2. Nog in te vullen.
 3. Nog in te vullen.
 
-##Benodigdheden (materiaal)
+##Implementatie –methodiek & technologie
+###Benodigdheden (materiaal)
 
 1. Raspberry Pi (2x)
 2. BlueTooth-dongles voor Raspberry Pi (5x)
 3. Estimote beacons (3x)
+
+##Planning
+
+##Realisatie volgens planning
+
+##Toekomstplannen of mogelijke uibreidingen
+
+##Succesfactoren
+
+##Conclusie
+We zijn de beste...
