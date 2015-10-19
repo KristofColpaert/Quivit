@@ -5,8 +5,8 @@
 |Naam en voornaam         |Volgt BE|Volgt FE|Functie binnen het team|
 |-------------------------|--------|--------|-----------------------|
 |Martijn Loth             |OK      |OK      |BE en FE               |
-|Bart Callant             |OK      |NOK     |BE                     |
-|Pieter-Jan Vandenbussche |NOK     |OK      |FE                     |
+|Bart Callant             |NOK     |OK      |FE                     |
+|Pieter-Jan Vandenbussche |OK      |NOK     |BE                     |
 |Kristof Colpaert         |OK      |OK      |BE en FE               |
 
 ##Deployment parameters
