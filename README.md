@@ -8,13 +8,8 @@ De taakverdeling is als volgt:
 **Kristof Colpaert** en **Martijn Loth** volgen backend en frontend en zullen beide doen in het team. **Pieter-Jan Vandenbussche** volgt backend en **Bart Callant** volgt enkel frontend.
 Verder helpen we elkaar bij moeilijkheden.
 
-###Deployment parameters
-
-|Key           |Value                                           |
-|--------------|------------------------------------------------|
-|TFS of Github?|Github                                          |
-|URL           |https://github.com/KristofColpaert/NMCTBackFront|
-|Login         |Docenten zijn collaborators                     |
+>Deployment was niet relevant omdat:
+>Dit is op Github én enkel zichtbaar voor collaborators...
 
 ##Gebruikerseisen
 ###Algemene beschrijving
