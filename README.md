@@ -1,10 +1,11 @@
 #Real time sportwedstrijd
 
 ##Inleiding
+Dit document is de leidraad voor ons project.
 ###Team
 We werken met 4 personen aan dit project.
 De taakverdeling is als volgt:
-**Kristof Colpaert** en **Martijn Loth** volgen backend en frontend en zullen beide doen in het team. **Pieter-Jan Vandenbussche** volgt backend en **Bart Callant** volgt enkel frontend.*
+**Kristof Colpaert** en **Martijn Loth** volgen backend en frontend en zullen beide doen in het team. **Pieter-Jan Vandenbussche** volgt backend en **Bart Callant** volgt enkel frontend.
 Verder helpen we elkaar bij moeilijkheden.
 
 ###Deployment parameters
