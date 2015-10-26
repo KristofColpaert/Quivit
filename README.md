@@ -73,8 +73,8 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
       - UI
 2. Functionaliteit
       - Managementinterface
-             - Overzicht herkende beacons
-             - 
+             1. Overzicht herkende beacons
+             2. 
 
 ##Realisatie volgens planning
 
