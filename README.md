@@ -158,7 +158,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 
 | Taak                                 | Personeel              | Deadline |
 |--------------------------------------|------------------------|----------|
-| Testen en debuggen van de applicatie | Martijn, Kristof       |          |
+| Testen en debuggen van de applicatie | Martijn, Kristof, Bart |          |
 | Documenteren van de applicatie       | Martijn, Kristof, Bart |          |
 | Deployment op een externe service    | Kristof                |          |
 
