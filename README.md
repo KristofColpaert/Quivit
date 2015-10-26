@@ -28,7 +28,7 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
 3. Estimote beacons (3x)
 
 ###Frontend
-Voor de frontend voorzien wij de volgende functionaliteit:
+**Voor de frontend voorzien wij de volgende functionaliteit:**
 
 1. Liveweergave van een voetbalmatch wanneer deze bezig is. Veld, spelers en bal zijn op voldoende wijze van elkaar te onderscheiden.
 2. Detectie van een aantal situaties, waaronder buitenspelval en goals.
@@ -37,7 +37,7 @@ Voor de frontend voorzien wij de volgende functionaliteit:
 5. Bovenstaande rapporten kunnen in een PDF gegoten worden.
 6. Er is managementinterface voorzien waarin kan aangegeven worden welke speler gekoppeld is aan welke beacon en welke device de bal voorstelt.
 
-Voor de frontend voorzien wij de volgende technologieën:
+**Voor de frontend voorzien wij de volgende technologieën:**
 
 1. Een framework (allicht AngularJS)
 2. CSS preprocessor (LESS of SASS)
@@ -45,14 +45,14 @@ Voor de frontend voorzien wij de volgende technologieën:
 4. Frontend testing (Jasmine of Mocha)
 
 ###Backend
-Voor de backend voorzien wij de volgende functionaliteit:
+**Voor de backend voorzien wij de volgende functionaliteit:**
 
 1. Herkennen van de beacons op het veld en het registreren van hun nabijheid aan de hand van hun signaalsterkte.
 2. De signaalsterkte via een algoritme omzetten in nauwkeurige locatiebepalingen. 
 3. Locatiebepalingen in combinatie met een timestamp op zeer regelmatige basis (meerdere keren per seconde) opslaan in de database.
 4. Genereren van rapporten op basis van de opgeslagen data van een match (zie frontend).
 
-Voor de backend voorzien wij de volgende technologieën:
+**Voor de backend voorzien wij de volgende technologieën:**
 
 1. Volledig asynchrone werking in Node.JS
 2. Keuze voor een bepaald framework (Express)
