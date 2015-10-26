@@ -71,10 +71,24 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
       - Huisstijl (look and feel, kleurenpalet)
       - Logo
       - UI
-2. Functionaliteit
-      - Managementinterface
-             1. Overzicht herkende beacons
-             2. 
+2. Functionaliteit - managementinterface
+      - Teams aanmaken (en kleuren toewijzen aan teams)
+      - Overzicht erkende beacons binnen veld
+      - Beacons toewijzen aan een team en een speler
+      - Het opnemen/registreren van een match starten
+      - Het opnemen/registreren van een belangrijke fase starten en stoppen
+3. Functionaliteit - gebruikersinterface
+      - Liveweergave van een match
+      - Detectie buitenspelval
+      - Detectie goal
+      - Herbekijken match
+      - Ontwikkelen heat map match
+      - Ontwikkelen mogelijkheid om match (achteraf, niet live) terug te spoelen
+      - Ontwikkelen mogelijkheid om match (achteraf, niet live) vertraagd te bekijken
+      - Ontwikkelen mogelijkheid om match (achteraf, niet live) versneld te bekijken
+      - Ontwikkelen mogelijkheid om match (achteraf, niet live) als een aanzetting van belangrijke fases te bekijken
+
+
 
 ##Realisatie volgens planning
 
