@@ -143,7 +143,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Taak                                                                         | Personeel | Deadline |
 |------------------------------------------------------------------------------|-----------|----------|
 | **Beacons**                                                                  |           |          |
-| Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)                     |           |          |
+| Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)                     | Kristof   |          |
 | Detectie van beacons                                                         | Kristof   |          |
 | Meten van signaalsterkte van beacons (nauwkeurigheid)                        | Kristof   |          |
 | Locatiebepaling van beacons adhv signaalsterktedata van Raspberry Pi's       | Kristof   |          |
