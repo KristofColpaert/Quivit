@@ -73,7 +73,7 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
       - UI
 2. Functionaliteit
       - Managementinterface
-            - Toewijzen spelers
+                  * Toewijzen spelers
 
 ##Realisatie volgens planning
 
