@@ -118,10 +118,10 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Taak                                                               | Personeel | Deadline |
 |--------------------------------------------------------------------|-----------|----------|
 | **Ontwerp**                                                        |           |          |
-| Wireframes                                                         |Martijn    |          |
-| Huisstijl                                                          |Martijn    |          |
-| Logo                                                               |Martijn    |          |
-| UI                                                                 |Martijn    |          |
+| Wireframes                                                         |Martijn    |29/10     |
+| Huisstijl                                                          |Martijn    |29/10     |
+| Logo                                                               |Martijn    |06/11     |
+| UI                                                                 |Martijn    |09/11     |
 | **Functionaliteit - managementinterface**                          |           |          |
 | Teams aanmaken (kleuren)                                           |Kristof    |          |
 | Overzicht erkende beacons in veld                                  |Kristof    |          |
@@ -129,7 +129,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Start/stop registratie van een match                               |           |          |
 | Start/stop registratie van een belangrijke fase                    |           |          |
 | **Functionaliteit - gebruikersinterface**                          |           |          |
-| Liveweergave van een match                                         |Martijn    |          |
+| Liveweergave van een match                                         |Martijn    |17/11     |
 | Detectie buitenspelval                                             |           |          |
 | Detectie goal                                                      |           |          |
 | Herbekijken match                                                  |           |          |
@@ -152,7 +152,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | **Rapporten**                                                                |           |          |
 | Het genereren van een heat map van een match                                 |           |          |
 | Het genereren van een PDF met de heat map van een match                      |           |          |
-| Het genereren van een rapport met belangrijke fases van match (zie frontend) |           |          |
+| Het genereren van een rapport met belangrijke fases van match (zie frontend) |Martijn    |24/11
 
 ### Testing, debugging, commenting en deployment
 
