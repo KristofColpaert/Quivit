@@ -68,10 +68,11 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
 
 1. Ontwerp
       - Wireframes
-      - Ontwikkeling huisstijl: look and feel.
-      - Ontwikkeling logo.
-      - Wireframes
-      - Ontwikkl
+      - Huisstijl (look and feel, kleurenpalet)
+      - Logo
+      - UI
+2. Functionaliteit
+      - 
 
 ##Realisatie volgens planning
 
