@@ -62,7 +62,9 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
 6. Minstens één integratie en één unittest
 7. Deployment op Azure
 
-##Planning
+##Taken
+
+Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoerd. Er wordt een onderscheid gemaakt tussen frontend, backend en debugging en deployment.
 
 ### Frontend
 
@@ -88,7 +90,28 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
       - Ontwikkelen mogelijkheid om match (achteraf, niet live) versneld te bekijken
       - Ontwikkelen mogelijkheid om match (achteraf, niet live) als een aanzetting van belangrijke fases te bekijken
 
+### Backend
 
+1. Beacons
+      - Klaarmaken hardware (beacons, Raspberry Pi's, BlueTooth)
+      - Detectie van beacons
+      - Meten van signaalsterkte van beacons (nauwkeurigheid is belangrijk)
+      - Locatiebepaling van beacons aan de hand signaalsterktedata van verschillende Raspberry Pi's
+2. Locatiebepalingen
+      - Opslaan van locatiebepalingen in de database (meerdere keren per seconde)
+3. Rapporten
+      - Het genereren van een heat map van een match
+      - Het genereren van een PDF met de heat map van een match
+      - Het generenen van een rapport met belangrijke fases van een match (voor belangrijke fases: zie managementinterfaces bij frontend)
+      - Het genereren van een PDF-rapport met belangrijke fases van een match
+
+### Testing, debugging, commenting en deployment
+
+1. Testen en debuggen van de applicatie
+2. Documenteren van de applicatie
+3. Deployment op een externe service
+
+##Planning
 
 ##Realisatie volgens planning
 
