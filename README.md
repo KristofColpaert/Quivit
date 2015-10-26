@@ -160,7 +160,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 |--------------------------------------|-----------|----------|
 | Testen en debuggen van de applicatie |           |          |
 | Documenteren van de applicatie       |           |          |
-|                                      |           |          |
+| Deployment op een externe service    |           |          |
 
 ##Realisatie volgens planning
 
