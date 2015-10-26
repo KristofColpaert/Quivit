@@ -113,6 +113,31 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 
 ##Planning
 
+###Frontend
+
+| Taak                                                               | Personeel | Deadline |
+|--------------------------------------------------------------------|-----------|----------|
+| **Ontwerp**                                                        |           |          |
+| Wireframes                                                         |           |          |
+| Huisstijl                                                          |           |          |
+| Logo                                                               |           |          |
+| UI                                                                 |           |          |
+| **Functionaliteit - managementinterface**                          |           |          |
+| Teams aanmaken (kleuren)                                           |           |          |
+| Overzicht erkende beacons in veld                                  |           |          |
+| Beacon toewijzen aan team en speler                                |           |          |
+| Start/stop registratie van een match                               |           |          |
+| Start/stop registratie van een belangrijke fase                    |           |          |
+| **Functionaliteit - gebruikersinterface**                          |           |          |
+| Liveweergave van een match                                         |           |          |
+| Detectie buitenspelval                                             |           |          |
+| Detectie goal                                                      |           |          |
+| Herbekijken match                                                  |           |          |
+| Ontwikkelen heat map match                                         |           |          |
+| Ontwikkelen mogelijkheid om match (achteraf) terug te spoelen      |           |          |
+| Ontwikkelen mogelijkheid om match (achteraf) vertraagd te bekijken |           |          |
+| Ontwikkelen mogelijkheid om match (achteraf) versneld te bekijken  |           |          |
+
 ##Realisatie volgens planning
 
 ##Toekomstplannen of mogelijke uibreidingen
