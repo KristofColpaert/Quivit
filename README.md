@@ -154,7 +154,13 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Het genereren van een PDF met de heat map van een match                                         |           |          |
 | Het genereren van een rapport met belangrijke fases van een match (zie frontend)                |           |          |
 
+### Testing, debugging, commenting en deployment
 
+| Taak                                 | Personeel | Deadline |
+|--------------------------------------|-----------|----------|
+| Testen en debuggen van de applicatie |           |          |
+| Documenteren van de applicatie       |           |          |
+|                                      |           |          |
 
 ##Realisatie volgens planning
 
