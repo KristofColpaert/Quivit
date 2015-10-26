@@ -64,6 +64,15 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
 
 ##Planning
 
+### Frontend
+
+1. Ontwerp
+      - Wireframes
+      - Ontwikkeling huisstijl: look and feel.
+      - Ontwikkeling logo.
+      - Wireframes
+      - Ontwikkl
+
 ##Realisatie volgens planning
 
 ##Toekomstplannen of mogelijke uibreidingen
