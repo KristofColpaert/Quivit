@@ -88,7 +88,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
       - Ontwikkelen mogelijkheid om match (achteraf, niet live) terug te spoelen
       - Ontwikkelen mogelijkheid om match (achteraf, niet live) vertraagd te bekijken
       - Ontwikkelen mogelijkheid om match (achteraf, niet live) versneld te bekijken
-      - Ontwikkelen mogelijkheid om match (achteraf, niet live) als een aanzetting van belangrijke fases te bekijken
+      - Ontwikkelen mogelijkheid om match (achteraf, niet live) als een aaneenschakeling van belangrijke fases te bekijken
 
 ### Backend
 
