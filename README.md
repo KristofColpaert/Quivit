@@ -30,6 +30,7 @@ De data wordt gegenereerd door een wisselwerking van beacons (verzenden BlueToot
 
 ###Frontend
 Voor de frontend voorzien wij de volgende functionaliteit:
+
 1. Liveweergave van een voetbalmatch wanneer deze bezig is. Veld, spelers en bal zijn op voldoende wijze van elkaar te onderscheiden.
 2. Detectie van een aantal situaties, waaronder buitenspelval en goals.
 3. Achteraf kunnen wedstrijden opnieuw bekeken worden. Er kan genavigeerd worden naar een bepaald tijdstip uit de wedstrijden.
