@@ -123,9 +123,9 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Logo                                                               |Martijn    |          |
 | UI                                                                 |Martijn    |          |
 | **Functionaliteit - managementinterface**                          |           |          |
-| Teams aanmaken (kleuren)                                           |           |          |
-| Overzicht erkende beacons in veld                                  |           |          |
-| Beacon toewijzen aan team en speler                                |           |          |
+| Teams aanmaken (kleuren)                                           |Kristof    |          |
+| Overzicht erkende beacons in veld                                  |Kristof    |          |
+| Beacon toewijzen aan team en speler                                |Kristof    |          |
 | Start/stop registratie van een match                               |           |          |
 | Start/stop registratie van een belangrijke fase                    |           |          |
 | **Functionaliteit - gebruikersinterface**                          |           |          |
@@ -140,27 +140,27 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 
 ###Backend
 
-| Taak                                                                                            | Personeel | Deadline |
-|-------------------------------------------------------------------------------------------------|-----------|----------|
-| **Beacons**                                                                                     |           |          |
-| Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)                                        |           |          |
-| Detectie van beacons                                                                            |           |          |
-| Meten van signaalsterkte van beacons (nauwkeurigheid)                                           |           |          |
-| Locatiebepaling van beacons aan de hand van signaalsterktedata van verschillende Raspberry Pi's |           |          |
-| **Locatiebepalingen**                                                                           |           |          |
-| Opslaan van locatiebepalingen in de database (frequent)                                         |           |          |
-| **Rapporten**                                                                                   |           |          |
-| Het genereren van een heat map van een match                                                    |           |          |
-| Het genereren van een PDF met de heat map van een match                                         |           |          |
-| Het genereren van een rapport met belangrijke fases van een match (zie frontend)                |           |          |
+| Taak                                                                         | Personeel | Deadline |
+|------------------------------------------------------------------------------|-----------|----------|
+| **Beacons**                                                                  |           |          |
+| Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)                     |           |          |
+| Detectie van beacons                                                         | Kristof   |          |
+| Meten van signaalsterkte van beacons (nauwkeurigheid)                        | Kristof   |          |
+| Locatiebepaling van beacons adhv signaalsterktedata van Raspberry Pi's       | Kristof   |          |
+| **Locatiebepalingen**                                                        |           |          |
+| Opslaan van locatiebepalingen in de database (frequent)                      | Kristof   |          |
+| **Rapporten**                                                                |           |          |
+| Het genereren van een heat map van een match                                 |           |          |
+| Het genereren van een PDF met de heat map van een match                      |           |          |
+| Het genereren van een rapport met belangrijke fases van match (zie frontend) |           |          |
 
 ### Testing, debugging, commenting en deployment
 
-| Taak                                 | Personeel | Deadline |
-|--------------------------------------|-----------|----------|
-| Testen en debuggen van de applicatie |           |          |
-| Documenteren van de applicatie       |Martijn,   |          |
-| Deployment op een externe service    |           |          |
+| Taak                                 | Personeel              | Deadline |
+|--------------------------------------|------------------------|----------|
+| Testen en debuggen van de applicatie | Martijn, Kristof       |          |
+| Documenteren van de applicatie       | Martijn, Kristof, Bart |          |
+| Deployment op een externe service    | Kristof                |          |
 
 ##Realisatie volgens planning
 
