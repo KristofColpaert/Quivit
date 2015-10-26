@@ -93,10 +93,10 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 ### Backend
 
 1. Beacons
-      - Klaarmaken hardware (beacons, Raspberry Pi's, BlueTooth)
+      - Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)
       - Detectie van beacons
       - Meten van signaalsterkte van beacons (nauwkeurigheid is belangrijk)
-      - Locatiebepaling van beacons aan de hand signaalsterktedata van verschillende Raspberry Pi's
+      - Locatiebepaling van beacons aan de hand van signaalsterktedata van verschillende Raspberry Pi's
 2. Locatiebepalingen
       - Opslaan van locatiebepalingen in de database (meerdere keren per seconde)
 3. Rapporten
@@ -137,6 +137,24 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Ontwikkelen mogelijkheid om match (achteraf) terug te spoelen      |           |          |
 | Ontwikkelen mogelijkheid om match (achteraf) vertraagd te bekijken |           |          |
 | Ontwikkelen mogelijkheid om match (achteraf) versneld te bekijken  |           |          |
+
+###Backend
+
+| Taak                                                                                            | Personeel | Deadline |
+|-------------------------------------------------------------------------------------------------|-----------|----------|
+| **Beacons**                                                                                     |           |          |
+| Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)                                        |           |          |
+| Detectie van beacons                                                                            |           |          |
+| Meten van signaalsterkte van beacons (nauwkeurigheid)                                           |           |          |
+| Locatiebepaling van beacons aan de hand van signaalsterktedata van verschillende Raspberry Pi's |           |          |
+| **Locatiebepalingen**                                                                           |           |          |
+| Opslaan van locatiebepalingen in de database (frequent)                                         |           |          |
+| **Rapporten**                                                                                   |           |          |
+| Het genereren van een heat map van een match                                                    |           |          |
+| Het genereren van een PDF met de heat map van een match                                         |           |          |
+| Het genereren van een rapport met belangrijke fases van een match (zie frontend)                |           |          |
+
+
 
 ##Realisatie volgens planning
 
