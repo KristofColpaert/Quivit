@@ -5,7 +5,7 @@ Dit document is de leiddraad voor ons project. Hier kan je de verantwoording vin
 
 ###Team
 We werken met vier personen aan dit project.
-De taakverdeling luidt als volgt: **Kristof Colpaert** en **Martijn Loth** volgen backend en frontend en zullen aan beide domeinen bijdragen in het team. **Pieter-Jan Vandenbussche** volgt backend en **Bart Callant** volgt enkel frontend.
+De taakverdeling luidt als volgt: **Kristof Colpaert** en **Martijn Loth** volgen backend en frontend en zullen aan beide domeinen bijdragen in het team. **Bart Callant** volgt enkel frontend.
 Verder helpen we elkaar bij moeilijkheden.
 
 ##Gebruikerseisen
