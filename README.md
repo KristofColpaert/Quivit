@@ -148,7 +148,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Meten van signaalsterkte van beacons (nauwkeurigheid)                        | Kristof   | 12/11    |
 | Locatiebepaling van beacons adhv signaalsterktedata van Raspberry Pi's       | Kristof   | 12/11    |
 | **Locatiebepalingen**                                                        |           |          |
-| Opslaan van locatiebepalingen in de database (frequent)                      | Kristof   |          |
+| Opslaan van locatiebepalingen in de database (frequent)                      | Kristof   | 19/11    |
 | **Rapporten**                                                                |           |          |
 | Het genereren van een heat map van een match                                 |           |          |
 | Het genereren van een PDF met de heat map van een match                      |           |          |
