@@ -143,16 +143,16 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Taak                                                                         | Personeel | Deadline |
 |------------------------------------------------------------------------------|-----------|----------|
 | **Beacons**                                                                  |           |          |
-| Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)                     | Kristof   |          |
-| Detectie van beacons                                                         | Kristof   |          |
-| Meten van signaalsterkte van beacons (nauwkeurigheid)                        | Kristof   |          |
-| Locatiebepaling van beacons adhv signaalsterktedata van Raspberry Pi's       | Kristof   |          |
+| Klaarmaken hardware (beacons, Raspberry Pi's, Bluetooth)                     | Kristof   | 12/11    |
+| Detectie van beacons                                                         | Kristof   | 12/11    |
+| Meten van signaalsterkte van beacons (nauwkeurigheid)                        | Kristof   | 12/11    |
+| Locatiebepaling van beacons adhv signaalsterktedata van Raspberry Pi's       | Kristof   | 12/11    |
 | **Locatiebepalingen**                                                        |           |          |
 | Opslaan van locatiebepalingen in de database (frequent)                      | Kristof   |          |
 | **Rapporten**                                                                |           |          |
 | Het genereren van een heat map van een match                                 |           |          |
 | Het genereren van een PDF met de heat map van een match                      |           |          |
-| Het genereren van een rapport met belangrijke fases van match (zie frontend) |Martijn    |24/11
+| Het genereren van een rapport met belangrijke fases van match (zie frontend) |Martijn    | 24/11    |
 
 ### Testing, debugging, commenting en deployment
 
