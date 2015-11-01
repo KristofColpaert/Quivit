@@ -130,10 +130,10 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Start/stop registratie van een belangrijke fase                    |           |          |
 | **Functionaliteit - gebruikersinterface**                          |           |          |
 | Liveweergave van een match                                         |Martijn    |17/11     |
-| Detectie buitenspelval                                             |           |          |
-| Detectie goal                                                      |           |          |
+| Detectie buitenspelval                                             |Bart       |          |
+| Detectie goal                                                      |Bart       |          |
 | Herbekijken match                                                  |           |          |
-| Ontwikkelen heat map match                                         |           |          |
+| Ontwikkelen heat map match                                         |Bart       |          |
 | Ontwikkelen mogelijkheid om match (achteraf) terug te spoelen      |           |          |
 | Ontwikkelen mogelijkheid om match (achteraf) vertraagd te bekijken |           |          |
 | Ontwikkelen mogelijkheid om match (achteraf) versneld te bekijken  |           |          |
