@@ -8,6 +8,10 @@ We werken met vier personen aan dit project.
 De taakverdeling luidt als volgt: **Kristof Colpaert** en **Martijn Loth** volgen backend en frontend en zullen aan beide domeinen bijdragen in het team. **Bart Callant** volgt enkel frontend.
 Verder helpen we elkaar bij moeilijkheden.
 
+##Progressie
+
+De progressie van ons project kan gevolgd worden via de [Wiki](https://github.com/KristofColpaert/NMCTBackFront/wiki).
+
 ##Gebruikerseisen
 ###Algemene beschrijving
 We streven ernaar om via onze applicatie real time weer te geven waar de spelers en de bal zich in een voetbalspel bevinden. Deze data wordt rechtstreeks getoond in een webinterface tijdens de wedstrijd en opgeslagen voor latere analyse. Op basis van de gegevens kunnen bijvoorbeeld ook heat maps opgesteld worden. 
