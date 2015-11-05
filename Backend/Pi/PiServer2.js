@@ -27,7 +27,7 @@ bleacon.startScanning();
 
 bleacon.on('discover', function(bleacon) {
     var bleaconObject = { 'serverId' : serverId, 'beacon' : bleacon};
-    var bleaconString = JSON.stringify(bleaconObject);
+    var bleaconString = JSON.stringify(bleaconObject) + ';';
 
     if(sockets.length != null) {
         sockets.forEach(function(socket) {
