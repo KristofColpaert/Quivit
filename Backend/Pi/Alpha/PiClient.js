@@ -9,15 +9,17 @@ var test2 = [];
 /**
  * Configuration of client1.
  */
-client1 = net.connect(1337, '192.168.0.191', function() {
+client1 = net.connect(1337, 'localhost', function() {
     console.log('Client1 maakt een connectie');
 });
 
 client1.on('data', function(data) {
     var beaconString = data.toString('utf8');
-    var beaconArray = beaconString.split(';');
+    var beaconObject = JSON.parse(beaconString);
+    console.log(beaconObject);
+    //var beaconArray = beaconString.split(';');
 
-    for(var i = 0, l = beaconArray.length - 1; i < l; i++) {
+    /*for(var i = 0, l = beaconArray.length - 1; i < l; i++) {
         var beaconObject = JSON.parse(beaconArray[i]);
         //console.log(beaconObject.beacon.major+ ": " + (Math.round(beaconObject.beacon.accuracy * 100) / 100));
 
@@ -31,13 +33,13 @@ client1.on('data', function(data) {
             }
             getPosition();
         }
-    }
+    }*/
 });
 
 /**
  * Configuration of client2.
  */
-client2 = net.connect(1337, '192.168.0.142', function() {
+/*client2 = net.connect(1337, '192.168.0.142', function() {
     console.log('Client2 maakt een connectie');
 });
 
@@ -90,4 +92,4 @@ var getPosition = function() {
     var test = new trilaterate(p1, p2, p3);
 
     console.log(test);
-};
+};*/
