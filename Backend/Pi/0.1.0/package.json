@@ -1,0 +1,25 @@
+{
+  "name": "QuivitPiServer",
+  "version": "0.1.0",
+  "description": "Raspberry Pi server module for the Quivit project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KristofColpaert/NMCTBackFront.git"
+  },
+  "keywords": [
+    "Quivit"
+  ],
+  "author": "Martijn Loth, Bart Callant and Kristof Colpaert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KristofColpaert/NMCTBackFront/issues"
+  },
+  "homepage": "https://github.com/KristofColpaert/NMCTBackFront",
+  "dependencies": {
+    "bleacon": "^0.4.0"
+  }
+}
