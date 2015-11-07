@@ -130,7 +130,7 @@ Onderstaande lijst geeft een overzicht van alle taken die moeten worden uitgevoe
 | Teams aanmaken (kleuren)                                           |Kristof    |          |
 | Overzicht erkende beacons in veld                                  |Kristof    |          |
 | Beacon toewijzen aan team en speler                                |Kristof    |          |
-| Start/stop registratie van een match                               |           |          |
+| Start/stop registratie van een match                               |Bart       |          |
 | Start/stop registratie van een belangrijke fase                    |           |          |
 | **Functionaliteit - gebruikersinterface**                          |           |          |
 | Liveweergave van een match                                         |Martijn    |17/11     |
