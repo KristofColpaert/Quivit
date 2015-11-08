@@ -2,36 +2,42 @@
  * Created by BartCallant on 5/11/15.
  */
 
-function Ball(x, y, radius)
+var BallModule = (function()
 {
-    this.location = new Location(x, y);
-    this.locations = [];
-    this.radius = radius;
-}
+    'use strict';
 
-Ball.prototype.ballRight = function()
-{
-    // x + radius: 4
-    return this.x + this.radius;
-};
-Ball.prototype.ballTop  = function()
-{
-    // y - radius: 4
-    return this.y - this.radius;
-};
-Ball.prototype.ballBottom = function()
-{
-    // y + radius: 6
-    return this.y + this.radius;
-};
-Ball.prototype.ballLeft = function()
-{
-    // x - radius: 2
-    return this.x - this.radius;
-};
+    // Modules
+    // /Modules
 
-Ball.prototype.setLocation = function(x, y)
-{
-    this.locations.push(this.location);
-    this.location = {x: x, y: y};
-};
+    // Variables
+    Ball.prototype.location = null;
+    Ball.prototype.locations = null;
+    Ball.prototype.radius = null;
+    // /Variables
+
+    // Functions
+    function Ball(location, radius)
+    {
+        this.location = location;
+        this.locations = [];
+        this.radius = radius;
+    }
+
+    Ball.prototype.ballRight = function() { return this.location.x + this.radius; };
+    Ball.prototype.ballTop  = function() { return this.location.y - this.radius; };
+    Ball.prototype.ballBottom = function() { return this.location.y + this.radius; };
+    Ball.prototype.ballLeft = function() { return this.location.x - this.radius; };
+
+    Ball.prototype.setLocation = function(x, y)
+    {
+        this.locations.push(this.location);
+        this.location = {x: x, y: y};
+    };
+    // /Functions
+
+    return {
+        Ball: Ball
+    };
+})();
+
+module.exports = BallModule;
