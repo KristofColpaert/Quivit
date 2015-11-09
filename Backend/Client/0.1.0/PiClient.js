@@ -1,3 +1,11 @@
+/**
+ * Created by kristofcolpaert on 09/11/15.
+ */
+
+/**
+  * This module receives the data of the PiServers.
+  */
+
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 
