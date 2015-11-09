@@ -7,6 +7,8 @@
  * @type {{createPiBeacon}}
  */
 var PiBeacon = (function() {
+    'use strict';
+
     //Variables
     var bleacon = require('bleacon');
 
