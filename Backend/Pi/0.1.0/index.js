@@ -12,7 +12,7 @@ PiBeacon.createPiBeacon(function(error, data) {
             "serverIp" : TcpServer.getPiServerIp(),
             "data" : data
         };
-        var clientString = JSON.stringify(clientObject);
+        var clientString = JSON.stringify(clientObject) + ';';
 
         TcpServer.writeData(clientString, function(error, result) {
             if(error) {

@@ -26,6 +26,7 @@ var PiServer = (function () {
         server = net.createServer(function(socket) {
             sockets.push(socket);
             socket.setEncoding('utf8');
+            socket.setNoDelay(true);
 
             socket.on('end', function(data) {
                 var sockeckIndex = sockets.indexOf(socket);
