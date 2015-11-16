@@ -8,8 +8,10 @@ var averageCalculcator = require('./averageCalculator.js');
 var laterationCalculator = require('./laterationCalculator.js');
 var dataParser = require('./dataParser.js');
 
-var servers = [{ port : 1337, address : '192.168.0.193' }];
+var servers = [{ port : 1337, address : '192.168.0.193'}, { port : 1337, address : '192.168.0.101' }];
 var positions = [];
+positions['192.168.0.193'] = [];
+positions['192.168.0.101'] = [];
 
 //Methods
 var client = new PiClient(servers);
@@ -18,24 +20,24 @@ client.on('beacon', function(data) {
     var beaconData = data.split(';');
     dataParser.parse(beaconData[0], function(error, beaconObject) {
         var currentBeaconDistance = beaconObject.data.accuracy;
-        if(positions.length <= 10) {
-            averageCalculcator.calculate(positions, function(error, average) {
+        if(positions[beaconObject.serverIp].length <= 10) {
+            averageCalculcator.calculate(positions[beaconObject.serverIp], function(error, average) {
                 if(error) {
-                    positions.push(currentBeaconDistance);
+                    positions[beaconObject.serverIp].push(currentBeaconDistance);
                 }
 
                 else {
                     if(average < currentBeaconDistance) {
                         var percentge = 100 - ((average / currentBeaconDistance) * 100);
-                        if(percentge < 45) {
-                            positions.push(currentBeaconDistance);
+                        if(percentge < 30) {
+                            positions[beaconObject.serverIp].push(currentBeaconDistance);
                         }
                     }
 
                     else if (average >= currentBeaconDistance) {
                         var percentage = ((average / currentBeaconDistance) * 100) - 100;
-                        if(percentage < 45) {
-                            positions.push(currentBeaconDistance);
+                        if(percentage < 30) {
+                            positions[beaconObject.serverIp].push(currentBeaconDistance);
                         }
                     }
                 }
@@ -43,25 +45,25 @@ client.on('beacon', function(data) {
         }
 
         else {
-            averageCalculcator.calculate(positions, function(error, average) {
+            averageCalculcator.calculate(positions[beaconObject.serverIp], function(error, average) {
                 if(error) {
-                    positions.push(currentBeaconDistance);
+                    positions[beaconObject.serverIp].push(currentBeaconDistance);
                 }
 
                 else {
                     if(average < currentBeaconDistance) {
                         var percentge = 100 - ((average / currentBeaconDistance) * 100);
-                        if(percentge < 45) {
-                            positions.shift();
-                            positions.push(currentBeaconDistance);
+                        if(percentge < 30) {
+                            positions[beaconObject.serverIp].shift();
+                            positions[beaconObject.serverIp].push(currentBeaconDistance);
                         }
                     }
 
                     else if(average >= currentBeaconDistance) {
                         var percentage = ((average / currentBeaconDistance) *100) - 100;
-                        if(percentage < 45) {
-                            positions.shift();
-                            positions.push(currentBeaconDistance);
+                        if(percentage < 30) {
+                            positions[beaconObject.serverIp].shift();
+                            positions[beaconObject.serverIp].push(currentBeaconDistance);
                         }
                     }
                 }
@@ -71,12 +73,12 @@ client.on('beacon', function(data) {
 
     //One observation, others are dummy data.
     var positionObjects = [
-        { x : 0, y : 0, distance : (positions[positions.length - 1]) },
-        { x : 2, y : 0, distance : 0 },
-        { x : 1, y : 0, distance : 1 },
-        { x : 2, y : 2, distance : 2 },
-        { x : 2, y : 1, distance : 1 },
-    ]
+        { x : 0, y : 140, distance : ((positions['192.168.0.193'][positions['192.168.0.193'].length - 1] * 100) * 1.3) },
+        { x : 431, y : 264, distance : ((positions['192.168.0.101'][positions['192.168.0.101'].length - 1] * 100) * 1.3) },
+        { x : 150, y : 0, distance : 210 },
+        { x : 431, y : 210, distance : 281 },
+    ];
+
     laterationCalculator.laterate(positionObjects, function(error, position) {
         console.log(position);
     });
