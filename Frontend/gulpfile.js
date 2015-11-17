@@ -1,5 +1,7 @@
 'use strict';
 
+// TODO: make this file work
+
 var gulp = require('gulp'),
     less = require('gulp-sass'),
     livereload = require('gulp-livereload');
