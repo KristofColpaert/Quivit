@@ -1,10 +1,20 @@
 // Fonts
-$font-main-text: Helvetica Nueu, sans-serif;
+$fonts: Hind, sans-serif;
 $font-headers: sans-serif;
 
 // Colors
 $primary-color: #333;
-$main-background: #fafffa;
+$main-background: #f3fff3;
+
+// Measurements
+$max-width: 1200px;
 
 // Reusable layouts
-$border: 2px solid #555;
+$border: 2px solid #333;
+
+// Snippets
+%centered--full--screen {
+  margin: 0 auto;
+  padding: 0 10px 0;
+  max-width: $max-width;
+}

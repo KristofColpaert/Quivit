@@ -3,10 +3,49 @@
 body, html {
   margin: 0 auto;
   background: $main-background;
+  font-family: $fonts;
+  line-height: 1.3em;
 }
 
-.navigation {
+.header {
+  position: fixed;
+  width: 100%;
+  height: 40px;
   border-bottom: $border;
-  height: 30px;
-  background: $main-background;
+  
+  >.navigation {
+    position: relative;
+    @extend %centered--full--screen;
+    width: 100%;
+
+    >h1 {
+      font-size: 1.6em;
+      line-height: .2em;
+      font-weight: 400;
+      float: left;
+    }
+    
+    >.list {
+      $size: 20px;
+      display: block;
+      height: $size;
+      width: $size;
+      margin: 11px -20px 0 0;
+      float: right;
+      opacity: .8;
+      cursor: pointer;
+      background: url('../images/menu.png') no-repeat;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      >.menu.item {
+        display: none;
+      }
+    }
+  }
+
 }
+
+
