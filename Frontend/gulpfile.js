@@ -3,27 +3,49 @@
 // TODO: make this file work
 
 var gulp = require('gulp'),
-    less = require('gulp-sass'),
-    livereload = require('gulp-livereload');
+    sass = require('gulp-sass'),
+    liveReload = require('gulp-livereload'),
+    babel = require('gulp-babel'),
+    concat = require('gulp-concat'),
+    sourceMaps = require('gulp-sourcemaps'),
+    cssMinify = require('gulp-minify-css'),
+    cssLint = require('gulp-csslint'),
+    notify = require('gulp-notify'),
+    uglify = require('gulp-uglify');
 
 gulp.task('default', function() {
 
     liveReload.listen();
 
-    gulp.watch('./styles/*.less', ['style']);
+    gulp.watch('./styles/*.scss', ['style']);
     gulp.watch('./scripts/*.js', ['script']);
 
 });
 
 gulp.task('script', function() {
-   gulp.src('./scripts/*.js')
+   gulp.src(['./scripts/react.js', './scripts/react-dom.js', './scripts/*.js'])
+    .pipe(sourceMaps.init())
+    .pipe(babel())
+    .pipe(concat('app.min.js'))
+    .pipe(uglify())
+    .pipe(sourceMaps.write('.'))
     .pipe(gulp.dest('./public/scripts/'))
-    .pipe(livereload());
+    .pipe(liveReload());
 });
 
 gulp.task('style', function() {
-  gulp.src('./styles/*.less')
-    .pipe(less())
+  gulp.src(['./style/reset.css', './styles/*.scss'])
+    .pipe(sass())
+    .pipe(cssLint({
+        'ids': false
+    }))
+    .pipe(sourceMaps.init())
+    .pipe(cssMinify())
+    .pipe(concat('screen.min.css'))
+    .pipe(sourceMaps.write())
     .pipe(gulp.dest('./public/styles/'))
-    .pipe(livereload());
+    .pipe(notify({
+        message: 'CSS build.'
+    }))
+    .pipe(liveReload());
 });

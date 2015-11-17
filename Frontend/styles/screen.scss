@@ -1,0 +1,12 @@
+@import '_variables.scss';
+
+body, html {
+  margin: 0 auto;
+  background: $main-background;
+}
+
+.navigation {
+  border-bottom: $border;
+  height: 30px;
+  background: $main-background;
+}
