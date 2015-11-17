@@ -12,11 +12,10 @@ var laterationCalculator = require('./laterationCalculator.js');
 var dataParser = require('./dataParser.js');
 
 var servers = [
-    { port : 1337, address : '192.168.0.102' },
     { port : 1337, address : '192.168.0.101' },
     { port : 1337, address : '192.168.0.200' },
-    { port : 1337, address : '192.168.0.104' },
-    { port : 1337, address : '192.168.0.103' },
+    { port : 1337, address : '192.168.0.102' },
+    { port : 1337, address : '192.168.0.103' }
 ];
 var dbUrl = 'mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver';
 
@@ -25,7 +24,7 @@ var dbUrl = 'mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver';
  */
 
 //Create an accuracyFilter.
-accuracyFilter.createAccuracyFilter(servers, 60);
+accuracyFilter.createAccuracyFilter(servers, 90);
 
 //Create web clients and database clients.
 var dbClient = new MongoDbClient(dbUrl);
@@ -53,16 +52,16 @@ webClient.on('beacon', function(data) {
             console.log(resultArray);
             var positionObjects = [
                 { x : 0, y : 0, distance : ((resultArray[0].accuracy * 100)) },
-                { x : 96, y : 0, distance : ((resultArray[1].accuracy * 100)) },
-                { x : 361, y : 0, distance : ((resultArray[2].accuracy * 100)) },
-                { x : 0, y : 160, distance : ((resultArray[3].accuracy * 100)) },
-                { x : 361, y : 160, distance : ((resultArray[4].accuracy * 100)) }
+                { x : 280, y : 0, distance : ((resultArray[1].accuracy * 100)) },
+                { x : 415, y : 250, distance : ((resultArray[2].accuracy * 100)) },
+                { x : 310, y : 85, distance : ((resultArray[3].accuracy * 100)) }
             ];
 
             laterationCalculator.laterate(positionObjects, function(error, position) {
                 if(position != null) {
+                    position.timestamp = new Date().getTime() / 1000;
                     console.log(position);
-                    dbClient.insertData('test', position);
+                    //dbClient.insertData('test', position);
                 }
             });
         });

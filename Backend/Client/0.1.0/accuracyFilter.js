@@ -18,7 +18,7 @@ var accuracyFilter = (function() {
     };
 
     var filterAccuracy = function(beaconObject, callback) {
-        if(accuracies[beaconObject.serverIp].length <= 2) {
+        if(accuracies[beaconObject.serverIp].length <= 5) {
             averageCalculator.calculate(accuracies[beaconObject.serverIp], function(error, average) {
                 if(error) {
                     addToAccuracy(beaconObject);
