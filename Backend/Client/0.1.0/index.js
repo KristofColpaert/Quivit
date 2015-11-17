@@ -11,7 +11,13 @@ var accuracyFilter = require('./accuracyFilter.js');
 var laterationCalculator = require('./laterationCalculator.js');
 var dataParser = require('./dataParser.js');
 
-var servers = [{ port : 1337, address : '192.168.0.193'}, { port : 1337, address : '192.168.0.101' }];
+var servers = [
+    { port : 1337, address : '192.168.0.102' },
+    { port : 1337, address : '192.168.0.101' },
+    { port : 1337, address : '192.168.0.200' },
+    { port : 1337, address : '192.168.0.104' },
+    { port : 1337, address : '192.168.0.103' },
+];
 var dbUrl = 'mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver';
 
 /*
@@ -19,7 +25,7 @@ var dbUrl = 'mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver';
  */
 
 //Create an accuracyFilter.
-accuracyFilter.createAccuracyFilter(servers, 40);
+accuracyFilter.createAccuracyFilter(servers, 60);
 
 //Create web clients and database clients.
 var dbClient = new MongoDbClient(dbUrl);
@@ -44,15 +50,20 @@ webClient.on('beacon', function(data) {
     dataParser.parse(beaconData[0], function(error, beaconObject) {
         accuracyFilter.filterAccuracy(beaconObject, function(resultArray) {
             //Two observations, others are dummy data.
+            console.log(resultArray);
             var positionObjects = [
-                { x : 0, y : 140, distance : ((resultArray[0].accuracy * 100) * 1.3) },
-                { x : 431, y : 264, distance : ((resultArray[0].accuracy * 100) * 1.3) },
-                { x : 150, y : 0, distance : 210 },
-                { x : 431, y : 210, distance : 281 },
+                { x : 0, y : 0, distance : ((resultArray[0].accuracy * 100)) },
+                { x : 96, y : 0, distance : ((resultArray[1].accuracy * 100)) },
+                { x : 361, y : 0, distance : ((resultArray[2].accuracy * 100)) },
+                { x : 0, y : 160, distance : ((resultArray[3].accuracy * 100)) },
+                { x : 361, y : 160, distance : ((resultArray[4].accuracy * 100)) }
             ];
 
             laterationCalculator.laterate(positionObjects, function(error, position) {
-                dbClient.insertData('test', position);
+                if(position != null) {
+                    console.log(position);
+                    dbClient.insertData('test', position);
+                }
             });
         });
     });

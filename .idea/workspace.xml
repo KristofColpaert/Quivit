@@ -2,22 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfa8bad5-c99a-4198-85bb-b95f7e12ab20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Client/0.1.0/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Client/0.1.0/averageCalculator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Client/0.1.0/dataParser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Client/0.1.0/laterationCalculator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/README.md" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Backend/Client/0.1.0/DistanceCalculator.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/linker.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/linker.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/linker.lock" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/obj.target/binding/src/XpcConnection.o" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/obj.target/binding/src/XpcConnection.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/obj.target/binding/src/XpcConnection.o" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/obj.target/binding/src/XpcConnection.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/bignum.node" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/bignum.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/obj.target/bignum/bignum.o" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/obj.target/bignum/bignum.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/binding.node" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/binding.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/binding.node" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/binding.node" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/CHANGELOG.md" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Makefile" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Makefile" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Makefile" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/README.md" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/.deps/Release/obj.target/binding/src/XpcConnection.o.d" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/.deps/Release/obj.target/binding/src/XpcConnection.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/.deps/Release/obj.target/binding/src/XpcConnection.o.d" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/.deps/Release/obj.target/binding/src/XpcConnection.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Client/0.1.0/accuracyFilter.js" afterPath="$PROJECT_DIR$/Backend/Client/0.1.0/accuracyFilter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/.deps/Release/bignum.node.d" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/.deps/Release/bignum.node.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/.deps/Release/obj.target/bignum/bignum.o.d" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/Release/.deps/Release/obj.target/bignum/bignum.o.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/bignum.target.mk" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/bignum.target.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/.deps/Release/binding.node.d" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/Release/.deps/Release/binding.node.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/.deps/Release/binding.node.d" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/Release/.deps/Release/binding.node.d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/binding.target.mk" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/binding.target.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/binding.target.mk" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/binding.target.mk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/config.gypi" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/config.gypi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/config.gypi" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/config.gypi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/config.gypi" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/config.gypi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/lib/hci-socket/gap.js" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/lib/hci-socket/gap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/gyp-mac-tool" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bignum/build/gyp-mac-tool" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/gyp-mac-tool" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/build/gyp-mac-tool" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/gyp-mac-tool" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/build/gyp-mac-tool" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/lib/hci-socket/hci.js" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/lib/hci-socket/hci.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Client/0.1.0/index.js" afterPath="$PROJECT_DIR$/Backend/Client/0.1.0/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Client/0.1.0/package.json" afterPath="$PROJECT_DIR$/Backend/Client/0.1.0/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/PiServer.js" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/PiServer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/index.js" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/bplist-parser/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/bplist-parser/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/bleno/node_modules/xpc-connection/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/debug/node_modules/ms/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/debug/node_modules/ms/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble-device/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble-device/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/bplist-parser/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/bplist-parser/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/bleacon/node_modules/noble/node_modules/xpc-connection/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/ip/package.json" afterPath="$PROJECT_DIR$/Backend/Pi/0.1.0/node_modules/ip/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="NMCTBackFront.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +67,28 @@
     <favorites_list name="NMCTBackFront" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Backend/Client/0.1.0/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7488987">
+              <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="accuracyFilter.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Backend/Client/0.1.0/accuracyFilter.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -71,9 +125,10 @@
         <option value="$PROJECT_DIR$/Backend/Client/0.1.0/averageCalculator.js" />
         <option value="$PROJECT_DIR$/Backend/Client/0.1.0/dataParser.js" />
         <option value="$PROJECT_DIR$/Backend/Client/0.1.0/laterationCalculator.js" />
-        <option value="$PROJECT_DIR$/Backend/Client/0.1.0/index.js" />
         <option value="$PROJECT_DIR$/Backend/Pi/0.1.0/README.md" />
         <option value="$PROJECT_DIR$/Backend/Client/0.1.0/README.md" />
+        <option value="$PROJECT_DIR$/Backend/Client/0.1.0/accuracyFilter.js" />
+        <option value="$PROJECT_DIR$/Backend/Client/0.1.0/index.js" />
       </list>
     </option>
   </component>
@@ -82,11 +137,17 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="34" />
     <option name="y" value="23" />
-    <option name="width" value="1637" />
-    <option name="height" value="1413" />
+    <option name="width" value="1920" />
+    <option name="height" value="1173" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -109,10 +170,9 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -174,7 +234,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,6 +242,8 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -194,27 +255,8 @@
       <recent name="$PROJECT_DIR$/Backend/Pi" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.PiServer1.js">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" value="" />
-      <option name="executablePath" />
-      <option name="filePath" />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -222,33 +264,13 @@
       <gulpfile />
       <tasks />
       <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-options />
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
       <method />
     </configuration>
     <configuration default="false" name="PiServer1.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="$PROJECT_DIR$/Backend/Pi/Alpha/PiServer1.js" working-dir="$PROJECT_DIR$/Backend/Pi/Alpha">
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.PiServer1.js" />
-    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -264,25 +286,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="34" y="23" width="1637" height="1413" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1270617" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296131" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296131" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3296131" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12832801" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32923368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296131" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296131" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -551,7 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2565865">
           <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -559,15 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24856816">
           <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/Client/0.1.0/PiClient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6231386">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -585,7 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2932417">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -603,7 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.056737587">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -611,14 +623,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.056737587">
           <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Client/0.1.0/PiClient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80469894">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/Client/0.1.0/accuracyFilter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Backend/Client/0.1.0/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.30126">
-          <caret line="71" column="45" selection-start-line="71" selection-start-column="45" selection-end-line="71" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.7488987">
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
           <folding />
         </state>
       </provider>
