@@ -18,16 +18,18 @@ gulp.task('default', function() {
     liveReload.listen();
 
     gulp.watch('./styles/*.scss', ['style']);
-    gulp.watch('./scripts/*.js', ['script']);
+    gulp.watch(['./scripts/*.js', './scripts/*.jsx'] ['script']);
 
 });
 
 gulp.task('script', function() {
-   gulp.src(['./scripts/react.js', './scripts/react-dom.js', './scripts/*.js'])
+   gulp.src(['./scripts/reactTemp.js', './scripts/*.js'])
     .pipe(sourceMaps.init())
-    .pipe(babel())
+    .pipe(babel({
+           presets: ['es2015']
+    }))
     .pipe(concat('app.min.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(sourceMaps.write('.'))
     .pipe(gulp.dest('./public/scripts/'))
     .pipe(liveReload());
