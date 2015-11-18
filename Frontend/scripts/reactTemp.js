@@ -19,23 +19,29 @@ const Navigation = React.createClass({
     }
 });
 
+const Games = React.createClass({
+    render: function() {
+        return (
+            <section className="games">
+                <h2>{this.props.title}</h2>
+            </section>
+        );
+    }
+});
+
 const Main = React.createClass({
-   render: function() {
-       return (
-           <main>
-               <Navigation />
-               {/* Tijdelijk ;-) */}
-               <br/>
-               <br/>
+    render: function() {
+        return (
+            <main>
+                <Navigation />
+                <section>
 
-               {/* TODO: Omzetten naar custom tags */}
-               <section className="games">
-                   <h2>Live Games</h2>
-               </section>
-
-           </main>
-       );
-   }
+                    <Games title={'Live Games'} />
+                    <Games title={'Finished Games'} />
+                </section>
+            </main>
+        );
+    }
 });
 
 ReactDOM.render(
