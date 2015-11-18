@@ -12,9 +12,9 @@ var laterationCalculator = require('./laterationCalculator.js');
 var dataParser = require('./dataParser.js');
 
 var servers = [
-    { port : 1337, address : '192.168.0.101' },
+    { port : 1337, address : '192.168.0.107' },
     { port : 1337, address : '192.168.0.200' },
-    { port : 1337, address : '192.168.0.102' },
+    { port : 1337, address : '192.168.0.108' },
     { port : 1337, address : '192.168.0.103' }
 ];
 var dbUrl = 'mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver';
