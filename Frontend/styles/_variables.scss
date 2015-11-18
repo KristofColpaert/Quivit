@@ -1,6 +1,9 @@
-// Fonts
+// Typography
 $fonts: Hind, sans-serif;
 $font-headers: Hind, sans-serif;
+%headers {
+  font-weight: 400;
+}
 
 // Colors
 $primary-color: #333;
@@ -8,6 +11,7 @@ $main-background: #f8fff8;
 
 // Measurements
 $max-width: 1200px;
+$header-height: 40px;
 
 // Reusable layouts
 $border: 2px solid #333;
@@ -17,4 +21,24 @@ $border: 2px solid #333;
   margin: 0 auto;
   padding: 0 10px 0;
   max-width: $max-width;
+}
+
+%subtle-shadow {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
+}
+
+%card {
+  display: block;
+  @extend %subtle-shadow;
+}
+
+%card-background {
+  background:
+  radial-gradient(#cecece 15%, transparent 10%) 0 0,
+  radial-gradient(#cecece 15%, transparent 10%) 4px 4px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 2px 3px;
+  background-color: #dceedc;
+  background-size: 8px 8px;
 }
