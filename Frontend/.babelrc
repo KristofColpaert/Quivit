@@ -1,3 +1,3 @@
 {
-    "plugins": ["transform-react-jsx", "transform-es2015-classes"]
+    "plugins": ["transform-react-jsx"]
 }

@@ -23,7 +23,7 @@ gulp.task('default', function() {
 });
 
 gulp.task('script', function() {
-   gulp.src(['./scripts/reactTemp.js', './scripts/*.js'])
+   gulp.src(['./scripts/react.js', './sripts/react-dom.js', './scripts/reactTemp.js', './scripts/*.js'])
     .pipe(sourceMaps.init())
     .pipe(babel({
            presets: ['es2015']

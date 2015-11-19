@@ -2,14 +2,14 @@
  * Created by martijn on 16/11/15.
  */
 
-// import React from 'react'
-// import { render } from 'react-dom'
+import React from 'react'
+import { render } from 'react-dom'
 
 // First we import some components...
-// import { Router,Route, Link } from 'react-router'
+import { Router,Route, Link } from 'react-router'
 
-var Navigation = React.createClass({
-    render: function() {
+class Navigation extends React.Component {
+    render() {
         return (
             <header className="header">
                 <nav className="navigation">
@@ -23,10 +23,10 @@ var Navigation = React.createClass({
             </header>
         );
     }
-});
+}
 
-var GamesPanel = React.createClass({
-    render: function() {
+class GamesPanel extends React.Component {
+    render() {
         return (
             <section className="games">
                 <h2>{this.props.title}</h2>
@@ -36,10 +36,10 @@ var GamesPanel = React.createClass({
             </section>
         );
     }
-});
+}
 
-var Game = React.createClass({
-    render: function() {
+class Game extends React.Component {
+    render() {
         return(
             <div key={this.props.teams} className="card game">
                 <span className="score">{this.props.score}</span>
@@ -49,10 +49,10 @@ var Game = React.createClass({
             </div>
         );
     }
-});
+}
 
-var Main = React.createClass({
-    render: function() {
+class Main extends React.Component {
+    render() {
         return (
             <main>
                 <Navigation />
@@ -65,18 +65,18 @@ var Main = React.createClass({
             </main>
         );
     }
-});
+}
 
-//render((
-//    <Router>
-//        <Route path="/" component={App}>
-//            <Route path="about" component={About} />
-//            <Route path="inbox" component={Inbox} />
-//        </Route>
-//    </Router>
-//), document.body);
+render((
+    <Router>
+        <Route path="/" component={App}>
+            <Route path="about" component={About} />
+            <Route path="inbox" component={Inbox} />
+        </Route>
+    </Router>
+), document.body);
 
-ReactDom.render(
-    <Main />,
-    document.getElementById('root')
-);
+//ReactDOM.render(
+//    <Main />,
+//    document.getElementById('root')
+//);
