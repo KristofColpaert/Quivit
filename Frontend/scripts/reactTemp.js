@@ -8,6 +8,7 @@
 // First we import some components...
 // import { Router,Route, Link } from 'react-router'
 
+
 var Navigation = React.createClass({
     render: function() {
         return (
@@ -38,14 +39,26 @@ var GamesPanel = React.createClass({
     }
 });
 
+var currentTeams = {
+
+};
+
 var Game = React.createClass({
+    getStyles: function () {
+        var c1 = this.props.colors[0],
+            c2 = this.props.colors[1];
+        return (
+            {
+                background: 'linear-gradient(90deg, ' + c1 + ' 10%, ' + c2 + ' 90%)'
+            }
+        )
+    },
     render: function() {
         return(
             <div key={this.props.teams} className="card game">
+                <span className="time passed">{this.props.timePassed}</span>
                 <span className="score">{this.props.score}</span>
-                <h3>{this.props.teams}</h3>
-                <span className="time passed"></span>
-                {/* time passed */}
+                <h3 className="teams" style={ this.getStyles() }>{this.props.teams}</h3>
             </div>
         );
     }
@@ -57,9 +70,18 @@ var Main = React.createClass({
             <main>
                 <Navigation />
                 <section className="content-holder">
-                    <GamesPanel title={'Live Games'} games={[<Game teams={'KAA Gent - RSCA'} score={'0-2'} />, <Game teams={'FC Barcelona - Man. City'} score={'1-3'} />, <Game teams={'Stoke City - KV Mechelen'} score={'1-0'} />, <Game teams={'Sevilla - Villareal'} score={'1-1'} />]}/>
+                    <GamesPanel title={'Live Games'} games={[
+                        <Game teams={'KAA Gent - RSCA'} score={'0-2'} timePassed="43'" colors={["#09509E", "#523091"]} />,
+                        <Game teams={'FC Barcelona - Man. City'} score={'1-3'} timePassed="60'" colors={["#940F08", "#5CBFEB"]} />,
+                        <Game teams={'Stoke City - KV Mechelen'} score={'1-0'} timePassed="23'" colors={["#09509E", "#523091"]} />,
+                        <Game teams={'Sevilla - Villareal'} score={'1-1'} colors={["#09509E", "#523091"]} />
+                    ]}/>
                     <div className="clearfix"></div>
-                    <GamesPanel title={'Finished Games'} games={[<Game teams={'België - Spanje'} score={'3-2'} />, <Game teams={'Zweden - Portugal'} score={'0-0'} />, <Game teams={'Chelsea - Swansea'} score={'0-4'} />]}/>
+                    <GamesPanel title={'Finished Games'} games={[
+                        <Game teams={'België - Spanje'} colors={["#09509E", "#523091"]} score={'3-2'} />,
+                        <Game teams={'Zweden - Portugal'} score={'0-0'} colors={["#FFD90D", "#FF1600"]} />,
+                        <Game teams={'Chelsea - Swansea'} score={'0-4'} colors={["#09509E", "#523091"]} />
+                    ]}/>
                     <div className="clearfix"></div>
                 </section>
             </main>
@@ -76,7 +98,7 @@ var Main = React.createClass({
 //    </Router>
 //), document.body);
 
-ReactDom.render(
+ReactDOM.render(
     <Main />,
     document.getElementById('root')
 );

@@ -6,15 +6,13 @@ $font-headers: Hind, sans-serif;
 }
 
 // Colors
-$primary-color: #333;
-$main-background: #f8fff8;
+$primary-color: #eee;
+$font-color: #333;
+$main-background: #eee;
 
 // Measurements
 $max-width: 1200px;
 $header-height: 40px;
-
-// Reusable layouts
-$border: 2px solid #333;
 
 // Snippets
 %centered--full--screen {
@@ -34,11 +32,5 @@ $border: 2px solid #333;
 }
 
 %card-background {
-  background:
-  radial-gradient(#cecece 15%, transparent 10%) 0 0,
-  radial-gradient(#cecece 15%, transparent 10%) 4px 4px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 2px 3px;
-  background-color: #dceedc;
-  background-size: 8px 8px;
+  background-color: #d3d3d3;
 }

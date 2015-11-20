@@ -18,12 +18,12 @@ gulp.task('default', function() {
     liveReload.listen();
 
     gulp.watch('./styles/*.scss', ['style']);
-    gulp.watch(['./scripts/*.js', './scripts/*.jsx'] ['script']);
+    gulp.watch('./scripts/*.js', ['script']);
 
 });
 
 gulp.task('script', function() {
-   gulp.src(['./scripts/react.js', './sripts/react-dom.js', './scripts/reactTemp.js', './scripts/*.js'])
+   gulp.src(['./scripts/react.js', './scripts/react-dom.js', './scripts/reactTemp.js', './scripts/*.js'])
     .pipe(sourceMaps.init())
     .pipe(babel({
            presets: ['es2015']

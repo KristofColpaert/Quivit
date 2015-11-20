@@ -11,7 +11,7 @@ import { Router,Route, Link } from 'react-router'
 class Navigation extends React.Component {
     render() {
         return (
-            <header className="header">
+            <header className="header">(
                 <nav className="navigation">
                     <h1>Quivit</h1>
 
