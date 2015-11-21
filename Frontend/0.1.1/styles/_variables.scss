@@ -1,0 +1,36 @@
+// Typography
+$fonts: Hind, sans-serif;
+$font-headers: Hind, sans-serif;
+%headers {
+  font-weight: 400;
+}
+
+// Colors
+$primary-color: #eee;
+$font-color: #333;
+$main-background: #eee;
+
+// Measurements
+$max-width: 1200px;
+$header-height: 40px;
+
+// Snippets
+%centered--full--screen {
+  margin: 0 auto;
+  padding: 0 10px 0;
+  max-width: $max-width;
+}
+
+%subtle-shadow {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
+}
+
+%card {
+  display: block;
+  @extend %subtle-shadow;
+}
+
+%card-background {
+  background-color: #d3d3d3;
+}
