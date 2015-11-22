@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react'),
-    Navigation = require('./Navigation.jsx'),
+    Navigation = require('./../general/Navigation.jsx'),
     Game = require('./Game.jsx'),
     GamesPanel = require('./GamesPanel.jsx');
 
