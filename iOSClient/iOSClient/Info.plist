@@ -49,7 +49,9 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>http://localhost:3000</key>
+			<key>http://192.168.0.192</key>
+			<dict/>
+			<key>http://localhost</key>
 			<dict/>
 		</dict>
 	</dict>

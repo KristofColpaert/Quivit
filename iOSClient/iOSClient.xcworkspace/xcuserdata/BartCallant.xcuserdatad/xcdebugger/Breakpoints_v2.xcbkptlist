@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOSClient/ViewController.swift"
-            timestampString = "469801337.129064"
+            timestampString = "469893984.792792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "changeStatus(_:)"
             landmarkType = "5">
          </BreakpointContent>

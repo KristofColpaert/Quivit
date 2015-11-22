@@ -21,7 +21,8 @@ class ViewController: UIViewController, ESTIndoorLocationManagerDelegate
 	
 	let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
 	
-	let socket = SocketIOClient(socketURL: "http://192.168.0.192:3000")
+	let socket = SocketIOClient(socketURL: "http://localhost:3000")
+	//let socket = SocketIOClient(socketURL: "http://192.168.0.192:3000")
 	var i = 0
 	var location:ESTLocation?
 	var locations:[ESTLocation] = []
@@ -30,12 +31,6 @@ class ViewController: UIViewController, ESTIndoorLocationManagerDelegate
 	let appToken = "f157d0a442bf7fe7815ffd53076492cc"
 	var playing = false
 	
-	@IBAction func emitHandler(sender: AnyObject)
-	{
-		self.i++
-		self.socket.emit("TEST", "iOS")
-		self.socket.emit("NewPosition", ["PlayerName": "bart iOS App", "Position": ["x": i, "y": i]])
-	}
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -104,6 +99,7 @@ class ViewController: UIViewController, ESTIndoorLocationManagerDelegate
 		self.socket.on("connect") {data, ack in
 			print("[Socket] Connected")
 			self.socket.emit("UserConnect", "Bart iOSApp")
+			self.socket.emit("NewPosition", ["Team": "KAA Gent", "Player": "Laurent Depoitre", "Position": ["x": 0.0, "y": 0.0, "orientation": 0.0], "Location": "TestLocation"])
 			self.changeStatus(true)
 		}
 		
@@ -197,16 +193,18 @@ class ViewController: UIViewController, ESTIndoorLocationManagerDelegate
 	func indoorLocationManagerIsReady(manager: ESTIndoorLocationManager!) {
 		print("[IndoorLocationManager] Ready")
 	}
-	/*
+	
 	func indoorLocationManager(manager: ESTIndoorLocationManager!, didUpdatePosition position: ESTOrientedPoint!, inLocation location: ESTLocation!)
 	{
 		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
 		print("[IndoorLocationManager] Location: \(location.name)")
 		
 		self.indoorLocationView.updatePosition(position)
+		
+		//self.socket.emit("NewPosition", ["PlayerName": "Bart iOS App", "Position": ["x": position.x, "y": position.y, "orientation": position.orientation], "Location": location.name])
+		self.socket.emit("NewPosition", ["Position": ["x": position.x, "y": position.y, "orientation": position.orientation], "Location": location.name])
 	}
-	*/
-	
+	/*
 	func indoorLocationManager(manager: ESTIndoorLocationManager!, didUpdatePosition position: ESTOrientedPoint!, withAccuracy positionAccuracy: ESTPositionAccuracy, inLocation location: ESTLocation!)
 	{
 		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
@@ -215,6 +213,7 @@ class ViewController: UIViewController, ESTIndoorLocationManagerDelegate
 		
 		self.indoorLocationView.updatePosition(position)
 	}
+	*/
 	func indoorLocationManager(manager: ESTIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!) {
 		print("[IndoorLocationManager] Did fail to update Position! Error: \(error)")
 	}
