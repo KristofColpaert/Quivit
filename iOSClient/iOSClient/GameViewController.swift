@@ -9,19 +9,15 @@
 import UIKit
 import Socket_IO_Client_Swift
 
-// App ID : quivit-cw1
-// App Token : f157d0a442bf7fe7815ffd53076492cc
-
-class GameViewController: UIViewController, ESTIndoorLocationManagerDelegate
+class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 {
-	@IBOutlet weak var indoorLocationView: ESTIndoorLocationView!
+	@IBOutlet weak var indoorLocationView: EILIndoorLocationView!
 	
 	let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-	var location:ESTLocation?
-	let indoorLocationManager = ESTIndoorLocationManager()
+	var location:EILLocation?
+	let indoorLocationManager = EILIndoorLocationManager()
 	let appID = "quivit-cw1"
 	let appToken = "f157d0a442bf7fe7815ffd53076492cc"
-//	var playing = false
 	
 	override func viewDidLoad()
 	{
@@ -32,25 +28,13 @@ class GameViewController: UIViewController, ESTIndoorLocationManagerDelegate
 		ESTConfig.isAuthorized()
 		
 		self.indoorLocationManager.delegate = self
-		self.indoorLocationManager.fetchUserLocationsWithSuccess(
-			{ (response) in
-				let locations = response as! [ESTLocation]
-				if let bartsroom = locations.filter({ $0.identifier == "bart-s-room" }).first
-				{
-					self.location = bartsroom
-					self.indoorLocationView.drawLocation(self.location)
-					self.indoorLocationManager.startIndoorLocation(self.location)
-				}
-				else
-				{
-					print("location not found")
-				}
-			},
-			failure:
-			{ (error) in
-				print("error when fetching locations: \(error)")
-			}
-		)
+		
+		let request = EILRequestFetchLocation(locationIdentifier: "bart-s-room")
+		request.sendRequestWithCompletion({(location, error) in
+			self.location = location
+			self.indoorLocationView.drawLocation(location)
+			self.indoorLocationManager.startPositionUpdatesForLocation(location)
+		})
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -70,15 +54,14 @@ class GameViewController: UIViewController, ESTIndoorLocationManagerDelegate
 	}
 	override func viewWillDisappear(animated: Bool)
 	{
-		self.indoorLocationManager.stopIndoorLocation()
+		self.indoorLocationManager.stopPositionUpdates()
 	}
 
-
-	func indoorLocationManagerIsReady(manager: ESTIndoorLocationManager!) {
+	func indoorLocationManagerIsReady(manager: EILIndoorLocationManager!) {
 		print("[IndoorLocationManager] Ready")
 	}
 	
-	func indoorLocationManager(manager: ESTIndoorLocationManager!, didUpdatePosition position: ESTOrientedPoint!, inLocation location: ESTLocation!)
+	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, inLocation location: EILLocation!)
 	{
 		print("[indoorLocationManager] Player: \(self.appDelegate.selectedPlayer!)")
 		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
@@ -89,7 +72,7 @@ class GameViewController: UIViewController, ESTIndoorLocationManagerDelegate
 		self.appDelegate.socket!.emit("NewPosition", ["Team": self.appDelegate.selectedTeam!, "Player": self.appDelegate.selectedPlayer!, "Position": ["x": position.x, "y": position.y, "orientation": position.orientation], "Location": location.name])
 	}
 	/*
-	func indoorLocationManager(manager: ESTIndoorLocationManager!, didUpdatePosition position: ESTOrientedPoint!, withAccuracy positionAccuracy: ESTPositionAccuracy, inLocation location: ESTLocation!)
+	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, withAccuracy positionAccuracy: EILPositionAccuracy, inLocation location: EILLocation!)
 	{
 		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
 		print("[IndoorLocationManager] PositionAccuracy: \(positionAccuracy)")
@@ -98,7 +81,7 @@ class GameViewController: UIViewController, ESTIndoorLocationManagerDelegate
 		self.indoorLocationView.updatePosition(position)
 	}
 	*/
-	func indoorLocationManager(manager: ESTIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!) {
+	func indoorLocationManager(manager: EILIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!) {
 		print("[IndoorLocationManager] Did fail to update Position! Error: \(error)")
 	}
 }

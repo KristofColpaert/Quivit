@@ -19,12 +19,13 @@
 #import "EILPoint.h"
 */
 
-//#import "EILIndoorSDK.h"
-#import "ESTIndoorLocationManager.h"
-#import "ESTIndoorLocationView.h"
-#import "ESTLocation.h"
-#import "ESTLocationBuilder.h"
-#import "ESTPoint.h"
-#import "ESTConfig.h"
+#import "EILIndoorSDK.h"
+
+//#import "ESTIndoorLocationManager.h"
+//#import "ESTIndoorLocationView.h"
+//#import "ESTLocation.h"
+//#import "ESTLocationBuilder.h"
+//#import "ESTPoint.h"
+//#import "ESTConfig.h"
 
 #endif /* iOSClient_Bridging_Header_h */
