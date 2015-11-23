@@ -32,5 +32,11 @@ $header-height: 40px;
 }
 
 %card-background {
-  background-color: #d3d3d3;
+  background:
+  radial-gradient(#ccc 15%, transparent 16%) 0 0,
+  radial-gradient(#ccc 15%, transparent 16%) 4px 4px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  background-color: #f9fffd;
+  background-size:8px 8px;
 }

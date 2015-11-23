@@ -104,11 +104,11 @@ h3 {
     text-align: center;
     color: #fff;
     
-    background: linear-gradient(90deg, #09509E 0%, #523091 67%);
+    background: rgba(74, 74, 74, 0.8);
   }
 
   > span.time.passed {
-    float: right;
+    position: absolute;
     padding: 6px 4px 4px 5px;
     margin: 10px 10px 0 0;
     background: #fff;
