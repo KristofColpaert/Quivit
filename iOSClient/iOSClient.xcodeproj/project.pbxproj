@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9B07DDDC1BFE14B4005B4763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07DDDB1BFE14B4005B4763 /* AppDelegate.swift */; };
-		9B07DDDE1BFE14B4005B4763 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07DDDD1BFE14B4005B4763 /* ViewController.swift */; };
+		9B07DDDE1BFE14B4005B4763 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07DDDD1BFE14B4005B4763 /* GameViewController.swift */; };
 		9B07DDE11BFE14B4005B4763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B07DDDF1BFE14B4005B4763 /* Main.storyboard */; };
 		9B07DDE31BFE14B4005B4763 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B07DDE21BFE14B4005B4763 /* Assets.xcassets */; };
 		9B07DDE61BFE14B4005B4763 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B07DDE41BFE14B4005B4763 /* LaunchScreen.storyboard */; };
+		9B6EE8D61C02B2FC006FC4CE /* PlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */; };
+		9B7947AF1C02738B0069F8EF /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */; };
 		9BCD8C3D1BFEA5790008A741 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFB5331BFE9C9F00FEFF51 /* CoreMotion.framework */; };
 		9BCD8C3E1BFEA57F0008A741 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFB5351BFE9CAA00FEFF51 /* AudioToolbox.framework */; };
 		9BCD8C3F1BFEA5890008A741 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFB5371BFE9CB200FEFF51 /* MediaPlayer.framework */; };
@@ -25,12 +27,14 @@
 		297D5AFF0AD732C8C66F5486 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9B07DDD81BFE14B4005B4763 /* iOSClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B07DDDB1BFE14B4005B4763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B07DDDD1BFE14B4005B4763 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9B07DDDD1BFE14B4005B4763 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		9B07DDE01BFE14B4005B4763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B07DDE21BFE14B4005B4763 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B07DDE51BFE14B4005B4763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B07DDE71BFE14B4005B4763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B2CBBBD1BFE9BAC0034E6FE /* iOSClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSClient-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewController.swift; sourceTree = "<group>"; };
+		9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		9BFFB5331BFE9C9F00FEFF51 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9BFFB5351BFE9CAA00FEFF51 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9BFFB5371BFE9CB200FEFF51 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -100,12 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				9B07DDDB1BFE14B4005B4763 /* AppDelegate.swift */,
-				9B07DDDD1BFE14B4005B4763 /* ViewController.swift */,
+				9B07DDDD1BFE14B4005B4763 /* GameViewController.swift */,
 				9B07DDDF1BFE14B4005B4763 /* Main.storyboard */,
 				9B07DDE21BFE14B4005B4763 /* Assets.xcassets */,
 				9B07DDE41BFE14B4005B4763 /* LaunchScreen.storyboard */,
 				9B07DDE71BFE14B4005B4763 /* Info.plist */,
 				9B2CBBBD1BFE9BAC0034E6FE /* iOSClient-Bridging-Header.h */,
+				9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */,
+				9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */,
 			);
 			path = iOSClient;
 			sourceTree = "<group>";
@@ -233,8 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B07DDDE1BFE14B4005B4763 /* ViewController.swift in Sources */,
+				9B07DDDE1BFE14B4005B4763 /* GameViewController.swift in Sources */,
 				9B07DDDC1BFE14B4005B4763 /* AppDelegate.swift in Sources */,
+				9B6EE8D61C02B2FC006FC4CE /* PlayerTableViewController.swift in Sources */,
+				9B7947AF1C02738B0069F8EF /* ConnectTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
