@@ -1,7 +1,7 @@
 PODS:
-  - EstimoteIndoorSDK (1.6.0):
-    - EstimoteSDK (~> 2.4.0)
-  - EstimoteSDK (2.4.0)
+  - EstimoteIndoorSDK (2.0.1):
+    - EstimoteSDK (~> 3.8)
+  - EstimoteSDK (3.8.0)
   - Socket.IO-Client-Swift (4.1.2)
 
 DEPENDENCIES:
@@ -9,8 +9,8 @@ DEPENDENCIES:
   - Socket.IO-Client-Swift
 
 SPEC CHECKSUMS:
-  EstimoteIndoorSDK: 62ee267efbf5450aebffdb2c125f3f16440afb43
-  EstimoteSDK: d130c9d111b1c0522222afc97b43f245660cbd7c
+  EstimoteIndoorSDK: 51c4086e920a6675483c9487b57dd22ed88c779f
+  EstimoteSDK: 660effc9b3e26f0c90cc7e36fdf802e4c9afe359
   Socket.IO-Client-Swift: e9e173cf20d6fa33c1c1c4f6354c7b168259eeb6
 
 COCOAPODS: 0.39.0
