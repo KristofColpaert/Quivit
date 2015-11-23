@@ -29,7 +29,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		
 		self.indoorLocationManager.delegate = self
 		
-		let request = EILRequestFetchLocation(locationIdentifier: "bart-s-room")
+		let request = EILRequestFetchLocation(locationIdentifier: "room3-8fg")
 		request.sendRequestWithCompletion({(location, error) in
 			self.location = location
 			self.indoorLocationView.drawLocation(location)
@@ -56,12 +56,8 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 	{
 		self.indoorLocationManager.stopPositionUpdates()
 	}
-
-	func indoorLocationManagerIsReady(manager: EILIndoorLocationManager!) {
-		print("[IndoorLocationManager] Ready")
-	}
 	
-	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, inLocation location: EILLocation!)
+	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, withAccuracy positionAccuracy: EILPositionAccuracy, inLocation location: EILLocation!)
 	{
 		print("[indoorLocationManager] Player: \(self.appDelegate.selectedPlayer!)")
 		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
@@ -71,17 +67,9 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		
 		self.appDelegate.socket!.emit("NewPosition", ["Team": self.appDelegate.selectedTeam!, "Player": self.appDelegate.selectedPlayer!, "Position": ["x": position.x, "y": position.y, "orientation": position.orientation], "Location": location.name])
 	}
-	/*
-	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, withAccuracy positionAccuracy: EILPositionAccuracy, inLocation location: EILLocation!)
+	
+	func indoorLocationManager(manager: EILIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!)
 	{
-		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
-		print("[IndoorLocationManager] PositionAccuracy: \(positionAccuracy)")
-		print("[IndoorLocationManager] Location: \(location.name)")
-		
-		self.indoorLocationView.updatePosition(position)
-	}
-	*/
-	func indoorLocationManager(manager: EILIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!) {
 		print("[IndoorLocationManager] Did fail to update Position! Error: \(error)")
 	}
 }
