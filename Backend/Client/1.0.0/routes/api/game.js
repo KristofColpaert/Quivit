@@ -1,7 +1,38 @@
 var express = require('express'),
     router = express.Router(),
     Game = require('../../models/Game.js'),
-    MongoDbClient = require('../../helpers/MongoDbClient.js')
+    errorLogger = require('../../helpers/errorLogger.js'),
+    mongoskin = require('mongoskin'),
+    db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true}),
+    ObjectID = require('mongoskin').ObjectID;
+
+//GET: get game by id
+router.get('/:id', function(req, res) {
+    //Get id
+    var id = req.params.id;
+    db.collection('games').find({ _id: ObjectID(id) }).toArray(function(error, result) {
+        if(error) {
+            errorLogger.log('database', error);
+        }
+        else {
+            res.json(result);
+        }
+    });
+});
+
+//GET: get games by date
+router.get('/:year/:month/:day', function(req, res) {
+    //Get date
+    var matchDate = '' + req.params.year + req.params.month + req.params.day;
+    db.collection('games').find({ matchDate : matchDate }).toArray(function(error, result) {
+        if(error) {
+            errorLogger.log('database', error);
+        }
+        else {
+            res.json(result);
+        }
+    });
+});
 
 //POST: new game
 router.post('/', function(req, res) {
@@ -9,23 +40,30 @@ router.post('/', function(req, res) {
     var matchDate = req.body.matchDate;
     var teamHome = req.body.teamHome;
     var teamAway = req.body.teamAway;
-    var newGame = new Game(matchDate, teamHome, teamAway);
+    var estimoteLocationId = req.body.estimoteLocationId;
+    var newGame = new Game(matchDate, teamHome, teamAway, estimoteLocationId);
 
-    //Make database connection
-    var dbClient = new MongoDbClient();
+    var matchId;
 
-    dbClient.on('connection', function(dbConnection) {
-        //Insert data
-        dbClient.insertData(dbConnection, newGame.toString() + 'Settings', newGame);
-    });
-    dbClient.on('error', function(error) {
-        console.log(error);
-    });
-    dbClient.on('insert', function(insert) {
-        res.json(insert.ops);
-    });
+    //Insert in date collection
+    db.collection('games').insert(newGame, function(error, result) {
+        if(error) {
+            errorLogger.log('database', error);
+        }
+        else {
+            matchId = result.insertedIds[0];
 
-    dbClient.createMongoDbClient();
+            //Make settings collection and insert
+            db.collection('Settings' + matchId).insert(newGame, function(error, result) {
+                if(error) {
+                    errorLogger.log('database', error);
+                }
+                else {
+                    res.json({ _id : matchId });
+                }
+            });
+        }
+    });
 });
 
 module.exports = router;
