@@ -1,6 +1,6 @@
 // Typography
-$fonts: Hind, sans-serif;
-$font-headers: Hind, sans-serif;
+$fonts: 'Bebas Neue', sans-serif;
+$font-headers: 'Bebas Neue', sans-serif;
 %headers {
   font-weight: 400;
 }
@@ -12,9 +12,13 @@ $main-background: #eee;
 
 // Measurements
 $max-width: 1200px;
-$header-height: 40px;
+$header-height: 45px;
 
 // Snippets
+%border {
+  border-bottom: 2px solid #ccc;
+}
+
 %centered--full--screen {
   margin: 0 auto;
   padding: 0 10px 0;
@@ -22,21 +26,24 @@ $header-height: 40px;
 }
 
 %subtle-shadow {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
-          box-shadow: 0 2px 2px 0 rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 2px 4px 2px rgba(0,0,0,.2);
+          box-shadow: 0 2px 4px 2px rgba(0,0,0,.2);
 }
 
 %card {
   display: block;
-  @extend %subtle-shadow;
+  position: relative;
 }
 
 %card-background {
-  background:
-  radial-gradient(#ccc 15%, transparent 16%) 0 0,
-  radial-gradient(#ccc 15%, transparent 16%) 4px 4px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-  radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-  background-color: #f9fffd;
-  background-size:8px 8px;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    -webkit-filter: brightness(1);
+
+  &:hover {
+    -webkit-filter: brightness(1.4);
+  }
 }

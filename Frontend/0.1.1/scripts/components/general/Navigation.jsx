@@ -7,7 +7,7 @@ var Navigation = React.createClass({
         return (
             <header className="header">
                 <nav className="navigation">
-                    <h1>Quivit</h1>
+                    <h1>🐤 Quivit</h1>
 
                     <ul className="list">
                         <li className="menu item">live</li>

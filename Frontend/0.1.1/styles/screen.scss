@@ -1,4 +1,4 @@
-@import 'variables';
+@import '_variables.scss';
 
 body, html {
   margin: 0 auto;
@@ -10,12 +10,12 @@ body, html {
 
 h2 {
   @extend %headers;
-  font-size: 1.4em;
+  font-size: 1.9em;
 }
 
 h3 {
   @extend %headers;
-  font-size: 1.3em;
+  font-size: 1.7em;
 }
 
 .clearfix {
@@ -27,7 +27,10 @@ h3 {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
   height: $header-height;
+  background: $main-background;
+  @extend %border;
 
   >.navigation {
     position: relative;
@@ -35,8 +38,8 @@ h3 {
     width: 100%;
 
     >h1 {
-      font-size: 1.6em;
-      line-height: .2em;
+      font-size: 2em;
+      line-height: .1em;
       font-weight: 400;
       float: left;
     }
@@ -70,7 +73,7 @@ h3 {
   top: $header-height;
 
   .games {
-    margin-top: 30px;
+    margin: 50px 0 0;
     float: none;
     clear: both;
   }
@@ -79,39 +82,50 @@ h3 {
 
   @extend %card;
   @extend %card-background;
+  @extend %subtle-shadow;
   box-sizing: border-box;
   width: 24%;
   float: left;
   padding: 0;
+  margin: 0;
   cursor: pointer;
-  opacity: .8;
+  opacity: .9;
 
-  > span.score {
-    display: block;
-    text-align: center;
-    font-weight: 700;
-    font-size: 2em;
-    font-stretch: condensed;
-    line-height: 1.6em;
-    margin: 20px -30px 0 0;
+  > image.game-image {
+	display: block;
+	@extend %card-background;
+	width: 20%;
+	height: auto;
   }
 
-  > h3.teams {
+  > span.score {
+    text-shadow: 0 1px 3px #000000;
     display: block;
-    width: 100%;
-    padding: 20px 0;
-
     text-align: center;
-    color: #fff;
-    
-    background: rgba(74, 74, 74, 0.8);
+    margin: -100px 0 -20px;
+    padding: 40px 0 50px;
+    font-weight: 700;
+    font-size: 3.6em;
+    color: #eeeeee;
+}
+
+  > h3.teams {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0 17px;
+    text-align: center;
+    color: #eee;
+    background: #333;
   }
 
   > span.time.passed {
     position: absolute;
-    padding: 6px 4px 4px 5px;
-    margin: 10px 10px 0 0;
-    background: #fff;
+    height: 4px;
+    width: 60%;
+    // background: #B14E44;
+    background: #eee;
+    padding: 0;
+    margin: 0;
   }
 
   & + & {
@@ -121,6 +135,10 @@ h3 {
   &:hover {
     opacity: 1;
     cursor: pointer;
-
   }
+}
+
+::selection {
+  background: #333;
+  color: #eeeeee;
 }

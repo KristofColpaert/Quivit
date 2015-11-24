@@ -25,12 +25,12 @@ gulp.task('script', function() {
         .pipe(vinylSourceStream('app.min.js'))
         .pipe(vinylBuffer())
         .pipe(sourceMaps.init({loadMaps: true}))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(sourceMaps.write('./'))
         .pipe(gulp.dest('./public/scripts'))
-        .pipe(notify({
-            message: 'JS build.'
-        }))
+        // .pipe(notify({
+        //     message: 'JS build.'
+        // }))
         .pipe(liveReload());
 });
 
@@ -45,8 +45,8 @@ gulp.task('style', function() {
         .pipe(concat('screen.min.css'))
         .pipe(sourceMaps.write())
         .pipe(gulp.dest('./public/styles/'))
-        .pipe(notify({
-            message: 'CSS build.'
-        }))
+        // .pipe(notify({
+        //     message: 'CSS build.'
+        // }))
         .pipe(liveReload());
 });
