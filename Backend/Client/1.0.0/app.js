@@ -12,7 +12,9 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     path = require('path');
 
-var routeGame = require('./routes/api/game.js');
+var routeGame = require('./routes/api/game.js'),
+    routePlayer = require('./routes/api/player.js'),
+    routeTeam = require('./routes/api/team.js');
 
 //Setup port of server.
 var port = 3000;
@@ -43,6 +45,8 @@ app.set('socketio', io);
  */
 
 app.use('/api/game', routeGame);
+app.use('/api/player', routePlayer);
+app.use('/api/team', routeTeam);
 
 /*
 ** Errors

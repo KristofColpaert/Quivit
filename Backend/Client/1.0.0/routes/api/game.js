@@ -23,8 +23,9 @@ router.get('/:id', function(req, res) {
 //GET: get games by date
 router.get('/:year/:month/:day', function(req, res) {
     //Get date
-    var matchDate = '' + req.params.year + req.params.month + req.params.day;
-    db.collection('games').find({ matchDate : matchDate }).toArray(function(error, result) {
+    console.log('hier');
+    var gameDate = '' + req.params.year + req.params.month + req.params.day;
+    db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
         if(error) {
             errorLogger.log('database', error);
         }
@@ -34,34 +35,24 @@ router.get('/:year/:month/:day', function(req, res) {
     });
 });
 
-//POST: new game
+//POST: insert new game
 router.post('/', function(req, res) {
     //Make new object
-    var matchDate = req.body.matchDate;
-    var teamHome = req.body.teamHome;
-    var teamAway = req.body.teamAway;
+    var gameDate = req.body.gameDate;
+    var teamHomeId = req.body.teamHomeId;
+    var teamAwayId = req.body.teamAwayId;
     var estimoteLocationId = req.body.estimoteLocationId;
-    var newGame = new Game(matchDate, teamHome, teamAway, estimoteLocationId);
+    var newGame = new Game(gameDate, teamHomeId, teamAwayId, estimoteLocationId);
 
-    var matchId;
+    var gameId;
 
-    //Insert in date collection
     db.collection('games').insert(newGame, function(error, result) {
         if(error) {
             errorLogger.log('database', error);
         }
         else {
-            matchId = result.insertedIds[0];
-
-            //Make settings collection and insert
-            db.collection('Settings' + matchId).insert(newGame, function(error, result) {
-                if(error) {
-                    errorLogger.log('database', error);
-                }
-                else {
-                    res.json({ _id : matchId });
-                }
-            });
+            gameId = result.insertedIds[0];
+            res.json({ _id : gameId });
         }
     });
 });

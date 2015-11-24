@@ -1,17 +1,17 @@
-var Game = function(matchDate, teamHome, teamAway, estimoteLocationId) {
+var Game = function(gameDate, teamHomeId, teamAwayId, estimoteLocationId) {
     'use strict';
 
     var self = this;
 
-    this.matchDate = matchDate;
-    this.teamHome = teamHome;
-    this.teamAway = teamAway;
+    this.gameDate = gameDate;
+    this.teamHomeId = teamHomeId;
+    this.teamAwayId = teamAwayId;
     this.estimoteLocationId = estimoteLocationId;
 }
 
 Game.prototype = {
     toString : function() {
-        return '' + this.matchDate + this.teamHome + this.teamAway;
+        return this.teamHome + ' - ' + this.teamAway;
     }
 }
 
