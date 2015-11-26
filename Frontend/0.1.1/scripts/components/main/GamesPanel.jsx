@@ -9,7 +9,8 @@ var GamesPanel = React.createClass({
                 <h2>{this.props.title}</h2>
                 {this.props.games.map(function(game) {
                     return (game);
-                    })}
+                    }
+                )}
             </section>
         );
     }

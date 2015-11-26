@@ -1,17 +1,20 @@
 'use strict';
 
 var React = require('react'),
-    Navigation = require('../general/Navigation.jsx');
+    Navigation = require('../general/Navigation.jsx'),
+    AdminNavigation = require('./AdminNavigation.jsx'),
+    ManageGames = require('./ManageGames.jsx');
 
 var Admin = React.createClass({
     render: function() {
         return(
-            <admin>
+            <section>
                 <Navigation />
                 <section className="content-holder">
-                    <h1>Admin</h1>
+                    <AdminNavigation />
+                    <ManageGames />
                 </section>
-            </admin>
+            </section>
         );
     }
 });

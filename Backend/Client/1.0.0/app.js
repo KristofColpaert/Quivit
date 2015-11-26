@@ -39,8 +39,12 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//Set socket.io
-app.set('socketio', io);
+//Allow CORS (Cross-Origin Resource Sharing)
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 /*
 ** Routes
