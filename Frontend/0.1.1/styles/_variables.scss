@@ -1,11 +1,11 @@
 // Typography
 @font-face {
-    font-family: 'Bebas';
+    font-family: Bebas;
     src: url(../fonts/BebasNeue.otf),
          url(../fonts/BebasNeue.ttf);
 }
-$fonts: 'Bebas', sans-serif;
-$font-headers: 'Bebas', sans-serif;
+$fonts: Bebas, sans-serif;
+$font-headers: Bebas, sans-serif;
 %headers {
   font-weight: 400;
 }
