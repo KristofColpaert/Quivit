@@ -22,9 +22,8 @@ router.get('/:id', function(req, res) {
 
 //GET: get games by date
 router.get('/:year/:month/:day', function(req, res) {
-    //Get date
-    console.log('hier');
-    var gameDate = '' + req.params.year + req.params.month + req.params.day;
+    //Get games of today
+    var gameDate = Math.floor(new Date(req.params.year, req.params.month - 1, req.params.day) / 1000) + '';
     db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
         if(error) {
             errorLogger.log('database', error);
@@ -34,6 +33,25 @@ router.get('/:year/:month/:day', function(req, res) {
         }
     });
 });
+
+//GET: get future games
+router.get('/', function(req, res) {
+    var gameDate = new Date();
+    gameDate.setHours(23);
+    gameDate.setMinutes(59);
+    gameDate.setSeconds(59);
+    gameDate = Math.floor(gameDate / 1000) + '';
+    db.collection('games').find({ gameDate : { $gt : gameDate }}).toArray(function(error, result) {
+        if(error) {
+            errorLogger.log('database', error);
+        }
+        else {
+            res.json(result);
+        }
+    });
+});
+
+
 
 //POST: insert new game
 router.post('/', function(req, res) {

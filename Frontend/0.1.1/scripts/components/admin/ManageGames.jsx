@@ -1,16 +1,17 @@
 var React = require('react'),
-    Link = require('react-router').Link;
+    Link = require('react-router').Link,
+    Game = require('./Game.js');
 
 var ManageGames = React.createClass({
     getInitialState : function() {
         return {
-            games : {}
+            games : []
         };
     },
     componentDidMount : function() {
         //Request games data.
         var request = new XMLHttpRequest();
-        request.open('GET', 'http://localhost:3000/api/game/2015/11/01', true);
+        request.open('GET', this.props.url, true);
         request.onload = function(e) {
             if(request.readyState === 4) {
                 if(request.status === 200) {
@@ -33,8 +34,15 @@ var ManageGames = React.createClass({
         request.send(null);
     },
     render : function() {
+        var games = this.state.games;
         return(
-           <h1>{this.state.games.toString()}</h1>
+            <section className="games">
+                <h2>{this.props.title}</h2>
+                {games.map(function(game) {
+                    console.log(game);
+                    return <Game data={game} />;
+                })}
+            </section>
         );
     }
 });
