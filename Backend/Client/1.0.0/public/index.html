@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="submit" value="Submit" />
+</form>
+<div id="root"></div>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    var socket = io();
+    $('form').submit(function(){
+        var msgObject = {
+            x : 0,
+            y : 0,
+            orientation : 0,
+            timestamp : 0,
+            estimoteLocationId : 'BlaBla',
+            playerId : 'playerId1',
+            teamId : 'teamId2',
+            gameId : 'gameId3'
+        };
+        var msg = JSON.stringify(msgObject);
+        socket.emit('position', msg);
+        return false;
+    });
+
+    socket.on('gameId3', function(msg){
+        $('#root').append($('<li>').text(msg));
+    });
+</script>
+</body>
+</html>

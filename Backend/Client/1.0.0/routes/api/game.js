@@ -1,7 +1,7 @@
 var express = require('express'),
     router = express.Router(),
     Game = require('../../models/Game.js'),
-    errorLogger = require('../../helpers/errorLogger.js'),
+    errorLogger = require('../../modules/errorLogger.js'),
     mongoskin = require('mongoskin'),
     db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true}),
     ObjectID = require('mongoskin').ObjectID;
@@ -42,7 +42,8 @@ router.post('/', function(req, res) {
     var teamHomeId = req.body.teamHomeId;
     var teamAwayId = req.body.teamAwayId;
     var estimoteLocationId = req.body.estimoteLocationId;
-    var newGame = new Game(gameDate, teamHomeId, teamAwayId, estimoteLocationId);
+    var isGameFinished = req.body.isGameFinished;
+    var newGame = new Game(gameDate, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished);
 
     var gameId;
 

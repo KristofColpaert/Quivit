@@ -1,4 +1,4 @@
-var PlayerPositions = function(x, y , orientation, timestamp, estimoteLocationId, playerId, teamId, gameId) {
+var PlayerPosition = function(x, y , orientation, timestamp, estimoteLocationId, playerId, teamId, gameId) {
     'use strict';
 
     var self = this;
@@ -13,16 +13,10 @@ var PlayerPositions = function(x, y , orientation, timestamp, estimoteLocationId
     this.gameId = gameId;
 }
 
-PlayerPositions.prototype = {
+PlayerPosition.prototype = {
     toString : function() {
-        var date = new Date(this.timestamp);
-        var day = date.getDate();
-        if(day < 10) {
-            day = '0' + day;
-        }
-
-        return '' + date.getFullYear() + (date.getMonth() + 1) + day + this.playerId;
+        return '' + this.gameId + this.playerId;
     }
 };
 
-module.exports = PlayerPositions;
+module.exports = PlayerPosition;

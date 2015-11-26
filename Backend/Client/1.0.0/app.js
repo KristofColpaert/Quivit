@@ -14,7 +14,8 @@ var express = require('express'),
 
 var routeGame = require('./routes/api/game.js'),
     routePlayer = require('./routes/api/player.js'),
-    routeTeam = require('./routes/api/team.js');
+    routeTeam = require('./routes/api/team.js'),
+    routeRoot = require('./routes/root.js');
 
 //Setup port of server.
 var port = 3000;
@@ -25,6 +26,7 @@ console.log('Server is listening to port ' + port);
 
 //Setup socket.io.
 var io = require('socket.io')(server);
+var positionHandler = require('./modules/positionHandler.js')(io);
 
 /*
 ** Setup
@@ -44,6 +46,7 @@ app.set('socketio', io);
 ** Routes
  */
 
+app.use('/', routeRoot);
 app.use('/api/game', routeGame);
 app.use('/api/player', routePlayer);
 app.use('/api/team', routeTeam);

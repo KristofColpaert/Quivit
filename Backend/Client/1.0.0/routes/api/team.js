@@ -1,7 +1,7 @@
 var express = require('express'),
     router = express.Router(),
     Team = require('../../models/Team.js'),
-    errorLogger = require('../../helpers/errorLogger.js'),
+    errorLogger = require('../../modules/errorLogger.js'),
     mongoskin = require('mongoskin'),
     db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true}),
     ObjectID = require('mongoskin').ObjectID;
