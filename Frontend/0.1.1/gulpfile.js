@@ -15,7 +15,7 @@ gulp.task('default', function() {
     liveReload.listen();
 
     gulp.watch('./styles/*.scss', ['style']);
-    gulp.watch('./scripts/**/*.jsx', ['script']);
+    gulp.watch(['./scripts/**/*.jsx', './scripts/**/*js'], ['script']);
 });
 
 gulp.task('script', function() {

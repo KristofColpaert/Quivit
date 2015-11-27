@@ -61,7 +61,7 @@ router.post('/', function(req, res) {
     var teamAwayId = req.body.teamAwayId;
     var estimoteLocationId = req.body.estimoteLocationId;
     var isGameFinished = req.body.isGameFinished;
-    var newGame = new Game(gameDate, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished);
+    var newGame = new Game(gameDate, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, 0, 0);
 
     var gameId;
 

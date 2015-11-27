@@ -1,4 +1,4 @@
-var Game = function(gameDate, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished) {
+var Game = function(gameDate, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, scoreHome, scoreAway) {
     'use strict';
 
     var self = this;
@@ -8,6 +8,8 @@ var Game = function(gameDate, teamHomeId, teamAwayId, estimoteLocationId, isGame
     this.teamAwayId = teamAwayId;
     this.estimoteLocationId = estimoteLocationId;
     this.isGameFinished = isGameFinished;
+    this.scoreHome = scoreHome;
+    this.scoreAway = scoreAway;
 }
 
 Game.prototype = {
