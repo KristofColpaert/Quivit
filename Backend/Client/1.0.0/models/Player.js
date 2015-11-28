@@ -12,6 +12,15 @@ var Player = function(firstName, lastName, kitNumber, teamId) {
 Player.prototype = {
     toString : function() {
         return this.firstName + ' ' + this.lastName;
+    },
+
+    toJSON : function() {
+        return {
+            firstName : this.firstName,
+            lastName : this.lastName,
+            kitNumber : this.kitNumber,
+            teamId : this.teamId
+        }
     }
 }
 

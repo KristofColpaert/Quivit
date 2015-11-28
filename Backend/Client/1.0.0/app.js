@@ -35,16 +35,15 @@ var positionHandler = require('./modules/positionHandler.js')(io);
 //Setup logging.
 app.use(logger('dev'));
 
-//Tell Express to use bodyparser. Bodyparser lets us parse the body of POST requests.
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 //Allow CORS (Cross-Origin Resource Sharing)
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({type : 'application/json' }));
 
 /*
 ** Routes

@@ -2,6 +2,7 @@ var errorLoger = (function() {
     'use strict';
 
     //Variables
+    var fs = require('fs');
     var logPaths = {
         database : '../logs/databaseLog.csv'
     };

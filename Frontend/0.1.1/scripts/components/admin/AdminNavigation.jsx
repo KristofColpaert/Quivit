@@ -10,8 +10,8 @@ var AdminNavigation = React.createClass({
                <ul>
                    <li>Games
                        <ul>
-                           <li><Link to="/">New</Link></li>
-                           <li><Link to="/">Manage</Link></li>
+                           <li><Link to="/admin/games/new">New</Link></li>
+                           <li><Link to="/admin/games">Manage</Link></li>
                        </ul>
                    </li>
                    <li>Teams

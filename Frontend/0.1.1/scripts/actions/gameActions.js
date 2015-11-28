@@ -35,6 +35,23 @@ var gameActions = {
                gameActions.getFutureGamesResponse(data);
            }
         });
+    },
+
+    //New game
+    saveGameResponse : function(game) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.SAVE_GAME_RESPONSE,
+            game : game
+        });
+    },
+
+    saveGameRequest : function(game) {
+        game = JSON.stringify(game);
+        ajax.saveData(constants.baseApiGameUrl, game, function(error, data) {
+            if(!error) {
+                gameActions.saveGameResponse(data);
+            }
+        });
     }
 };
 

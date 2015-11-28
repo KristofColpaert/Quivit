@@ -11,6 +11,14 @@ var Team = function(name, primaryColor, secondaryColor) {
 Team.prototype = {
     toString : function() {
         return this.name;
+    },
+
+    toJSON : function() {
+        return {
+            name : this.name,
+            primaryColor : this.primaryColor,
+            secondaryColor : this.secondaryColor
+        };
     }
 }
 

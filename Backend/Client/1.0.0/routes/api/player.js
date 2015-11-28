@@ -53,7 +53,9 @@ router.post('/', function(req, res) {
         }
         else {
             playerId = result.insertedIds[0];
-            res.json({ _id : playerId })
+            var resultObject = newPlayer.toJSON();
+            resultObject._id = playerId;
+            res.json(resultObject);
         }
     });
 });

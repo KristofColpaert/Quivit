@@ -45,6 +45,19 @@ AppDispatcher.register(function(payload) {
         case gameConstants.GET_GAMES_FUTURE_RESPONSE:
             storedGames.futureGames = payload.action.games;
             break;
+
+        case gameConstants.SAVE_GAME_RESPONSE:
+            var newGame = payLoad.action.game;
+            var currentDate = new Date();
+            var gameDate = '' + currentDate.getFullYear() + (currentDate.getMonth + 1) + currentDate.getDate();
+            if(newGame.gameDate === gameDate) {
+                storedGames.todaysGames.push(newGame);
+            }
+
+            else {
+                storedGames.futureGames.push(newGame);
+            }
+            break;
     }
 
     gameStore.emitChange();

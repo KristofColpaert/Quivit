@@ -38,22 +38,23 @@ var teamActions = {
     },
 
     //Get home team and away team by id
-    getTeamHomeAwayByIdResponse : function(teams) {
+    getTeamHomeAwayByIdResponse : function(teams, gameId) {
         AppDispatcher.handleServerAction({
             actionType : teamConstants.GET_TEAM_HOME_AWAY_RESPONSE,
-            teams : teams
+            teams : teams,
+            gameId : gameId
         });
     },
 
-    getTeamHomeAwayByidRequest : function(idHome , idAway) {
+    getTeamHomeAwayByidRequest : function(idHome , idAway, gameId) {
         var teams = [];
         ajax.getData(constants.baseApiTeamUrl + idHome, function(error, dataHome) {
             if(!error) {
-                teams.push(dataHome[0]);
+                teams['home'] = dataHome[0];
                 ajax.getData(constants.baseApiTeamUrl + idAway, function(error, dataAway) {
                     if(!error) {
-                        teams.push(dataAway[0]);
-                        teamActions.getTeamHomeAwayByIdResponse(teams);
+                        teams['away'] = dataAway[0];
+                        teamActions.getTeamHomeAwayByIdResponse(teams, gameId);
                     }
                 });
             }

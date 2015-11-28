@@ -52,7 +52,7 @@ AppDispatcher.register(function(payload) {
             break;
 
         case teamConstants.GET_TEAM_HOME_AWAY_RESPONSE:
-            storedTeams.homeAwayTeams = payload.action.teams;
+            storedTeams.homeAwayTeams[payload.action.gameId] = payload.action.teams;
             break;
     }
 

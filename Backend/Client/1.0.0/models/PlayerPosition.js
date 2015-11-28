@@ -16,6 +16,19 @@ var PlayerPosition = function(x, y , orientation, timestamp, estimoteLocationId,
 PlayerPosition.prototype = {
     toString : function() {
         return '' + this.gameId + this.playerId;
+    },
+
+    toJSON : function() {
+        return {
+            x : this.x,
+            y : this.y,
+            orientation : this.orientation,
+            timestamp : this.timestamp,
+            estimoteLocationId : this.estimoteLocationId,
+            playerId : this.playerId,
+            teamId : this.teamId,
+            gameId : this.gameId
+        };
     }
 };
 

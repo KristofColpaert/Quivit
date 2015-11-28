@@ -23,7 +23,7 @@ router.get('/:id', function(req, res) {
 //GET: get games by date
 router.get('/:year/:month/:day', function(req, res) {
     //Get games of today
-    var gameDate = Math.floor(new Date(req.params.year, req.params.month - 1, req.params.day) / 1000) + '';
+    var gameDate = '' + req.params.year + req.params.month + req.params.day;
     db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
         if(error) {
             errorLogger.log('database', error);
@@ -36,11 +36,8 @@ router.get('/:year/:month/:day', function(req, res) {
 
 //GET: get future games
 router.get('/', function(req, res) {
-    var gameDate = new Date();
-    gameDate.setHours(23);
-    gameDate.setMinutes(59);
-    gameDate.setSeconds(59);
-    gameDate = Math.floor(gameDate / 1000) + '';
+    var tempGameDate = new Date();
+    var gameDate = '' + tempGameDate.getFullYear() + (tempGameDate.getMonth() + 1) + tempGameDate.getDate();
     db.collection('games').find({ gameDate : { $gt : gameDate }}).toArray(function(error, result) {
         if(error) {
             errorLogger.log('database', error);
@@ -57,11 +54,12 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
     //Make new object
     var gameDate = req.body.gameDate;
+    var gameTime = req.body.gameTime;
     var teamHomeId = req.body.teamHomeId;
     var teamAwayId = req.body.teamAwayId;
     var estimoteLocationId = req.body.estimoteLocationId;
     var isGameFinished = req.body.isGameFinished;
-    var newGame = new Game(gameDate, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, 0, 0);
+    var newGame = new Game(gameDate, gameTime, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, 0, 0);
 
     var gameId;
 
@@ -71,7 +69,9 @@ router.post('/', function(req, res) {
         }
         else {
             gameId = result.insertedIds[0];
-            res.json({ _id : gameId });
+            var resultObject = newGame.toJSON();
+            resultObject._id = gameId;
+            res.json(resultObject);
         }
     });
 });
