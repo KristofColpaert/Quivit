@@ -6,6 +6,18 @@ var express = require('express'),
     db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true}),
     ObjectID = require('mongoskin').ObjectID;
 
+//GET: get all players
+router.get('/', function(req, res) {
+    db.collection('players').find().toArray(function(error, result) {
+        if(error) {
+            errorLogger('database', error);
+        }
+        else {
+            res.json(result);
+        }
+    })
+});
+
 //GET: get players by team or by id
 router.get('/:method/:value', function(req, res) {
     //Get method and value
@@ -34,7 +46,7 @@ router.get('/:method/:value', function(req, res) {
             }
         });
     }
-})
+});
 
 //POST: insert new player
 router.post('/', function(req, res) {

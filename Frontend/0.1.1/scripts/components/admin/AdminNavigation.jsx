@@ -16,14 +16,14 @@ var AdminNavigation = React.createClass({
                    </li>
                    <li>Teams
                        <ul>
-                           <li><Link to="/">New</Link></li>
-                           <li><Link to="/">Manage</Link></li>
+                           <li><Link to="/admin/teams/new">New</Link></li>
+                           <li><Link to="/admin/teams">Manage</Link></li>
                        </ul>
                    </li>
                    <li>Players
                        <ul>
-                           <li><Link to="/">New</Link></li>
-                           <li><Link to="/">Manage</Link></li>
+                           <li><Link to="/admin/players/new">New</Link></li>
+                           <li><Link to="/admin/players">Manage</Link></li>
                        </ul>
                    </li>
                </ul>

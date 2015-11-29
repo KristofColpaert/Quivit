@@ -16,7 +16,7 @@ var teamActions = {
     getTeamByIdRequest : function(id) {
         ajax.getData(constants.baseApiTeamUrl + id, function(error, data) {
            if(!error) {
-               teamActions.getTeamByIdResponse(data);
+               teamActions.getTeamByIdResponse(data[0]);
            }
         });
     },
@@ -57,6 +57,23 @@ var teamActions = {
                         teamActions.getTeamHomeAwayByIdResponse(teams, gameId);
                     }
                 });
+            }
+        });
+    },
+
+    //New team
+    saveTeamResponse : function(team) {
+        AppDispatcher.handleServerAction({
+            actionType : teamConstants.SAVE_TEAM_RESPONSE,
+            team : team
+        });
+    },
+
+    saveTeamRequest : function(team) {
+        team = JSON.stringify(team);
+        ajax.saveData(constants.baseApiTeamUrl, team, function(error, data) {
+            if(!error) {
+                teamActions.saveTeamResponse(data);
             }
         });
     }

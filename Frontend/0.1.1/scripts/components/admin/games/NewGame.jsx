@@ -1,11 +1,14 @@
 'use strict';
 
 var React = require('react'),
+    History = require('react-router').History,
     gameActions = require('../../../actions/gameActions.js'),
     teamActions = require('../../../actions/teamActions.js'),
     teamStore = require('../../../stores/teamStore.js');
 
 var NewGame = React.createClass({
+    mixins: [History],
+
     getInitialState : function() {
         return({
            teams : teamStore.getAllTeams()
@@ -49,6 +52,8 @@ var NewGame = React.createClass({
         };
 
         gameActions.saveGameRequest(newGame);
+
+        this.history.replaceState(null, '/admin/games');
     },
 
     render : function() {
@@ -67,7 +72,7 @@ var NewGame = React.createClass({
                     <select id="teamAway" ref="teamAway">
                         {this.state.teams.map(function(team) {
                             return <option value={team._id} key={team._id}>{team.name}</option>
-                            })}
+                        })}
                     </select>
 
                     <label htmlFor="gameDate">Game date</label>

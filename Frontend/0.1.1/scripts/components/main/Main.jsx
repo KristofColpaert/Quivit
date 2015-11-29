@@ -3,7 +3,8 @@
 var React = require('react'),
     Navigation = require('./../general/Navigation.jsx'),
     Game = require('./Game.jsx'),
-    GamesPanel = require('./GamesPanel.jsx');
+    GamesPanel = require('./GamesPanel.jsx'),
+    Link = require('react-router').Link;
 
 var Main = React.createClass({
     render: function() {
@@ -24,6 +25,7 @@ var Main = React.createClass({
                         <Game key="7" teams={'Chelsea - Swansea'} score={'0-4'} colors={["#09509E", "#523091"]} />
                     ]}/>
                     <div className="clearfix"></div>
+                    <Link to="/admin">Admin</Link>
                 </section>
             </main>
         );

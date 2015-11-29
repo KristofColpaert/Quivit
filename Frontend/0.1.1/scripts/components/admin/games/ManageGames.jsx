@@ -10,7 +10,7 @@ var ManageGames = React.createClass({
                 <h2>{this.props.title}</h2>
                 {this.props.games.map(function(game) {
                     return (
-                        <Game key ={game._id} game={game} />
+                        <Game key={game._id} game={game} />
                     );
                 })}
             </section>

@@ -54,6 +54,10 @@ AppDispatcher.register(function(payload) {
         case teamConstants.GET_TEAM_HOME_AWAY_RESPONSE:
             storedTeams.homeAwayTeams[payload.action.gameId] = payload.action.teams;
             break;
+
+        case teamConstants.SAVE_TEAM_RESPONSE:
+            var newTeam = payload.action.team;
+            storedTeams.allTeams.push(newTeam);
     }
 
     teamStore.emitChange();
