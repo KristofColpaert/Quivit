@@ -2,152 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfa8bad5-c99a-4198-85bb-b95f7e12ab20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/playerActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/players/ManagePlayers.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/players/NewPlayer.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/players/Player.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/ManageTeams.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/NewTeam.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/Team.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/helpers/playerConstants.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/playerStore.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/CHANGES.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/BasenameSupport.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/ConfirmingNavigation.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/GettingStarted.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/Glossary.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/HashHistoryCaveats.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/Location.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/QuerySupport.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/docs/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/Actions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/AsyncUtils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/DOMStateStorage.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/DOMUtils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/ExecutionEnvironment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/createBrowserHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/createDOMHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/createHashHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/createHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/createLocation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/createMemoryHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/deprecate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/enableBeforeUnload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/enableQueries.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/extractPath.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/parsePath.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/runTransitionHook.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/useBasename.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/useBeforeUnload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/lib/useQueries.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/Actions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/AsyncUtils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/DOMStateStorage.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/DOMUtils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/ExecutionEnvironment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/createBrowserHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/createDOMHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/createHashHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/createHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/createLocation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/createMemoryHistory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/deprecate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/enableBeforeUnload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/enableQueries.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/extractPath.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/parsePath.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/runTransitionHook.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/useBasename.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/useBeforeUnload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/modules/useQueries.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/example/cmp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/lib/is_arguments.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/lib/keys.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/readme.markdown" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/deep-equal/test/cmp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/browser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/invariant.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/custom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/loose-envify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/node_modules/js-tokens/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/node_modules/js-tokens/changelog.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/node_modules/js-tokens/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/node_modules/js-tokens/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/node_modules/js-tokens/readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/node_modules/loose-envify/replace.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/invariant/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/.eslintignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/lib/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/lib/parse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/lib/stringify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/lib/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/test/parse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/test/stringify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/qs/test/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/browser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/custom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/loose-envify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/node_modules/js-tokens/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/node_modules/js-tokens/changelog.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/node_modules/js-tokens/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/node_modules/js-tokens/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/node_modules/js-tokens/readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/node_modules/loose-envify/replace.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/node_modules/warning/warning.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/npm-scripts/postinstall.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/umd/History.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Frontend/0.1.1/node_modules/history/umd/History.min.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/Client/1.0.0/routes/api/player.js" afterPath="$PROJECT_DIR$/Backend/Client/1.0.0/routes/api/player.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/package.json" afterPath="$PROJECT_DIR$/Frontend/0.1.1/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/public/index.html" afterPath="$PROJECT_DIR$/Frontend/0.1.1/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/public/scripts/app.min.js" afterPath="$PROJECT_DIR$/Frontend/0.1.1/public/scripts/app.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/public/scripts/app.min.js.map" afterPath="$PROJECT_DIR$/Frontend/0.1.1/public/scripts/app.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/teamActions.js" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/teamActions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/app.jsx" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/app.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/Admin.jsx" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/Admin.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/AdminNavigation.jsx" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/AdminNavigation.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/Game.jsx" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/Game.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/ManageGames.jsx" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/ManageGames.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/NewGame.jsx" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/NewGame.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/main/Main.jsx" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/main/Main.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/helpers/teamConstants.js" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/helpers/teamConstants.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/helpers/urlConstants.js" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/helpers/urlConstants.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/teamStore.js" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/teamStore.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/gameStore.js" afterPath="$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/gameStore.js" />
     </list>
     <ignored path="NMCTBackFront.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -162,76 +20,6 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DockManager">
-    <window id="5">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="Game.jsx" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/Game.jsx">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.26418787">
-                    <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="Team.jsx" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/Team.jsx">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0">
-                    <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="gameActions.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/gameActions.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0">
-                    <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="teamStore.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/teamStore.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0">
-                    <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="NewTeam.jsx" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/NewTeam.jsx">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0">
-                    <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="22" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="NewGame.jsx" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/NewGame.jsx">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0">
-                    <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="56" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -272,9 +60,7 @@
         <option value="$PROJECT_DIR$/Backend/Client/1.0.0/models/PlayerPosition.js" />
         <option value="$PROJECT_DIR$/Backend/Client/1.0.0/routes/api/team.js" />
         <option value="$PROJECT_DIR$/Backend/Client/1.0.0/models/Team.js" />
-        <option value="$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/gameActions.js" />
         <option value="$PROJECT_DIR$/Backend/Client/1.0.0/models/Game.js" />
-        <option value="$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/gameStore.js" />
         <option value="$PROJECT_DIR$/Backend/Client/1.0.0/routes/api/game.js" />
         <option value="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/ManageTeams.js" />
         <option value="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/Team.jsx.js" />
@@ -304,6 +90,8 @@
         <option value="$PROJECT_DIR$/Frontend/0.1.1/package.json" />
         <option value="$PROJECT_DIR$/Frontend/0.1.1/index.js" />
         <option value="$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/Game.jsx" />
+        <option value="$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/gameActions.js" />
+        <option value="$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/gameStore.js" />
       </list>
     </option>
   </component>
@@ -362,38 +150,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="NMCTBackFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NMCTBackFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NMCTBackFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frontend" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="0.1.1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NMCTBackFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NMCTBackFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frontend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -687,14 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/gameStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6462312">
-          <caret line="51" column="100" selection-start-line="51" selection-start-column="96" selection-end-line="51" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/helpers/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.73969847">
@@ -837,42 +585,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/gameActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/teamStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/teamActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42074364">
           <caret line="50" column="83" selection-start-line="50" selection-start-column="83" selection-end-line="50" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/NewTeam.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/NewGame.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -919,7 +635,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/Game.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26418787">
+        <state vertical-scroll-proportion="0.0">
           <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
           <folding />
         </state>
@@ -929,6 +645,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15655577">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/teamStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15655577">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/teams/NewTeam.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10958904">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/components/admin/games/NewGame.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8297456">
+          <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/stores/gameStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15655577">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/0.1.1/scripts/actions/gameActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7514677">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>

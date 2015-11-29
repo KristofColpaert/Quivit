@@ -8,7 +8,7 @@ var CHANGE_EVENT = 'change'
 //Stored objects
 var storedGames = {
     todaysGames : [],
-    futureGames : []
+    futureGames : [],
 };
 
 //GameStore
@@ -47,7 +47,7 @@ AppDispatcher.register(function(payload) {
             break;
 
         case gameConstants.SAVE_GAME_RESPONSE:
-            var newGame = payLoad.action.game;
+            var newGame = payload.action.game;
             var currentDate = new Date();
             var gameDate = '' + currentDate.getFullYear() + (currentDate.getMonth + 1) + currentDate.getDate();
             if(newGame.gameDate === gameDate) {
