@@ -7,8 +7,9 @@ var CHANGE_EVENT = 'change'
 
 //Stored objects
 var storedGames = {
+    isGameSaved : false,
     todaysGames : [],
-    futureGames : [],
+    futureGames : []
 };
 
 //GameStore
@@ -31,6 +32,10 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     getFutureGames : function() {
         return storedGames.futureGames;
+    },
+
+    isGameSaved : function() {
+        return storedGames.isGameSaved;
     }
 });
 
@@ -57,6 +62,8 @@ AppDispatcher.register(function(payload) {
             else {
                 storedGames.futureGames.push(newGame);
             }
+
+            storedGames.isGameSaved = true;
             break;
     }
 

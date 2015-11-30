@@ -28,7 +28,7 @@ var ajax = (function() {
         var request = new XMLHttpRequest();
         request.open('POST', url, true);
         request.setRequestHeader('Content-Type', 'application/json');
-        request.onLoad = function(e) {
+        request.onreadystatechange = function(e) {
             if(request.readyState === 4) {
                 if(request.status === 200) {
                     var resultObject = JSON.parse(request.responseText);

@@ -7,6 +7,7 @@ var CHANGE_EVENT = 'change';
 
 //Stored objects
 var storedPlayers = {
+    isPlayerSaved : false,
     allPlayers : [],
     singlePlayer : []
 };
@@ -31,6 +32,10 @@ var playerStore = objectAssign({}, EventEmitter.prototype, {
 
     getSinglePlayer : function() {
         return storedPlayers.singlePlayer;
+    },
+
+    isPlayerSaved : function() {
+        return storedPlayers.isPlayerSaved;
     }
 });
 
@@ -49,6 +54,8 @@ AppDispatcher.register(function(payload) {
         case playerConstants.SAVE_PLAYER_RESPONSE:
             var newPlayer = payload.action.player;
             storedPlayers.allPlayers.push(newPlayer);
+            storedPlayers.isPlayerSaved = true;
+            break;
     }
 
     playerStore.emitChange();

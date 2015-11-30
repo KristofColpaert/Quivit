@@ -7,6 +7,7 @@ var CHANGE_EVENT = 'change';
 
 //Stored objects
 var storedTeams = {
+    isTeamSaved : false,
     allTeams : [],
     singleTeam : {},
     homeAwayTeams : []
@@ -35,7 +36,11 @@ var teamStore = objectAssign({}, EventEmitter.prototype, {
     },
 
     getHomeAwayTeams : function() {
-      return storedTeams.homeAwayTeams
+      return storedTeams.homeAwayTeams;
+    },
+
+    isTeamSaved : function() {
+        return storedTeams.isTeamSaved;
     }
 });
 
@@ -58,6 +63,8 @@ AppDispatcher.register(function(payload) {
         case teamConstants.SAVE_TEAM_RESPONSE:
             var newTeam = payload.action.team;
             storedTeams.allTeams.push(newTeam);
+            storedTeams.isTeamSaved = true;
+            break;
     }
 
     teamStore.emitChange();

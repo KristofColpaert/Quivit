@@ -2,10 +2,25 @@
 
 var React = require('react'),
     History = require('react-router').History,
-    teamActions = require('../../../actions/teamActions.js');
+    teamActions = require('../../../actions/teamActions.js'),
+    teamStore = require('../../../stores/teamStore.js');
 
 var NewTeam = React.createClass({
     mixins: [History],
+
+    componentWillMount : function() {
+        teamStore.addChangeListener(this._onChange);
+    },
+
+    componentWillUnmount : function() {
+        teamStore.removeChangeListener(this._onChange);
+    },
+
+    _onChange : function() {
+        if(teamStore.isTeamSaved()) {
+            this.history.replaceState(null, '/admin/teams');
+        }
+    },
 
     submitHandler : function(event) {
         event.preventDefault();
@@ -17,8 +32,6 @@ var NewTeam = React.createClass({
         };
 
         teamActions.saveTeamRequest(newTeam);
-
-        this.history.replaceState(null, '/admin/teams');
     },
 
     render : function() {

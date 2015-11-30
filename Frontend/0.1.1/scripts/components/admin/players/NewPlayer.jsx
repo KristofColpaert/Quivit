@@ -3,6 +3,7 @@
 var React = require('react'),
     History = require('react-router').History,
     playerActions = require('../../../actions/playerActions.js'),
+    playerStore = require('../../../stores/playerStore.js'),
     teamActions = require('../../../actions/teamActions.js'),
     teamStore = require('../../../stores/teamStore.js');
 
@@ -17,6 +18,7 @@ var NewPlayer = React.createClass({
 
     componentWillMount : function() {
         teamStore.addChangeListener(this._onChange);
+        playerStore.addChangeListener(this._onChange);
     },
 
     componentDidMount : function() {
@@ -25,9 +27,14 @@ var NewPlayer = React.createClass({
 
     componentWillUnmount : function() {
         teamStore.removeChangeListener(this._onChange);
+        playerStore.removeChangeListener(this._onChange);
     },
 
     _onChange : function() {
+        if(playerStore.isPlayerSaved()) {
+            this.history.replaceState(null, 'admin/players');
+        }
+
         this.setState({
             teams : teamStore.getAllTeams()
         })
@@ -44,8 +51,6 @@ var NewPlayer = React.createClass({
         }
 
         playerActions.savePlayerRequest(newPlayer);
-
-        this.history.replaceState(null, 'admin/players');
     },
 
     render : function() {
