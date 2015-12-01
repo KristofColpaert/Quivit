@@ -38,18 +38,24 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		
 		if let _ = ipAddress, _ = port, m = match, _ = selectedTeam, _ = selectedPlayer
 		{
+			print(m["estimoteLocationId"])
+			
 			let request = EILRequestFetchLocation(locationIdentifier: m["estimoteLocationId"].string)
 			request.sendRequestWithCompletion({(location, error) in
 				self.location = location
 				self.indoorLocationView.drawLocation(location)
 				self.indoorLocationManager.startPositionUpdatesForLocation(location)
 			})
+			/*
 			
 			self.socket = SocketIOClient(socketURL: "http://\(ipAddress):\(port)")
 			self.socket!.on("connect") {data, ack in
 				print("[Socket] Connected")
 			}
 			self.socket!.connect()
+			*/
+			
+			print("unwrapping complete")
 		}
 		else
 		{

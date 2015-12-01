@@ -88,15 +88,17 @@ class PlayerTableViewController: UITableViewController
 			self.refreshControl!.endRefreshing()
 		}
 		
-		Alamofire.request(.GET, "http://localhost:3000/api/player/team/\(m["teamAwayId"])").responseJSON { response in
+		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/player/team/\(m["teamAwayId"])").responseJSON { response in
 			//print(response.request)  // original URL request
 			//print(response.response) // URL response
-			//print(response.data)     // server data
+			print(response.data)     // server data
 			//print(response.result)   // result of response serialization
 			
 			print("[PlayerTVC - teamAway] .GET Request Succes")
 			
 			let players = JSON(data: response.data!)
+			
+			print(players)
 			
 			if players.count > 0
 			{

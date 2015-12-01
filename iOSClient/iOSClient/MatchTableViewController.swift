@@ -49,7 +49,7 @@ class MatchTableViewController: UITableViewController
 		
 		print("[MatchTVC] IP: \(ipAddress) PORT: \(port)")
 		
-		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/game").responseJSON { response in
+		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/game/2015/12/01/included").responseJSON { response in
 			//print(response.request)  // original URL request
 			//print(response.response) // URL response
 			//print(response.data)     // server data
@@ -63,9 +63,10 @@ class MatchTableViewController: UITableViewController
 			{
 				print("[MatchTVC] Matches Available")
 				
-				//print("JSON: \(matches)")
-
+				print("JSON: \(matches)")
+				
 				self.matches = matches
+				
 				self.tableView.reloadData()
 			}
 			else
@@ -105,9 +106,8 @@ class MatchTableViewController: UITableViewController
 		let match = self.matches[indexPath.row]
 		
         // Configure the cell...
-		cell.textLabel?.text = match["teamHomeId"].string
-		cell.detailTextLabel?.text = match["estimoteLocationId"].string
-
+		cell.textLabel?.text = "\(match["teamHome", "name"].stringValue) - \(match["teamAway", "name"].stringValue)"
+		
         return cell
     }
 
