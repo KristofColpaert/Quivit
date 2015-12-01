@@ -52,6 +52,13 @@ var gameActions = {
                 gameActions.saveGameResponse(data);
             }
         });
+    },
+
+    //Set saved to false
+    falsifyIsGameSaved : function() {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.FALSIFY_IS_GAME_SAVED,
+        });
     }
 };
 

@@ -9,7 +9,7 @@ var CHANGE_EVENT = 'change';
 var storedTeams = {
     isTeamSaved : false,
     allTeams : [],
-    singleTeam : {},
+    singleTeam : [],
     homeAwayTeams : []
 };
 
@@ -31,8 +31,8 @@ var teamStore = objectAssign({}, EventEmitter.prototype, {
         return storedTeams.allTeams;
     },
 
-    getSingleTeam : function() {
-        return storedTeams.singleTeam;
+    getSingleTeam : function(playerId) {
+        return storedTeams.singleTeam[playerId];
     },
 
     getHomeAwayTeams : function() {
@@ -48,8 +48,9 @@ AppDispatcher.register(function(payload) {
     var action = payload.action;
 
     switch(action.actionType) {
-        case teamConstants.GET_TEAM_BY_ID_RESPONSE:
-            storedTeams.singleTeam = payload.action.team;
+        case teamConstants.GET_TEAM_OF_PLAYER_BY_ID_RESPONSE:
+            var playerId = payload.action.playerId;
+            storedTeams.singleTeam[playerId] = payload.action.team;
             break;
 
         case teamConstants.GET_TEAMS_RESPONSE:
@@ -64,6 +65,10 @@ AppDispatcher.register(function(payload) {
             var newTeam = payload.action.team;
             storedTeams.allTeams.push(newTeam);
             storedTeams.isTeamSaved = true;
+            break;
+
+        case teamConstants.FALSIFY_IS_TEAM_SAVED:
+            storedTeams.isTeamSaved = false;
             break;
     }
 

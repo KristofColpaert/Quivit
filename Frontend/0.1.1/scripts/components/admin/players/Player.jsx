@@ -8,7 +8,7 @@ var Player = React.createClass({
     getInitialState : function() {
         return({
             player : this.props.player,
-            team : teamStore.getSingleTeam()
+            team : teamStore.getSingleTeam(this.props.player._id)
         });
     },
 
@@ -17,7 +17,7 @@ var Player = React.createClass({
     },
 
     componentDidMount : function() {
-        teamActions.getTeamByIdRequest(this.state.player.teamId);
+        teamActions.getTeamOfPlayerByIdRequest(this.state.player.teamId, this.state.player._id);
     },
 
     componentWillUnmount : function() {
@@ -27,15 +27,20 @@ var Player = React.createClass({
     _onChange : function() {
         this.setState({
             player : this.props.player,
-            team : teamStore.getSingleTeam()
+            team : teamStore.getSingleTeam(this.props.player._id)
         });
     },
 
     render : function() {
+        var teamName = '';
+        if(this.state.team) {
+            teamName = this.state.team.name;
+        }
+
         return(
             <div key={this.state.player._id} className="card player">
                 <p>{this.state.player.firstName + ' ' + this.state.player.lastName}</p>
-                <p>{this.state.team.name}</p>
+                <p>{teamName}</p>
             </div>
         );
     }

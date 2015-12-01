@@ -33,6 +33,7 @@ var NewPlayer = React.createClass({
     _onChange : function() {
         if(playerStore.isPlayerSaved()) {
             this.history.replaceState(null, 'admin/players');
+            playerActions.falsifyIsPlayerSaved();
         }
 
         this.setState({

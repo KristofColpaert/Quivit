@@ -65,6 +65,10 @@ AppDispatcher.register(function(payload) {
 
             storedGames.isGameSaved = true;
             break;
+
+        case gameConstants.FALSIFY_IS_GAME_SAVED:
+            storedGames.isGameSaved = false;
+            break;
     }
 
     gameStore.emitChange();

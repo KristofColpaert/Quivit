@@ -19,6 +19,7 @@ var NewTeam = React.createClass({
     _onChange : function() {
         if(teamStore.isTeamSaved()) {
             this.history.replaceState(null, '/admin/teams');
+            teamActions.falsifyIsTeamSaved();
         }
     },
 

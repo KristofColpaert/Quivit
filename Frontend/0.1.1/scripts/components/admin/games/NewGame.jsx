@@ -33,6 +33,7 @@ var NewGame = React.createClass({
     _onChange : function() {
         if(gameStore.isGameSaved()) {
             this.history.replaceState(null, '/admin/games');
+            gameActions.falsifyIsGameSaved();
         }
 
         this.setState({

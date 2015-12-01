@@ -56,6 +56,10 @@ AppDispatcher.register(function(payload) {
             storedPlayers.allPlayers.push(newPlayer);
             storedPlayers.isPlayerSaved = true;
             break;
+
+        case playerConstants.FALSIFY_IS_PLAYER_SAVED:
+            storedPlayers.isPlayerSaved = false;
+            break;
     }
 
     playerStore.emitChange();

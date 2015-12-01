@@ -6,17 +6,18 @@ var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
 var teamActions = {
 
     //Team by id
-    getTeamByIdResponse : function(team) {
+    getTeamOfPlayerByIdResponse : function(team, playerId) {
         AppDispatcher.handleServerAction({
-            actionType : teamConstants.GET_TEAM_BY_ID_RESPONSE,
-            team : team
+            actionType : teamConstants.GET_TEAM_OF_PLAYER_BY_ID_RESPONSE,
+            team : team,
+            playerId : playerId
         });
     },
 
-    getTeamByIdRequest : function(id) {
+    getTeamOfPlayerByIdRequest : function(id, playerId) {
         ajax.getData(constants.baseApiTeamUrl + id, function(error, data) {
            if(!error) {
-               teamActions.getTeamByIdResponse(data[0]);
+               teamActions.getTeamOfPlayerByIdResponse(data[0], playerId);
            }
         });
     },
@@ -75,6 +76,13 @@ var teamActions = {
             if(!error) {
                 teamActions.saveTeamResponse(data);
             }
+        });
+    },
+
+    //Set saved to false
+    falsifyIsTeamSaved : function() {
+        AppDispatcher.handleServerAction({
+            actionType : teamConstants.FALSIFY_IS_TEAM_SAVED
         });
     }
 };
