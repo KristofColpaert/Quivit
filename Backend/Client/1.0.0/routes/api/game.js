@@ -21,23 +21,71 @@ router.get('/:id', function(req, res) {
 });
 
 //GET: get games by date
-router.get('/:year/:month/:day', function(req, res) {
+router.get('/:year/:month/:day/:method', function(req, res) {
     //Get games of today
-    var gameDate = '' + req.params.year + req.params.month + req.params.day;
-    db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
-        if(error) {
-            errorLogger.log('database', error);
-        }
-        else {
-            res.json(result);
-        }
-    });
+    if(req.params.method === 'included') {
+        var gameDate = '' + req.params.year + req.params.month + req.params.day;
+        db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
+            if(error) {
+                errorLogger.log('database', error);
+            }
+            else {
+                var counter = 0;
+                result.forEach(function(resultObject) {
+                    db.collection('teams').find({ _id : ObjectID(resultObject.teamHomeId) }).toArray(function(error, teamHomeResult) {
+                        if(error) {
+                            errorLogger.log('database', error);
+                        }
+                        else {
+                            resultObject.teamHome = teamHomeResult[0];
+                            db.collection('teams').find({ _id : ObjectID(resultObject.teamAwayId) }).toArray(function(error, teamAwayResult) {
+                                if(error) {
+                                    errorLogger.log('database', error);
+                                }
+                                else {
+                                    resultObject.teamAway = teamAwayResult[0];
+
+                                    //Send games, loaded with home teams and away teams.
+                                    if(counter == (result.length - 1)) {
+                                        res.json(result);
+                                    }
+                                    counter++;
+                                }
+                            });
+                        }
+                    });
+                });
+            }
+        });
+    }
+
+    else if(req.params.method === 'excluded') {
+        var gameDate = '' + req.params.year + req.params.month + req.params.day;
+        db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
+            if(error) {
+                errorLogger.log('database', error);
+            }
+            else {
+                res.json(result);
+            }
+        });
+    }
 });
 
 //GET: get future games
 router.get('/', function(req, res) {
     var tempGameDate = new Date();
-    var gameDate = '' + tempGameDate.getFullYear() + (tempGameDate.getMonth() + 1) + tempGameDate.getDate();
+    var tempDate = '00';
+
+    if(tempGameDate.getDate() < 10) {
+        tempDate = '0' + tempGameDate.getDate();
+    }
+
+    else {
+        tempDate = tempGameDate.getDate();
+    }
+
+    var gameDate = '' + tempGameDate.getFullYear() + (tempGameDate.getMonth() + 1) + tempDate;
     db.collection('games').find({ gameDate : { $gt : gameDate }}).toArray(function(error, result) {
         if(error) {
             errorLogger.log('database', error);

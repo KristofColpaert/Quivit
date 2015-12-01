@@ -45,7 +45,17 @@ var NewGame = React.createClass({
         event.preventDefault();
 
         var tempGameDate = new Date(this.refs.gameDate.value);
-        tempGameDate = '' + tempGameDate.getFullYear() + (tempGameDate.getMonth() + 1) + tempGameDate.getDate();
+        var tempDate = '00';
+
+        if(tempGameDate.getDate() < 10) {
+            tempDate = '0' + tempGameDate.getDate();
+        }
+
+        else {
+            tempDate = tempGameDate.getDate();
+        }
+
+        tempGameDate = '' + tempGameDate.getFullYear() + (tempGameDate.getMonth() + 1) + tempDate;
 
         var tempGameTime = this.refs.gameTime.value;
         var tempGameTime = tempGameTime.replace(':', '');
