@@ -8,6 +8,7 @@
 
 import UIKit
 import Socket_IO_Client_Swift
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	var socket:SocketIOClient?
+	
+	var matches:JSON?
+	
 	var teams = []
 	var players = []
 	var selectedTeam:String?

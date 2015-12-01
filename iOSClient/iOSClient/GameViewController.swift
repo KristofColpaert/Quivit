@@ -8,16 +8,23 @@
 
 import UIKit
 import Socket_IO_Client_Swift
+import SwiftyJSON
 
 class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 {
 	@IBOutlet weak var indoorLocationView: EILIndoorLocationView!
 	
-	let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+	var ipAddress:String?
+	var port:String?
+	var match:JSON?
+	var selectedTeam:JSON?
+	var selectedPlayer:JSON?
+	
 	var location:EILLocation?
 	let indoorLocationManager = EILIndoorLocationManager()
 	let appID = "quivit-cw1"
 	let appToken = "f157d0a442bf7fe7815ffd53076492cc"
+	var socket:SocketIOClient?
 	
 	override func viewDidLoad()
 	{
@@ -29,12 +36,30 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		
 		self.indoorLocationManager.delegate = self
 		
-		let request = EILRequestFetchLocation(locationIdentifier: "room3-8fg")
-		request.sendRequestWithCompletion({(location, error) in
-			self.location = location
-			self.indoorLocationView.drawLocation(location)
-			self.indoorLocationManager.startPositionUpdatesForLocation(location)
-		})
+		if let _ = ipAddress, _ = port, m = match, _ = selectedTeam, _ = selectedPlayer
+		{
+			let request = EILRequestFetchLocation(locationIdentifier: m["estimoteLocationId"].string)
+			request.sendRequestWithCompletion({(location, error) in
+				self.location = location
+				self.indoorLocationView.drawLocation(location)
+				self.indoorLocationManager.startPositionUpdatesForLocation(location)
+			})
+			
+			self.socket = SocketIOClient(socketURL: "http://\(ipAddress):\(port)")
+			self.socket!.on("connect") {data, ack in
+				print("[Socket] Connected")
+			}
+			self.socket!.connect()
+		}
+		else
+		{
+			let alertController = UIAlertController(title: "No match selected!", message: "Please select a match first!", preferredStyle: .Alert)
+			
+			let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
+			alertController.addAction(okAction)
+			
+			self.presentViewController(alertController, animated: true) { }
+		}
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -59,13 +84,19 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 	
 	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, withAccuracy positionAccuracy: EILPositionAccuracy, inLocation location: EILLocation!)
 	{
-		print("[indoorLocationManager] Player: \(self.appDelegate.selectedPlayer!)")
+		print("[IndoorLocationManager] Player: \(self.selectedPlayer!)")
 		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
 		print("[IndoorLocationManager] Location: \(location.name)")
 		
 		self.indoorLocationView.updatePosition(position)
 		
-		self.appDelegate.socket!.emit("NewPosition", ["Team": self.appDelegate.selectedTeam!, "Player": self.appDelegate.selectedPlayer!, "Position": ["x": position.x, "y": position.y, "orientation": position.orientation], "Location": location.name])
+		let eli = self.match!["estimoteLocationId"].string!
+		let pi = self.selectedPlayer!["_id"].string!
+		let ti = self.selectedPlayer!["teamId"].string!
+		let gi = self.match!["_id"].string!
+		
+		// msgObject.x, msgObject.y, msgObject.orientation, msgObject.timestamp, msgObject.estimoteLocationId, msgObject.playerId, msgObject.teamId, msgObject.gameId
+		self.socket!.emit("position", ["x": position.x, "y": position.y, "orientation": position.orientation, "timestamp": 0, "estimoteLocationId": eli, "playerId": pi, "teamId": ti, "gameId": gi])
 	}
 	
 	func indoorLocationManager(manager: EILIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!)

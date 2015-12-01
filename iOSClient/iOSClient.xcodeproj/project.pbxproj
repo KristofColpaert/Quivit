@@ -12,6 +12,7 @@
 		9B07DDE11BFE14B4005B4763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B07DDDF1BFE14B4005B4763 /* Main.storyboard */; };
 		9B07DDE31BFE14B4005B4763 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B07DDE21BFE14B4005B4763 /* Assets.xcassets */; };
 		9B07DDE61BFE14B4005B4763 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B07DDE41BFE14B4005B4763 /* LaunchScreen.storyboard */; };
+		9B3FFD631C0CFD7900752C56 /* MatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FFD621C0CFD7900752C56 /* MatchTableViewController.swift */; };
 		9B6EE8D61C02B2FC006FC4CE /* PlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */; };
 		9B7947AF1C02738B0069F8EF /* ConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */; };
 		9BCD8C3D1BFEA5790008A741 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFB5331BFE9C9F00FEFF51 /* CoreMotion.framework */; };
@@ -33,6 +34,7 @@
 		9B07DDE51BFE14B4005B4763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B07DDE71BFE14B4005B4763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B2CBBBD1BFE9BAC0034E6FE /* iOSClient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSClient-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B3FFD621C0CFD7900752C56 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
 		9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewController.swift; sourceTree = "<group>"; };
 		9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
 		9BFFB5331BFE9C9F00FEFF51 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -112,6 +114,7 @@
 				9B2CBBBD1BFE9BAC0034E6FE /* iOSClient-Bridging-Header.h */,
 				9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */,
 				9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */,
+				9B3FFD621C0CFD7900752C56 /* MatchTableViewController.swift */,
 			);
 			path = iOSClient;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				9B07DDDE1BFE14B4005B4763 /* GameViewController.swift in Sources */,
 				9B07DDDC1BFE14B4005B4763 /* AppDelegate.swift in Sources */,
 				9B6EE8D61C02B2FC006FC4CE /* PlayerTableViewController.swift in Sources */,
+				9B3FFD631C0CFD7900752C56 /* MatchTableViewController.swift in Sources */,
 				9B7947AF1C02738B0069F8EF /* ConnectTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
