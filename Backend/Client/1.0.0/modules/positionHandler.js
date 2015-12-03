@@ -12,20 +12,22 @@ var positionHandler = function(io) {
     io.on('connection', function(socket) {
         //Server gets a position and emits it to subscribers.
         socket.on('position', function(msg) {
-            var msgObject = JSON.parse(msg);
-            io.emit(msgObject.gameId, msg);
+            io.emit(msg.gameId, msg);
         });
 
         //Server gets a positions and saves it in the database.
         socket.on('position', function(msg) {
-            var msgObject = JSON.parse(msg);
-            var newPlayerPosition = new PlayerPosition(msgObject.x, msgObject.y, msgObject.orientation, msgObject.timestamp,
-                msgObject.estimoteLocationId, msgObject.playerId, msgObject.teamId, msgObject.gameId);
+            var newPlayerPosition = new PlayerPosition(msg.x, msg.y, msg.orientation, msg.timestamp,
+                msg.estimoteLocationId, msg.playerId, msg.teamId, msg.gameId);
             db.collection(newPlayerPosition.toString()).insert(newPlayerPosition, function(error, result){
                 if(error) {
                     errorLogger.log('database', error);
                 }
             });
+        });
+
+        socket.on('error', function(error) {
+            console.log(error);
         });
     });
 };
