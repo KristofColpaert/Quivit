@@ -36,7 +36,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		
 		self.indoorLocationManager.delegate = self
 		
-		if let _ = ipAddress, _ = port, m = match, _ = selectedTeam, _ = selectedPlayer
+		if let ipAddress = ipAddress, port = port, m = match, _ = selectedTeam, _ = selectedPlayer
 		{
 			print(m["estimoteLocationId"])
 			
@@ -46,14 +46,13 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 				self.indoorLocationView.drawLocation(location)
 				self.indoorLocationManager.startPositionUpdatesForLocation(location)
 			})
-			/*
+			
 			
 			self.socket = SocketIOClient(socketURL: "http://\(ipAddress):\(port)")
 			self.socket!.on("connect") {data, ack in
 				print("[Socket] Connected")
 			}
 			self.socket!.connect()
-			*/
 			
 			print("unwrapping complete")
 		}

@@ -29,7 +29,7 @@ class PlayerTableViewController: UITableViewController
 
 		if let _ = ipAddress, _ = port, m = match
 		{
-			teams = [m["teamHomeId"], m["teamAwayId"]]
+			teams = [m["teamHome", "name"], m["teamAway", "name"]]
 			print(teams)
 			self.refreshControl!.beginRefreshing()
 			refresh("")

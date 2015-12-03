@@ -49,7 +49,15 @@ class MatchTableViewController: UITableViewController
 		
 		print("[MatchTVC] IP: \(ipAddress) PORT: \(port)")
 		
-		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/game/2015/12/01/included").responseJSON { response in
+		let date = NSDate()
+		let calendar = NSCalendar.currentCalendar()
+		let day = String(format: "%02d", calendar.component(.Day, fromDate: date))
+		let month = String(format: "%02d", calendar.component(.Month, fromDate: date))
+		let year = calendar.component(.Year, fromDate: date)
+		
+		print("[MatchTVC] Day: \(day) Month: \(month) Year: \(year)")
+		
+		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/game/\(year)/\(month)/\(day)/included").responseJSON { response in
 			//print(response.request)  // original URL request
 			//print(response.response) // URL response
 			//print(response.data)     // server data
