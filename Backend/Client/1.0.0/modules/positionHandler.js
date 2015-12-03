@@ -3,9 +3,7 @@ var positionHandler = function(io) {
 
     //Variables
     var io = io;
-    var errorLogger = require('./errorLogger.js');
-    var mongoskin = require('mongoskin');
-    var db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true});
+    var playerPositionRepository = require('../data/playerPositionRepository.js');
     var PlayerPosition = require('../models/PlayerPosition.js');
 
     //When someone connects to socket
@@ -19,11 +17,8 @@ var positionHandler = function(io) {
         socket.on('position', function(msg) {
             var newPlayerPosition = new PlayerPosition(msg.x, msg.y, msg.orientation, msg.timestamp,
                 msg.estimoteLocationId, msg.playerId, msg.teamId, msg.gameId);
-            db.collection(newPlayerPosition.toString()).insert(newPlayerPosition, function(error, result){
-                if(error) {
-                    errorLogger.log('database', error);
-                }
-            });
+
+            playerPositionRepository.add(newPlayerPosition);
         });
 
         socket.on('error', function(error) {

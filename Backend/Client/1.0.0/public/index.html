@@ -24,13 +24,12 @@
             teamId : 'teamId2',
             gameId : 'gameId3'
         };
-        var msg = JSON.stringify(msgObject);
-        socket.emit('position', msg);
+        socket.emit('position', msgObject);
         return false;
     });
 
     socket.on('gameId3', function(msg){
-        $('#root').append($('<li>').text(msg));
+        $('#root').append($('<li>').text(JSON.stringify(msg)));
     });
 </script>
 </body>

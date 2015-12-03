@@ -1,21 +1,13 @@
 var express = require('express'),
     router = express.Router(),
     Player = require('../../models/Player.js'),
-    errorLogger = require('../../modules/errorLogger.js'),
-    mongoskin = require('mongoskin'),
-    db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true}),
-    ObjectID = require('mongoskin').ObjectID;
+    playerRepository = require('../../data/playerRepository.js');
 
 //GET: get all players
 router.get('/', function(req, res) {
-    db.collection('players').find().toArray(function(error, result) {
-        if(error) {
-            errorLogger('database', error);
-        }
-        else {
-            res.json(result);
-        }
-    })
+    playerRepository.getAll(function(result) {
+       res.json(result);
+    });
 });
 
 //GET: get players by team or by id
@@ -25,25 +17,14 @@ router.get('/:method/:value', function(req, res) {
     var value = req.params.value;
 
     if(method == 'id') {
-
-        db.collection('players').find({ _id : ObjectID(value) }).toArray(function(error, result) {
-            if(error) {
-                errorLogger('database', error);
-            }
-            else {
-                res.json(result);
-            }
+        playerRepository.getSingle(value, function(result) {
+            res.json(result);
         });
     }
 
     else if(method == 'team') {
-        db.collection('players').find({ teamId : value }).toArray(function(error, result) {
-            if(error) {
-                errorLogger('database', error);
-            }
-            else {
-                res.json(result);
-            }
+        playerRepository.getByTeam(value, function(result) {
+            res.json(result);
         });
     }
 });
@@ -56,19 +37,8 @@ router.post('/', function(req, res) {
     var kitNumber = req.body.kitNumber;
     var teamId = req.body.teamId;
     var newPlayer = new Player(firstName, lastName, kitNumber, teamId);
-
-    var playerId;
-
-    db.collection('players').insert(newPlayer, function(error, result) {
-        if(error) {
-            errorLogger.log('database', error);
-        }
-        else {
-            playerId = result.insertedIds[0];
-            var resultObject = newPlayer.toJSON();
-            resultObject._id = playerId;
-            res.json(resultObject);
-        }
+    playerRepository.add(newPlayer, function(result) {
+        res.json(result);
     });
 });
 

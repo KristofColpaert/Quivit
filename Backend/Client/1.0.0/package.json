@@ -4,6 +4,7 @@
   "description": "Quivit",
   "main": "app.js",
   "scripts": {
+    "start" : "node ./bin/www",
     "test": "test"
   },
   "repository": {

@@ -17,17 +17,6 @@ var routeGame = require('./routes/api/game.js'),
     routeTeam = require('./routes/api/team.js'),
     routeRoot = require('./routes/root.js');
 
-//Setup port of server.
-var port = 3000;
-
-//Start server.
-var server = app.listen(port);
-console.log('Server is listening to port ' + port);
-
-//Setup socket.io.
-var io = require('socket.io')(server);
-var positionHandler = require('./modules/positionHandler.js')(io);
-
 /*
 ** Setup
  */
@@ -64,3 +53,5 @@ app.use(function(req, res, next) {
     error.status = 404;
     next(error);
 });
+
+module.exports = app;

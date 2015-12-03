@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+var app = require('../app');
+
+//Init port
+var port = process.env.PORT || 3000;
+
+//Start server
+var server = app.listen(port);
+console.log('Server is listening to port ' + port);
+
+//Setup socket.io.
+var io = require('socket.io')(server);
+var positionHandler = require('../modules/positionHandler.js')(io);
