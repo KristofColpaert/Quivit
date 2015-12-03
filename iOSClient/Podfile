@@ -5,3 +5,5 @@ use_frameworks!
 
 pod 'Socket.IO-Client-Swift'
 pod 'EstimoteIndoorSDK'
+pod 'Alamofire'
+pod 'SwiftyJSON'
