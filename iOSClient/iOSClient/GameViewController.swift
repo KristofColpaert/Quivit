@@ -99,9 +99,10 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		let pi = self.selectedPlayer!["_id"].string!
 		let ti = self.selectedPlayer!["teamId"].string!
 		let gi = self.match!["_id"].string!
+		let date = NSDate().timeIntervalSince1970
 		
 		// msgObject.x, msgObject.y, msgObject.orientation, msgObject.timestamp, msgObject.estimoteLocationId, msgObject.playerId, msgObject.teamId, msgObject.gameId
-		self.socket!.emit("position", ["x": position.x, "y": position.y, "orientation": position.orientation, "timestamp": 0, "estimoteLocationId": eli, "playerId": pi, "teamId": ti, "gameId": gi])
+		self.socket!.emit("position", ["x": position.x, "y": position.y, "orientation": position.orientation, "timestamp": date, "estimoteLocationId": eli, "playerId": pi, "teamId": ti, "gameId": gi])
 	}
 	
 	func indoorLocationManager(manager: EILIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!)
