@@ -87,20 +87,20 @@ h3 {
 
   @extend %card;
   @extend %card-background;
-  @extend %subtle-shadow;
+  //@extend %subtle-shadow;
   box-sizing: border-box;
   width: 24%;
+  height: auto;
   float: left;
   padding: 0;
-  margin: 0;
+  margin: 10px 0;
   cursor: pointer;
   opacity: .9;
 
-  > image.game-image {
-	display: block;
-	@extend %card-background;
-	width: 20%;
-	height: auto;
+  > img.game-image {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   > span.score {
@@ -119,6 +119,7 @@ h3 {
     margin: 0;
     padding: 20px 0 17px;
     text-align: center;
+    line-height: 1.05em;
     color: #eee;
     background: #333;
   }
@@ -127,8 +128,7 @@ h3 {
     position: absolute;
     height: 4px;
     width: 60%;
-    // background: #B14E44;
-    background: #eee;
+    background: #87C9BD;
     padding: 0;
     margin: 0;
   }
@@ -137,7 +137,7 @@ h3 {
     margin-left: 1.3333%;
   }
 
-  &:hover {
+  &:hover img.game-image {
     opacity: 1;
     cursor: pointer;
   }
@@ -145,5 +145,31 @@ h3 {
 
 ::selection {
   background: #333;
-  color: #eeeeee;
+  color: #FFDD4A;
+}
+
+.gameCanvas {
+  width: 100%;
+  background: #E7ECDE;
+}
+
+@media screen and (max-width: $break) {
+    .card.game {
+      width: 48%;
+      
+      & {
+        margin-left: 0;
+      }
+      & + & {
+        margin-left: 2%;
+      }
+
+      & + & + & {
+        margin-left: 0;
+      }
+
+      & + & + & + & {
+        margin-left: 2%;
+      }
+    }
 }

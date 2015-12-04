@@ -8,4 +8,7 @@
 .idea/workspace.xml
 
 Frontend/node_modules
+
+**/node_modules
+
 .idea/workspace.xml

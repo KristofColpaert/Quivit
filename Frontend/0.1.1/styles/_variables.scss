@@ -18,6 +18,7 @@ $main-background: #eee;
 // Measurements
 $max-width: 1200px;
 $header-height: 45px;
+$break: 940px;
 
 // Snippets
 %border {
@@ -41,14 +42,14 @@ $header-height: 45px;
 }
 
 %card-background {
-    -webkit-transition: all 400ms ease-out;
-    -moz-transition: all 400ms ease-out;
-    -ms-transition: all 400ms ease-out;
-    -o-transition: all 400ms ease-out;
-    transition: all 400ms ease-out;
+    -webkit-transition: -webkit-filter 400ms ease-out;
+    -moz-transition: -webkit-filter 400ms ease-out;
+    -ms-transition: -webkit-filter 400ms ease-out;
+    -o-transition: -webkit-filter 400ms ease-out;
+    transition: -webkit-filter 400ms ease-out;
     -webkit-filter: brightness(1);
 
   &:hover {
-    -webkit-filter: brightness(1.4);
+    -webkit-filter: brightness(1.3);
   }
 }
