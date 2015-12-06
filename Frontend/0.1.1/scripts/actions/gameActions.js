@@ -54,6 +54,21 @@ var gameActions = {
         });
     },
 
+    getGameResponse : function(game) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.GET_GAME_RESPONSE,
+            game : game
+        });
+    },
+
+    getGameRequest : function(id) {
+        ajax.getData(constants.baseApiGameUrl + id, function(error, data) {
+            if(!error) {
+                gameActions.getGameResponse(data);
+            }
+        });
+    },
+
     //Set saved to false
     falsifyIsGameSaved : function() {
         AppDispatcher.handleServerAction({

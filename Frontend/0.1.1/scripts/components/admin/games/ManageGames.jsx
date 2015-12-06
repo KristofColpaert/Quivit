@@ -1,7 +1,8 @@
 'use strict';
 
 var React = require('react'),
-    Game = require('./Game.jsx');
+    Game = require('./Game.jsx'),
+    Link = require('react-router').Link;
 
 var ManageGames = React.createClass({
     render : function() {
@@ -10,7 +11,7 @@ var ManageGames = React.createClass({
                 <h2>{this.props.title}</h2>
                 {this.props.games.map(function(game) {
                     return (
-                        <Game key={game._id} game={game} />
+                        <Link key={game._id} to={'/canvasGame/' + game._id}><Game key={game._id} game={game} /></Link>
                     );
                 })}
             </section>

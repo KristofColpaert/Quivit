@@ -14,19 +14,21 @@
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
     var socket = io();
-    $('form').submit(function(){
+    $('form').submit(function() {
         var msgObject = {
-            x : 0,
-            y : 0,
-            orientation : 0,
-            timestamp : new Date().getMilliseconds(),
-            estimoteLocationId : 'BlaBla',
-            playerId : 'playerId1',
-            teamId : 'teamId2',
-            gameId : 'gameId3'
+            x: 0,
+            y: 0,
+            orientation: 0,
+            timestamp: new Date().getMilliseconds(),
+            estimoteLocationId: 'BlaBla',
+            playerId: 'playerId1',
+            teamId: 'teamId2',
+            gameId: 'gameId3'
         };
         socket.emit('position', msgObject);
         return false;
+    });
+
     var tmr = setInterval(
         function(){
             var msgObject = {

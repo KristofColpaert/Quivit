@@ -9,7 +9,8 @@ var CHANGE_EVENT = 'change'
 var storedGames = {
     isGameSaved : false,
     todaysGames : [],
-    futureGames : []
+    futureGames : [],
+    singleGame : {}
 };
 
 //GameStore
@@ -32,6 +33,10 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     getFutureGames : function() {
         return storedGames.futureGames;
+    },
+
+    getSingleGame : function() {
+        return storedGames.singleGame;
     },
 
     isGameSaved : function() {
@@ -64,6 +69,10 @@ AppDispatcher.register(function(payload) {
             }
 
             storedGames.isGameSaved = true;
+            break;
+
+        case gameConstants.GET_GAME_RESPONSE:
+            storedGames.singleGame = payload.action.game;
             break;
 
         case gameConstants.FALSIFY_IS_GAME_SAVED:

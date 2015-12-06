@@ -33,7 +33,7 @@ var GameWrapper = function(page) {
 
 ReactDOM.render((
     <Router history={createBrowserHistory()}>
-        <Route name="Canvas Test" path="/canvasGame" component={GameWrapper('LiveGame')} />
+        <Route name="/canvasGame/:gameId" path="/canvasGame/:gameId" component={GameWrapper('LiveGame')} />
         <Route name="/admin" path="/admin" component={AdminWrapper('ManageGames')} />
         <Route name="/admin/teams" path="/admin/teams" component={AdminWrapper('ManageTeams')} />
         <Route name="/admin/teams/new" path="/admin/teams/new" component={AdminWrapper('NewTeam')} />
