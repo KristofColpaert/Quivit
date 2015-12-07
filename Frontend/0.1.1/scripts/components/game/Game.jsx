@@ -14,19 +14,19 @@ var Game = React.createClass({
     },
 
     componentWillMount : function() {
-        
+
     },
 
     componentDidMount : function() {
-        
+
     },
 
     componentWillUnmount : function() {
-        
+
     },
 
     _onChange : function() {
-        
+
     },
 
     render: function() {

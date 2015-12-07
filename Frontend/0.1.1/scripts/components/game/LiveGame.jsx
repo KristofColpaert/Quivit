@@ -109,4 +109,4 @@ var LiveGame = React.createClass({
     }
 });
 
-modumodulele.exports = LiveGame;
+module.exports = LiveGame;
