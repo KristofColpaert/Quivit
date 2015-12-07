@@ -20,7 +20,9 @@ var LiveGame = React.createClass({
 
     getInitialState : function() {
         return ({
-            context : null,
+            canvasContext : null,
+            canvasWidth : null,
+            canvasHeight : null,
             players : [],
             teams : null,
             game : gameStore.getSingleGame()
@@ -58,8 +60,13 @@ var LiveGame = React.createClass({
 
     _onChange : function() {
         var context = this.refs.gameCanvas.getContext('2d');
+        var width = this.refs.gameCanvas.width;
+        var height = this.refs.gameCanvas.height;
+
         this.setState({
-            context : context,
+            canvasContext : context,
+            canvasWidth : width,
+            canvasHeight : height,
             players : [],
             teams : null,
             game : gameStore.getSingleGame()
@@ -69,9 +76,11 @@ var LiveGame = React.createClass({
     _update : function(data) {
         console.log(data);
         var context = this.state.context;
+        var width = this.state.canvasWidth;
+        var height = this.state.canvasHeight;
         var radius = 15;
-        var transX = this.refs.gameCanvas.width * 0.5;
-        var transY = this.refs.gameCanvas.height * 0.5;
+        var transX = width * 0.5;
+        var transY = height * 0.5;
 
         if(context != null) {
             if(!isOriginSet) {
@@ -79,7 +88,7 @@ var LiveGame = React.createClass({
                 context.translate(transX, transY);
             }
 
-            context.clearRect(-(this.refs.gameCanvas.width / 2), -(this.refs.gameCanvas.height / 2), this.refs.gameCanvas.width, this.refs.gameCanvas.height);
+            context.clearRect(-(width / 2), -(height / 2), width, height);
 
             context.beginPath();
             context.arc((data.x * 400), (data.y * 400), radius, 0, 2 * Math.PI, false);
@@ -100,4 +109,4 @@ var LiveGame = React.createClass({
     }
 });
 
-module.exports = LiveGame;
+modumodulele.exports = LiveGame;
