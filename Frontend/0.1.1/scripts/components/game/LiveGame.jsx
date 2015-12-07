@@ -21,7 +21,7 @@ var LiveGame = React.createClass({
             context : null,
             players : [],
             teams : null,
-            game : null
+            game : gameStore.getSingleGame()
         });
     },
 
@@ -32,17 +32,19 @@ var LiveGame = React.createClass({
     },
 
     componentDidMount : function() {
+        //Query game
+        var self = this;
         var query = this.context.location.pathname;
         var query = query.substr(12);
-
         gameActions.getGameRequest(query);
 
+        //Sockets
         socket.on('connect', function() {
             console.log("Connection with socket");
         });
 
         socket.on('gameId3', function(data) {
-           console.log(data);
+            requestAnimationFrame(() => {self._update(data)});
         });
     },
 
@@ -53,16 +55,30 @@ var LiveGame = React.createClass({
     },
 
     _onChange : function() {
+        var context = this.refs.gameCanvas.getContext('2d');
         this.setState({
-            context : null,
+            context : context,
             players : [],
             teams : null,
             game : gameStore.getSingleGame()
         });
     },
 
+    _update : function(data) {
+        var radius = 15;
+        var context = this.state.context;
+
+        if(context != null) {
+            context.clearRect(0, 0, 1200, 600);
+
+            context.beginPath();
+            context.arc(data.x, data.y, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = '#333333';
+            context.fill();
+        }
+    },
+
     render: function() {
-        console.log(this.state);
         return(
             <div>
         	   <section className="live game">
