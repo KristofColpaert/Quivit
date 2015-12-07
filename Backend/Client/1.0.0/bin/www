@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var app = require('../app');
+var app = require('../app.js');
 
 //Init port
 var port = process.env.PORT || 3000;
