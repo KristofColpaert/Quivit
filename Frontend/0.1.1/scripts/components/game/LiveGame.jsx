@@ -9,6 +9,8 @@ var React = require('react'),
     teamActions = require('../../actions/teamActions.js'),
     socket = require('socket.io-client')('http://localhost:3000');
 
+var isOriginSet = false;
+
 var LiveGame = React.createClass({
 
     contextTypes: {
@@ -43,7 +45,7 @@ var LiveGame = React.createClass({
             console.log("Connection with socket");
         });
 
-        socket.on('gameId3', function(data) {
+        socket.on(query, function(data) {
             requestAnimationFrame(() => {self._update(data)});
         });
     },
@@ -65,14 +67,22 @@ var LiveGame = React.createClass({
     },
 
     _update : function(data) {
-        var radius = 15;
+        console.log(data);
         var context = this.state.context;
+        var radius = 15;
+        var transX = this.refs.gameCanvas.width * 0.5;
+        var transY = this.refs.gameCanvas.height * 0.5;
 
         if(context != null) {
-            context.clearRect(0, 0, 1200, 600);
+            if(!isOriginSet) {
+                isOriginSet = true;
+                context.translate(transX, transY);
+            }
+
+            context.clearRect(-(this.refs.gameCanvas.width / 2), -(this.refs.gameCanvas.height / 2), this.refs.gameCanvas.width, this.refs.gameCanvas.height);
 
             context.beginPath();
-            context.arc(data.x, data.y, radius, 0, 2 * Math.PI, false);
+            context.arc((data.x * 400), (data.y * 400), radius, 0, 2 * Math.PI, false);
             context.fillStyle = '#333333';
             context.fill();
         }
