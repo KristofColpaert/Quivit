@@ -2,6 +2,7 @@
 
 var React = require('react'),
     Navigation = require('./../general/Navigation.jsx'),
+    Footer = require('./../general/Footer.jsx'),
     Game = require('./Game.jsx'),
     GamesPanel = require('./GamesPanel.jsx'),
     Link = require('react-router').Link,
@@ -52,7 +53,9 @@ var Main = React.createClass({
                     <GamesPanel title={this.state.titleGamesFuture} games={this.state.futureGames} />
                     <div className="clearfix"></div>
                     <Link to="/admin">Admin</Link>
+                    <div className="clearfix"></div>
                 </section>
+                <Footer />
             </main>
         );
     }
