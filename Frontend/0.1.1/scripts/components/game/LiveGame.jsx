@@ -7,9 +7,10 @@ var React = require('react'),
     playerActions = require('../../actions/playerActions.js'),
     teamStore = require('../../stores/teamStore.js'),
     teamActions = require('../../actions/teamActions.js'),
-    socket = require('socket.io-client')('http://localhost:3000');
+    socket = require('socket.io-client')('http://localhost:3000'),
+    Pitch = require('./Pitch.jsx'),
+    PitchElement = require('./PitchElement.jsx');
 
-var isOriginSet = false;
 var isSocketsInit = false;
 
 var LiveGame = React.createClass({
@@ -21,12 +22,10 @@ var LiveGame = React.createClass({
 
     getInitialState : function() {
         return ({
-            canvasContext : null,
-            canvasWidth : null,
-            canvasHeight : null,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
-            game : gameStore.getSingleGame()
+            game : gameStore.getSingleGame(),
+            playerPositions : []
         });
     },
 
@@ -50,17 +49,11 @@ var LiveGame = React.createClass({
     },
 
     _onChange : function() {
-        var context = this.refs.gameCanvas.getContext('2d');
-        var width = this.refs.gameCanvas.width;
-        var height = this.refs.gameCanvas.height;
-
         this.setState({
-            canvasContext : context,
-            canvasWidth : width,
-            canvasHeight : height,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
-            game : gameStore.getSingleGame()
+            game : gameStore.getSingleGame(),
+            playerPositions : []
         });
 
         //If game set, than get players.
@@ -83,7 +76,6 @@ var LiveGame = React.createClass({
             });
 
             socket.on(player._id, function(data) {
-                console.log(data);
                 requestAnimationFrame(() => {self._update(data)});
             });
         });
@@ -94,32 +86,22 @@ var LiveGame = React.createClass({
             });
 
             socket.on(player._id, function(data) {
-                console.log(data);
                 requestAnimationFrame(() => {self._update(data)});
             });
         });
     },
 
     _update : function(data) {
-        var context = this.refs.gameCanvas.getContext('2d');
-        var width = this.refs.gameCanvas.width;
-        var height = this.refs.gameCanvas.height;
-        var radius = 15;
-        var transX = width * 0.5;
-        var transY = height * 0.5;
+        var tempPlayerPositions = [];
+        var playerPosition = <PitchElement x={data.x} y={data.y} radius="15" fill="red"/>
+        tempPlayerPositions.push(playerPosition);
 
-        if(context != null) {
-            if(!isOriginSet) {
-                isOriginSet = true;
-                context.translate(transX, transY);
-            }
-
-            context.clearRect(-(width / 2), -(height / 2), width, height);
-            context.beginPath();
-            context.arc((data.x * 100), (data.y * 100), radius, 0, 2 * Math.PI, false);
-            context.fillStyle = '#333333';
-            context.fill();
-        }
+        this.setState({
+            players : playerStore.getHomeAwayPlayers(),
+            teams : teamStore.getHomeAwayTeams(),
+            game : gameStore.getSingleGame(),
+            playerPositions : tempPlayerPositions
+        });
     },
 
     render: function() {
@@ -129,7 +111,7 @@ var LiveGame = React.createClass({
             <div>
         	   <section className="live game">
             	   <h1>{homeTeam} - {awayTeam}</h1>
-				   <canvas ref="gameCanvas" id="gameCanvas" className="gameCanvas" width="1200" height="600"></canvas>
+				   <Pitch width="1200" height="600" pitchElements={this.state.playerPositions} />
                </section>
             </div>
         );
