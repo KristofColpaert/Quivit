@@ -76,34 +76,45 @@ var NewGame = React.createClass({
         return(
             <section>
                 <h2>New Game</h2>
-                <form onSubmit={this.submitHandler}>
-                    <label htmlFor="teamHome">Home team</label>
-                    <select id="teamHome" ref="teamHome">
-                        {this.state.teams.map(function(team) {
-                            return <option value={team._id} key={team._id}>{team.name}</option>
-                        })}
-                    </select>
+                <form onSubmit={this.submitHandler} className="new game">
+                    <section className="col50 left">
+                        <label htmlFor="teamHome">Home team</label>
+                        <select id="teamHome" ref="teamHome">
+                            {this.state.teams.map(function(team) {
+                                return <option value={team._id} key={team._id}>{team.name}</option>
+                            })}
+                        </select>
 
-                    <label htmlFor="teamAway">Away team</label>
-                    <select id="teamAway" ref="teamAway">
-                        {this.state.teams.map(function(team) {
-                            return <option value={team._id} key={team._id}>{team.name}</option>
-                        })}
-                    </select>
+                        <label htmlFor="gameDate">Game date</label>
+                        <input id="gameDate" type="date" ref="gameDate"/>
 
-                    <label htmlFor="gameDate">Game date</label>
-                    <input id="gameDate" type="date" ref="gameDate"/>
+                        <label htmlFor="gameTime">Game time</label>
+                        <input id="gameTime" type="time" ref="gameTime"/>
 
-                    <label htmlFor="gameTime">Game time</label>
-                    <input id="gameTime" type="time" ref="gameTime"/>
+                        <label htmlFor="estimoteLocationId">Estimote Location ID</label>
+                        <input id="estimoteLocationId" type="text" ref="estimoteLocationId"/>
 
-                    <label htmlFor="estimoteLocationId">Estimote Location ID</label>
-                    <input id="estimoteLocationId" type="text" ref="estimoteLocationId"/>
+                        <label htmlFor="isGameFinished">Is game finished?</label>
+                        <input id="isGameFinished" type="checkbox" ref="isGameFinished"/>
 
-                    <label htmlFor="isGameFinished">Is game finished?</label>
-                    <input id="isGameFinished" type="checkbox" ref="isGameFinished"/>
+                    </section>
 
-                    <input type="submit" value="Make" />
+                    <section className="col50 right">
+                        <label htmlFor="teamAway">Away team</label>
+                        <select id="teamAway" ref="teamAway">
+                            {this.state.teams.map(function(team) {
+                                return <option value={team._id} key={team._id}>{team.name}</option>
+                            })}
+                        </select>
+
+                        <label htmlFor="gameImg">Game Image</label>
+                        <input id="gameImg" ref="gameImg" type="file" accept="image/*" />
+                        <p>Best 284 x 189.</p>
+
+                    </section>
+                    <div className="clearfix"></div>
+                    <input className="btn primary" type="submit" value="Add Game" />
+                    <div className="clearfix"></div>
                 </form>
             </section>
         );

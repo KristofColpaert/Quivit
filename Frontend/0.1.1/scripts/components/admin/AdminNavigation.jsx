@@ -3,20 +3,9 @@
 var React = require('react'),
     Link = require('react-router').Link;
 
-    // <ul>
-    //  <li><Link to="/admin/games/new">New</Link></li>
-    //  <li><Link to="/admin/games">Manage</Link></li>
-    // </ul>
-
-    // <ul>
-    //     <li><Link to="/admin/teams/new">New</Link></li>
-    //     <li><Link to="/admin/teams">Manage</Link></li>
-    // </ul>
-
-    // <ul>
-    //   <li><Link to="/admin/players/new">New</Link></li>
-    //   <li><Link to="/admin/players">Manage</Link></li>
-    // </ul>
+  //  <li><Link to="/admin/games/new">New</Link></li>
+  //  <li><Link to="/admin/teams/new">New</Link></li>
+  //  <li><Link to="/admin/players/new">New</Link></li>
 
 
 

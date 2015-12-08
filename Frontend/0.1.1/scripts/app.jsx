@@ -28,11 +28,17 @@ var GameWrapper = function(page) {
                 <Game page={page} />
             );
         }
+<<<<<<< Updated upstream
     });
 };
 
+=======
+    })
+}
+// <Router history={createBrowserHistory()}>
+>>>>>>> Stashed changes
 ReactDOM.render((
-    <Router history={createBrowserHistory()}>
+    <Router>
         <Route name="/canvasGame/:gameId" path="/canvasGame/:gameId" component={GameWrapper('LiveGame')} />
         <Route name="/admin" path="/admin" component={AdminWrapper('ManageGames')} />
         <Route name="/admin/teams" path="/admin/teams" component={AdminWrapper('ManageTeams')} />
