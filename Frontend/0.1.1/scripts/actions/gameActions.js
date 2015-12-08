@@ -64,7 +64,7 @@ var gameActions = {
     getGameRequest : function(id) {
         ajax.getData(constants.baseApiGameUrl + id, function(error, data) {
             if(!error) {
-                gameActions.getGameResponse(data);
+                gameActions.getGameResponse(data[0]);
             }
         });
     },

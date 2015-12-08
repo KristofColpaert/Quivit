@@ -28,8 +28,8 @@ var GameWrapper = function(page) {
                 <Game page={page} />
             );
         }
-    })
-}
+    });
+};
 
 ReactDOM.render((
     <Router history={createBrowserHistory()}>

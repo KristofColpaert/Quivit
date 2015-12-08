@@ -54,6 +54,27 @@ var playerActions = {
         });
     },
 
+    //Get players by team
+    getPlayersByTeamResponse : function(homePlayers, awayPlayers) {
+        AppDispatcher.handleServerAction({
+            actionType : playerConstants.GET_PLAYERS_BY_TEAM_RESPONSE,
+            homePlayers : homePlayers,
+            awayPlayers : awayPlayers
+        });
+    },
+
+    getPlayersByTeamRequest : function(teamHomeId, teamAwayId) {
+        ajax.getData(constants.baseApiPlayerUrl + 'team/' + teamHomeId, function(error, homeData) {
+           if(!error) {
+               ajax.getData(constants.baseApiPlayerUrl + 'team/' + teamAwayId, function(error, awayData) {
+                  if(!error) {
+                      playerActions.getPlayersByTeamResponse(homeData, awayData);
+                  }
+               });
+           }
+        });
+    },
+
     //Set saved to false
     falsifyIsPlayerSaved : function() {
         AppDispatcher.handleServerAction({

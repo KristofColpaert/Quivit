@@ -9,7 +9,8 @@ var CHANGE_EVENT = 'change';
 var storedPlayers = {
     isPlayerSaved : false,
     allPlayers : [],
-    singlePlayer : []
+    singlePlayer : [],
+    homeAwayPlayers : []
 };
 
 //PlayerStore
@@ -34,6 +35,10 @@ var playerStore = objectAssign({}, EventEmitter.prototype, {
         return storedPlayers.singlePlayer;
     },
 
+    getHomeAwayPlayers : function() {
+        return storedPlayers.homeAwayPlayers;
+    },
+
     isPlayerSaved : function() {
         return storedPlayers.isPlayerSaved;
     }
@@ -55,6 +60,13 @@ AppDispatcher.register(function(payload) {
             var newPlayer = payload.action.player;
             storedPlayers.allPlayers.push(newPlayer);
             storedPlayers.isPlayerSaved = true;
+            break;
+
+        case playerConstants.GET_PLAYERS_BY_TEAM_RESPONSE:
+            var homePlayers = payload.action.homePlayers;
+            var awayPlayers = payload.action.awayPlayers;
+            storedPlayers.homeAwayPlayers['home'] = homePlayers;
+            storedPlayers.homeAwayPlayers['away'] = awayPlayers;
             break;
 
         case playerConstants.FALSIFY_IS_PLAYER_SAVED:

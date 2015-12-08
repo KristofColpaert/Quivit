@@ -10,6 +10,7 @@ var React = require('react'),
     socket = require('socket.io-client')('http://localhost:3000');
 
 var isOriginSet = false;
+var isSocketsInit = false;
 
 var LiveGame = React.createClass({
 
@@ -23,8 +24,8 @@ var LiveGame = React.createClass({
             canvasContext : null,
             canvasWidth : null,
             canvasHeight : null,
-            players : [],
-            teams : null,
+            players : playerStore.getHomeAwayPlayers(),
+            teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame()
         });
     },
@@ -37,19 +38,9 @@ var LiveGame = React.createClass({
 
     componentDidMount : function() {
         //Query game
-        var self = this;
         var query = this.context.location.pathname;
         var query = query.substr(12);
         gameActions.getGameRequest(query);
-
-        //Sockets
-        socket.on('connect', function() {
-            console.log("Connection with socket");
-        });
-
-        socket.on(query, function(data) {
-            requestAnimationFrame(() => {self._update(data)});
-        });
     },
 
     componentWillUnmount: function() {
@@ -67,9 +58,45 @@ var LiveGame = React.createClass({
             canvasContext : context,
             canvasWidth : width,
             canvasHeight : height,
-            players : [],
-            teams : null,
+            players : playerStore.getHomeAwayPlayers(),
+            teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame()
+        });
+
+        //If game set, than get players.
+        if((typeof this.state.players['home'] === 'undefined') && (typeof this.state.game._id !== 'undefined')) {
+            playerActions.getPlayersByTeamRequest(this.state.game.teamHomeId, this.state.game.teamAwayId);
+        }
+
+        //If players set, than init sockets.
+        if((typeof this.state.players['home'] !== 'undefined') && (!isSocketsInit)) {
+            isSocketsInit = true;
+            this._initSockets();
+        }
+    },
+
+    _initSockets : function() {
+        var self = this;
+        this.state.players['home'].forEach(function(player) {
+            socket.on('connect', function() {
+                console.log('Connection with socket');
+            });
+
+            socket.on(player._id, function(data) {
+                console.log(data);
+                requestAnimationFrame(() => {self._update(data)});
+            });
+        });
+
+        this.state.players['away'].forEach(function(player) {
+            socket.on('connect', function() {
+                console.log('Connection with socket');
+            });
+
+            socket.on(player._id, function(data) {
+                console.log(data);
+                requestAnimationFrame(() => {self._update(data)});
+            });
         });
     },
 
@@ -96,12 +123,14 @@ var LiveGame = React.createClass({
     },
 
     render: function() {
+        var homeTeam = typeof this.state.game._id === 'undefined' ? 'Home' : this.state.teams[this.state.game._id].home.name;
+        var awayTeam = typeof this.state.game._id === 'undefined' ? 'Away' : this.state.teams[this.state.game._id].away.name;
         return(
             <div>
         	   <section className="live game">
-            	   <h1>This is a live game.</h1>
+            	   <h1>{homeTeam} - {awayTeam}</h1>
 				   <canvas ref="gameCanvas" id="gameCanvas" className="gameCanvas" width="1200" height="600"></canvas>
-                </section>
+               </section>
             </div>
         );
     }

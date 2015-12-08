@@ -21,7 +21,7 @@
             orientation: 0,
             timestamp: new Date().getMilliseconds(),
             estimoteLocationId: 'BlaBla',
-            playerId: 'playerId1',
+            playerId: '565d6fe29b971a0d10f9a5e7',
             teamId: 'teamId2',
             gameId: 'gameId3'
         };
@@ -37,7 +37,7 @@
                 orientation : 0,
                 timestamp : new Date().getMilliseconds(),
                 estimoteLocationId : 'BlaBla',
-                playerId : 'playerId1',
+                playerId : '565d6fe29b971a0d10f9a5e7',
                 teamId : 'teamId2',
                 gameId : 'gameId3'
             };
@@ -52,7 +52,7 @@
         clearInterval(tmr);
     });
 
-    socket.on('gameId3', function(msg){
+    socket.on('565d6fe29b971a0d10f9a5e7', function(msg){
         $('#root').append($('<li>').text(JSON.stringify(msg)));
     });
 </script>

@@ -10,7 +10,7 @@ var positionHandler = function(io) {
     io.on('connection', function(socket) {
         //Server gets a position and emits it to subscribers.
         socket.on('position', function(msg) {
-            io.emit(msg.gameId, msg);
+            io.emit(msg.playerId, msg);
         });
 
         //Server gets a positions and saves it in the database.
