@@ -2,9 +2,9 @@ PODS:
   - Alamofire (3.1.3)
   - EstimoteIndoorSDK (2.0.1):
     - EstimoteSDK (~> 3.8)
-  - EstimoteSDK (3.8.0)
-  - Socket.IO-Client-Swift (4.1.2)
-  - SwiftyJSON (2.3.1)
+  - EstimoteSDK (3.8.1)
+  - Socket.IO-Client-Swift (4.1.3)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire
@@ -15,8 +15,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
   EstimoteIndoorSDK: 51c4086e920a6675483c9487b57dd22ed88c779f
-  EstimoteSDK: 660effc9b3e26f0c90cc7e36fdf802e4c9afe359
-  Socket.IO-Client-Swift: e9e173cf20d6fa33c1c1c4f6354c7b168259eeb6
-  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  EstimoteSDK: 34a31f7ad07bfeb58015f7decd01e1c20cbe8c45
+  Socket.IO-Client-Swift: 86bb1843673eafed0bd5a604f9fd131e00895d54
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0
