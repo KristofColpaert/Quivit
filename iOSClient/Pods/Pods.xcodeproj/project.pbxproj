@@ -7,52 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		025406CCA2E6244924BE30F48E04A482 /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894CAC97F0A023021101FEC60F62B3C2 /* SocketIOClientStatus.swift */; };
+		01EA774D01088D08366EE473F1207DF8 /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671E69B543C9EE37D09EC5256D266FE0 /* SocketEngineSpec.swift */; };
 		03F494989CC1A8857B68A317D5D6860F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69001908A366441672702D2F6F75FC40 /* Response.swift */; };
-		063D487D1F58A6303B1C1CC737DA14FA /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E735E95BA0B68D67232879BAE8FA1 /* SwiftRegex.swift */; };
 		0681ADC8BAE2C3185F13487BAAB4D9DD /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEC605EB27B00366AA0A62392739CEF /* Upload.swift */; };
-		11CC92D5C04046BD287822C3999340F3 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1202B8EF9BFBBCD684B2A60AF3E8239 /* SocketAnyEvent.swift */; };
+		0867EB32EC1F2D35481905692ABD31A2 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD2C243251F0C487B4916313BD2347 /* SwiftRegex.swift */; };
+		0A1F4AEF23447A80ED1FC9B84FE6ED7D /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882A0C6F4B76ECE0660A5BA871F33FE0 /* SocketTypes.swift */; };
 		20EA895ACE0F01AAAEBEE5997DDD41A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		2138900477C52509652BA27054B3648F /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F4482A8E090DF697748977B983030 /* SocketParser.swift */; };
+		28BCD1C29B6BC703AA1DD8E22EFCB860 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59574645F80EA276FB48D1938AF817 /* SocketEngine.swift */; };
 		2C5450AC69398958CF6F7539EF7D99E5 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09EE411FF594AE6332B13A749B6D1EA3 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2CFD5D8011C5B7603315830E26E4CAF6 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEF50A809CE0B93FDA70DC993E43A42 /* SocketTypes.swift */; };
+		3A8A655D91D410F7EDB33B048E2CAA4D /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD929A9D914442A82AB5E8E78966D6F /* SocketEngineClient.swift */; };
+		45320869DE837A11CA266077A5C59FA4 /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C7B7536CF83CDA4D65FE61B72CEDAE /* SocketStringReader.swift */; };
+		460EA84CE55A7CB8DBEE54E33B0852FF /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A531A98C83EDC52337FB696E4E0173 /* SocketParser.swift */; };
+		4C7DB47FF2D36556274C65DFAF630B2A /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E6E64B10B8EAF3CD9E613E21553DF2 /* WebSocket.swift */; };
 		4C86DB62DD500E88E5A574AB36DD0344 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		4DE5FCC41D100B113B6645EA64410F16 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1E33EE069B78BB2FEC52C5BEE3985A /* ParameterEncoding.swift */; };
 		51002C95207069832B4206CA617FF45F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4056A635E53084AFA30A09CE09552312 /* SwiftyJSON.swift */; };
-		68BEB4A414DDA9F3EA3639BF6E8DFF8A /* Socket.IO-Client-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C5565C93BDFACCD392922AE14C8FF60 /* Socket.IO-Client-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6EC69E3FF22BF066006884706EAE363E /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76227E9BB1E3C07A20C620ECFC623E4 /* SocketPacket.swift */; };
+		68BEB4A414DDA9F3EA3639BF6E8DFF8A /* Socket.IO-Client-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C89562579E07872F6C1EA55FD91B6F8 /* Socket.IO-Client-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		709806E61B276F43D72813A83C6FBAB7 /* SocketFixUTF8.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4E1CA002B925001980EC385443DCC /* SocketFixUTF8.swift */; };
+		77C1F4E237A09CC631CF729BF9877CAC /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD940683A0B788866F71037A8EF520F3 /* SocketAckEmitter.swift */; };
 		80F496237530D382A045A29654D8C11C /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2604EBBE8B4D2AF460B267825673F2DF /* ServerTrustPolicy.swift */; };
 		82677E029F3B20CA0E30A66EA08D4A4C /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		82877391F6F275586DF203E487C10271 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F265B54CB5087669BECD8E8B4EEF9 /* SocketAckManager.swift */; };
 		82971968CBDAB224212EEB4607C9FB8D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D683EC826769A8CD7FDEEC6927A067F /* Result.swift */; };
-		83178B1330CB9B370AD2AB01DF71623F /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9BB22E3D14A041CB1271C432640795 /* SocketEngine.swift */; };
 		8399DBEE3E2D98EB1F466132E476F4D9 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9BBE44F00B6743D24B4E10474B5533 /* MultipartFormData.swift */; };
-		85176883102079A977C538DD77FBB10E /* Socket.IO-Client-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92705223D0E8666589CE765715F80B61 /* Socket.IO-Client-Swift-dummy.m */; };
+		85176883102079A977C538DD77FBB10E /* Socket.IO-Client-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E01CEF13F1840A4D69227EB6C7DD763 /* Socket.IO-Client-Swift-dummy.m */; };
 		8ADB6E0C795D8F4E8FB821E1207E9845 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8631AF6BF454AC2BCF69DC6A3D00BB63 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9157DBA331C8BE84639E13D3ECD96749 /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653B610ED4542ECFE24CD9BD4D05EB06 /* SocketIOClientOption.swift */; };
-		95F5881D613771140728499A18835CB2 /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74128A85FB70A7BE6C19E24F66E2C037 /* SocketStringReader.swift */; };
 		96D99D0C2472535A169DED65CB231CD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		A2C172FE407C0BC3478ADCA91A6C9CEC /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB97D8592FDBAB9E16BE8DDD2C53FC3 /* Manager.swift */; };
 		A3505FA2FB3067D53847AD288AC04F03 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631066CDED0A1E0CB1F0610667233FB /* Download.swift */; };
-		A51E90550AC147273616C803B4E21BBD /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF870D2B49B11D69971BE5D1748CD728 /* SocketEventHandler.swift */; };
-		A9A8A823F835EB2D02F2C173B30C93AB /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C2D34086260C4D230C1BF39BC7571 /* SocketAckEmitter.swift */; };
-		AB7E3CB534F4A5ECE7F0E41A9254AF38 /* SocketFixUTF8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B51F778D60667AF6CE62A8A6D8B952 /* SocketFixUTF8.swift */; };
+		A3DCEB54CFBF1AB5385BCBA3127C52B4 /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0BF4CE30FC16D74B1EF13FBB76438E /* SocketIOClientOption.swift */; };
+		AC148C5DAFCA9F4A5D1295D8FE3B3FEB /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441955B701CE5CCFC371D7F4065C23A5 /* SocketPacket.swift */; };
 		B0FB4B01682814B9E3D32F9DC4A5E762 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C042924CD317B566DCC353437247996 /* Alamofire.swift */; };
 		B6D2DC3E3DA44CD382B9B425F40E11C1 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B9EB13DBA3DF049533D77237D24E7 /* Alamofire-dummy.m */; };
+		BB96639B41D8BBEC85BEDEDA4D86EE0D /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5DE746F15971C1A95EEC09AD04BFF0 /* SocketIOClientStatus.swift */; };
 		BF52DF95845398152DDDA1B3298ECE9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		C14648C93D2FAEF06E84FB57D89759A4 /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3CC42705519C66A1827D67E32C64C /* SocketEnginePacketType.swift */; };
+		C57D4D8A6E22226BA458400E377CDFDC /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E0ADBF198A459AB2C4C2239BC9627 /* SocketLogger.swift */; };
 		C75519F0450166A6F28126ECC7664E9C /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B5C624F55B296850E1EA669370CC0 /* Validation.swift */; };
-		CDB9EED728889E9D1ECA01AE3985E14C /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0A7DEEC0ADCCFDA75E26441EAED52 /* SocketLogger.swift */; };
+		C7E8F7F29C69385E38343CE730BA0C3D /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05CE2AFB71A927CBF67A174DD3EC777 /* SocketAckManager.swift */; };
+		D074C67E9FD5186EC3930CA9B942867B /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34664DF8197D6D067B6B26DB1F2950E /* SocketAnyEvent.swift */; };
 		D21B7325B3642887BFBE977E021F2D26 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8908275351F544A4DA3827B287E1C62 /* ResponseSerialization.swift */; };
-		D319E081E2DB06F40E0010A31B562525 /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF6886F94FD875FD9305F9816AAEE7 /* SocketEngineClient.swift */; };
 		D75CA395D510E08C404E55F5BDAE55CE /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642B7FC6BA17CF44ED0080555E0348F /* Error.swift */; };
-		DB5F0E231B2D31F83F79ED754A35FA99 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BF6FB681EFA43C4CCB62728A4D4062 /* WebSocket.swift */; };
-		DBB04BF35B9639ECC31B5DD677F9B810 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3ED4F9175DD53DE6447E3F6626333 /* SocketIOClient.swift */; };
+		DB21BFA17CFED8FAB79A2615888067C4 /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499C922DB69214AAAEA4088AF5A793A /* SocketEnginePacketType.swift */; };
 		DCC856A0C440529CBD67E6499A83B2E8 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
+		ED02054C077691BE88B5DC6165F828CA /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FD77539BE1FD58ECB901458C836495 /* SocketEventHandler.swift */; };
+		F863DC104C256974D707B9F5F0B33718 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BB74C265CD8159FADCDAFF09E5671 /* SocketIOClient.swift */; };
 		FB4C16FB4E5B363D7E4F56C0948D1B7B /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F43D9724545704C51C9D43AECCEC9E8 /* SwiftyJSON-dummy.m */; };
 		FC14480CECE872865A9C6E584F886DA3 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D48243E7A9BB5F19293F62586E70D2 /* Request.swift */; };
 		FEF0D7653948988B804226129471C1EC /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057971D3649ACE9B2A6B8D557B105DE2 /* Stream.swift */; };
-		FF12FDD583A481F70B2F2073810C84E5 /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395EFDAF76C963C1430A55CBA1E49B42 /* SocketEngineSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,8 +89,8 @@
 		095BEA50CF60D3CE79B5623B29013611 /* EstimoteSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EstimoteSDK.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/EstimoteSDK.h; sourceTree = "<group>"; };
 		09EE411FF594AE6332B13A749B6D1EA3 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		0C9D2B063AB97111B547995F0629D8F1 /* ESTEddystoneFilterUID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTEddystoneFilterUID.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTEddystoneFilterUID.h; sourceTree = "<group>"; };
+		0CBD2C243251F0C487B4916313BD2347 /* SwiftRegex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftRegex.swift; path = Source/SwiftRegex.swift; sourceTree = "<group>"; };
 		0D76E7CB1D38B1200921F094F0047B1A /* EILRequestFetchLocations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILRequestFetchLocations.h; path = EstimoteIndoorLocationSDK/Headers/EILRequestFetchLocations.h; sourceTree = "<group>"; };
-		0D7C2D34086260C4D230C1BF39BC7571 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAckEmitter.swift; path = SocketIOClientSwift/SocketAckEmitter.swift; sourceTree = "<group>"; };
 		0E1CCAD50DF73DE52462B19CE7480155 /* ESTNearableSettingBroadcastingPower.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTNearableSettingBroadcastingPower.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTNearableSettingBroadcastingPower.h; sourceTree = "<group>"; };
 		0E58209A8772D7BA22AF07CC9D010117 /* ESTTrigger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTTrigger.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTTrigger.h; sourceTree = "<group>"; };
 		110E2442CE8E55DC3F4248C10E0BB281 /* ESTDateRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTDateRule.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTDateRule.h; sourceTree = "<group>"; };
@@ -104,9 +104,10 @@
 		1D0B9EB13DBA3DF049533D77237D24E7 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		1D8F811A865552707894A57E2C2B1469 /* avatar.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = avatar.png; path = EstimoteIndoorLocationSDK/Resources/avatar.png; sourceTree = "<group>"; };
 		1E1E33EE069B78BB2FEC52C5BEE3985A /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
-		1F9E90CF42D377321A3B81827190817B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20138005B73E91D5CE90165C7C30AB0C /* ESTSettingProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTSettingProtocol.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTSettingProtocol.h; sourceTree = "<group>"; };
 		207E461689F301D4532524E74D283C43 /* ESTUtilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTUtilityManager.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTUtilityManager.h; sourceTree = "<group>"; };
+		209E0ADBF198A459AB2C4C2239BC9627 /* SocketLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketLogger.swift; path = Source/SocketLogger.swift; sourceTree = "<group>"; };
+		25E6E64B10B8EAF3CD9E613E21553DF2 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Source/WebSocket.swift; sourceTree = "<group>"; };
 		2604EBBE8B4D2AF460B267825673F2DF /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		26E0CAE547780C32522A813F2CCC3031 /* ESTRequestCancelPendingSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestCancelPendingSettings.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestCancelPendingSettings.h; sourceTree = "<group>"; };
 		2A7A33927362C9AF4A239B890E6FADE7 /* ESTEddystoneFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTEddystoneFilter.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTEddystoneFilter.h; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		326BDDAE138DC3B3F08AF3EE70E6983C /* ESTDeviceSettingProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTDeviceSettingProtocol.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTDeviceSettingProtocol.h; sourceTree = "<group>"; };
 		341540125286339BB53363E89B406D46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B197A489A657A500C9FB15C0BC3134 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
-		395EFDAF76C963C1430A55CBA1E49B42 /* SocketEngineSpec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngineSpec.swift; path = SocketIOClientSwift/SocketEngineSpec.swift; sourceTree = "<group>"; };
 		39A2343D33360CB917E4F747AF2C3630 /* EILRequestFetchPublicLocations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILRequestFetchPublicLocations.h; path = EstimoteIndoorLocationSDK/Headers/EILRequestFetchPublicLocations.h; sourceTree = "<group>"; };
 		3C3B5C624F55B296850E1EA669370CC0 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -127,41 +127,38 @@
 		4056A635E53084AFA30A09CE09552312 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		40E238506DCC11BC8718F7A4C4790701 /* ESTRequestPatchJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestPatchJSON.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestPatchJSON.h; sourceTree = "<group>"; };
 		4135C76D5867B83D91908D71266D9E1A /* EILLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILLocation.h; path = EstimoteIndoorLocationSDK/Headers/EILLocation.h; sourceTree = "<group>"; };
+		441955B701CE5CCFC371D7F4065C23A5 /* SocketPacket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketPacket.swift; path = Source/SocketPacket.swift; sourceTree = "<group>"; };
 		447CD5D83531EFD9D3E2FBE9B06946F8 /* ESTNearable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTNearable.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTNearable.h; sourceTree = "<group>"; };
 		449F3E52FC605BCF0A10322458C72433 /* beacon_grey@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "beacon_grey@2x.png"; path = "EstimoteIndoorLocationSDK/Resources/beacon_grey@2x.png"; sourceTree = "<group>"; };
-		44B51F778D60667AF6CE62A8A6D8B952 /* SocketFixUTF8.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketFixUTF8.swift; path = SocketIOClientSwift/SocketFixUTF8.swift; sourceTree = "<group>"; };
 		4631066CDED0A1E0CB1F0610667233FB /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
 		48BE5A9CEC7A4AFE2D564E833CAEA4A0 /* ESTNearableSettingBootVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTNearableSettingBootVersion.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTNearableSettingBootVersion.h; sourceTree = "<group>"; };
-		4A9E735E95BA0B68D67232879BAE8FA1 /* SwiftRegex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftRegex.swift; path = SocketIOClientSwift/SwiftRegex.swift; sourceTree = "<group>"; };
 		4A9F34F4F58BE057CB0E44FF192FBCD3 /* EILIndoorLocationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILIndoorLocationView.h; path = EstimoteIndoorLocationSDK/Headers/EILIndoorLocationView.h; sourceTree = "<group>"; };
 		4B10D4D32CD40F447BFD32D326993A1F /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
 		4BA8E8CEF81748A7858F030EE2BC3E4A /* ESTNearableSettingHardwareVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTNearableSettingHardwareVersion.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTNearableSettingHardwareVersion.h; sourceTree = "<group>"; };
+		4E01CEF13F1840A4D69227EB6C7DD763 /* Socket.IO-Client-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Socket.IO-Client-Swift-dummy.m"; sourceTree = "<group>"; };
 		52D48243E7A9BB5F19293F62586E70D2 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		535BB74C265CD8159FADCDAFF09E5671 /* SocketIOClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClient.swift; path = Source/SocketIOClient.swift; sourceTree = "<group>"; };
 		548C4409B9B3C27CE79CCA2E46A10984 /* ESTBeaconManagerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTBeaconManagerDelegate.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTBeaconManagerDelegate.h; sourceTree = "<group>"; };
 		54A1BF38533041A6593BC1AB9ED873E4 /* EILOrientedLineSegment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILOrientedLineSegment.h; path = EstimoteIndoorLocationSDK/Headers/EILOrientedLineSegment.h; sourceTree = "<group>"; };
 		558E7A26F0F99A1442B2B4153F068EC1 /* Socket_IO_Client_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Socket_IO_Client_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B3F265B54CB5087669BECD8E8B4EEF9 /* SocketAckManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAckManager.swift; path = SocketIOClientSwift/SocketAckManager.swift; sourceTree = "<group>"; };
 		5C50934C6F7DB243AE6212E53308B506 /* libEstimoteIndoorSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libEstimoteIndoorSDK.a; path = EstimoteIndoorLocationSDK/libEstimoteIndoorSDK.a; sourceTree = "<group>"; };
 		5D683EC826769A8CD7FDEEC6927A067F /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		5DD0361B8F2838C01433A5293A373A7C /* ESTBeaconRecentConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTBeaconRecentConfig.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTBeaconRecentConfig.h; sourceTree = "<group>"; };
-		5EFF6886F94FD875FD9305F9816AAEE7 /* SocketEngineClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngineClient.swift; path = SocketIOClientSwift/SocketEngineClient.swift; sourceTree = "<group>"; };
+		5DEE771A390DE2C97DB0A2A6EAAA5B44 /* Socket.IO-Client-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Socket.IO-Client-Swift.modulemap"; sourceTree = "<group>"; };
 		5FF68EB40ED929F33C4AB0EA877F4790 /* ESTRequestBeaconColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestBeaconColor.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestBeaconColor.h; sourceTree = "<group>"; };
-		653B610ED4542ECFE24CD9BD4D05EB06 /* SocketIOClientOption.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientOption.swift; path = SocketIOClientSwift/SocketIOClientOption.swift; sourceTree = "<group>"; };
-		65B3CC42705519C66A1827D67E32C64C /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEnginePacketType.swift; path = SocketIOClientSwift/SocketEnginePacketType.swift; sourceTree = "<group>"; };
 		65C950006C189F27FE53BC0EECEAB66D /* ESTRequestGetBeacons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestGetBeacons.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestGetBeacons.h; sourceTree = "<group>"; };
-		66470C26CAAAF13E8BF383DCB7E893B4 /* Socket.IO-Client-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-prefix.pch"; sourceTree = "<group>"; };
+		671E69B543C9EE37D09EC5256D266FE0 /* SocketEngineSpec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngineSpec.swift; path = Source/SocketEngineSpec.swift; sourceTree = "<group>"; };
 		673E74047DF80EDBF32341BF0FEB924C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		67BF6FB681EFA43C4CCB62728A4D4062 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = SocketIOClientSwift/WebSocket.swift; sourceTree = "<group>"; };
 		68C59E830261D8B01BA4F5EFBFC607AE /* ESTBeaconFirmwareVO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTBeaconFirmwareVO.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTBeaconFirmwareVO.h; sourceTree = "<group>"; };
 		68F5252D0774D6DE426D4AF670F7002B /* ESTEddystoneUID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTEddystoneUID.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTEddystoneUID.h; sourceTree = "<group>"; };
 		69001908A366441672702D2F6F75FC40 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		695F67C9C42F211C606879282E9BACAD /* ESTSimulatedNearableManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTSimulatedNearableManager.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTSimulatedNearableManager.h; sourceTree = "<group>"; };
 		6AAD8EAC715D8CA148D9FCA690ED4C49 /* ESTEddystone.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTEddystone.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTEddystone.h; sourceTree = "<group>"; };
-		6AEF50A809CE0B93FDA70DC993E43A42 /* SocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = SocketIOClientSwift/SocketTypes.swift; sourceTree = "<group>"; };
 		6BEDD12DB6C09EDFA162336A573A93D9 /* ESTRequestBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestBase.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestBase.h; sourceTree = "<group>"; };
-		6C5565C93BDFACCD392922AE14C8FF60 /* Socket.IO-Client-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-umbrella.h"; sourceTree = "<group>"; };
+		6C89562579E07872F6C1EA55FD91B6F8 /* Socket.IO-Client-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-umbrella.h"; sourceTree = "<group>"; };
+		6E59574645F80EA276FB48D1938AF817 /* SocketEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngine.swift; path = Source/SocketEngine.swift; sourceTree = "<group>"; };
+		732A48880BD0DA3E4F4F2231E4FE80CD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73C0A1AAA2D068DCFE83F58351A7E8D5 /* ESTRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRule.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRule.h; sourceTree = "<group>"; };
-		74128A85FB70A7BE6C19E24F66E2C037 /* SocketStringReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketStringReader.swift; path = SocketIOClientSwift/SocketStringReader.swift; sourceTree = "<group>"; };
 		75EFC6EBC0E82A52CAE3BEE885B0108A /* ESTRequestPostJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestPostJSON.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestPostJSON.h; sourceTree = "<group>"; };
 		762B707E9A5AF649CFAA2E628EFA250A /* beaconIcySmall@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "beaconIcySmall@2x.png"; path = "EstimoteIndoorLocationSDK/Resources/beaconIcySmall@2x.png"; sourceTree = "<group>"; };
 		763F98E724898DEE7FFC5D9D4A448C92 /* EILRequestRemoveLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILRequestRemoveLocation.h; path = EstimoteIndoorLocationSDK/Headers/EILRequestRemoveLocation.h; sourceTree = "<group>"; };
@@ -169,22 +166,22 @@
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
 		7C8F20CAFE8D8756AFFF42A7DBFC5B12 /* EILIndoorLocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILIndoorLocationManager.h; path = EstimoteIndoorLocationSDK/Headers/EILIndoorLocationManager.h; sourceTree = "<group>"; };
 		81B9C77771C6428193EC90206D74A715 /* ESTEddystoneFilterURL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTEddystoneFilterURL.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTEddystoneFilterURL.h; sourceTree = "<group>"; };
+		81FD77539BE1FD58ECB901458C836495 /* SocketEventHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEventHandler.swift; path = Source/SocketEventHandler.swift; sourceTree = "<group>"; };
 		82A57044F06F6D265593FACD4D699571 /* beaconMintSmall.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = beaconMintSmall.png; path = EstimoteIndoorLocationSDK/Resources/beaconMintSmall.png; sourceTree = "<group>"; };
 		82ABFAF60B7146576F385ED7E15CC9A3 /* avatar@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "avatar@2x.png"; path = "EstimoteIndoorLocationSDK/Resources/avatar@2x.png"; sourceTree = "<group>"; };
 		842B812A6A3F3779B9835DD83B7EABAF /* beaconIcySmall.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = beaconIcySmall.png; path = EstimoteIndoorLocationSDK/Resources/beaconIcySmall.png; sourceTree = "<group>"; };
 		8631AF6BF454AC2BCF69DC6A3D00BB63 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		86BE3D4B045E2F1BA4C46A26401F347F /* ESTRequestRegisterDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestRegisterDevice.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestRegisterDevice.h; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		894CAC97F0A023021101FEC60F62B3C2 /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientStatus.swift; path = SocketIOClientSwift/SocketIOClientStatus.swift; sourceTree = "<group>"; };
+		882A0C6F4B76ECE0660A5BA871F33FE0 /* SocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = Source/SocketTypes.swift; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		896BDA7569FFC915B070F06F0DFADF61 /* ESTSecureBeaconManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTSecureBeaconManager.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTSecureBeaconManager.h; sourceTree = "<group>"; };
-		8AE0A7DEEC0ADCCFDA75E26441EAED52 /* SocketLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketLogger.swift; path = SocketIOClientSwift/SocketLogger.swift; sourceTree = "<group>"; };
+		8E0BF4CE30FC16D74B1EF13FBB76438E /* SocketIOClientOption.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientOption.swift; path = Source/SocketIOClientOption.swift; sourceTree = "<group>"; };
 		8E22FBDAA36CB0E9443E1C2041951863 /* ESTEddystoneManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTEddystoneManager.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTEddystoneManager.h; sourceTree = "<group>"; };
 		8FA9B87001928CF868EEF5A16CC4C228 /* ESTBeaconUpdateConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTBeaconUpdateConfig.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTBeaconUpdateConfig.h; sourceTree = "<group>"; };
 		91A8D21436D5926758488EA66BADD77A /* ESTRequestDelete.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestDelete.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestDelete.h; sourceTree = "<group>"; };
-		92705223D0E8666589CE765715F80B61 /* Socket.IO-Client-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Socket.IO-Client-Swift-dummy.m"; sourceTree = "<group>"; };
-		934D2B9509FB1B32E9B6742307E8BE10 /* Socket.IO-Client-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Socket.IO-Client-Swift.modulemap"; sourceTree = "<group>"; };
 		939D7D1954702DD8E01BD330D75143DF /* ESTTemperatureRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTTemperatureRule.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTTemperatureRule.h; sourceTree = "<group>"; };
+		9499C922DB69214AAAEA4088AF5A793A /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEnginePacketType.swift; path = Source/SocketEnginePacketType.swift; sourceTree = "<group>"; };
 		965BF3F00AB61105B0E13325DC054CDC /* ESTDeviceConnectable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTDeviceConnectable.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTDeviceConnectable.h; sourceTree = "<group>"; };
 		977577C045EDA9D9D1F46E2598D19FC7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
 		9786EFA372AF343FAAD50E6784D81232 /* EILOrientedPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILOrientedPoint.h; path = EstimoteIndoorLocationSDK/Headers/EILOrientedPoint.h; sourceTree = "<group>"; };
@@ -196,24 +193,25 @@
 		9C042924CD317B566DCC353437247996 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		9CA1A3E545281DED8D4CE260057DE8C4 /* EILLocationLinearObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILLocationLinearObject.h; path = EstimoteIndoorLocationSDK/Headers/EILLocationLinearObject.h; sourceTree = "<group>"; };
 		A0EA35AB8185A987889A86B1404394E1 /* ESTRequestGetSettingsHistory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestGetSettingsHistory.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestGetSettingsHistory.h; sourceTree = "<group>"; };
+		A34664DF8197D6D067B6B26DB1F2950E /* SocketAnyEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAnyEvent.swift; path = Source/SocketAnyEvent.swift; sourceTree = "<group>"; };
+		A3A531A98C83EDC52337FB696E4E0173 /* SocketParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketParser.swift; path = Source/SocketParser.swift; sourceTree = "<group>"; };
 		A6BCD4D9F0C4F10AC03EC678EDA9909D /* avatar@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "avatar@3x.png"; path = "EstimoteIndoorLocationSDK/Resources/avatar@3x.png"; sourceTree = "<group>"; };
 		A70E0CAADB37039E34A53DEDC4B55554 /* ESTNearableVO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTNearableVO.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTNearableVO.h; sourceTree = "<group>"; };
+		A9C7B7536CF83CDA4D65FE61B72CEDAE /* SocketStringReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketStringReader.swift; path = Source/SocketStringReader.swift; sourceTree = "<group>"; };
 		AAE13F532BD4C94F7E3D2E225E2BF683 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
 		AC1B1D41E5A9EBFB03B65B4B90ABCEB1 /* ESTBeaconManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTBeaconManager.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTBeaconManager.h; sourceTree = "<group>"; };
 		AC428587C59D0C14B9D89292E37CDD90 /* ESTDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTDevice.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTDevice.h; sourceTree = "<group>"; };
 		B44947880A4236A4CEAD18F6141B8325 /* ESTCloudSettingProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTCloudSettingProtocol.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTCloudSettingProtocol.h; sourceTree = "<group>"; };
 		B642B7FC6BA17CF44ED0080555E0348F /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
-		B6E3ED4F9175DD53DE6447E3F6626333 /* SocketIOClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClient.swift; path = SocketIOClientSwift/SocketIOClient.swift; sourceTree = "<group>"; };
 		B81898F377ADC6F2D677FE8FFED3E202 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B980F38EEDAA2997CB88C571E3088B9D /* ESTNearableRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTNearableRule.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTNearableRule.h; sourceTree = "<group>"; };
-		B9DD3D05AFEBADBAAAE22926230F9EFF /* Socket.IO-Client-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Socket.IO-Client-Swift.xcconfig"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BC6B53529230EDC82FC387A3BFD1C1A2 /* beaconMintSmall@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "beaconMintSmall@2x.png"; path = "EstimoteIndoorLocationSDK/Resources/beaconMintSmall@2x.png"; sourceTree = "<group>"; };
 		BD5A4C648AF69036AA91BBACAB695771 /* ESTBeaconRecentUpdateInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTBeaconRecentUpdateInfo.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTBeaconRecentUpdateInfo.h; sourceTree = "<group>"; };
+		BD5DE746F15971C1A95EEC09AD04BFF0 /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientStatus.swift; path = Source/SocketIOClientStatus.swift; sourceTree = "<group>"; };
 		BD8CB7045D1873D94DAEA3E00CBEFB56 /* EILRequestFetchLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILRequestFetchLocation.h; path = EstimoteIndoorLocationSDK/Headers/EILRequestFetchLocation.h; sourceTree = "<group>"; };
-		C1202B8EF9BFBBCD684B2A60AF3E8239 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAnyEvent.swift; path = SocketIOClientSwift/SocketAnyEvent.swift; sourceTree = "<group>"; };
+		BDD929A9D914442A82AB5E8E78966D6F /* SocketEngineClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngineClient.swift; path = Source/SocketEngineClient.swift; sourceTree = "<group>"; };
 		C3CD8716E81928F2F0AF199FBBA084EC /* ESTDefinitions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTDefinitions.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTDefinitions.h; sourceTree = "<group>"; };
-		C76227E9BB1E3C07A20C620ECFC623E4 /* SocketPacket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketPacket.swift; path = SocketIOClientSwift/SocketPacket.swift; sourceTree = "<group>"; };
 		C77434009EB0F30258239347A05A2FD3 /* ESTMotionRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTMotionRule.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTMotionRule.h; sourceTree = "<group>"; };
 		C7F1A20AF725F4F1F669FD29F6CC3AA2 /* ESTRequestBeaconMac.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestBeaconMac.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestBeaconMac.h; sourceTree = "<group>"; };
 		C90BCF2861218740703EC725B835B91F /* ESTRequestGetJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestGetJSON.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestGetJSON.h; sourceTree = "<group>"; };
@@ -222,6 +220,7 @@
 		CA8CA711CB25C0B3E524E54C717513DD /* beaconBlueberrySmall@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "beaconBlueberrySmall@2x.png"; path = "EstimoteIndoorLocationSDK/Resources/beaconBlueberrySmall@2x.png"; sourceTree = "<group>"; };
 		CB159CD0C3566E6D9C9C3EFAF5E771CA /* EILPositionedBeacon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILPositionedBeacon.h; path = EstimoteIndoorLocationSDK/Headers/EILPositionedBeacon.h; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		CEB4E1CA002B925001980EC385443DCC /* SocketFixUTF8.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketFixUTF8.swift; path = Source/SocketFixUTF8.swift; sourceTree = "<group>"; };
 		CF246E5C58200882C7E586BA7E08196F /* EILPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILPoint.h; path = EstimoteIndoorLocationSDK/Headers/EILPoint.h; sourceTree = "<group>"; };
 		D0122284CC18136928A51B113D34D934 /* ESTEddystoneTelemetry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTEddystoneTelemetry.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTEddystoneTelemetry.h; sourceTree = "<group>"; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -231,9 +230,9 @@
 		D93683C22F603150109993F4A41172D4 /* ESTRequestBeaconDetails.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestBeaconDetails.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestBeaconDetails.h; sourceTree = "<group>"; };
 		DA312349A49333542E6F4B36B329960E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		DB4C3045A5B0AED4AAE306B1FD4845C7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF9BB22E3D14A041CB1271C432640795 /* SocketEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngine.swift; path = SocketIOClientSwift/SocketEngine.swift; sourceTree = "<group>"; };
 		DFF4923787EFF7C0953E9DE6275A4FDA /* ESTRequestGetBeaconsDetails.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestGetBeaconsDetails.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestGetBeaconsDetails.h; sourceTree = "<group>"; };
 		E31DE7D04CE340BBF1A216D961E27EC6 /* ESTRequestAssignGPSLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestAssignGPSLocation.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestAssignGPSLocation.h; sourceTree = "<group>"; };
+		E5D6DD10BAC587C37C264769BF15FC27 /* Socket.IO-Client-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-prefix.pch"; sourceTree = "<group>"; };
 		E64C6B1FD615B9EE6B73F2878A359C0C /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -241,7 +240,8 @@
 		ECA7083AB296F2414C08D6DD766A538B /* ESTProximityRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTProximityRule.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTProximityRule.h; sourceTree = "<group>"; };
 		EED79F51C80EDF7671B9310B5BC13F46 /* ESTNotificationSettingProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTNotificationSettingProtocol.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTNotificationSettingProtocol.h; sourceTree = "<group>"; };
 		EF8335945491DD193A36EE19D8B5E5C4 /* ESTOrientationRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTOrientationRule.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTOrientationRule.h; sourceTree = "<group>"; };
-		EF870D2B49B11D69971BE5D1748CD728 /* SocketEventHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEventHandler.swift; path = SocketIOClientSwift/SocketEventHandler.swift; sourceTree = "<group>"; };
+		F05CE2AFB71A927CBF67A174DD3EC777 /* SocketAckManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAckManager.swift; path = Source/SocketAckManager.swift; sourceTree = "<group>"; };
+		F53D2C3DCE9B3FD84D029FDF7D9709E9 /* Socket.IO-Client-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Socket.IO-Client-Swift.xcconfig"; sourceTree = "<group>"; };
 		F67C20FA0621ED53FDF9C85970D5AC98 /* ESTBeaconVO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTBeaconVO.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTBeaconVO.h; sourceTree = "<group>"; };
 		F6F95490D312B802EC3ED6116A5C15A7 /* ESTDeviceNearableSettingProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTDeviceNearableSettingProtocol.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTDeviceNearableSettingProtocol.h; sourceTree = "<group>"; };
 		F73E5A99F1321D0647AF93006701F5E9 /* EILIndoorSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EILIndoorSDK.h; path = EstimoteIndoorLocationSDK/Headers/EILIndoorSDK.h; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 		F8B72F55B5FADF705A858844BBF14D61 /* ESTRequestGetNearables.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestGetNearables.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestGetNearables.h; sourceTree = "<group>"; };
 		FA929339210E0A19D3F5BDF142A3E152 /* ESTDeviceNearable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTDeviceNearable.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTDeviceNearable.h; sourceTree = "<group>"; };
 		FBEC605EB27B00366AA0A62392739CEF /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
-		FE8F4482A8E090DF697748977B983030 /* SocketParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketParser.swift; path = SocketIOClientSwift/SocketParser.swift; sourceTree = "<group>"; };
+		FD940683A0B788866F71037A8EF520F3 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAckEmitter.swift; path = Source/SocketAckEmitter.swift; sourceTree = "<group>"; };
 		FF3C3E33F30053C9B7F95CFAB52CABA2 /* ESTRequestGetBeaconsPublicDetails.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ESTRequestGetBeaconsPublicDetails.h; path = EstimoteSDK/EstimoteSDK.framework/Versions/A/Headers/ESTRequestGetBeaconsPublicDetails.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -430,6 +430,33 @@
 			path = EstimoteIndoorSDK;
 			sourceTree = "<group>";
 		};
+		5DD7879B350AB07DA7496A78F23E6415 /* Socket.IO-Client-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				FD940683A0B788866F71037A8EF520F3 /* SocketAckEmitter.swift */,
+				F05CE2AFB71A927CBF67A174DD3EC777 /* SocketAckManager.swift */,
+				A34664DF8197D6D067B6B26DB1F2950E /* SocketAnyEvent.swift */,
+				6E59574645F80EA276FB48D1938AF817 /* SocketEngine.swift */,
+				BDD929A9D914442A82AB5E8E78966D6F /* SocketEngineClient.swift */,
+				9499C922DB69214AAAEA4088AF5A793A /* SocketEnginePacketType.swift */,
+				671E69B543C9EE37D09EC5256D266FE0 /* SocketEngineSpec.swift */,
+				81FD77539BE1FD58ECB901458C836495 /* SocketEventHandler.swift */,
+				CEB4E1CA002B925001980EC385443DCC /* SocketFixUTF8.swift */,
+				535BB74C265CD8159FADCDAFF09E5671 /* SocketIOClient.swift */,
+				8E0BF4CE30FC16D74B1EF13FBB76438E /* SocketIOClientOption.swift */,
+				BD5DE746F15971C1A95EEC09AD04BFF0 /* SocketIOClientStatus.swift */,
+				209E0ADBF198A459AB2C4C2239BC9627 /* SocketLogger.swift */,
+				441955B701CE5CCFC371D7F4065C23A5 /* SocketPacket.swift */,
+				A3A531A98C83EDC52337FB696E4E0173 /* SocketParser.swift */,
+				A9C7B7536CF83CDA4D65FE61B72CEDAE /* SocketStringReader.swift */,
+				882A0C6F4B76ECE0660A5BA871F33FE0 /* SocketTypes.swift */,
+				0CBD2C243251F0C487B4916313BD2347 /* SwiftRegex.swift */,
+				25E6E64B10B8EAF3CD9E613E21553DF2 /* WebSocket.swift */,
+				E1E55D4D572EBCDDEAA2BDE5B009EF90 /* Support Files */,
+			);
+			path = "Socket.IO-Client-Swift";
+			sourceTree = "<group>";
+		};
 		6A841178C53E00BD80A8B1230B15A2A4 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,7 +515,7 @@
 				17A4D6743E1CC1FAE4956F969E25940A /* Alamofire */,
 				543A83636AF9B134686C813184418015 /* EstimoteIndoorSDK */,
 				340AF85E255117098C090C8C35142436 /* EstimoteSDK */,
-				F8EE7CBACCE96BD4236B5567BF064929 /* Socket.IO-Client-Swift */,
+				5DD7879B350AB07DA7496A78F23E6415 /* Socket.IO-Client-Swift */,
 				6A841178C53E00BD80A8B1230B15A2A4 /* SwiftyJSON */,
 			);
 			name = Pods;
@@ -543,26 +570,26 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C2DB28148687A8F535640AA59D3B6C7A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1F9E90CF42D377321A3B81827190817B /* Info.plist */,
-				934D2B9509FB1B32E9B6742307E8BE10 /* Socket.IO-Client-Swift.modulemap */,
-				B9DD3D05AFEBADBAAAE22926230F9EFF /* Socket.IO-Client-Swift.xcconfig */,
-				92705223D0E8666589CE765715F80B61 /* Socket.IO-Client-Swift-dummy.m */,
-				66470C26CAAAF13E8BF383DCB7E893B4 /* Socket.IO-Client-Swift-prefix.pch */,
-				6C5565C93BDFACCD392922AE14C8FF60 /* Socket.IO-Client-Swift-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Socket.IO-Client-Swift";
-			sourceTree = "<group>";
-		};
 		DF5D9BEC4CCA728726C7E0B815193F1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				1550DDE36B3A107A4CEB9101D5978CD4 /* EstimoteSDK.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1E55D4D572EBCDDEAA2BDE5B009EF90 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				732A48880BD0DA3E4F4F2231E4FE80CD /* Info.plist */,
+				5DEE771A390DE2C97DB0A2A6EAAA5B44 /* Socket.IO-Client-Swift.modulemap */,
+				F53D2C3DCE9B3FD84D029FDF7D9709E9 /* Socket.IO-Client-Swift.xcconfig */,
+				4E01CEF13F1840A4D69227EB6C7DD763 /* Socket.IO-Client-Swift-dummy.m */,
+				E5D6DD10BAC587C37C264769BF15FC27 /* Socket.IO-Client-Swift-prefix.pch */,
+				6C89562579E07872F6C1EA55FD91B6F8 /* Socket.IO-Client-Swift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Socket.IO-Client-Swift";
 			sourceTree = "<group>";
 		};
 		EC744719B222CA5AD442952B3A710106 /* Support Files */ = {
@@ -577,33 +604,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Alamofire";
-			sourceTree = "<group>";
-		};
-		F8EE7CBACCE96BD4236B5567BF064929 /* Socket.IO-Client-Swift */ = {
-			isa = PBXGroup;
-			children = (
-				0D7C2D34086260C4D230C1BF39BC7571 /* SocketAckEmitter.swift */,
-				5B3F265B54CB5087669BECD8E8B4EEF9 /* SocketAckManager.swift */,
-				C1202B8EF9BFBBCD684B2A60AF3E8239 /* SocketAnyEvent.swift */,
-				DF9BB22E3D14A041CB1271C432640795 /* SocketEngine.swift */,
-				5EFF6886F94FD875FD9305F9816AAEE7 /* SocketEngineClient.swift */,
-				65B3CC42705519C66A1827D67E32C64C /* SocketEnginePacketType.swift */,
-				395EFDAF76C963C1430A55CBA1E49B42 /* SocketEngineSpec.swift */,
-				EF870D2B49B11D69971BE5D1748CD728 /* SocketEventHandler.swift */,
-				44B51F778D60667AF6CE62A8A6D8B952 /* SocketFixUTF8.swift */,
-				B6E3ED4F9175DD53DE6447E3F6626333 /* SocketIOClient.swift */,
-				653B610ED4542ECFE24CD9BD4D05EB06 /* SocketIOClientOption.swift */,
-				894CAC97F0A023021101FEC60F62B3C2 /* SocketIOClientStatus.swift */,
-				8AE0A7DEEC0ADCCFDA75E26441EAED52 /* SocketLogger.swift */,
-				C76227E9BB1E3C07A20C620ECFC623E4 /* SocketPacket.swift */,
-				FE8F4482A8E090DF697748977B983030 /* SocketParser.swift */,
-				74128A85FB70A7BE6C19E24F66E2C037 /* SocketStringReader.swift */,
-				6AEF50A809CE0B93FDA70DC993E43A42 /* SocketTypes.swift */,
-				4A9E735E95BA0B68D67232879BAE8FA1 /* SwiftRegex.swift */,
-				67BF6FB681EFA43C4CCB62728A4D4062 /* WebSocket.swift */,
-				C2DB28148687A8F535640AA59D3B6C7A /* Support Files */,
-			);
-			path = "Socket.IO-Client-Swift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -758,25 +758,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				85176883102079A977C538DD77FBB10E /* Socket.IO-Client-Swift-dummy.m in Sources */,
-				A9A8A823F835EB2D02F2C173B30C93AB /* SocketAckEmitter.swift in Sources */,
-				82877391F6F275586DF203E487C10271 /* SocketAckManager.swift in Sources */,
-				11CC92D5C04046BD287822C3999340F3 /* SocketAnyEvent.swift in Sources */,
-				83178B1330CB9B370AD2AB01DF71623F /* SocketEngine.swift in Sources */,
-				D319E081E2DB06F40E0010A31B562525 /* SocketEngineClient.swift in Sources */,
-				C14648C93D2FAEF06E84FB57D89759A4 /* SocketEnginePacketType.swift in Sources */,
-				FF12FDD583A481F70B2F2073810C84E5 /* SocketEngineSpec.swift in Sources */,
-				A51E90550AC147273616C803B4E21BBD /* SocketEventHandler.swift in Sources */,
-				AB7E3CB534F4A5ECE7F0E41A9254AF38 /* SocketFixUTF8.swift in Sources */,
-				DBB04BF35B9639ECC31B5DD677F9B810 /* SocketIOClient.swift in Sources */,
-				9157DBA331C8BE84639E13D3ECD96749 /* SocketIOClientOption.swift in Sources */,
-				025406CCA2E6244924BE30F48E04A482 /* SocketIOClientStatus.swift in Sources */,
-				CDB9EED728889E9D1ECA01AE3985E14C /* SocketLogger.swift in Sources */,
-				6EC69E3FF22BF066006884706EAE363E /* SocketPacket.swift in Sources */,
-				2138900477C52509652BA27054B3648F /* SocketParser.swift in Sources */,
-				95F5881D613771140728499A18835CB2 /* SocketStringReader.swift in Sources */,
-				2CFD5D8011C5B7603315830E26E4CAF6 /* SocketTypes.swift in Sources */,
-				063D487D1F58A6303B1C1CC737DA14FA /* SwiftRegex.swift in Sources */,
-				DB5F0E231B2D31F83F79ED754A35FA99 /* WebSocket.swift in Sources */,
+				77C1F4E237A09CC631CF729BF9877CAC /* SocketAckEmitter.swift in Sources */,
+				C7E8F7F29C69385E38343CE730BA0C3D /* SocketAckManager.swift in Sources */,
+				D074C67E9FD5186EC3930CA9B942867B /* SocketAnyEvent.swift in Sources */,
+				28BCD1C29B6BC703AA1DD8E22EFCB860 /* SocketEngine.swift in Sources */,
+				3A8A655D91D410F7EDB33B048E2CAA4D /* SocketEngineClient.swift in Sources */,
+				DB21BFA17CFED8FAB79A2615888067C4 /* SocketEnginePacketType.swift in Sources */,
+				01EA774D01088D08366EE473F1207DF8 /* SocketEngineSpec.swift in Sources */,
+				ED02054C077691BE88B5DC6165F828CA /* SocketEventHandler.swift in Sources */,
+				709806E61B276F43D72813A83C6FBAB7 /* SocketFixUTF8.swift in Sources */,
+				F863DC104C256974D707B9F5F0B33718 /* SocketIOClient.swift in Sources */,
+				A3DCEB54CFBF1AB5385BCBA3127C52B4 /* SocketIOClientOption.swift in Sources */,
+				BB96639B41D8BBEC85BEDEDA4D86EE0D /* SocketIOClientStatus.swift in Sources */,
+				C57D4D8A6E22226BA458400E377CDFDC /* SocketLogger.swift in Sources */,
+				AC148C5DAFCA9F4A5D1295D8FE3B3FEB /* SocketPacket.swift in Sources */,
+				460EA84CE55A7CB8DBEE54E33B0852FF /* SocketParser.swift in Sources */,
+				45320869DE837A11CA266077A5C59FA4 /* SocketStringReader.swift in Sources */,
+				0A1F4AEF23447A80ED1FC9B84FE6ED7D /* SocketTypes.swift in Sources */,
+				0867EB32EC1F2D35481905692ABD31A2 /* SwiftRegex.swift in Sources */,
+				4C7DB47FF2D36556274C65DFAF630B2A /* WebSocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,7 +894,7 @@
 		};
 		47DD32D1DC7BAFE655B86C890BAD902C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9DD3D05AFEBADBAAAE22926230F9EFF /* Socket.IO-Client-Swift.xcconfig */;
+			baseConfigurationReference = F53D2C3DCE9B3FD84D029FDF7D9709E9 /* Socket.IO-Client-Swift.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -921,7 +921,7 @@
 		};
 		5331788DB1C30E094CE288E68DE11A29 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9DD3D05AFEBADBAAAE22926230F9EFF /* Socket.IO-Client-Swift.xcconfig */;
+			baseConfigurationReference = F53D2C3DCE9B3FD84D029FDF7D9709E9 /* Socket.IO-Client-Swift.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
