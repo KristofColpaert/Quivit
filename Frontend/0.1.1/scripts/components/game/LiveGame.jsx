@@ -74,10 +74,9 @@ var LiveGame = React.createClass({
     },
 
     _update : function(data) {
-        console.log(data);
-        var context = this.state.context;
-        var width = this.state.canvasWidth;
-        var height = this.state.canvasHeight;
+        var context = this.refs.gameCanvas.getContext('2d');
+        var width = this.refs.gameCanvas.width;
+        var height = this.refs.gameCanvas.height;
         var radius = 15;
         var transX = width * 0.5;
         var transY = height * 0.5;
@@ -89,9 +88,8 @@ var LiveGame = React.createClass({
             }
 
             context.clearRect(-(width / 2), -(height / 2), width, height);
-
             context.beginPath();
-            context.arc((data.x * 400), (data.y * 400), radius, 0, 2 * Math.PI, false);
+            context.arc((data.x * 100), (data.y * 100), radius, 0, 2 * Math.PI, false);
             context.fillStyle = '#333333';
             context.fill();
         }
