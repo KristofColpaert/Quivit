@@ -10,12 +10,51 @@ body, html {
 
 h2 {
   @extend %headers;
+  margin: 40px 0 10px;
   font-size: 1.9em;
 }
 
 h3 {
   @extend %headers;
   font-size: 1.7em;
+}
+
+a {
+  color: darken($accent-color, 50%);
+}
+
+// GRID
+.col50 {
+  width: 48%;
+  float: left;
+}
+.col50.left {
+  margin-right: 1%;
+}
+.col50.right {
+  margin-left: 1%;
+}
+
+.btn {
+  display: block;
+  cursor: pointer;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+
+  &.primary {
+    max-width: 200px;
+    float: right;
+    border: 2px solid #333;
+    background: none;
+    padding: 5px 10px;
+    font-size: 1.1em;
+    color: #333;
+
+    &:hover {
+      background: #333;
+      color: #eee;
+    }
+  }
 }
 
 .clearfix {
@@ -30,7 +69,7 @@ h3 {
   z-index: 9999;
   height: $header-height;
   background: $main-background;
-  @extend %border;
+  border-bottom: $border;
 
   >.navigation {
     position: relative;
@@ -116,22 +155,38 @@ h3 {
   }
 }
 
+.gameHolder {
+  box-sizing: border-box;
+  float: left;
+  width: 24%;
+  height: auto;
+
+  padding: 0;
+  margin: 10px 0;
+
+  text-decoration: none;
+
+  & + & {
+    margin-left: 1.3333%;
+  }
+
+  &.add {
+    min-height: 245px;
+    float: left;
+    background: #eee url(../images/add.png) no-repeat center;
+    @extend %subtle-shadow;
+    border: 2px solid #333;
+  }
+}
+
 // GAMES
 .card.game {
 
   @extend %card;
   @extend %card-background;
   @extend %subtle-shadow;
-  box-sizing: border-box;
   border: 2px solid #333;
-  width: 24%;
-  height: auto;
-  float: left;
-  padding: 0;
-  margin: 10px 0;
-
-  // -webkit-border-radius: 3px;
-  // border-radius: 3px;
+  text-decoration: none;
   cursor: pointer;
   opacity: .9;
 
@@ -150,30 +205,26 @@ h3 {
     font-weight: 700;
     font-size: 3.6em;
     color: #eeeeee;
-}
-
-  > h3.teams {
-    width: 100%;
-    margin: 0;
-    padding: 20px 0 17px;
-    text-align: center;
-    font-size: 1.3em;
-    line-height: 1em;
-    color: #333;
-    background: #eee;
   }
 
   > span.time.passed {
     position: absolute;
     height: 2px;
     width: 60%;
-    background: $accent-color;
+    background: #FF5E5E;
     padding: 0;
-    margin: 0;
+    margin: 8px 0 0;
   }
 
-  & + & {
-    margin-left: 1.3333%;
+  > h3.teams {
+    width: 100%;
+    margin: 0;
+    padding: 25px 0 17px;
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 1em;
+    color: #333;
+    text-decoration: none;
   }
 
   &:hover img.game-image {
@@ -191,6 +242,33 @@ h3 {
   width: 1200px;
   height: 600px;
   background: #E7ECDE;
+}
+
+// ADMIN
+.new.game {
+
+  label, input, select, option {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+  }
+
+  select {
+    border: $border;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    font-size: 1.1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  input {
+    border: $border;
+    font-size: 1.1em;
+    font-family: 'Open Sans';
+  }
 }
 
 .footer {

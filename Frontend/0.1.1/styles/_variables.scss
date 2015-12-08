@@ -15,16 +15,12 @@ $primary-color: #eee;
 $font-color: #333;
 $accent-color: #FFDD4A;
 $main-background: #eee;
+$border: 2px solid #333;
 
 // Measurements
 $max-width: 1200px;
 $header-height: 45px;
 $break: 940px;
-
-// Snippets
-%border {
-  border-bottom: 2px solid #333;
-}
 
 %centered--full--screen {
   margin: 0 auto;
