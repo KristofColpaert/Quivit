@@ -2,6 +2,7 @@
 
 var React = require('react'),
     Navigation = require('../general/Navigation.jsx'),
+    Footer = require('../general/Footer.jsx'),
     AdminNavigation = require('./AdminNavigation.jsx'),
     ManageGames = require('./games/ManageGames.jsx'),
     NewGame = require('./games/NewGame.jsx'),
@@ -74,14 +75,14 @@ var Admin = React.createClass({
             case 'ManageGames':
                 return(
                     <main>
-                        <Navigation />
+                        <AdminNavigation />
                         <section className="content-holder">
-                            <AdminNavigation />
                             <ManageGames title={this.state.titleGamesLive} games={this.state.todaysGames} />
                             <div className="clearfix"></div>
                             <ManageGames title={this.state.titleGamesFuture} games={this.state.futureGames}/>
                             <div className="clearfix"></div>
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -89,11 +90,11 @@ var Admin = React.createClass({
             case 'NewGame':
                 return(
                     <main>
-                        <Navigation />
+                        <AdminNavigation />
                         <section className="content-holder">
-                            <AdminNavigation />
                             <NewGame />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -101,11 +102,11 @@ var Admin = React.createClass({
             case 'ManageTeams':
                 return(
                     <main>
-                        <Navigation />
+                        <AdminNavigation />
                         <section className="content-holder">
-                            <AdminNavigation />
                             <ManageTeams title={this.state.titleTeams} teams={this.state.teams} />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -113,11 +114,11 @@ var Admin = React.createClass({
             case 'NewTeam':
                 return(
                     <main>
-                        <Navigation />
+                        <AdminNavigation />
                         <section className="content-holder">
-                            <AdminNavigation />
                             <NewTeam />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -125,11 +126,11 @@ var Admin = React.createClass({
             case 'ManagePlayers':
                 return(
                     <main>
-                        <Navigation />
+                        <AdminNavigation />
                         <section className="content-holder">
-                            <AdminNavigation />
                             <ManagePlayers title={this.state.titlePlayers} players={this.state.players} />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -137,11 +138,11 @@ var Admin = React.createClass({
             case 'NewPlayer':
                 return(
                     <main>
-                        <Navigation />
+                        <AdminNavigation />
                         <section className="content-holder">
-                            <AdminNavigation />
                             <NewPlayer />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
