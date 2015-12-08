@@ -4,7 +4,12 @@ var React = require('react');
 
 var PitchElement = React.createClass({
     render : function() {
-        return <circle r={this.props.radius} cx={this.props.x} cy={this.props.y} fill={this.props.fill} />
+        return (
+            <g>
+                <circle r={this.props.radius} cx={this.props.x} cy={this.props.y} fill={this.props.fillElement} />
+                <text x={this.props.x} y={this.props.y + (this.props.fontSize / 3)} fontSize={this.props.fontSize} textAnchor="middle" fill={this.props.fillText} >{this.props.kitNumber}</text>
+            </g>
+        );
     }
 });
 

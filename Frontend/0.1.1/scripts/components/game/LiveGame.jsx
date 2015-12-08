@@ -25,7 +25,7 @@ var LiveGame = React.createClass({
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
-            playerPositions : []
+            playerPositions : {}
         });
     },
 
@@ -53,7 +53,7 @@ var LiveGame = React.createClass({
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
-            playerPositions : []
+            playerPositions : {}
         });
 
         //If game set, than get players.
@@ -92,9 +92,9 @@ var LiveGame = React.createClass({
     },
 
     _update : function(data) {
-        var tempPlayerPositions = [];
-        var playerPosition = <PitchElement x={data.x} y={data.y} radius="15" fill="red"/>
-        tempPlayerPositions.push(playerPosition);
+        var tempPlayerPositions = this.state.playerPositions;
+        var playerPosition = <PitchElement key={data.playerId} x={data.x} y={data.y} radius="15" fillElement="red" fillText="white" kitNumber="1" fontSize="16" />
+        tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({
             players : playerStore.getHomeAwayPlayers(),
@@ -105,13 +105,20 @@ var LiveGame = React.createClass({
     },
 
     render: function() {
+        var self = this;
         var homeTeam = typeof this.state.game._id === 'undefined' ? 'Home' : this.state.teams[this.state.game._id].home.name;
         var awayTeam = typeof this.state.game._id === 'undefined' ? 'Away' : this.state.teams[this.state.game._id].away.name;
+        var finalPlayerPositions = [];
+
+        Object.keys(this.state.playerPositions).forEach(function(key) {
+            finalPlayerPositions.push(self.state.playerPositions[key]);
+        });
+
         return(
             <div>
         	   <section className="live game">
             	   <h1>{homeTeam} - {awayTeam}</h1>
-				   <Pitch width="1200" height="600" pitchElements={this.state.playerPositions} />
+                   <Pitch width="1200" height="600" pitchElements={finalPlayerPositions} />
                </section>
             </div>
         );
