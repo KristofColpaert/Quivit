@@ -30,10 +30,7 @@ var GameWrapper = function(page) {
         }
     });
 };
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 ReactDOM.render((
     <Router history={createBrowserHistory()}>
         <Route name="/canvasGame/:gameId" path="/canvasGame/:gameId" component={GameWrapper('LiveGame')} />
@@ -47,4 +44,4 @@ ReactDOM.render((
         <Route name="/" path="/" component={Main}/>
         <Route path="*" component={NoMatch}/>
     </Router>
-    ), document.getElementById('root'));
+), document.getElementById('root'));
