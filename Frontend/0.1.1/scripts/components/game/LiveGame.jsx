@@ -1,13 +1,14 @@
 'use strict';
 
 var React = require('react'),
+    constants = require('../../helpers/urlConstants.js'),
     gameStore = require('../../stores/gameStore.js'),
     gameActions  = require('../../actions/gameActions.js'),
     playerStore = require('../../stores/playerStore.js'),
     playerActions = require('../../actions/playerActions.js'),
     teamStore = require('../../stores/teamStore.js'),
     teamActions = require('../../actions/teamActions.js'),
-    socket = require('socket.io-client')('http://localhost:3000'),
+    socket = require('socket.io-client')(constants.socketsUrl),
     Pitch = require('./Pitch.jsx'),
     PitchElement = require('./PitchElement.jsx');
 
