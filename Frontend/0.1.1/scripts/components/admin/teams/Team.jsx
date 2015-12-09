@@ -2,13 +2,11 @@
 
 var React = require('react');
 
-var teamColors = {
-    background: '#0F0'
-};
 var Team = React.createClass({
     getInitialState : function() {
         return({
-            team : this.props.team
+            team: this.props.team,
+            counter: 0
         });
     },
     render : function() {

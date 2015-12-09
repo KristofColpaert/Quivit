@@ -10,6 +10,7 @@ var title = 'Live game';
 var Game = React.createClass({
     getInitialState : function() {
         return ({
+            
         });
     },
 

@@ -1,14 +1,14 @@
 'use strict';
 
 var React = require('react'),
-    ReactDOM = require('react-dom'),
-    Main = require('./components/main/Main.jsx'),
-    Admin = require('./components/admin/Admin.jsx'),
-    Game = require('./components/game/Game.jsx'),
-    NoMatch = require('./components/general/Error.jsx'),
-    Router = require('react-router').Router,
-    Route = require('react-router').Route,
-    createBrowserHistory = require('history/lib/createBrowserHistory');
+ReactDOM = require('react-dom'),
+Main = require('./components/main/Main.jsx'),
+Admin = require('./components/admin/Admin.jsx'),
+Game = require('./components/game/Game.jsx'),
+NoMatch = require('./components/general/Error.jsx'),
+Router = require('react-router').Router,
+Route = require('react-router').Route,
+createBrowserHistory = require('history/lib/createBrowserHistory');
 
 //Wrappers for properties.
 var AdminWrapper = function(page) {
@@ -16,7 +16,7 @@ var AdminWrapper = function(page) {
         render: function () {
             return (
                 <Admin page={page} />
-            );
+                );
         }
     });
 };
@@ -30,7 +30,10 @@ var GameWrapper = function(page) {
         }
     });
 };
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 ReactDOM.render((
     <Router history={createBrowserHistory()}>
         <Route name="/canvasGame/:gameId" path="/canvasGame/:gameId" component={GameWrapper('LiveGame')} />
@@ -44,4 +47,4 @@ ReactDOM.render((
         <Route name="/" path="/" component={Main}/>
         <Route path="*" component={NoMatch}/>
     </Router>
-), document.getElementById('root'));
+    ), document.getElementById('root'));
