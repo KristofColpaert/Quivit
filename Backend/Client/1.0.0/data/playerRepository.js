@@ -2,8 +2,9 @@ var playerRepository = (function() {
     'use strict';
 
     //Variables
+    var constants = require('./constants.js');
     var mongoskin = require('mongoskin')
-    var db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true});
+    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
     var errorLogger = require('../modules/errorLogger.js');
     var ObjectID = require('mongoskin').ObjectID;
 
