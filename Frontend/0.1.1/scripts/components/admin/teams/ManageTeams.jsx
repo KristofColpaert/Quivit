@@ -1,7 +1,8 @@
 'use strict';
 
 var React = require('react'),
-    Team = require('./Team.jsx');
+    Team = require('./Team.jsx'),
+    Link = require('react-router').Link;
 
 var ManageTeams = React.createClass({
     render : function(){
@@ -13,6 +14,7 @@ var ManageTeams = React.createClass({
                         <Team key={team._id} team={team} />
                     );
                 })}
+                <Link className="card team new" to="/admin/teams/new"></Link>
             </section>
         );
     }

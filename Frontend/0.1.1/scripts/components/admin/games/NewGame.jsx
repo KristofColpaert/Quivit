@@ -114,7 +114,6 @@ var NewGame = React.createClass({
                     </section>
                     <div className="clearfix"></div>
                     <input className="btn primary" type="submit" value="Add Game" />
-                    <div className="clearfix"></div>
                 </form>
             </section>
         );

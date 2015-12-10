@@ -43,10 +43,11 @@ a {
 
   &.primary {
     max-width: 200px;
-    float: right;
+    float: left;
     border: 2px solid #333;
     background: none;
     padding: 5px 10px;
+    margin-top: 20px;
     font-size: 1.1em;
     color: #333;
 
@@ -172,11 +173,21 @@ a {
   }
 
   &.add {
+    opacity: .6;
     min-height: 245px;
     float: left;
-    background: #eee url(../images/add.png) no-repeat center;
+    background: #efefef url(../images/add.png) no-repeat center;
     @extend %subtle-shadow;
     border: 2px solid #333;
+    -webkit-transition: opacity 400ms ease-out;
+    -moz-transition: opacity 400ms ease-out;
+    -ms-transition: opacity 400ms ease-out;
+    -o-transition: opacity 400ms ease-out;
+    transition: opacity 400ms ease-out;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -235,16 +246,37 @@ a {
 }
 
 section.teams {
-  -moz-column-count: 5;
-  -moz-column-gap: 20px;
-  -webkit-column-count: 5;
-  -webkit-column-gap: 20px;
-  column-count: 5;
-  column-gap: 20px;
 
   .card.team {
     @extend %subtle-shadow;
+    width: 18%;
+    box-sizing: border-box;
+    float: left;
+    padding: 5px 0px 0;
+    margin: 10px 2% 0 0;
     border: $border;
+    background: #ededed;
+
+    > &:nth-child(1), > &:nth-child(6n + 1) {
+      margin-left: 0;
+    }
+
+    .teamName {
+      margin-left: 5px;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    .teamColor {
+      width: 50%;
+      height: 3px;
+      float: left;
+    }
+
+    &.new {
+      min-height: 67px;
+      background: #efefef url(../images/add.png) no-repeat center;
+    }
   }
 }
 
@@ -253,14 +285,59 @@ section.teams {
   color: $accent-color;
 }
 
-.gameCanvas {
-  width: 1200px;
-  height: 600px;
-  background: #E7ECDE;
+.live.game {
+  > .playerSheet, > .gameSheet {
+    float: left;
+    width: 50%;
+  }
+
+  > .playerSheet {
+
+    > .kit.number {
+      display: block;
+      width: 80px;
+      float: left;
+      margin: 20px 0 0;
+      padding: 50px 0 34px;
+      border-right: $border;
+      font-family: Bebas;
+      font-size: 5em;
+    }
+
+    > .name {
+      display: block;
+      margin: 0 0 0 90px;
+      font-size: 1.6em;
+      line-height: 2.8em;
+      clear: right;
+    }
+
+    > .goal {
+      display: block;
+      clear: right;
+    }
+
+    > .distance {
+      display: block;
+      clear: right;
+    }
+
+  }
+
+  > .gameSheet {
+
+  }
+
+  .pitch {
+    display: block;
+    margin: 10px auto 0;
+    background: #E7ECDE;
+    border: 15px solid #fff;
+  }
 }
 
 // ADMIN
-.new.game {
+.new.game, .new.team {
 
   label, input, select, option {
     display: block;
@@ -298,22 +375,36 @@ section.teams {
 }
 
 @media screen and (max-width: $break) {
-    .card.game {
-      width: 48%;
-      
-      & {
-        margin-left: 0;
-      }
-      & + & {
-        margin-left: 2%;
-      }
+  .card.game {
+    width: 48%;
+    
+    & {
+      margin-left: 0;
+    }
+    & + & {
+      margin-left: 2%;
+    }
 
-      & + & + & {
-        margin-left: 0;
-      }
+    & + & + & {
+      margin-left: 0;
+    }
 
-      & + & + & + & {
-        margin-left: 2%;
+    & + & + & + & {
+      margin-left: 2%;
+    }
+  }
+
+  section.teams {
+    .card.team {
+      width: 31%;
+    }
+  }
+}
+
+@media screen and (max-width: $break-small) {
+  section.teams {
+      .card.team {
+        width: 48%;
       }
     }
 }

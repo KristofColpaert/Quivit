@@ -11,7 +11,7 @@ var React = require('react'),
     socket = require('socket.io-client')(constants.socketsUrl),
     Pitch = require('./Pitch.jsx'),
     PitchElement = require('./PitchElement.jsx');
-
+    
 var isSocketsInit = false;
 
 var LiveGame = React.createClass({
@@ -23,8 +23,8 @@ var LiveGame = React.createClass({
 
     getInitialState : function() {
         return ({
-            pitchWidth : 725,
-            pitchHeight : 875,
+            pitchWidth : 730,
+            pitchHeight : 670,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -53,8 +53,8 @@ var LiveGame = React.createClass({
 
     _onChange : function() {
         this.setState({
-            pitchWidth : 725,
-            pitchHeight : 875,
+            pitchWidth : 730,
+            pitchHeight : 670,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -104,8 +104,8 @@ var LiveGame = React.createClass({
         tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({
-            pitchWidth : 875,
-            pitchHeight : 725,
+            pitchWidth : 730,
+            pitchHeight : 670,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -124,12 +124,20 @@ var LiveGame = React.createClass({
         });
 
         return(
-            <div>
-        	   <section className="live game">
-            	   <h1>{homeTeam} - {awayTeam}</h1>
-                   <Pitch width={this.state.pitchWidth} height={this.state.pitchHeight} pitchElements={finalPlayerPositions} />
-               </section>
-            </div>
+        	    <section className="live game">
+                    <section className="playerSheet">
+                        <h3 className="kit number">13</h3>
+                        <span className="name">Karel Verhulst</span>
+                        <span className="goal">1 goal</span>
+                        <span className="distance">4,6km</span>
+                    </section>
+                    <section className="gameSheet">
+                        <span className="score">2-1</span>
+                        <span className="time">54'</span>
+                    </section>
+                    <Pitch width={this.state.pitchWidth} height={this.state.pitchHeight} pitchElements={finalPlayerPositions} />
+                    <h2>{homeTeam} - {awayTeam}</h2>
+                </section>
         );
     }
 });

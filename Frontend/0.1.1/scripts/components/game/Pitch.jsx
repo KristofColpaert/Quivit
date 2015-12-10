@@ -5,8 +5,8 @@ var React = require('react');
 var Pitch = React.createClass({
     render : function() {
         return (
-            <svg width={this.props.width} height={this.props.height}>
-                <rect width={this.props.width} height={this.props.height} fill="green" />
+            <svg className="pitch" width={this.props.width} height={this.props.height}>
+                <rect width={this.props.width} height={this.props.height} fill="#B7E5B6" />
                 {this.props.pitchElements.map(function(pitchElement) {
                     return(
                         pitchElement
