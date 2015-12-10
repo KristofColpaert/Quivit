@@ -23,8 +23,8 @@ var LiveGame = React.createClass({
 
     getInitialState : function() {
         return ({
-            pitchWidth : 1200,
-            pitchHeight : 600,
+            pitchWidth : 725,
+            pitchHeight : 875,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -53,8 +53,8 @@ var LiveGame = React.createClass({
 
     _onChange : function() {
         this.setState({
-            pitchWidth : 1200,
-            pitchHeight : 600,
+            pitchWidth : 725,
+            pitchHeight : 875,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -82,6 +82,7 @@ var LiveGame = React.createClass({
 
             socket.on(player._id, function(data) {
                 requestAnimationFrame(() => {self._update(data)});
+                console.log(data);
             });
         });
 
@@ -92,18 +93,19 @@ var LiveGame = React.createClass({
 
             socket.on(player._id, function(data) {
                 requestAnimationFrame(() => {self._update(data)});
+                console.log(data);
             });
         });
     },
 
     _update : function(data) {
         var tempPlayerPositions = this.state.playerPositions;
-        var playerPosition = <PitchElement key={data.playerId} x={data.x + ((this.state.pitchWidth / 2) * 100)} y={data.y + ((this.state.pitchHeight / 2) * 100)} radius="15" fillElement="red" fillText="white" kitNumber="1" fontSize="16" />
+        var playerPosition = <PitchElement key={data.playerId} y={(data.x * (-100)) + (this.state.pitchWidth / 2)} x={(data.y * (-100)) + (this.state.pitchHeight / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
         tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({
-            pitchWidth : 1200,
-            pitchHeight : 600,
+            pitchWidth : 875,
+            pitchHeight : 725,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
