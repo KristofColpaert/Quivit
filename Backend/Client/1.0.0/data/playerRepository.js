@@ -3,16 +3,16 @@ var playerRepository = (function() {
 
     //Variables
     var constants = require('./constants.js');
-    var mongoskin = require('mongoskin')
-    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
+    var mongoskin = require('mongoskin');
     var errorLogger = require('../modules/errorLogger.js');
+    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
     var ObjectID = require('mongoskin').ObjectID;
 
     //Methods
     var getSingle = function(id, callback) {
         db.collection('players').find({ _id : ObjectID(id) }).toArray(function(error, result) {
             if(error) {
-                errorLogger('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -23,7 +23,7 @@ var playerRepository = (function() {
     var getAll = function(callback) {
         db.collection('players').find().toArray(function(error, result) {
             if(error) {
-                errorLogger('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -34,7 +34,7 @@ var playerRepository = (function() {
     var getByTeam = function(teamId, callback) {
         db.collection('players').find({ teamId : teamId }).toArray(function(error, result) {
             if(error) {
-                errorLogger('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -45,13 +45,13 @@ var playerRepository = (function() {
     var add = function(newPlayer, callback) {
         db.collection('players').insert(newPlayer, function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 var playerId = result.insertedIds[0];
                 var resultObject = newPlayer.toJSON();
                 resultObject._id = playerId;
-                callback(result);
+                callback(resultObject);
             }
         });
     };

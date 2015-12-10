@@ -3,16 +3,16 @@ var gameRepository = (function() {
 
     //Variables
     var constants = require('./constants.js');
-    var mongoskin = require('mongoskin')
-    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
+    var mongoskin = require('mongoskin');
     var errorLogger = require('../modules/errorLogger.js');
+    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
     var ObjectID = require('mongoskin').ObjectID;
 
     //Functions
     var getSingle = function(id, callback) {
         db.collection('games').find({ _id : ObjectID(id) }).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -23,7 +23,7 @@ var gameRepository = (function() {
     var getByDateExcluded = function(gameDate, callback) {
         db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -34,20 +34,20 @@ var gameRepository = (function() {
     var getByDateIncluded = function(gameDate, callback) {
         db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 var counter = 0;
                 result.forEach(function(resultObject) {
                     db.collection('teams').find({ _id : ObjectID(resultObject.teamHomeId) }).toArray(function(error, teamHomeResult) {
                         if(error) {
-                            errorLogger.log('database', error);
+                            errorLogger.log(error);
                         }
                         else {
                             resultObject.teamHome = teamHomeResult[0];
                             db.collection('teams').find({ _id : ObjectID(resultObject.teamAwayId) }).toArray(function(error, teamAwayResult) {
                                 if(error) {
-                                    errorLogger.log('database', error);
+                                    errorLogger.log(error);
                                 }
                                 else {
                                     resultObject.teamAway = teamAwayResult[0];
@@ -69,7 +69,7 @@ var gameRepository = (function() {
     var getFuture = function(gameDate, callback) {
         db.collection('games').find({ gameDate : { $gt : gameDate }}).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -80,13 +80,13 @@ var gameRepository = (function() {
     var add = function(newGame, callback) {
         db.collection('games').insert(newGame, function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 var gameId = result.insertedIds[0];
                 var resultObject = newGame.toJSON();
                 resultObject._id = gameId;
-                callback(result);
+                callback(resultObject);
             }
         });
     }

@@ -10,11 +10,13 @@ var express = require('express'),
     app = express(),
     logger = require('morgan'),
     bodyParser = require('body-parser'),
-    path = require('path');
+    path = require('path'),
+    fs = require('fs');
 
 var routeGame = require('./routes/api/game.js'),
     routePlayer = require('./routes/api/player.js'),
     routeTeam = require('./routes/api/team.js'),
+    routeEstimoteLocation = require('./routes/api/estimoteLocation.js'),
     routeRoot = require('./routes/root.js');
 
 /*
@@ -22,7 +24,13 @@ var routeGame = require('./routes/api/game.js'),
  */
 
 //Setup logging.
-app.use(logger('dev'));
+var logStream = fs.createWriteStream(__dirname + '/logs/httpErrors.log', {flags : 'a'})
+app.use(logger('combined', {
+    skip : function(req, res) {
+        return res.statusCode < 400;
+    },
+    stream : logStream
+}));
 
 //Allow CORS (Cross-Origin Resource Sharing)
 app.use(function(req, res, next) {
@@ -42,6 +50,7 @@ app.use('/', routeRoot);
 app.use('/api/game', routeGame);
 app.use('/api/player', routePlayer);
 app.use('/api/team', routeTeam);
+app.use('/api/estimoteLocation', routeEstimoteLocation);
 
 /*
 ** Errors

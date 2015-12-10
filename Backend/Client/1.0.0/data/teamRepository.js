@@ -3,16 +3,16 @@ var teamRepository = (function() {
 
     //Variables
     var constants = require('./constants.js');
-    var mongoskin = require('mongoskin')
-    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
+    var mongoskin = require('mongoskin');
     var errorLogger = require('../modules/errorLogger.js');
+    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
     var ObjectID = require('mongoskin').ObjectID;
 
     //Functions
     var getSingle = function(id, callback) {
         db.collection('teams').find({ _id : ObjectID(id) }).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -23,7 +23,7 @@ var teamRepository = (function() {
     var getAll = function(callback) {
         db.collection('teams').find().toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -34,13 +34,13 @@ var teamRepository = (function() {
     var add = function(newTeam, callback) {
         db.collection('teams').insert(newTeam, function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 var teamId = result.insertedIds[0];
                 var resultObject = newTeam.toJSON();
                 resultObject._id = teamId;
-                callback(result);
+                callback(resultObject);
             }
         });
     };
