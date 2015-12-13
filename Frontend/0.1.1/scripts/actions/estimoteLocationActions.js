@@ -14,9 +14,25 @@ var estimoteLocationActions = {
     },
 
     getEstimoteLocationByIdRequest : function(id) {
-        ajax.getData(constants.baseApiEstimoteLocationUrl + id, function(error, data) {
+        ajax.getData(constants.baseApiEstimoteLocationUrl + "id/" + id, function(error, data) {
             if(!error) {
                 estimoteLocationActions.getEstimoteLocationByIdResponse(data[0]);
+            }
+        });
+    },
+
+    //EstimoteLocation by EstimoteLocationId
+    getEstimoteLocationByEstimoteLocationIdResponse : function(estimoteLocation) {
+        AppDispatcher.handleServerAction({
+            actionType : estimoteLocationConstants.GET_ESTIMOTE_LOCATION_BY_ESTIMOTE_LOCATION_ID_RESPONSE,
+            estimoteLocation : estimoteLocation
+        });
+    },
+
+    getEstimoteLocationByEstimoteLocationIdRequest : function(estimoteLocationId) {
+        ajax.getData(constants.baseApiEstimoteLocationUrl + "estimoteLocationId/" + estimoteLocationId, function(error, data) {
+            if(!error) {
+                estimoteLocationActions.getEstimoteLocationByEstimoteLocationIdResponse(data[0]);
             }
         });
     },

@@ -51,6 +51,10 @@ AppDispatcher.register(function(payload) {
             storedEstimoteLocations.allEstimoteLocations = payload.action.estimoteLocations;
             break;
 
+        case estimoteLocationConstants.GET_ESTIMOTE_LOCATION_BY_ESTIMOTE_LOCATION_ID_RESPONSE:
+            storedEstimoteLocations.singleEstimoteLocation = payload.action.estimoteLocation;
+            break;
+
         case estimoteLocationConstants.SAVE_ESTIMOTE_LOCATION_RESPONSE:
             var newEstimoteLocation = payload.action.estimoteLocation;
             storedEstimoteLocations.allEstimoteLocations.push(newEstimoteLocation);

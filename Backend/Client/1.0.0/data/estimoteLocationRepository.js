@@ -20,6 +20,17 @@ var estimoteLocationRepository = (function() {
         });
     };
 
+    var getByEstimoteLocationId = function(estimoteLocationId, callback) {
+        db.collection('estimoteLocations').find({ estimoteLocationId : estimoteLocationId }).toArray(function(error, result) {
+            if(error) {
+                errorLogger.log(error);
+            }
+            else {
+                callback(result);
+            }
+        });
+    }
+
     var getAll = function(callback) {
         db.collection('estimoteLocations').find().toArray(function(error, result) {
             if(error) {
@@ -48,6 +59,7 @@ var estimoteLocationRepository = (function() {
     //Return
     return {
         getSingle : getSingle,
+        getByEstimoteLocationId : getByEstimoteLocationId,
         getAll : getAll,
         add : add
     };

@@ -4,12 +4,21 @@ var express = require('express'),
     estimoteLocationRepository = require('../../data/estimoteLocationRepository.js');
 
 //GET: get EstimoteLocation by id
-router.get('/:id', function(req, res) {
+router.get('/:method/:value', function(req, res) {
    //Get id
-    var id = req.params.id;
-    estimoteLocationRepository.getSingle(id, function(result) {
-        res.json(result);
-    });
+    if(req.params.method === 'id') {
+        var id = req.params.value;
+        estimoteLocationRepository.getSingle(id, function(result) {
+            res.json(result);
+        });
+    }
+
+    else if(req.params.method === 'estimoteLocationId') {
+        var estimoteLocationId = req.params.value;
+        estimoteLocationRepository.getByEstimoteLocationId(estimoteLocationId, function(result) {
+            res.json(result);
+        });
+    }
 });
 
 //GET: get all EstimoteLocations

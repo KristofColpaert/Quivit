@@ -8,6 +8,8 @@ var React = require('react'),
     playerActions = require('../../actions/playerActions.js'),
     teamStore = require('../../stores/teamStore.js'),
     teamActions = require('../../actions/teamActions.js'),
+    estimoteLocationStore = require('../../stores/estimoteLocationStore.js'),
+    estimoteLocationActions = require('../../actions/estimoteLocationActions.js'),
     socket = require('socket.io-client')(constants.socketsUrl),
     Pitch = require('./Pitch.jsx'),
     PitchElement = require('./PitchElement.jsx');
@@ -23,11 +25,10 @@ var LiveGame = React.createClass({
 
     getInitialState : function() {
         return ({
-            pitchWidth : 730,
-            pitchHeight : 670,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
+            estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation(),
             playerPositions : {}
         });
     },
@@ -36,6 +37,7 @@ var LiveGame = React.createClass({
         gameStore.addChangeListener(this._onChange);
         playerStore.addChangeListener(this._onChange);
         teamStore.addChangeListener(this._onChange);
+        estimoteLocationStore.addChangeListener(this._onChange);
     },
 
     componentDidMount : function() {
@@ -49,17 +51,21 @@ var LiveGame = React.createClass({
         gameStore.removeChangeListener(this._onChange);
         playerStore.removeChangeListener(this._onChange);
         teamStore.removeChangeListener(this._onChange);
+        estimoteLocationStore.removeChangeListener(this._onChange);
     },
 
     _onChange : function() {
         this.setState({
-            pitchWidth : 730,
-            pitchHeight : 670,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
+            estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation(),
             playerPositions : {}
         });
+
+        if((typeof this.state.estimoteLocation._id === 'undefined') && (typeof this.state.game._id !== 'undefined')) {
+            estimoteLocationActions.getEstimoteLocationByEstimoteLocationIdRequest(this.state.game.estimoteLocationId);
+        }
 
         //If game set, than get players.
         if((typeof this.state.players['home'] === 'undefined') && (typeof this.state.game._id !== 'undefined')) {
@@ -104,11 +110,10 @@ var LiveGame = React.createClass({
         tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({
-            pitchWidth : 730,
-            pitchHeight : 670,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
+            estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation(),
             playerPositions : tempPlayerPositions
         });
     },
@@ -118,6 +123,8 @@ var LiveGame = React.createClass({
         var homeTeam = typeof this.state.game._id === 'undefined' ? 'Home' : this.state.teams[this.state.game._id].home.name;
         var awayTeam = typeof this.state.game._id === 'undefined' ? 'Away' : this.state.teams[this.state.game._id].away.name;
         var finalPlayerPositions = [];
+        var spaceWidth = typeof this.state.estimoteLocation.spaceWidth === 'undefined' ? 0 : (this.state.estimoteLocation.spaceWidth * 100);
+        var spaceHeight = typeof this.state.estimoteLocation.spaceHeight === 'undefined' ? 0 : (this.state.estimoteLocation.spaceHeight * 100);
 
         Object.keys(this.state.playerPositions).forEach(function(key) {
             finalPlayerPositions.push(self.state.playerPositions[key]);
@@ -135,7 +142,7 @@ var LiveGame = React.createClass({
                         <span className="score">2-1</span>
                         <span className="time">54'</span>
                     </section>
-                    <Pitch width={this.state.pitchWidth} height={this.state.pitchHeight} pitchElements={finalPlayerPositions} />
+                    <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
                     <h2>{homeTeam} - {awayTeam}</h2>
                 </section>
         );
