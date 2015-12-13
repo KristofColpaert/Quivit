@@ -8,7 +8,7 @@ var ManageEstimoteLocations = React.createClass({
         return(
             <section className="estimoteLocations">
                 <h2>{this.props.title}</h2>
-                {this.props.games.map(function(estimoteLocation) {
+                {this.props.estimoteLocations.map(function(estimoteLocation) {
                     return (
                         <EstimoteLocation key={estimoteLocation._id} estimoteLocation={estimoteLocation} />
                     );

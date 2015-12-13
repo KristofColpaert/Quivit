@@ -1,19 +1,21 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
-    EventEmitter = require('events').EventEmitter,
-    objectAssign = require('object-assign'),
-    estimoteLocationConstants = require('../helpers/estimoteLocationConstants.js');
+'use strict';
 
-var CHANGE_EVENT = 'change';
+var React = require('react');
 
-//Stored objects
-var storedEstimoteLocations = {
-    isEstimoteLocationSaved : false,
-    allEstimoteLocations : [],
-    singleEstimoteLocation : []
-};
+var EstimoteLocation = React.createClass({
+    getInitialState : function() {
+        return({
+            estimoteLocation : this.props.estimoteLocation
+        });
+    },
 
-var estimoteLocationStore = objectAssign({}, EventEmitter.prototype, {
-
+    render : function() {
+        return(
+            <div key={this.state.estimoteLocation._id} className="card estimoteLocation">
+                <p className="estimoteLocationId">{this.state.estimoteLocation.estimoteLocationId}</p>
+            </div>
+        );
+    }
 });
 
-module.exports = estimoteLocationStore;
+module.exports = EstimoteLocation;

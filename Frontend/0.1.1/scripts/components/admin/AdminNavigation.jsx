@@ -17,9 +17,10 @@ var AdminNavigation = React.createClass({
             <h1><Link to="/">🐤 Quivit</Link></h1>
 
             <ul className="menu list admin">
-              <li className="menu item admin"><Link to="/admin/games">Games</Link></li>
-              <li className="menu item admin"><Link to="/admin/teams">Teams</Link></li>
-              <li className="menu item admin"><Link to="/admin/players">Players</Link></li>
+                <li className="menu item admin"><Link to="/admin/games">Games</Link></li>
+                <li className="menu item admin"><Link to="/admin/teams">Teams</Link></li>
+                <li className="menu item admin"><Link to="/admin/players">Players</Link></li>
+                <li className="menu item admin"><Link to="/admin/estimotelocations">Estimote</Link></li>
             </ul>
           </nav>
         </header>

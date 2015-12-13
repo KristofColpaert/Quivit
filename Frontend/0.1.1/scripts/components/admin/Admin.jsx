@@ -15,13 +15,18 @@ var React = require('react'),
     ManagePlayers = require('./players/ManagePlayers.jsx'),
     NewPlayer = require('./players/NewPlayer.jsx'),
     playerStore = require('../../stores/playerStore.js'),
-    playerActions = require('../../actions/playerActions.js');
+    playerActions = require('../../actions/playerActions.js'),
+    ManageEstimoteLocations = require('./estimoteLocations/ManageEstimoteLocations.jsx'),
+    NewEstimoteLocation = require('./estimoteLocations/NewEstimoteLocation.jsx'),
+    estimoteLocationStore = require('../../stores/estimoteLocationStore.js'),
+    estimoteLocationActions = require('../../actions/estimoteLocationActions.js');
 
 //Variables
 var titleLive = 'Live games';
 var titleFuture = 'Future games';
 var titleTeams = 'Teams';
 var titlePlayers = 'Players';
+var titleEstimoteLocations = 'Estimote Locations';
 
 var Admin = React.createClass({
     getInitialState : function() {
@@ -30,10 +35,12 @@ var Admin = React.createClass({
             titleGamesFuture : titleFuture,
             titleTeams : titleTeams,
             titlePlayers : titlePlayers,
+            titleEstimoteLocations : titleEstimoteLocations,
             todaysGames : gameStore.getTodaysGames(),
             futureGames : gameStore.getFutureGames(),
             teams : teamStore.getAllTeams(),
-            players : playerStore.getAllPlayers()
+            players : playerStore.getAllPlayers(),
+            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
         });
     },
 
@@ -41,6 +48,7 @@ var Admin = React.createClass({
         gameStore.addChangeListener(this._onChange);
         teamStore.addChangeListener(this._onChange);
         playerStore.addChangeListener(this._onChange);
+        estimoteLocationStore.addChangeListener(this._onChange);
     },
 
     componentDidMount : function() {
@@ -48,12 +56,14 @@ var Admin = React.createClass({
         gameActions.getFutureGamesRequest();
         teamActions.getTeamsRequest();
         playerActions.getPlayersRequest();
+        estimoteLocationActions.getEstimoteLocationsRequest();
     },
 
     componentWillUnmount : function() {
         gameStore.removeChangeListener(this._onChange);
         teamStore.removeChangeListener(this._onChange);
         playerStore.removeChangeListener(this._onChange);
+        estimoteLocationStore.removeChangeListener(this._onChange);
     },
 
     _onChange : function() {
@@ -65,7 +75,8 @@ var Admin = React.createClass({
             todaysGames : gameStore.getTodaysGames(),
             futureGames : gameStore.getFutureGames(),
             teams : teamStore.getAllTeams(),
-            players : playerStore.getAllPlayers()
+            players : playerStore.getAllPlayers(),
+            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
         });
     },
 
@@ -143,6 +154,28 @@ var Admin = React.createClass({
                             <NewPlayer />
                         </section>
                         <Footer />
+                    </main>
+                );
+                break;
+
+            case 'ManageEstimoteLocations':
+                return(
+                    <main>
+                        <AdminNavigation />
+                        <section className="content-holder">
+                            <ManageEstimoteLocations title={this.state.titleEstimoteLocations} estimoteLocations={this.state.estimoteLocations} />
+                        </section>
+                    </main>
+                );
+                break;
+
+            case 'NewEstimoteLocation':
+                return(
+                    <main>
+                        <AdminNavigation />
+                        <section className="content-holder">
+                            <NewEstimoteLocation />
+                        </section>
                     </main>
                 );
                 break;

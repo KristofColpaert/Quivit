@@ -5,8 +5,8 @@ var React = require('react');
 var Team = React.createClass({
     getInitialState : function() {
         return({
-            team: this.props.team,
-            counter: 0
+            team : this.props.team,
+            counter : 0
         });
     },
     render : function() {

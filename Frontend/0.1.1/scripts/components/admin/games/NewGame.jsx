@@ -5,29 +5,35 @@ var React = require('react'),
     gameActions = require('../../../actions/gameActions.js'),
     gameStore = require('../../../stores/gameStore.js'),
     teamActions = require('../../../actions/teamActions.js'),
-    teamStore = require('../../../stores/teamStore.js');
+    teamStore = require('../../../stores/teamStore.js'),
+    estimoteLocationActions = require('../../../actions/estimoteLocationActions.js'),
+    estimoteLocationStore = require('../../../stores/estimoteLocationStore.js');
 
 var NewGame = React.createClass({
     mixins: [History],
 
     getInitialState : function() {
         return({
-           teams : teamStore.getAllTeams()
+            teams : teamStore.getAllTeams(),
+            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
         });
     },
 
     componentWillMount : function() {
         teamStore.addChangeListener(this._onChange);
         gameStore.addChangeListener(this._onChange);
+        estimoteLocationStore.addChangeListener(this._onChange);
     },
 
     componentDidMount : function() {
         teamActions.getTeamsRequest();
+        estimoteLocationActions.getEstimoteLocationsRequest();
     },
 
     componentWillUnmount : function() {
         teamStore.removeChangeListener(this._onChange);
         gameStore.removeChangeListener(this._onChange);
+        estimoteLocationStore.removeChangeListener(this._onChange);
     },
 
     _onChange : function() {
@@ -37,7 +43,8 @@ var NewGame = React.createClass({
         }
 
         this.setState({
-            teams: teamStore.getAllTeams()
+            teams: teamStore.getAllTeams(),
+            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
         });
     },
 
@@ -92,7 +99,11 @@ var NewGame = React.createClass({
                         <input id="gameTime" type="time" ref="gameTime"/>
 
                         <label htmlFor="estimoteLocationId">Estimote Location ID</label>
-                        <input id="estimoteLocationId" type="text" ref="estimoteLocationId"/>
+                        <select id="estimoteLocationId" ref="estimoteLocationId">
+                            {this.state.estimoteLocations.map(function(estimoteLocation) {
+                                return <option value={estimoteLocation.estimoteLocationId} key={estimoteLocation._id}>{estimoteLocation.estimoteLocationId}</option>
+                            })}
+                        </select>
 
                         <label htmlFor="isGameFinished">Is game finished?</label>
                         <input id="isGameFinished" type="checkbox" ref="isGameFinished"/>

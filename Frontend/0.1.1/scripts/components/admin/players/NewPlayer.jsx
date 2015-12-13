@@ -8,7 +8,7 @@ var React = require('react'),
     teamStore = require('../../../stores/teamStore.js');
 
 var NewPlayer = React.createClass({
-    mixins: [History],
+    mixins : [History],
 
     getInitialState : function() {
         return({
