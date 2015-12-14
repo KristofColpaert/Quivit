@@ -54,6 +54,7 @@ var gameActions = {
         });
     },
 
+    //Get single game
     getGameResponse : function(game) {
         AppDispatcher.handleServerAction({
             actionType : gameConstants.GET_GAME_RESPONSE,
@@ -65,6 +66,22 @@ var gameActions = {
         ajax.getData(constants.baseApiGameUrl + id, function(error, data) {
             if(!error) {
                 gameActions.getGameResponse(data[0]);
+            }
+        });
+    },
+
+    //Get past games
+    getPastGamesResponse : function(games) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.GET_GAMES_PAST_RESPONSE,
+            games : games
+        });
+    },
+
+    getPastGamesRequest : function() {
+        ajax.getData(constants.baseApiGamePastUrl, function(error, data) {
+            if(!error) {
+                gameActions.getPastGamesResponse(data);
             }
         });
     },

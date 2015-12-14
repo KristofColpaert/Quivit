@@ -7,6 +7,7 @@ var gameRepository = (function() {
     var errorLogger = require('../modules/errorLogger.js');
     var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
     var ObjectID = require('mongoskin').ObjectID;
+    var dateCalculator = require('../modules/dateCalculator.js');
 
     //Functions
     var getSingle = function(id, callback) {
@@ -77,6 +78,21 @@ var gameRepository = (function() {
         });
     };
 
+    var getPast = function(year, month, day, callback) {
+        var maxGameDateString = '' + year + month + day;
+        var minGameDate = dateCalculator.addMonths(new Date(year, month - 1, day), -1);
+        var minGameDateString = '' + minGameDate.getFullYear() + (minGameDate.getMonth() + 1) + minGameDate.getDate();
+
+        db.collection('games').find({ gameDate : { $gt : minGameDateString, $lt : maxGameDateString }}).toArray(function(error, result) {
+            if(error) {
+                errorLogger.log(error);
+            }
+            else {
+                callback(result);
+            }
+        });
+    };
+
     var add = function(newGame, callback) {
         db.collection('games').insert(newGame, function(error, result) {
             if(error) {
@@ -97,6 +113,7 @@ var gameRepository = (function() {
         getByDateExcluded : getByDateExcluded,
         getByDateIncluded : getByDateIncluded,
         getFuture : getFuture,
+        getPast : getPast,
         add : add
     };
 })();

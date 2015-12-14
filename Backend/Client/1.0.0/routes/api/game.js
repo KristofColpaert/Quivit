@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
     Game = require('../../models/Game.js'),
-    gameRepository = require('../../data/gameRepository.js');
+    gameRepository = require('../../data/gameRepository.js'),
+    heatMapGenerator = require('../../modules/heatMapGenerator.js');
 
 //GET: get game by id
 router.get('/:id', function(req, res) {
@@ -12,6 +13,19 @@ router.get('/:id', function(req, res) {
     });
 });
 
+//GET: get heat map
+router.get('/:gameId/:playerId', function(req, res) {
+    //Get ids
+    var gameId = req.params.gameId;
+    var playerId = req.params.playerId;
+
+    heatMapGenerator.getHeatMapData(gameId, playerId, function(error, result) {
+        if(!error) {
+            res.json(result);
+        }
+    });
+});
+
 //GET: get games by date
 router.get('/:year/:month/:day/:method', function(req, res) {
     //Get games of today
@@ -19,13 +33,19 @@ router.get('/:year/:month/:day/:method', function(req, res) {
         var gameDate = '' + req.params.year + req.params.month + req.params.day;
         gameRepository.getByDateIncluded(gameDate, function(result) {
             res.json(result);
-        })
+        });
     }
 
     else if(req.params.method === 'excluded') {
         var gameDate = '' + req.params.year + req.params.month + req.params.day;
         gameRepository.getByDateExcluded(gameDate, function(result) {
             res.json(result);
+        });
+    }
+
+    else if(req.params.method === 'past') {
+        gameRepository.getPast(req.params.year, req.params.month, req.params.day, function(result) {
+           res.json(result);
         });
     }
 });

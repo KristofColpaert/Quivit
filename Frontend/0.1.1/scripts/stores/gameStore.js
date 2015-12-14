@@ -10,6 +10,7 @@ var storedGames = {
     isGameSaved : false,
     todaysGames : [],
     futureGames : [],
+    pastGames : [],
     singleGame : {}
 };
 
@@ -37,6 +38,10 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     getSingleGame : function() {
         return storedGames.singleGame;
+    },
+
+    getPastGames : function() {
+        return storedGames.pastGames;
     },
 
     isGameSaved : function() {
@@ -73,6 +78,10 @@ AppDispatcher.register(function(payload) {
 
         case gameConstants.GET_GAME_RESPONSE:
             storedGames.singleGame = payload.action.game;
+            break;
+
+        case gameConstants.GET_GAMES_PAST_RESPONSE:
+            storedGames.pastGames = payload.action.games;
             break;
 
         case gameConstants.FALSIFY_IS_GAME_SAVED:
