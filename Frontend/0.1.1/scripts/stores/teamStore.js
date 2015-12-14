@@ -10,7 +10,7 @@ var storedTeams = {
     isTeamSaved : false,
     allTeams : [],
     singleTeam : [],
-    homeAwayTeams : []
+    homeAwayTeams : {}
 };
 
 //TeamStore

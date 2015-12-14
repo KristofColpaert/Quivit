@@ -11,6 +11,7 @@ var storedGames = {
     todaysGames : [],
     futureGames : [],
     pastGames : [],
+    playerGameHeatMap : [],
     singleGame : {}
 };
 
@@ -42,6 +43,10 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     getPastGames : function() {
         return storedGames.pastGames;
+    },
+
+    getPlayerGameHeatMap : function() {
+        return storedGames.playerGameHeatMap;
     },
 
     isGameSaved : function() {
@@ -82,6 +87,10 @@ AppDispatcher.register(function(payload) {
 
         case gameConstants.GET_GAMES_PAST_RESPONSE:
             storedGames.pastGames = payload.action.games;
+            break;
+
+        case gameConstants.GET_PLAYER_GAME_HEAT_MAP_RESPONSE:
+            storedGames.playerGameHeatMap = payload.action.heatMap;
             break;
 
         case gameConstants.FALSIFY_IS_GAME_SAVED:

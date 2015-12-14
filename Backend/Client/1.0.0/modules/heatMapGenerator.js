@@ -69,9 +69,23 @@ var heatMapGenerator = (function(){
 
     var calculateHeatMapCounts = function(zones, callback) {
         playerPositionRepository.getNumberOfPositionsInZones(gameId, playerId, zones, function(playerPositionResult) {
+            playerPositionResult.sort(comparePlayerPositionObjects);
             callback(null, playerPositionResult);
         });
     };
+
+    var comparePlayerPositionObjects = function(a, b) {
+        if(a.count < b.count) {
+            return -1;
+        }
+
+        if(a.count > b.count) {
+            return 1;
+        }
+
+        return 0;
+    }
+
 
     //Return
     return {

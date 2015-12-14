@@ -2,7 +2,8 @@
 
 var React = require('react'),
     Navigation = require('../general/Navigation.jsx'),
-    LiveGame = require('./LiveGame.jsx');
+    LiveGame = require('./LiveGame.jsx'),
+    HeatMap = require('./HeatMap.jsx');
 
 //Variables
 var title = 'Live game';
@@ -43,6 +44,16 @@ var Game = React.createClass({
                     </main>
                 );
                 break;
+
+            case 'HeatMap':
+                return(
+                    <main>
+                        <Navigation />
+                        <section className="content-holder">
+                            <HeatMap />
+                        </section>
+                    </main>
+                )
         }
     }
 });

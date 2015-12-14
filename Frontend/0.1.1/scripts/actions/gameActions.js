@@ -86,6 +86,22 @@ var gameActions = {
         });
     },
 
+    //Get heat map of player in game
+    getPlayerGameHeatMapResponse : function(heatMap) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.GET_PLAYER_GAME_HEAT_MAP_RESPONSE,
+            heatMap : heatMap
+        });
+    },
+
+    getPlayerGameHeatMapRequest : function(gameId, playerId) {
+        ajax.getData(constants.baseApiGameUrl + gameId + '/' + playerId, function(error, data) {
+            if(!error) {
+                gameActions.getPlayerGameHeatMapResponse(data);
+            }
+        });
+    },
+
     //Set saved to false
     falsifyIsGameSaved : function() {
         AppDispatcher.handleServerAction({

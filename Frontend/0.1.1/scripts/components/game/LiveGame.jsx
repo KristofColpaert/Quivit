@@ -12,7 +12,7 @@ var React = require('react'),
     estimoteLocationActions = require('../../actions/estimoteLocationActions.js'),
     socket = require('socket.io-client')(constants.socketsUrl),
     Pitch = require('./Pitch.jsx'),
-    PitchElement = require('./PitchElement.jsx');
+    PitchElementCircle = require('./PitchElementCircle.jsx');
     
 var isSocketsInit = false;
 
@@ -25,6 +25,8 @@ var LiveGame = React.createClass({
 
     getInitialState : function() {
         return ({
+            spaceWidth : 0,
+            spaceHeight : 0,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -43,11 +45,11 @@ var LiveGame = React.createClass({
     componentDidMount : function() {
         //Query game
         var query = this.context.location.pathname;
-        var query = query.substr(12);
+        query = query.substr(12);
         gameActions.getGameRequest(query);
     },
 
-    componentWillUnmount: function() {
+    componentWillUnmount : function() {
         gameStore.removeChangeListener(this._onChange);
         playerStore.removeChangeListener(this._onChange);
         teamStore.removeChangeListener(this._onChange);
@@ -56,6 +58,8 @@ var LiveGame = React.createClass({
 
     _onChange : function() {
         this.setState({
+            spaceWidth : this.state.estimoteLocation.spaceWidth === 'undefined' ? 0 : this.state.estimoteLocation.spaceWidth,
+            spaceHeight : this.state.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.state.estimoteLocation.spaceHeight,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -65,6 +69,11 @@ var LiveGame = React.createClass({
 
         if((typeof this.state.estimoteLocation._id === 'undefined') && (typeof this.state.game._id !== 'undefined')) {
             estimoteLocationActions.getEstimoteLocationByEstimoteLocationIdRequest(this.state.game.estimoteLocationId);
+        }
+
+        //If game set, than get team.
+        if((typeof this.state.teams[this.state.game._id] !== 'object') && (typeof this.state.game._id !== 'undefined')) {
+            teamActions.getTeamHomeAwayByidRequest(this.state.game.teamHomeId, this.state.game.teamAwayId, this.state.game._id);
         }
 
         //If game set, than get players.
@@ -106,10 +115,12 @@ var LiveGame = React.createClass({
 
     _update : function(data) {
         var tempPlayerPositions = this.state.playerPositions;
-        var playerPosition = <PitchElement key={data.playerId} y={(data.x * (-100)) + (this.state.pitchWidth / 2)} x={(data.y * (-100)) + (this.state.pitchHeight / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
+        var playerPosition = <PitchElementCircle key={data.playerId} y={(data.x * (-100)) + (this.state.spaceWidth / 2)} x={(data.y * (-100)) + (this.state.spaceHeight / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
         tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({
+            spaceWidth : this.state.estimoteLocation.spaceWidth === 'undefined' ? 0 : this.state.estimoteLocation.spaceWidth,
+            spaceHeight : this.state.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.state.estimoteLocation.spaceHeight,
             players : playerStore.getHomeAwayPlayers(),
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
@@ -120,8 +131,13 @@ var LiveGame = React.createClass({
 
     render: function() {
         var self = this;
-        var homeTeam = typeof this.state.game._id === 'undefined' ? 'Home' : this.state.teams[this.state.game._id].home.name;
-        var awayTeam = typeof this.state.game._id === 'undefined' ? 'Away' : this.state.teams[this.state.game._id].away.name;
+        var homeTeam = "Home";
+        var awayTeam = "Away";
+        if((typeof this.state.game._id !== 'undefined' && typeof this.state.teams[this.state.game._id] === 'object')) {
+            homeTeam = this.state.teams[this.state.game._id].home.name;
+            awayTeam = this.state.teams[this.state.game._id].away.name;
+        }
+
         var finalPlayerPositions = [];
         var spaceWidth = typeof this.state.estimoteLocation.spaceWidth === 'undefined' ? 0 : (this.state.estimoteLocation.spaceWidth * 100);
         var spaceHeight = typeof this.state.estimoteLocation.spaceHeight === 'undefined' ? 0 : (this.state.estimoteLocation.spaceHeight * 100);

@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var PitchElement = React.createClass({
+var PitchElementCircle = React.createClass({
     render : function() {
         return (
             <g>
@@ -13,4 +13,4 @@ var PitchElement = React.createClass({
     }
 });
 
-module.exports = PitchElement;
+module.exports = PitchElementCircle;
