@@ -5,17 +5,32 @@ var React = require('react'),
     Game = require('./Game.jsx');
 
 var GamesPanel = React.createClass({
-    render: function() {
-        return (
-            <section className="games">
-                <h2>{this.props.title}</h2>
-                {this.props.games.map(function(game) {
-                    return (
+    render : function() {
+        if(this.props.mode === 'normal') {
+            return (
+                <section className="games">
+                    <h2>{this.props.title}</h2>
+                    {this.props.games.map(function(game) {
+                        return (
                         <Link className="gameHolder" key={game._id} to={'/canvasGame/' + game._id}><Game key={game._id} game={game} /></Link>
-                    );
-                })}
-            </section>
-        );
+                            );
+                        })}
+                </section>
+            );
+        }
+
+        else if(this.props.mode === 'past') {
+            return (
+                <section className="games">
+                    <h2>{this.props.title}</h2>
+                    {this.props.games.map(function(game) {
+                        return (
+                        <Link className="gameHolder" key={game._id} to={'/gameOverview/' + game._id}><Game key={game._id} game={game} /></Link>
+                            );
+                        })}
+                </section>
+            );
+        }
     }
 });
 

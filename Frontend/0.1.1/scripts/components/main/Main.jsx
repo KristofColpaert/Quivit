@@ -56,11 +56,11 @@ var Main = React.createClass({
             <main>
                 <Navigation />
                 <section className="content-holder">
-                    <GamesPanel title={this.state.titleGamesLive} games={this.state.todaysGames} />
+                    <GamesPanel title={this.state.titleGamesLive} games={this.state.todaysGames} mode="normal"/>
                     <div className="clearfix"></div>
-                    <GamesPanel title={this.state.titleGamesFuture} games={this.state.futureGames} />
+                    <GamesPanel title={this.state.titleGamesFuture} games={this.state.futureGames} mode="normal"/>
                     <div className="clearfix"></div>
-                    <GamesPanel title={this.state.titleGamesPast} games={this.state.pastGames} />
+                    <GamesPanel title={this.state.titleGamesPast} games={this.state.pastGames} mode="past"/>
                     <div className="clearfix"></div>
                     <Link to="/admin">Admin</Link>
                     <div className="clearfix"></div>
