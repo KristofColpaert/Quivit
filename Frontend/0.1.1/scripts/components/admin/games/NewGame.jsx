@@ -15,7 +15,8 @@ var NewGame = React.createClass({
     getInitialState : function() {
         return({
             teams : teamStore.getAllTeams(),
-            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
+            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations(),
+            image: 'images/gameTemp.jpg'
         });
     },
 
@@ -34,6 +35,20 @@ var NewGame = React.createClass({
         teamStore.removeChangeListener(this._onChange);
         gameStore.removeChangeListener(this._onChange);
         estimoteLocationStore.removeChangeListener(this._onChange);
+    },
+
+    _handleImage: function() {
+        var img = this.refs.gameImg,
+            preview = this.refs.preview;
+        if (img.files && img.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = this.result;
+            };
+
+            reader.readAsDataURL(img.files[0]);
+        }
     },
 
     _onChange : function() {
@@ -128,7 +143,9 @@ var NewGame = React.createClass({
                         </select>
 
                         <label htmlFor="gameImg">Game Image</label>
-                        <input id="gameImg" ref="gameImg" type="file" accept="image/*" />
+                        <input id="gameImg" onChange={ this._handleImage } ref="gameImg" type="file" accept="image/*" />
+
+                        <img className="gameImg preview" ref="preview" src={ this.state.image } />
                         <p>Best 284 x 189.</p>
 
                     </section>
