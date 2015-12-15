@@ -6,6 +6,7 @@ body, html {
   font-family: $fonts;
   color: $font-color;
   line-height: 1.3em;
+  width: 100%;
 }
 
 h2 {
@@ -63,6 +64,59 @@ a {
   float: none;
 }
 
+// Menu styles
+.bm-burger-button {
+  display: block;
+  position: relative;
+  float: right;
+  width: 20px;
+  height: 20px;
+  margin-top: 11px;
+  padding: 5px;
+  cursor: pointer;
+}
+ 
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  height: 2px !important;
+  background: #333333;
+}
+ 
+/* Color of close button cross */
+.bm-cross {
+  background: #333333;
+}
+ 
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #eeeeee;
+}
+ 
+/* General menu styles */
+.bm-menu {
+  padding: 2.5em 1.5em 0;
+  font-size: 1em;
+}
+ 
+/* Wrapper for item list */
+.bm-item-list {
+
+  .menu-item {
+    display: block;
+    padding: 0.5em;
+    color: #333;
+    text-decoration: none;
+    opacity: .6;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.bm-overlay {
+  left: 0;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -91,29 +145,10 @@ a {
       }
     }
 
-    > .list {
-      $size: 20px;
-      display: block;
-      height: $size;
-      width: $size;
-      margin: 11px -40px 0 0;
-      float: right;
-      opacity: .8;
-      cursor: pointer;
-      background: url('../images/menu.png') no-repeat;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      > .menu.item {
-        display: none;
-      }
-    }
-
     // ADMIN
     > .menu.list.admin {
       position: relative;
+      float: right;
       width: auto;
       display: block;
       margin: 0px;
@@ -140,8 +175,8 @@ a {
         }
       }
     }
-  }
 
+  }
 }
 
 .content-holder {
@@ -360,6 +395,21 @@ section.players {
     }
   }
 
+  > .team {
+    display: block;
+    float: left;
+    font-size: 1.6em;
+    width: 50%;
+    
+    &.home {
+      text-align: left;
+    }
+
+    &.away {
+      text-align: right;
+    }
+  }
+
   .pitch {
     display: block;
     margin: 30px auto 0;
@@ -392,6 +442,16 @@ section.players {
     border: $border;
     font-size: 1.1em;
     font-family: 'Open Sans';
+  }
+
+  .gameImg.preview {
+    border: $border;
+    margin-top: 31px;
+
+    & + p {
+      font-size: .9em;
+      margin-top: 0px;
+    }
   }
 }
 
