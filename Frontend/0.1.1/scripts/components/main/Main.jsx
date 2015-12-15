@@ -14,6 +14,8 @@ var titleLive = 'Live games';
 var titleFuture = 'Future games';
 var titlePast = 'Past games';
 
+
+
 var Main = React.createClass({
     getInitialState : function() {
         return ({
@@ -61,8 +63,6 @@ var Main = React.createClass({
                     <GamesPanel title={this.state.titleGamesFuture} games={this.state.futureGames} mode="normal"/>
                     <div className="clearfix"></div>
                     <GamesPanel title={this.state.titleGamesPast} games={this.state.pastGames} mode="past"/>
-                    <div className="clearfix"></div>
-                    <Link to="/admin">Admin</Link>
                     <div className="clearfix"></div>
                 </section>
                 <Footer />

@@ -160,7 +160,7 @@ var LiveGame = React.createClass({
                     </section>
                     <div className="clearfix"></div>
                     <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
-                    <h2>{homeTeam} - {awayTeam}</h2>
+                    <h2 className="team home">{homeTeam}</h2><h2 className="team away">{awayTeam}</h2>
                 </section>
         );
     }
