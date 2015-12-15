@@ -10,7 +10,7 @@ var storedPlayers = {
     isPlayerSaved : false,
     allPlayers : [],
     singlePlayer : [],
-    homeAwayPlayers : []
+    homeAwayPlayers : { home : [], away : [] }
 };
 
 //PlayerStore

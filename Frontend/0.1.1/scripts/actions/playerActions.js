@@ -32,7 +32,7 @@ var playerActions = {
     getPlayerByIdRequest : function(id) {
         ajax.getData(constants.baseApiPlayerUrl + 'id/' + id, function(error, data) {
             if(!error) {
-                playerActions.getPlayerByIdResponse(data);
+                playerActions.getPlayerByIdResponse(data[0]);
             }
         });
     },

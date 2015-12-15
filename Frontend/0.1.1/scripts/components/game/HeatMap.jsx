@@ -73,18 +73,23 @@ var HeatMap = React.createClass({
         var spaceHeight = typeof this.state.estimoteLocation.spaceHeight === 'undefined' ? 0 : (this.state.estimoteLocation.spaceHeight * 100);
         var finalHeatMapPositions = [];
 
-        var test = 100;
+        var counter = 100;
         this.state.heatMap.forEach(function(heatMapObject) {
             var minX = (heatMapObject.minX * (-100)) + (spaceWidth / 2) - (spaceWidth / 10);
             var minY = (heatMapObject.minY * (-100)) + (spaceHeight / 2) - (spaceHeight / 10);
 
-            var heatMapPosition = <PitchElementRect key={minX + ' ' + minY} x={minX} y={minY} width={spaceWidth / 10} height={spaceHeight / 10} fill={'hsla(' + test + ', 85%, 70%, 1)'} />;
+            var heatMapPosition = <PitchElementRect key={minX + ' ' + minY} x={minX} y={minY} width={spaceWidth / 10} height={spaceHeight / 10} fill={'hsla(' + counter + ', 85%, 70%, 1)'} />;
             finalHeatMapPositions.push(heatMapPosition);
-            test--;
+            counter--;
         });
+
+        var headerText = this.state.player.firstName + ' ' + this.state.player.lastName;
+
+        console.log(this.state.player);
 
         return (
             <section className="live game">
+                <h2>{headerText}</h2>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalHeatMapPositions} />
             </section>
         );
