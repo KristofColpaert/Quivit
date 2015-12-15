@@ -173,11 +173,11 @@ a {
   }
 
   &.add {
+    @extend %background--new;
+    @extend %subtle-shadow;
     opacity: .6;
     min-height: 245px;
     float: left;
-    background: #efefef url(../images/add.png) no-repeat center;
-    @extend %subtle-shadow;
     border: 2px solid #333;
     -webkit-transition: opacity 400ms ease-out;
     -moz-transition: opacity 400ms ease-out;
@@ -197,7 +197,7 @@ a {
   @extend %card;
   @extend %card-background;
   @extend %subtle-shadow;
-  border: 2px solid #333;
+  position: relative;
   text-decoration: none;
   cursor: pointer;
   opacity: .9;
@@ -247,11 +247,10 @@ a {
 
 section.teams {
 
-  .card.team {
+  > .card.team {
+    @extend %card;
     @extend %subtle-shadow;
     width: 18%;
-    box-sizing: border-box;
-    float: left;
     padding: 5px 0px 0;
     margin: 10px 2% 0 0;
     border: $border;
@@ -275,7 +274,26 @@ section.teams {
 
     &.new {
       min-height: 67px;
-      background: #efefef url(../images/add.png) no-repeat center;
+      @extend %background--new;
+    }
+  }
+}
+
+section.players {
+  > .card.player {
+    @extend %card;
+    @extend %subtle-shadow;
+    width: 18%;
+    padding: 5px;
+    margin: 10px 2% 0 0;
+
+    > &:nth-child(1), > &:nth-child(6n + 1) {
+      margin-left: 0;
+    }
+
+    &.new {
+      @extend %background--new;
+      min-height: 102px;
     }
   }
 }
@@ -288,56 +306,70 @@ section.teams {
 .live.game {
   > .playerSheet, > .gameSheet {
     float: left;
-    width: 50%;
   }
 
   > .playerSheet {
+    width: 70%;
 
     > .kit.number {
       display: block;
-      width: 80px;
+      width: 70px;
       float: left;
-      margin: 20px 0 0;
-      padding: 50px 0 34px;
-      border-right: $border;
+      margin: 50px 0 0;
+      padding-bottom: 10px;
       font-family: Bebas;
       font-size: 5em;
     }
 
     > .name {
       display: block;
-      margin: 0 0 0 90px;
+      margin: 10px 0 0 80px;
       font-size: 1.6em;
-      line-height: 2.8em;
+      line-height: 2em;
       clear: right;
     }
 
     > .goal {
-      display: block;
-      clear: right;
+      font-weight: 800;
+      margin: 0 10px 0 10px;
+      padding-right: 10px;
+      border-right: $border;
     }
 
     > .distance {
-      display: block;
-      clear: right;
+
     }
 
   }
 
   > .gameSheet {
+    width: 30%;
+    text-align: right;
+    margin-top: 30px;
 
+    > .score {
+      display: block;
+      font-size: 2.8em;
+      font-weight: 600;
+    }
+
+    > .time {
+      display: block;
+      text-align: right;
+      margin-top: 14px;
+    }
   }
 
   .pitch {
     display: block;
-    margin: 10px auto 0;
+    margin: 30px auto 0;
     background: #E7ECDE;
     border: 15px solid #fff;
   }
 }
 
 // ADMIN
-.new.game, .new.team {
+.new.game, .new.team, .new.player {
 
   label, input, select, option {
     display: block;

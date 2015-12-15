@@ -158,6 +158,7 @@ var LiveGame = React.createClass({
                         <span className="score">2-1</span>
                         <span className="time">54'</span>
                     </section>
+                    <div className="clearfix"></div>
                     <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
                     <h2>{homeTeam} - {awayTeam}</h2>
                 </section>
