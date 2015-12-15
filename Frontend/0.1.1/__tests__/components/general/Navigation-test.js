@@ -1,14 +1,12 @@
 /**
  * Created by BartCallant on 8/12/15.
  */
-
-jest.dontMock('../scripts/components/general/Navigation.jsx');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Navigation = require('../scripts/components/general/Navigation.jsx');
+jest.dontMock('../../../scripts/components/general/Navigation.jsx');
+const Navigation = require('../../../scripts/components/general/Navigation.jsx');
 
 describe('Navigation', () =>
 {

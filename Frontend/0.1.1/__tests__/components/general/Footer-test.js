@@ -2,13 +2,12 @@
  * Created by BartCallant on 8/12/15.
  */
 
-jest.dontMock('../scripts/components/general/Footer.jsx');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Footer = require('../scripts/components/general/Footer.jsx');
+jest.dontMock('../../../scripts/components/general/Footer.jsx');
+const Footer = require('../../../scripts/components/general/Footer.jsx');
 
 describe('Footer', () =>
 {
