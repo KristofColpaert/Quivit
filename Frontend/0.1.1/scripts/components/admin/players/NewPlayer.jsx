@@ -56,26 +56,28 @@ var NewPlayer = React.createClass({
 
     render : function() {
         return(
-            <section>
+            <section className="new player">
                 <h2>New Player</h2>
                 <form onSubmit={this.submitHandler}>
-                    <label htmlFor="firstName">First name</label>
-                    <input id="firstName" type="text" ref="firstName" />
+                    <section className="col50 left">
+                        <label htmlFor="firstName">First name</label>
+                        <input id="firstName" type="text" ref="firstName" />
 
-                    <label htmlFor="lastName">Last name</label>
-                    <input id="lastName" type="text" ref="lastName" />
+                        <label htmlFor="lastName">Last name</label>
+                        <input id="lastName" type="text" ref="lastName" />
+                    </section>
+                    <section className="col50 right">
+                        <label htmlFor="kitNumber">Kit number</label>
+                        <input id="kitNumber" type="text" ref="kitNumber" />
 
-                    <label htmlFor="kitNumber">Kit number</label>
-                    <input id="kitNumber" type="text" ref="kitNumber" />
-
-                    <label htmlFor="team">Team</label>
-                    <select id="team" ref="team">
-                        {this.state.teams.map(function(team) {
-                            return <option value={team._id} key={team._id}>{team.name}</option>
-                        })}
-                    </select>
-
-                    <input type="submit" value="Make" />
+                        <label htmlFor="team">Team</label>
+                        <select id="team" ref="team">
+                            {this.state.teams.map(function(team) {
+                                return <option value={team._id} key={team._id}>{team.name}</option>
+                            })}
+                        </select>
+                    </section>
+                    <input className="btn primary" type="submit" value="Make" />
                 </form>
             </section>
         );
