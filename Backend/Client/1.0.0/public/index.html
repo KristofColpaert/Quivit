@@ -13,15 +13,16 @@
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-    var socket = io();
+    var socket = io({forceNew : true});
     $('form').submit(function() {
         socket.emit('create', '56699d1c1d6979315414f45b565d706d9b971a0d10f9a5ec');
+        socket.emit('more', 0);
         return false;
     });
 
     var counter = 0;
     $('#STOP').click(function() {
-        socket.emit('more', counter);
+        socket.emit('goaway', 'disconnect');
         counter++;
         console.log(counter);
     });

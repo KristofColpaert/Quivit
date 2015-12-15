@@ -11,6 +11,8 @@ var socketHandler = function(io) {
     io.on('connection', function(socket) {
         //Check user in to room.
         socket.on('create', function(room) {
+            var collectionName = room.substr(4);
+
             socket.join(room);
 
             socket.on('more', function(page) {
@@ -25,12 +27,18 @@ var socketHandler = function(io) {
                 //If connection is open, start streaming.
                 stream.on('connection', function(state) {
                     if(state === 'open') {
-                        stream.getStreamingData(room, 500, page);
+                        stream.getStreamingData(collectionName, 500, page);
                     }
                 });
 
                 //Create Mongo Client.
                 stream.createMongoDbClient();
+            });
+
+            socket.on('goaway', function(state) {
+                if(state === 'disconnect') {
+                    socket.disconnect();
+                }
             });
         });
 

@@ -2,6 +2,7 @@
 
 var React = require('react'),
     Link = require('react-router').Link,
+    PastGame = require('./PastGame.jsx'),
     gameStore = require('../../stores/gameStore.js'),
     gameActions  = require('../../actions/gameActions.js'),
     playerStore = require('../../stores/playerStore.js'),
@@ -62,7 +63,8 @@ var GameOverview = React.createClass({
         this.setState({
             game: gameStore.getSingleGame(),
             players : playerStore.getHomeAwayPlayers(),
-            teams : teamStore.getHomeAwayTeams()
+            teams : teamStore.getHomeAwayTeams(),
+            estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation()
         });
 
         if(typeof this.state.game._id !== 'undefined') {
@@ -99,7 +101,7 @@ var GameOverview = React.createClass({
             <section className="overview game">
                 <section className="reviewGame">
                     <h2>View game again</h2>
-
+                    <PastGame game={this.state.game} teams={this.state.teams} players={this.state.players} estimoteLocation={this.state.estimoteLocation} />
                 </section>
                 <section className="playersSection">
                     <h2>Players {homeTeam}</h2>
