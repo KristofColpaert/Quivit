@@ -85,8 +85,6 @@ var HeatMap = React.createClass({
 
         var headerText = this.state.player.firstName + ' ' + this.state.player.lastName;
 
-        console.log(this.state.player);
-
         return (
             <section className="live game">
                 <h2>{headerText}</h2>

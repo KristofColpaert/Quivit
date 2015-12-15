@@ -8,6 +8,7 @@ var gameRepository = (function() {
     var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
     var ObjectID = require('mongoskin').ObjectID;
     var dateCalculator = require('../modules/dateCalculator.js');
+    var MongoStreamingHelper = require('../modules/MongoStreamingHelper.js');
 
     //Functions
     var getSingle = function(id, callback) {
@@ -105,7 +106,7 @@ var gameRepository = (function() {
                 callback(resultObject);
             }
         });
-    }
+    };
 
     //Return
     return {

@@ -7,15 +7,16 @@ var React = require('react'),
     playerStore = require('../../stores/playerStore.js'),
     playerActions = require('../../actions/playerActions.js'),
     teamStore = require('../../stores/teamStore.js'),
-    teamActions = require('../../actions/teamActions.js');
-
-var isPlayersSet = false;
+    teamActions = require('../../actions/teamActions.js'),
+    estimoteLocationStore = require('../../stores/estimoteLocationStore.js'),
+    estimoteLocationActions = require('../../actions/estimoteLocationActions.js');
 
 var GameOverview = React.createClass({
 
     _localVariables : {
         isPlayersSet : false,
-        isTeamsSet : false
+        isTeamsSet : false,
+        isEstimoteLocationSet : false
     },
 
     contextTypes: {
@@ -27,7 +28,8 @@ var GameOverview = React.createClass({
         return({
             game : gameStore.getSingleGame(),
             players : playerStore.getHomeAwayPlayers(),
-            teams: teamStore.getHomeAwayTeams()
+            teams: teamStore.getHomeAwayTeams(),
+            estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation()
         });
     },
 
@@ -35,6 +37,7 @@ var GameOverview = React.createClass({
         gameStore.addChangeListener(this._onChange);
         playerStore.addChangeListener(this._onChange);
         teamStore.addChangeListener(this._onChange);
+        estimoteLocationStore.addChangeListener(this._onChange);
     },
 
     componentDidMount : function() {
@@ -48,6 +51,11 @@ var GameOverview = React.createClass({
         gameStore.removeChangeListener(this._onChange);
         playerStore.removeChangeListener(this._onChange);
         teamStore.removeChangeListener(this._onChange);
+        estimoteLocationStore.removeChangeListener(this._onChange);
+
+        this._localVariables.isEstimoteLocationSet = false;
+        this._localVariables.isPlayersSet = false;
+        this._localVariables.isTeamsSet = false;
     },
 
     _onChange : function() {
@@ -57,25 +65,24 @@ var GameOverview = React.createClass({
             teams : teamStore.getHomeAwayTeams()
         });
 
-        if(this._localVariables.isPlayersSet) {
-            if(this.state.players.home.length > 0) {
-                if(this.state.players.home[0].teamId != this.state.game.teamHomeId) {
-                    playerActions.getPlayersByTeamRequest(this.state.game.teamHomeId, this.state.game.teamAwayId);
-                }
-                else if(this.state.players.away[0].teamId != this.state.game.teamAwayId) {
-                    playerActions.getPlayersByTeamRequest(this.state.game.teamHomeId, this.state.game.teamAwayId);
-                }
+        if(typeof this.state.game._id !== 'undefined') {
+            var query = this.context.location.pathname;
+            query = query.substr(14);
+
+            if((!this._localVariables.isPlayersSet) && (this.state.game._id === query)){
+                this._localVariables.isPlayersSet = true;
+                playerActions.getPlayersByTeamRequest(this.state.game.teamHomeId, this.state.game.teamAwayId);
             }
-        }
 
-        if((!this._localVariables.isPlayersSet) && (typeof this.state.game._id !== 'undefined')){
-            this._localVariables.isPlayersSet = true;
-            playerActions.getPlayersByTeamRequest(this.state.game.teamHomeId, this.state.game.teamAwayId);
-        }
+            if((!this._localVariables.isTeamsSet) && (this.state.game._id === query)){
+                this._localVariables.isTeamsSet = true;
+                teamActions.getTeamHomeAwayByidRequest(this.state.game.teamHomeId, this.state.game.teamAwayId, this.state.game._id);
+            }
 
-        if((!this._localVariables.isTeamsSet) && (typeof this.state.game._id !== 'undefined')){
-            this._localVariables.isTeamsSet = true;
-            teamActions.getTeamHomeAwayByidRequest(this.state.game.teamHomeId, this.state.game.teamAwayId, this.state.game._id);
+            if((!this._localVariables.isEstimoteLocationSet) && (this.state.game._id === query)){
+                this._localVariables.isEstimoteLocationSet = true;
+                estimoteLocationActions.getEstimoteLocationByEstimoteLocationIdRequest(this.state.game.estimoteLocationId);
+            }
         }
     },
 

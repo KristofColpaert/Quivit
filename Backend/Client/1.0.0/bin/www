@@ -10,4 +10,4 @@ console.log('Server is listening to port ' + port);
 
 //Setup socket.io.
 var io = require('socket.io')(server);
-var positionHandler = require('../modules/positionHandler.js')(io);
+var socketHandler = require('../modules/socketHandler.js')(io);
