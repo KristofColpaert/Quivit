@@ -63,12 +63,12 @@ var PastGame = React.createClass({
         if(query === gameId) {
             this.props.players['home'].forEach(function(player) {
                 //Ask server to get room.
-                self._localVariables.socket.emit('create', 'past' + gameId + player._id);
+                self._localVariables.socket.emit('createPast', 'past' + gameId + player._id);
             });
 
             this.props.players['away'].forEach(function(player) {
                 //Ask server to get room.
-                self._localVariables.socket.emit('create', 'past' + gameId + player._id);
+                self._localVariables.socket.emit('createPast', 'past' + gameId + player._id);
             });
 
             //Get data.

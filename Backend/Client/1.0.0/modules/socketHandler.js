@@ -4,13 +4,14 @@ var socketHandler = function(io) {
     //Variables
     var io = io;
     var playerPositionRepository = require('../data/playerPositionRepository.js');
+    var gameRepository = require('../data/gameRepository.js');
     var PlayerPosition = require('../models/PlayerPosition.js');
     var MongoStreamingHelper = require('./MongoStreamingHelper.js');
 
     //When someone connects to socket
     io.on('connection', function(socket) {
-        //Check user in to room.
-        socket.on('create', function(room) {
+        //Past games
+        socket.on('createPast', function(room) {
             var collectionName = room.substr(4);
 
             socket.join(room);
@@ -33,6 +34,33 @@ var socketHandler = function(io) {
 
                 //Create Mongo Client.
                 stream.createMongoDbClient();
+            });
+
+            socket.on('goaway', function(state) {
+                if(state === 'disconnect') {
+                    socket.disconnect();
+                }
+            });
+        });
+
+        //Manage live game
+        socket.on('createManage', function(room){
+            var gameId = room.substr(4);
+
+            socket.join(room);
+
+            socket.on('home', function(add){
+                io.to(room).emit('score', 'home');
+                gameRepository.addToHomeScore(gameId, function(result){
+
+                });
+            });
+
+            socket.on('away', function(add) {
+                io.to(room).emit('score', 'away');
+                gameRepository.addToAwayScore(gameId, function(result){
+
+                });
             });
 
             socket.on('goaway', function(state) {

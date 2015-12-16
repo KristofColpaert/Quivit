@@ -148,7 +148,7 @@ var LiveGame = React.createClass({
 
         return(
         	    <section className="live game">
-                    <section className="333">
+                    <section className="playerSheet">
                         <h3 className="kit number">13</h3>
                         <span className="name">Karel Verhulst</span>
                         <span className="goal">1 goal</span>

@@ -108,6 +108,38 @@ var gameRepository = (function() {
         });
     };
 
+    var addToHomeScore = function(gameId, callback) {
+        getSingle(gameId, function(result) {
+            var score = result[0].scoreHome + 1;
+            db.collection('games').update({ _id : ObjectID(gameId)}, { $set : { scoreHome : score }}, function(error) {
+                if(error) {
+                    errorLogger.log(error);
+                }
+
+                else {
+                    callback(score);
+                }
+
+            });
+        })
+    };
+
+    var addToAwayScore = function(gameId, callback) {
+        getSingle(gameId, function(result) {
+            var score = result[0].scoreAway + 1;
+            console.log(score);
+            db.collection('games').update({ _id : ObjectID(gameId)}, { $set : { scoreAway : score }}, function(error) {
+                if(error) {
+                    errorLogger.log(error);
+                }
+
+                else {
+                    callback(score);
+                }
+            });
+        })
+    };
+
     //Return
     return {
         getSingle : getSingle,
@@ -115,7 +147,9 @@ var gameRepository = (function() {
         getByDateIncluded : getByDateIncluded,
         getFuture : getFuture,
         getPast : getPast,
-        add : add
+        add : add,
+        addToHomeScore : addToHomeScore,
+        addToAwayScore : addToAwayScore
     };
 })();
 

@@ -6,6 +6,7 @@ var React = require('react'),
     AdminNavigation = require('./AdminNavigation.jsx'),
     ManageGames = require('./games/ManageGames.jsx'),
     NewGame = require('./games/NewGame.jsx'),
+    EditGame = require('./games/EditGame.jsx'),
     gameStore = require('../../stores/gameStore.js'),
     gameActions = require('../../actions/gameActions.js'),
     ManageTeams = require('./teams/ManageTeams.jsx'),
@@ -179,6 +180,16 @@ var Admin = React.createClass({
                     </main>
                 );
                 break;
+
+            case 'EditGame':
+                return(
+                    <main>
+                        <AdminNavigation/>
+                        <section className="content-holder">
+                            <EditGame />
+                        </section>
+                    </main>
+                );
         }
     }
 });

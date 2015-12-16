@@ -11,7 +11,7 @@ var ManageGames = React.createClass({
                 <h2>{this.props.title}</h2>
                 {this.props.games.map(function(game) {
                     return (
-                        <Link className="gameHolder" key={game._id} to={'/canvasGame/' + game._id}><Game key={game._id} game={game} /></Link>
+                        <Link className="gameHolder" key={game._id} to={'/admin/games/edit/' + game._id}><Game key={game._id} game={game} /></Link>
                     );
                 })}
                 <Link className="gameHolder add" to="/admin/games/new"></Link>

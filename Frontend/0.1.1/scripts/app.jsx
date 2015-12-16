@@ -41,6 +41,7 @@ ReactDOM.render((
         <Route name="/admin/teams/new" path="/admin/teams/new" component={AdminWrapper('NewTeam')} />
         <Route name="/admin/games" path="/admin/games" component={AdminWrapper('ManageGames')} />
         <Route name="/admin/games/new" path="/admin/games/new" component={AdminWrapper('NewGame')} />
+        <Route name="/admin/games/edit/:gameId" path="/admin/games/edit/:gameId" component={AdminWrapper('EditGame')} />
         <Route name="/admin/players" path="/admin/players" component={AdminWrapper('ManagePlayers')} />
         <Route name="/admin/players/new" path="/admin/players/new" component={AdminWrapper('NewPlayer')} />
         <Route name="/admin/estimotelocations" path="/admin/estimotelocations" component={AdminWrapper('ManageEstimoteLocations')} />
