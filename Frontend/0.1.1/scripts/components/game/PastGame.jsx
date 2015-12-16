@@ -97,6 +97,7 @@ var PastGame = React.createClass({
         var self = this;
 
         this._localVariables.interval = setInterval(function() {
+            //Make playerpositions
             var finalPlayerPositions = [];
             Object.keys(self._localVariables.playerPositions).forEach(function(key) {
                 finalPlayerPositions.push(self._localVariables.playerPositions[key][0]);
@@ -106,13 +107,31 @@ var PastGame = React.createClass({
             self.setState({
                 finalPlayerPositions : finalPlayerPositions
             });
+
+            //If less than 250 positions ==> ask new positions.
+            var key = Object.keys(self._localVariables.playerPositions)[0];
+            if(typeof self._localVariables.playerPositions[key] !== 'undefined'){
+                if(self._localVariables.playerPositions[key].length === 200) {
+                    self._askMore();
+                }
+            }
         }, 200);
+    },
+
+    _askMore : function() {
+        this._localVariables.pageCount++;
+        console.log(this._localVariables.pageCount);
+        this._localVariables.socket.emit('more', this._localVariables.pageCount);
     },
 
     render : function() {
         var spaceWidth = typeof this.props.estimoteLocation.spaceWidth === 'undefined' ? 0 : this.props.estimoteLocation.spaceWidth * 100;
         var spaceHeight = typeof this.props.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.props.estimoteLocation.spaceHeight * 100;
         var finalPlayerPositions = this.state.finalPlayerPositions;
+
+        if(finalPlayerPositions.length > 0 && typeof finalPlayerPositions[0] === 'undefined') {
+            clearInterval(this._localVariables.interval);
+        }
 
         return (
             <section className="live game">
