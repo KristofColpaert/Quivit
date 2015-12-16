@@ -22,8 +22,7 @@ var PastGame = React.createClass({
 
     getInitialState : function() {
         return({
-            spaceWidth : this.props.estimoteLocation.spaceWidth === 'undefined' ? 0 : this.props.estimoteLocation.spaceWidth,
-            spaceHeight : this.props.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.props.estimoteLocation.spaceHeight,
+            finalPlayerPositions : []
         });
     },
 
@@ -80,7 +79,7 @@ var PastGame = React.createClass({
                     tempPlayerPositions[data.playerId] = [];
                 }
 
-                var playerPosition = <PitchElementCircle key={data.playerId} y={(data.x * (-100)) + (self.props.estimoteLocation.spaceWidth / 2)} x={(data.y * (-100)) + (self.props.estimoteLocation.spaceHeight / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
+                var playerPosition = <PitchElementCircle key={data.playerId} y={(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)} x={(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
                 tempPlayerPositions[data.playerId].push(playerPosition);
 
                 self._localVariables.playerPositions = tempPlayerPositions;
@@ -88,12 +87,6 @@ var PastGame = React.createClass({
 
             //Ask data for the first time.
             this._localVariables.socket.emit('more', self._localVariables.pageCount);
-
-            //Init width and height.
-            self.setState({
-                spaceWidth : self.props.estimoteLocation.spaceWidth === 'undefined' ? 0 : self.props.estimoteLocation.spaceWidth,
-                spaceHeight : self.props.estimoteLocation.spaceHeight === 'undefined' ? 0 : self.props.estimoteLocation.spaceHeight,
-            });
 
             //Enable showing players.
             this._startShow();
@@ -104,13 +97,28 @@ var PastGame = React.createClass({
         var self = this;
 
         this._localVariables.interval = setInterval(function() {
-            console.log(self._localVariables.playerPositions);
-        }, 20);
+            var finalPlayerPositions = [];
+            Object.keys(self._localVariables.playerPositions).forEach(function(key) {
+                finalPlayerPositions.push(self._localVariables.playerPositions[key][0]);
+                self._localVariables.playerPositions[key].shift();
+            });
+
+            self.setState({
+                finalPlayerPositions : finalPlayerPositions
+            });
+        }, 200);
     },
 
     render : function() {
+        var spaceWidth = typeof this.props.estimoteLocation.spaceWidth === 'undefined' ? 0 : this.props.estimoteLocation.spaceWidth * 100;
+        var spaceHeight = typeof this.props.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.props.estimoteLocation.spaceHeight * 100;
+        var finalPlayerPositions = this.state.finalPlayerPositions;
+
         return (
-            <button onClick={this._initWatching} value="start" />
+            <section className="live game">
+                <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
+                <button onClick={this._initWatching} value="start" />
+            </section>
         );
     }
 });
