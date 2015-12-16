@@ -136,7 +136,7 @@ var PastGame = React.createClass({
         return (
             <section className="live game">
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
-                <button onClick={this._initWatching} value="start" />
+                <button onClick={this._initWatching} value="start">Play</button>
             </section>
         );
     }
