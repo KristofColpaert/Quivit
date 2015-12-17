@@ -65,6 +65,7 @@ var NewGame = React.createClass({
 
     submitHandler : function(event) {
         event.preventDefault();
+        var self = this;
 
         var tempGameDate = new Date(this.refs.gameDate.value);
         var tempDate = '00';
@@ -90,17 +91,29 @@ var NewGame = React.createClass({
 
         var tempGameTime = this.refs.gameTime.value;
         var tempGameTime = tempGameTime.replace(':', '');
+        
+        var image = this.refs.gameImg;
+        var reader = new FileReader();
 
-        var newGame = {
-            teamHomeId : this.refs.teamHome.value,
-            teamAwayId : this.refs.teamAway.value,
-            gameDate : tempGameDate,
-            gameTime : tempGameTime,
-            estimoteLocationId : this.refs.estimoteLocationId.value,
-            isGameFinished : this.refs.isGameFinished.value
+        reader.onload = function (e) {
+
+            var newGame = {
+                teamHomeId : self.refs.teamHome.value,
+                teamAwayId : self.refs.teamAway.value,
+                gameDate : tempGameDate,
+                gameTime : tempGameTime,
+                image: this.result,
+                estimoteLocationId : self.refs.estimoteLocationId.value,
+                isGameFinished : self.refs.isGameFinished.value
+            };
+
+            gameActions.saveGameRequest(newGame);
+
         };
 
-        gameActions.saveGameRequest(newGame);
+        reader.readAsDataURL(image.files[0]);
+
+        
     },
 
     render : function() {

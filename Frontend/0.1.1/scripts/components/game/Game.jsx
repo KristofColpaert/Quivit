@@ -2,6 +2,7 @@
 
 var React = require('react'),
     Navigation = require('../general/Navigation.jsx'),
+    Footer = require('../general/Footer.jsx'),
     LiveGame = require('./LiveGame.jsx'),
     HeatMap = require('./HeatMap.jsx'),
     GameOverview = require('./GameOverview.jsx');
@@ -42,6 +43,7 @@ var Game = React.createClass({
                         <section className="content-holder">
                             <LiveGame />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -53,6 +55,7 @@ var Game = React.createClass({
                         <section className="content-holder">
                             <HeatMap />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -64,6 +67,7 @@ var Game = React.createClass({
                         <section className="content-holder">
                             <GameOverview />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;

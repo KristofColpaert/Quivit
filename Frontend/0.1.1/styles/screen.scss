@@ -447,6 +447,8 @@ section.players {
   .gameImg.preview {
     border: $border;
     margin-top: 31px;
+    max-width: 284px;
+    height: auto;
 
     & + p {
       font-size: .9em;
