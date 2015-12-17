@@ -178,17 +178,47 @@ var LiveGame = React.createClass({
             finalPlayerPositions.push(self.state.playerPositions[key]);
         });
 
+        //Calculate time passed.
+        var timePassed = 0;
+        var currentDate = '' + new Date().getFullYear() + (new Date().getMonth() + 1) + new Date().getDate();
+        if(this.state.game.gameDate === currentDate) {
+            var gameDateYear = this.state.game.gameDate.substr(0, 4);
+            var gameDateMonth = this.state.game.gameDate.substr(4, 2);
+            var gameDateDay = this.state.game.gameDate.substr(6, 2);
+
+            var gameHour = this.state.game.gameTime.substr(0, 2);
+            var gameMinute = this.state.game.gameTime.substr(2, 2);
+
+            var currentTime = new Date();
+            var gameTime = new Date('' + gameDateYear + '-' + gameDateMonth + '-' + gameDateDay + 'T' + (gameHour - 1) + ':' + gameMinute + ':00');
+
+            var timePassed = currentTime - this.state.game.gameTime;
+            if(this.state.game.gameTime < currentTime) {
+                var timePassed = currentTime - this.state.game.gameTime;
+
+                if(timePassed > 45 && timePassed <= 60) {
+                    timePassed = 'Pause';
+                }
+
+                else if(timePassed > 60 && timePassed <= 105) {
+                    timePassed = timePassed - 15;
+                }
+
+                else if(timePassed > 105) {
+                    timePassed = 'Finished';
+                }
+            }
+        }
+
         return(
         	    <section className="live game">
                     <section className="playerSheet">
                         <h3 className="kit number">13</h3>
                         <span className="name">Karel Verhulst</span>
-                        <span className="goal">1 goal</span>
-                        <span className="distance">4,6km</span>
                     </section>
                     <section className="gameSheet">
                         <span className="score">{scoreHome + '-' + scoreAway}</span>
-                        <span className="time">54'</span>
+                        <span className="time">{timePassed}</span>
                     </section>
                     <div className="clearfix"></div>
                     <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
