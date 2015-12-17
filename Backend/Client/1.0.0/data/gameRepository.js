@@ -127,7 +127,6 @@ var gameRepository = (function() {
     var addToAwayScore = function(gameId, callback) {
         getSingle(gameId, function(result) {
             var score = result[0].scoreAway + 1;
-            console.log(score);
             db.collection('games').update({ _id : ObjectID(gameId)}, { $set : { scoreAway : score }}, function(error) {
                 if(error) {
                     errorLogger.log(error);

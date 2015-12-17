@@ -75,26 +75,47 @@ var EditGame = React.createClass({
         this._localVariables.isSocketsInit = true;
 
         this._localVariables.socket.emit('createManage', 'live' + gameId);
+        this._localVariables.socket.on('data', function(data) {console.log(data)});
     },
 
     _addHome : function() {
         this._localVariables.socket.emit('home', 'add');
+
+        var tempGame = gameStore.getSingleGame();
+        tempGame.scoreHome = tempGame.scoreHome + 1;
+        var tempTeams = teamStore.getHomeAwayTeams();
+        this.setState({
+            game : tempGame,
+            teams : tempTeams
+        });
     },
 
     _addAway : function() {
         this._localVariables.socket.emit('away', 'add');
+
+        var tempGame = gameStore.getSingleGame();
+        tempGame.scoreAway = tempGame.scoreAway + 1;
+        var tempTeams = teamStore.getHomeAwayTeams();
+        this.setState({
+            game : tempGame,
+            teams : tempTeams
+        });
     },
 
     render : function() {
         var homeTeam = "Home";
         var awayTeam = "Away";
+        var homeScore = typeof this.state.game.scoreHome === 'undefined' ? 0 : this.state.game.scoreHome;
+        var awayScore = typeof this.state.game.scoreAway === 'undefined' ? 0 : this.state.game.scoreAway;
+
         if((typeof this.state.game._id !== 'undefined' && typeof this.state.teams[this.state.game._id] === 'object')) {
             homeTeam = this.state.teams[this.state.game._id].home.name;
             awayTeam = this.state.teams[this.state.game._id].away.name;
         }
+
         return (
             <section>
-                <h2>{homeTeam + ' - ' + awayTeam}</h2>
+                <h2>{homeTeam + ' (' + homeScore + ') - (' + awayScore + ') ' + awayTeam}</h2>
                 <button onClick={this._addHome}>Home scored</button>
                 <button onClick={this._addAway}>Away scored</button>
             </section>

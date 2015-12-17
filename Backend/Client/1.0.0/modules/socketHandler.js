@@ -50,16 +50,14 @@ var socketHandler = function(io) {
             socket.join(room);
 
             socket.on('home', function(add){
-                io.to(room).emit('score', 'home');
                 gameRepository.addToHomeScore(gameId, function(result){
-
+                    io.to(room).emit('score', { team : 'home', score : result });
                 });
             });
 
             socket.on('away', function(add) {
-                io.to(room).emit('score', 'away');
                 gameRepository.addToAwayScore(gameId, function(result){
-
+                    io.to(room).emit('score', { team : 'away', score : result });
                 });
             });
 
