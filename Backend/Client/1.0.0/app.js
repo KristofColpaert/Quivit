@@ -39,8 +39,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({type : 'application/json' }));
+app.use(bodyParser.urlencoded({ extended: true, limit : '50mb' }));
+app.use(bodyParser.json({type : 'application/json', limit : '50mb' }));
 
 /*
 ** Routes
