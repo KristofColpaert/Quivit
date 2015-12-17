@@ -57,10 +57,12 @@ var NewGame = React.createClass({
             gameActions.falsifyIsGameSaved();
         }
 
-        this.setState({
-            teams: teamStore.getAllTeams(),
-            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
-        });
+        else {
+            this.setState({
+                teams: teamStore.getAllTeams(),
+                estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
+            });
+        }
     },
 
     submitHandler : function(event) {
