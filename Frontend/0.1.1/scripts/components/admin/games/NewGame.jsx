@@ -59,10 +59,9 @@ var NewGame = React.createClass({
             gameActions.falsifyIsGameSaved();
         }
 
-        this.setState({
-            teams: teamStore.getAllTeams(),
-            estimoteLocations : estimoteLocationStore.getAllEstimoteLocations()
-        });
+        else {
+
+        }
     },
 
     submitHandler : function(event) {
@@ -114,8 +113,6 @@ var NewGame = React.createClass({
         };
 
         reader.readAsDataURL(image.files[0]);
-
-        
     },
 
     render : function() {
