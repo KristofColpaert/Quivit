@@ -191,6 +191,10 @@ var LiveGame = React.createClass({
 
             var currentTime = new Date();
             var gameTime = new Date('' + gameDateYear + '-' + gameDateMonth + '-' + gameDateDay + 'T' + (gameHour - 1) + ':' + gameMinute + ':00');
+            var difference = Math.abs(currentTime.getTime - gameTime.getTime());
+            var differenceMinutes = Math.ceil(difference / (1000 * 3600));
+
+            console.log(differenceMinutes);
 
             var timePassed = currentTime - this.state.game.gameTime;
             if(this.state.game.gameTime < currentTime) {
