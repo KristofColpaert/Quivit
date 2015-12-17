@@ -80,7 +80,8 @@ router.post('/', function(req, res) {
     var teamAwayId = req.body.teamAwayId;
     var estimoteLocationId = req.body.estimoteLocationId;
     var isGameFinished = req.body.isGameFinished;
-    var newGame = new Game(gameDate, gameTime, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, 0, 0);
+    var image = req.body.image;
+    var newGame = new Game(gameDate, gameTime, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, 0, 0, image);
     gameRepository.add(newGame, function(result) {
         res.json(result);
     });
