@@ -87,7 +87,7 @@ var LiveGame = React.createClass({
         }
 
         //If game set, than get players.
-        if((typeof this.state.players['home'] === 'undefined') && (typeof this.state.game._id !== 'undefined')) {
+        if((typeof this.state.players['home'][0] === 'undefined') && (typeof this.state.game._id !== 'undefined')) {
             playerActions.getPlayersByTeamRequest(this.state.game.teamHomeId, this.state.game.teamAwayId);
         }
 
@@ -103,16 +103,16 @@ var LiveGame = React.createClass({
 
         //Player sockets.
         this.state.players['home'].forEach(function(player) {
-            this._localVariables.socket.on(player._id, function(data) {
+            self._localVariables.socket.on(player._id, function(data) {
                 requestAnimationFrame(() => {self._update(data)});
-                console.log(data);
+                //console.log(data);
             });
         });
 
         this.state.players['away'].forEach(function(player) {
-            this._localVariables.socket.on(player._id, function(data) {
+            self._localVariables.socket.on(player._id, function(data) {
                 requestAnimationFrame(() => {self._update(data)});
-                console.log(data);
+                //console.log(data);
             });
         });
 
@@ -144,7 +144,7 @@ var LiveGame = React.createClass({
 
     _update : function(data) {
         var tempPlayerPositions = this.state.playerPositions;
-        var playerPosition = <PitchElementCircle key={data.playerId} y={(data.x * (-100)) + (this.state.spaceWidth / 2)} x={(data.y * (-100)) + (this.state.spaceHeight / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
+        var playerPosition = <PitchElementCircle key={data.playerId} y={(data.x * (-100)) + ((this.state.spaceWidth * 100) / 2)} x={(data.y * (-100)) + ((this.state.spaceHeight * 100) / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
         tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({

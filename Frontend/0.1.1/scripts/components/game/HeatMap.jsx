@@ -78,7 +78,7 @@ var HeatMap = React.createClass({
             var minX = (heatMapObject.minX * (-100)) + (spaceWidth / 2) - (spaceWidth / 10);
             var minY = (heatMapObject.minY * (-100)) + (spaceHeight / 2) - (spaceHeight / 10);
 
-            var heatMapPosition = <PitchElementRect key={minX + ' ' + minY} x={minX} y={minY} width={spaceWidth / 10} height={spaceHeight / 10} fill={'hsla(' + counter + ', 85%, 70%, 1)'} />;
+            var heatMapPosition = <PitchElementRect key={minX + ' ' + minY} x={minX} y={minY} width={spaceWidth / 10} height={spaceHeight / 10} fill={'hsla(' + counter + ', 85%, 70%, 0.65)'} />;
             finalHeatMapPositions.push(heatMapPosition);
             counter--;
         });
