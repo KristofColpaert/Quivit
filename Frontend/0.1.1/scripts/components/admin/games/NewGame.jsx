@@ -7,7 +7,9 @@ var React = require('react'),
     teamActions = require('../../../actions/teamActions.js'),
     teamStore = require('../../../stores/teamStore.js'),
     estimoteLocationActions = require('../../../actions/estimoteLocationActions.js'),
-    estimoteLocationStore = require('../../../stores/estimoteLocationStore.js');
+    estimoteLocationStore = require('../../../stores/estimoteLocationStore.js'),
+    Validator = require('validator'),
+    Validation = require('react-validation');
 
 var NewGame = React.createClass({
     mixins: [History],
@@ -120,7 +122,7 @@ var NewGame = React.createClass({
         return(
             <section>
                 <h2>New Game</h2>
-                <form onSubmit={this.submitHandler} className="new game">
+                <Validation.Form onSubmit={this.submitHandler} className="new game">
                     <section className="col50 left">
                         <label htmlFor="teamHome">Home team</label>
                         <select id="teamHome" ref="teamHome">
@@ -130,7 +132,12 @@ var NewGame = React.createClass({
                         </select>
 
                         <label htmlFor="gameDate">Game date</label>
-                        <input id="gameDate" type="date" ref="gameDate"/>
+                        <Validation.Input
+                            name="gameDate"
+                            id="gameDate"
+                            type="date"
+                            ref="gameDate"
+                            className="" />
 
                         <label htmlFor="gameTime">Game time</label>
                         <input id="gameTime" type="time" ref="gameTime"/>
@@ -163,8 +170,8 @@ var NewGame = React.createClass({
 
                     </section>
                     <div className="clearfix"></div>
-                    <input className="btn primary" type="submit" value="Add Game" />
-                </form>
+                    <Validation.Button blocking="button" className="btn primary" type="submit" value="Add Game" />
+                </ Validation.Form>
             </section>
         );
     }

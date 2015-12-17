@@ -73,13 +73,22 @@ var PastGame = React.createClass({
 
             //Get data.
             this._localVariables.socket.on('data', function(data) {
+                console.log(data);
                 var tempPlayerPositions = self._localVariables.playerPositions;
 
                 if(typeof tempPlayerPositions[data.playerId] === 'undefined'){
                     tempPlayerPositions[data.playerId] = [];
                 }
 
-                var playerPosition = <PitchElementCircle key={data.playerId} y={(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)} x={(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
+                var playerPosition = <PitchElementCircle
+                                        key = {data.playerId}
+                                        y = {(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
+                                        x = {(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
+                                        radius = '15'
+                                        fillElement = 'rgb(170,170,170)'
+                                        fillText = 'white'
+                                        kitNumber = { data.playerId }
+                                        fontSize = '16' />
                 tempPlayerPositions[data.playerId].push(playerPosition);
 
                 self._localVariables.playerPositions = tempPlayerPositions;

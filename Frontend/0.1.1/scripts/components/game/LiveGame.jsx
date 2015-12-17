@@ -32,6 +32,7 @@ var LiveGame = React.createClass({
             spaceWidth : 0,
             spaceHeight : 0,
             players : playerStore.getHomeAwayPlayers(),
+            kitnumber: 'X',
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
             estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation(),
@@ -142,9 +143,22 @@ var LiveGame = React.createClass({
         });
     },
 
+    _playerClicked: function() {
+        // TODO look at this
+        // players[playerID];
+    },
+
     _update : function(data) {
         var tempPlayerPositions = this.state.playerPositions;
-        var playerPosition = <PitchElementCircle key={data.playerId} y={(data.x * (-100)) + ((this.state.spaceWidth * 100) / 2)} x={(data.y * (-100)) + ((this.state.spaceHeight * 100) / 2)} radius="15" fillElement="red" fillText="white" kitNumber={data.kitNumber} fontSize="16" />
+        var playerPosition = <PitchElementCircle onClick={ this._playerClicked }
+                                key={data.playerId}
+                                y={(data.x * (-100)) + ((this.state.spaceWidth * 100) / 2)}
+                                x={(data.y * (-100)) + ((this.state.spaceHeight * 100) / 2)}
+                                radius= '15'
+                                fillElement= 'rgb(170,170,170)'
+                                fillText = 'white'
+                                kitNumber = { data }
+                                fontSize = '16' />
         tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({
@@ -181,7 +195,7 @@ var LiveGame = React.createClass({
         return(
         	    <section className="live game">
                     <section className="playerSheet">
-                        <h3 className="kit number">13</h3>
+                        <h3 className="kit number" ref="kitnumber">{ this.state.kitnumber }</h3>
                         <span className="name">Karel Verhulst</span>
                         <span className="goal">1 goal</span>
                         <span className="distance">4,6km</span>
@@ -193,6 +207,7 @@ var LiveGame = React.createClass({
                     <div className="clearfix"></div>
                     <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
                     <h2 className="team home">{homeTeam}</h2><h2 className="team away">{awayTeam}</h2>
+                    <div className="clearfix"></div>
                 </section>
         );
     }

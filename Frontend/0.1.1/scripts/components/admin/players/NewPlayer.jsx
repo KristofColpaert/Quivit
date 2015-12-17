@@ -5,7 +5,19 @@ var React = require('react'),
     playerActions = require('../../../actions/playerActions.js'),
     playerStore = require('../../../stores/playerStore.js'),
     teamActions = require('../../../actions/teamActions.js'),
-    teamStore = require('../../../stores/teamStore.js');
+    teamStore = require('../../../stores/teamStore.js'),
+    Validator = require('validator'),
+    Validation = require('react-validation');
+
+Validation.extendErrors({
+    isRequired: {
+        className: 'input error',
+        message: 'required',
+        rule: function(value) {
+            return Boolean(validator.trim(value));
+        }
+    }
+});
 
 var NewPlayer = React.createClass({
     mixins : [History],
@@ -58,17 +70,45 @@ var NewPlayer = React.createClass({
         return(
             <section className="new player">
                 <h2>New Player</h2>
-                <form onSubmit={this.submitHandler}>
+                <Validation.Form onSubmit={this.submitHandler}>
                     <section className="col50 left">
                         <label htmlFor="firstName">First name</label>
-                        <input id="firstName" type="text" ref="firstName" />
+                        <Validation.Input
+                            name=""
+                            id="firstName"
+                            type="text"
+                            ref="firstName"
+                            validations={[
+                              { rule: 'isRequired' }
+                            ]}
+                            invalidClassName="input error" />
 
                         <label htmlFor="lastName">Last name</label>
-                        <input id="lastName" type="text" ref="lastName" />
+                        <Validation.Input
+                            name=""
+                            id="lastName"
+                            type="text"
+                            ref="lastName"
+                            validations={[
+                            {
+                                rule: 'isRequired'
+                            }
+                            ]}
+                            invalidClassName="input error" />
                     </section>
                     <section className="col50 right">
                         <label htmlFor="kitNumber">Kit number</label>
-                        <input id="kitNumber" type="text" ref="kitNumber" />
+                        <Validation.Input
+                            name=""
+                            id="kitNumber"
+                            type="text"
+                            ref="kitNumber"
+                            validations={[
+                            {
+                                rule: 'isRequired'
+                            }
+                            ]}
+                            invalidClassName="input error" />
 
                         <label htmlFor="team">Team</label>
                         <select id="team" ref="team">
@@ -78,7 +118,7 @@ var NewPlayer = React.createClass({
                         </select>
                     </section>
                     <input className="btn primary" type="submit" value="Make" />
-                </form>
+                </Validation.Form>
             </section>
         );
     }

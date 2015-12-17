@@ -75,29 +75,29 @@ a {
   padding: 5px;
   cursor: pointer;
 }
- 
+
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   height: 2px !important;
   background: #333333;
 }
- 
+
 /* Color of close button cross */
 .bm-cross {
   background: #333333;
 }
- 
+
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #eeeeee;
 }
- 
+
 /* General menu styles */
 .bm-menu {
   padding: 2.5em 1.5em 0;
   font-size: 1em;
 }
- 
+
 /* Wrapper for item list */
 .bm-item-list {
 
@@ -192,36 +192,39 @@ a {
   }
 }
 
-.gameHolder {
-  box-sizing: border-box;
-  float: left;
-  width: 24%;
-  height: auto;
-
-  padding: 0;
-  margin: 10px 0;
-
-  text-decoration: none;
-
-  & + & {
-    margin-left: 1.3333%;
-  }
-
-  &.add {
-    @extend %background--new;
-    @extend %subtle-shadow;
-    opacity: .6;
-    min-height: 245px;
+section.games {
+  .gameHolder {
+    box-sizing: border-box;
     float: left;
-    border: 2px solid #333;
-    -webkit-transition: opacity 400ms ease-out;
-    -moz-transition: opacity 400ms ease-out;
-    -ms-transition: opacity 400ms ease-out;
-    -o-transition: opacity 400ms ease-out;
-    transition: opacity 400ms ease-out;
+    width: 24%;
+    min-height: 260px;
+    height: auto;
 
-    &:hover {
-      opacity: 1;
+    padding: 0;
+    margin: 20px 1% 0 0;
+
+    text-decoration: none;
+
+    &:nth-child(4n + 1) {
+      margin-right: 0;
+    }
+
+    &.add {
+      @extend %background--new;
+      @extend %subtle-shadow;
+      opacity: .6;
+      min-height: 245px;
+      float: left;
+      border: 2px solid #333;
+      -webkit-transition: opacity 400ms ease-out;
+      -moz-transition: opacity 400ms ease-out;
+      -ms-transition: opacity 400ms ease-out;
+      -o-transition: opacity 400ms ease-out;
+      transition: opacity 400ms ease-out;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }
@@ -363,18 +366,6 @@ section.players {
       line-height: 2em;
       clear: right;
     }
-
-    > .goal {
-      font-weight: 800;
-      margin: 0 10px 0 10px;
-      padding-right: 10px;
-      border-right: $border;
-    }
-
-    > .distance {
-
-    }
-
   }
 
   > .gameSheet {
@@ -420,6 +411,10 @@ section.players {
 
 // ADMIN
 .new.game, .new.team, .new.player {
+
+  .input.error {
+    border: 2px solid #E55E5F;
+  }
 
   label, input, select, option {
     display: block;
@@ -469,36 +464,18 @@ section.players {
 }
 
 @media screen and (max-width: $break) {
-  .card.game {
-    width: 48%;
-    
-    & {
-      margin-left: 0;
-    }
-    & + & {
-      margin-left: 2%;
-    }
-
-    & + & + & {
-      margin-left: 0;
-    }
-
-    & + & + & + & {
-      margin-left: 2%;
-    }
-  }
-
-  section.teams {
-    .card.team {
+  section.games {
+    .gameHolder {
       width: 31%;
     }
   }
 }
 
 @media screen and (max-width: $break-small) {
-  section.teams {
-      .card.team {
-        width: 48%;
-      }
+  section.games {
+    .gameHolder {
+      width: 98%;
+      margin: 10px 1%;
     }
+  }
 }

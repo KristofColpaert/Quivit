@@ -65,7 +65,7 @@ var Game = React.createClass({
 
         return(
             <div key={this.state.game._id} className="card game">
-                <img src="../images/game.jpg" className="game-image"/>
+                <img src={ this.state.game.image } className="game-image"/>
                 <span className="score">{scoreString}</span>
                 <span className="time passed"></span>
                 <h3 className="teams">{teamsString}</h3>
