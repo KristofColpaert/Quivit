@@ -143,9 +143,10 @@ var LiveGame = React.createClass({
         });
     },
 
-    _playerClicked: function() {
+    _playerClicked: function(e) {
         // TODO look at this
         // players[playerID];
+        // console.log(e);
     },
 
     _update : function(data) {
@@ -157,7 +158,6 @@ var LiveGame = React.createClass({
                                 radius= '15'
                                 fillElement= 'rgb(170,170,170)'
                                 fillText = 'white'
-                                kitNumber = { data }
                                 fontSize = '16' />
         tempPlayerPositions[data.playerId] = playerPosition;
 

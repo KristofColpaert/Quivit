@@ -54,6 +54,12 @@ var PastGame = React.createClass({
         }
     },
 
+    _playerClicked: function(e) {
+        // TODO look at this
+        // players[playerID];
+        // console.log(e);
+    },
+
     _initSockets : function() {
         var self = this;
         var gameId = this.props.game._id;
@@ -80,14 +86,13 @@ var PastGame = React.createClass({
                     tempPlayerPositions[data.playerId] = [];
                 }
 
-                var playerPosition = <PitchElementCircle
+                var playerPosition = <PitchElementCircle onClick={ this._playerClicked }
                                         key = {data.playerId}
                                         y = {(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
                                         x = {(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
                                         radius = '15'
                                         fillElement = 'rgb(170,170,170)'
                                         fillText = 'white'
-                                        kitNumber = { data.playerId }
                                         fontSize = '16' />
                 tempPlayerPositions[data.playerId].push(playerPosition);
 
