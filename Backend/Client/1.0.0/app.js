@@ -17,7 +17,9 @@ var routeGame = require('./routes/api/game.js'),
     routePlayer = require('./routes/api/player.js'),
     routeTeam = require('./routes/api/team.js'),
     routeEstimoteLocation = require('./routes/api/estimoteLocation.js'),
-    routeRoot = require('./routes/root.js');
+    routeUser = require('./routes/api/user.js'),
+    routeRoot = require('./routes/root.js'),
+    routeAuthenticate = require('./routes/authenticate.js');
 
 /*
 ** Setup
@@ -51,6 +53,8 @@ app.use('/api/game', routeGame);
 app.use('/api/player', routePlayer);
 app.use('/api/team', routeTeam);
 app.use('/api/estimoteLocation', routeEstimoteLocation);
+app.use('/api/user', routeUser);
+app.use('/authenticate', routeAuthenticate);
 
 /*
 ** Errors

@@ -28,3 +28,12 @@
 {"0":{"_id":{"_bsontype":"ObjectID","id":"VqÅ&ü¶ß$¯#"},"gameDate":"20151217","gameTime":"2000","teamHomeId":"565d65929b971a0d10f9a5e0","teamAwayId":"565d68fd9b971a0d10f9a5e1","estimoteLocationId":"obee3-9jk","isGameFinished":"on","scoreHome":0,"scoreAway":0},"level":"info","message":"","timestamp":"2015-12-16T22:33:42.792Z"}
 {"name":"MongoError","level":"info","timestamp":"2015-12-17T09:09:34.080Z"}
 {"name":"MongoError","level":"info","timestamp":"2015-12-17T09:09:35.764Z"}
+{"level":"info","timestamp":"2015-12-19T14:45:26.505Z"}
+{"level":"info","timestamp":"2015-12-19T14:50:38.099Z"}
+{"level":"info","timestamp":"2015-12-19T14:52:55.782Z"}
+{"level":"info","timestamp":"2015-12-19T14:53:18.840Z"}
+{"level":"info","timestamp":"2015-12-19T14:53:31.437Z"}
+{"level":"info","timestamp":"2015-12-19T14:54:15.044Z"}
+{"level":"info","timestamp":"2015-12-19T14:55:20.592Z"}
+{"level":"info","timestamp":"2015-12-19T14:56:11.102Z"}
+{"level":"info","timestamp":"2015-12-19T15:12:34.769Z"}
