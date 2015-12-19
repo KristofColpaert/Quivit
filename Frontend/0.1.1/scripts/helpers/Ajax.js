@@ -1,10 +1,14 @@
 var ajax = (function() {
     'use strict';
 
+    //Variables
+    var token = window.localStorage.getItem('token');
+
     //Functions
     var getData = function(url, callback) {
         var request = new XMLHttpRequest();
         request.open('GET', url, true);
+        request.setRequestHeader('x-auth', token);
         request.onload = function(e) {
             if(request.readyState === 4) {
                 if(request.status === 200) {
@@ -28,6 +32,7 @@ var ajax = (function() {
         var request = new XMLHttpRequest();
         request.open('POST', url, true);
         request.setRequestHeader('Content-Type', 'application/json');
+        //request.setRequestHeader('x-auth', token);
         request.onreadystatechange = function(e) {
             if(request.readyState === 4) {
                 if(request.status === 200) {

@@ -1,14 +1,15 @@
 'use strict';
 
 var React = require('react'),
-ReactDOM = require('react-dom'),
-Main = require('./components/main/Main.jsx'),
-Admin = require('./components/admin/Admin.jsx'),
-Game = require('./components/game/Game.jsx'),
-NoMatch = require('./components/general/Error.jsx'),
-Router = require('react-router').Router,
-Route = require('react-router').Route,
-createBrowserHistory = require('history/lib/createBrowserHistory');
+    ReactDOM = require('react-dom'),
+    Main = require('./components/main/Main.jsx'),
+    Admin = require('./components/admin/Admin.jsx'),
+    Game = require('./components/game/Game.jsx'),
+    Authentication = require('./components/authentication/Authentication.jsx'),
+    NoMatch = require('./components/general/Error.jsx'),
+    Router = require('react-router').Router,
+    Route = require('react-router').Route,
+    createBrowserHistory = require('history/lib/createBrowserHistory');
 
 //Wrappers for properties.
 var AdminWrapper = function(page) {
@@ -30,6 +31,17 @@ var GameWrapper = function(page) {
         }
     });
 };
+
+var AuthenticationWrapper = function(page) {
+    return React.createClass({
+        render : function() {
+            return (
+                <Authentication page={page} />
+            );
+        }
+    });
+};
+
 // history={createBrowserHistory()}
 ReactDOM.render((
     <Router  >
@@ -46,6 +58,7 @@ ReactDOM.render((
         <Route name="/admin/players/new" path="/admin/players/new" component={AdminWrapper('NewPlayer')} />
         <Route name="/admin/estimotelocations" path="/admin/estimotelocations" component={AdminWrapper('ManageEstimoteLocations')} />
         <Route name="/admin/estimotelocations/new" path="/admin/estimotelocations/new" component={AdminWrapper('NewEstimoteLocation')} />
+        <Route name="/login" path="/login" component={AuthenticationWrapper('Login')} />
         <Route name="/" path="/" component={Main}/>
         <Route path="*" component={NoMatch}/>
     </Router>

@@ -7,8 +7,9 @@ var constants = {
         + '/' + ((new Date().getDate() < 10) ? ('0' + new Date().getDate()) : (new Date().getDate()))  + '/excluded',
     baseApiGamePastUrl : 'http://localhost:3000/api/game/' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1)
     + '/' + ((new Date().getDate() < 10) ? ('0' + new Date().getDate()) : (new Date().getDate()))  + '/past',
+    baseApiEstimoteLocationUrl : 'http://localhost:3000/api/estimoteLocation/',
     socketsUrl : 'http://localhost:3000',
-    baseApiEstimoteLocationUrl : 'http://localhost:3000/api/estimoteLocation/'
-}
+    authenticationUrl : 'http://localhost:3000/authenticate'
+};
 
 module.exports = constants;

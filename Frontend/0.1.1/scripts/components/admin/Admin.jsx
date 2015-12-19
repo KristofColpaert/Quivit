@@ -20,7 +20,9 @@ var React = require('react'),
     ManageEstimoteLocations = require('./estimoteLocations/ManageEstimoteLocations.jsx'),
     NewEstimoteLocation = require('./estimoteLocations/NewEstimoteLocation.jsx'),
     estimoteLocationStore = require('../../stores/estimoteLocationStore.js'),
-    estimoteLocationActions = require('../../actions/estimoteLocationActions.js');
+    estimoteLocationActions = require('../../actions/estimoteLocationActions.js'),
+    authenticationStore = require('../../stores/authenticationStore.js'),
+    History = require('react-router').History;
 
 //Variables
 var titleLive = 'Live games';
@@ -30,6 +32,13 @@ var titlePlayers = 'Players';
 var titleEstimoteLocations = 'Estimote Locations';
 
 var Admin = React.createClass({
+    mixins: [History],
+
+    contextTypes: {
+        history: React.PropTypes.object,
+        location: React.PropTypes.object
+    },
+
     getInitialState : function() {
         return ({
             titleGamesLive : titleLive,
@@ -46,18 +55,25 @@ var Admin = React.createClass({
     },
 
     componentWillMount : function() {
+        if(!authenticationStore.isUserLoggedIn()) {
+            this.history.replaceState(null, '/login');
+        }
+
         gameStore.addChangeListener(this._onChange);
         teamStore.addChangeListener(this._onChange);
         playerStore.addChangeListener(this._onChange);
         estimoteLocationStore.addChangeListener(this._onChange);
+        authenticationStore.addChangeListener(this._onChange);
     },
 
     componentDidMount : function() {
-        gameActions.getTodayGamesRequest();
-        gameActions.getFutureGamesRequest();
-        teamActions.getTeamsRequest();
-        playerActions.getPlayersRequest();
-        estimoteLocationActions.getEstimoteLocationsRequest();
+        if(authenticationStore.isUserLoggedIn()) {
+            gameActions.getTodayGamesRequest();
+            gameActions.getFutureGamesRequest();
+            teamActions.getTeamsRequest();
+            playerActions.getPlayersRequest();
+            estimoteLocationActions.getEstimoteLocationsRequest();
+        }
     },
 
     componentWillUnmount : function() {
@@ -65,6 +81,7 @@ var Admin = React.createClass({
         teamStore.removeChangeListener(this._onChange);
         playerStore.removeChangeListener(this._onChange);
         estimoteLocationStore.removeChangeListener(this._onChange);
+        authenticationStore.removeChangeListener(this._onChange);
     },
 
     _onChange : function() {

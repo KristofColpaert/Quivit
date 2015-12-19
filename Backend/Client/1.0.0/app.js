@@ -21,6 +21,8 @@ var routeGame = require('./routes/api/game.js'),
     routeRoot = require('./routes/root.js'),
     routeAuthenticate = require('./routes/authenticate.js');
 
+var authenticator = require('./modules/authenticator.js');
+
 /*
 ** Setup
  */
@@ -37,7 +39,8 @@ app.use(logger('combined', {
 //Allow CORS (Cross-Origin Resource Sharing)
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-auth");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
 });
 
@@ -48,13 +51,16 @@ app.use(bodyParser.json({type : 'application/json', limit : '50mb' }));
 ** Routes
  */
 
+//Should be available without authentication
 app.use('/', routeRoot);
-app.use('/api/game', routeGame);
-app.use('/api/player', routePlayer);
-app.use('/api/team', routeTeam);
-app.use('/api/estimoteLocation', routeEstimoteLocation);
 app.use('/api/user', routeUser);
 app.use('/authenticate', routeAuthenticate);
+
+//Should be authenticated
+app.use('/api/game', authenticator, routeGame);
+app.use('/api/player', authenticator, routePlayer);
+app.use('/api/team', authenticator, routeTeam);
+app.use('/api/estimoteLocation', authenticator, routeEstimoteLocation);
 
 /*
 ** Errors
