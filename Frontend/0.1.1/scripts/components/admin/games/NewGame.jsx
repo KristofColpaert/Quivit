@@ -18,7 +18,8 @@ var NewGame = React.createClass({
         return({
             teams : teamStore.getAllTeams(),
             estimoteLocations : estimoteLocationStore.getAllEstimoteLocations(),
-            image: 'images/gameTemp.jpg'
+            image: 'images/gameTemp.jpg',
+            imageUrl : gameStore.getImageUrl()
         });
     },
 
@@ -50,6 +51,11 @@ var NewGame = React.createClass({
             };
 
             reader.readAsDataURL(img.files[0]);
+
+            //Upload image
+            var formData = new FormData();
+            formData.append('image', img.files[0], 'game.jpg');
+            gameActions.uploadImageRequest(formData);
         }
     },
 
@@ -60,7 +66,12 @@ var NewGame = React.createClass({
         }
 
         else {
-
+            this.setState({
+                teams : teamStore.getAllTeams(),
+                estimoteLocations : estimoteLocationStore.getAllEstimoteLocations(),
+                image: 'images/gameTemp.jpg',
+                imageUrl : gameStore.getImageUrl()
+            });
         }
     },
 
@@ -90,8 +101,6 @@ var NewGame = React.createClass({
 
         tempGameDate = '' + tempGameDate.getFullYear() + tempMonth + tempDate;
 
-        console.log(tempGameDate);
-
         var tempGameTime = this.refs.gameTime.value;
         var tempGameTime = tempGameTime.replace(':', '');
         
@@ -105,7 +114,7 @@ var NewGame = React.createClass({
                 teamAwayId : self.refs.teamAway.value,
                 gameDate : tempGameDate,
                 gameTime : tempGameTime,
-                image: this.result,
+                image: self.state.imageUrl,
                 estimoteLocationId : self.refs.estimoteLocationId.value,
                 isGameFinished : self.refs.isGameFinished.value
             };
@@ -118,6 +127,14 @@ var NewGame = React.createClass({
     },
 
     render : function() {
+        var submitButton = null;
+        if(gameStore.isImageUrlSet()) {
+            submitButton = <Validation.Button blocking="button" className="btn primary" type="submit" value="Add Game"/>;
+        }
+        else {
+            submitButton = <Validation.Button blocking="button" className="btn primary" type="submit" value="Add Game" disabled/>
+        }
+
         return(
             <section>
                 <h2>New Game</h2>
@@ -161,6 +178,7 @@ var NewGame = React.createClass({
                             })}
                         </select>
 
+
                         <label htmlFor="gameImg">Game Image</label>
                         <input id="gameImg" onChange={ this._handleImage } ref="gameImg" type="file" accept="image/*" />
 
@@ -169,7 +187,7 @@ var NewGame = React.createClass({
 
                     </section>
                     <div className="clearfix"></div>
-                    <Validation.Button blocking="button" className="btn primary" type="submit" value="Add Game" />
+                    {submitButton}
                 </ Validation.Form>
             </section>
         );

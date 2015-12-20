@@ -12,7 +12,8 @@ var storedGames = {
     futureGames : [],
     pastGames : [],
     playerGameHeatMap : [],
-    singleGame : {}
+    singleGame : {},
+    imageUrl : null
 };
 
 //GameStore
@@ -47,6 +48,19 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     getPlayerGameHeatMap : function() {
         return storedGames.playerGameHeatMap;
+    },
+
+    getImageUrl : function() {
+        return storedGames.imageUrl;
+    },
+
+    isImageUrlSet : function() {
+        if(storedGames.imageUrl === null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     },
 
     isGameSaved : function() {
@@ -95,6 +109,10 @@ AppDispatcher.register(function(payload) {
 
         case gameConstants.FALSIFY_IS_GAME_SAVED:
             storedGames.isGameSaved = false;
+            break;
+
+        case gameConstants.UPLOAD_FILE_RESPONSE:
+            storedGames.imageUrl = payload.action.url.url;
             break;
     }
 

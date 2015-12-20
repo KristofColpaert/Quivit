@@ -102,6 +102,22 @@ var gameActions = {
         });
     },
 
+    //Upload image
+    uploadImageResponse : function(url) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.UPLOAD_FILE_RESPONSE,
+            url : url
+        })
+    },
+
+    uploadImageRequest : function(formData) {
+        ajax.uploadFile('http://localhost:3000/upload', formData, function(error, data) {
+            if(!error) {
+                gameActions.uploadImageResponse(data);
+            }
+        });
+    },
+
     //Set saved to false
     falsifyIsGameSaved : function() {
         AppDispatcher.handleServerAction({
