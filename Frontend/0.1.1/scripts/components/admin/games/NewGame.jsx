@@ -68,7 +68,7 @@ var NewGame = React.createClass({
         event.preventDefault();
         var self = this;
 
-        var tempGameDate = new Date(this.refs.gameDate.value);
+        var tempGameDate = new Date(this.refs.gameDate.state.value);
         var tempDate = '00';
         var tempMonth = '00';
 
@@ -81,7 +81,7 @@ var NewGame = React.createClass({
         }
 
         if((tempGameDate.getMonth() + 1) < 10) {
-            tempMonth = '0' + (tempGameDate.getMonth + 1);
+            tempMonth = '0' + (tempGameDate.getMonth() + 1);
         }
 
         else {
@@ -89,6 +89,8 @@ var NewGame = React.createClass({
         }
 
         tempGameDate = '' + tempGameDate.getFullYear() + tempMonth + tempDate;
+
+        console.log(tempGameDate);
 
         var tempGameTime = this.refs.gameTime.value;
         var tempGameTime = tempGameTime.replace(':', '');
