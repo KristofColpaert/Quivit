@@ -59,6 +59,7 @@ ReactDOM.render((
         <Route name="/admin/estimotelocations" path="/admin/estimotelocations" component={AdminWrapper('ManageEstimoteLocations')} />
         <Route name="/admin/estimotelocations/new" path="/admin/estimotelocations/new" component={AdminWrapper('NewEstimoteLocation')} />
         <Route name="/login" path="/login" component={AuthenticationWrapper('Login')} />
+        <Route name="/register" path="/register" component={AuthenticationWrapper('Register')} />
         <Route name="/" path="/" component={Main}/>
         <Route path="*" component={NoMatch}/>
     </Router>

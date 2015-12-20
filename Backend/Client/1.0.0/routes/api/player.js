@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
     Player = require('../../models/Player.js'),
-    playerRepository = require('../../data/playerRepository.js');
+    playerRepository = require('../../data/playerRepository.js'),
+    authenticator = require('../../modules/authenticator.js');
 
 //GET: get all players
 router.get('/', function(req, res) {
@@ -30,7 +31,7 @@ router.get('/:method/:value', function(req, res) {
 });
 
 //POST: insert new player
-router.post('/', function(req, res) {
+router.post('/', authenticator, function(req, res) {
     //Make new object
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;

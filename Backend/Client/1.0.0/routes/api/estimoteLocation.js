@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
     EstimoteLocation = require('../../models/EstimoteLocation.js'),
-    estimoteLocationRepository = require('../../data/estimoteLocationRepository.js');
+    estimoteLocationRepository = require('../../data/estimoteLocationRepository.js'),
+    authenticator = require('../../modules/authenticator.js');
 
 //GET: get EstimoteLocation by id
 router.get('/:method/:value', function(req, res) {
@@ -22,14 +23,14 @@ router.get('/:method/:value', function(req, res) {
 });
 
 //GET: get all EstimoteLocations
-router.get('/', function(req, res) {
+router.get('/', authenticator, function(req, res) {
     estimoteLocationRepository.getAll(function(result) {
         res.json(result);
     });
 });
 
 //POST: insert new game
-router.post('/', function(req, res) {
+router.post('/', authenticator, function(req, res) {
     var estimoteLocationId = req.body.estimoteLocationId;
     var spaceWidth = req.body.spaceWidth;
     var spaceHeight = req.body.spaceHeight;

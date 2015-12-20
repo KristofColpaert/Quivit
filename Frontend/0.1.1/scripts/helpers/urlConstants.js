@@ -8,6 +8,7 @@ var constants = {
     baseApiGamePastUrl : 'http://localhost:3000/api/game/' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1)
     + '/' + ((new Date().getDate() < 10) ? ('0' + new Date().getDate()) : (new Date().getDate()))  + '/past',
     baseApiEstimoteLocationUrl : 'http://localhost:3000/api/estimoteLocation/',
+    baseApiUserUrl : 'http://localhost:3000/api/user',
     socketsUrl : 'http://localhost:3000',
     authenticationUrl : 'http://localhost:3000/authenticate'
 };

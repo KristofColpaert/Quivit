@@ -30,7 +30,19 @@ var authenticationStore = objectAssign({}, EventEmitter.prototype, {
 
     isUserLoggedIn : function() {
         if(storedAuthenticationData.token === null) {
-            return false;
+            var localStorageTokenInit = new Date(window.localStorage.getItem('tokenInit'));
+            var currentDate = new Date();
+            var dateDifference = currentDate.getTime() - localStorageTokenInit.getTime();
+
+            if(dateDifference < 86400000) {
+                var localStorageToken = window.localStorage.getItem('token');
+                storedAuthenticationData.token = localStorageToken;
+                return true;
+            }
+
+            else {
+                return false;
+            }
         }
         else {
             return true;
@@ -46,6 +58,7 @@ AppDispatcher.register(function(payload) {
             //Save token
             storedAuthenticationData.token = payload.action.token;
             window.localStorage.setItem('token', payload.action.token);
+            window.localStorage.setItem('tokenInit', new Date());
             break;
     }
 

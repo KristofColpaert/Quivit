@@ -41,7 +41,7 @@ var estimoteLocationActions = {
     getEstimoteLocationsResponse : function(estimoteLocations) {
         AppDispatcher.handleServerAction({
             actionType : estimoteLocationConstants.GET_ESTIMOTE_LOCATIONS_RESPONSE,
-            estimoteLocations: estimoteLocations
+            estimoteLocations : estimoteLocations
         });
     },
 
@@ -56,8 +56,8 @@ var estimoteLocationActions = {
     //New EstimoteLocation
     saveEstimoteLocationResponse : function(estimoteLocation) {
         AppDispatcher.handleServerAction({
-            actionType: estimoteLocationConstants.SAVE_ESTIMOTE_LOCATION_RESPONSE,
-            estimoteLocation: estimoteLocation
+            actionType : estimoteLocationConstants.SAVE_ESTIMOTE_LOCATION_RESPONSE,
+            estimoteLocation : estimoteLocation
         });
     },
 
@@ -73,7 +73,7 @@ var estimoteLocationActions = {
     //Set saved to false
     falsifyIsEstimoteLocationSaved : function() {
         AppDispatcher.handleServerAction({
-            actionType: estimoteLocationConstants.FALSIFY_IS_ESTIMOTE_LOCATION_SAVED
+            actionType : estimoteLocationConstants.FALSIFY_IS_ESTIMOTE_LOCATION_SAVED
         });
     }
 };

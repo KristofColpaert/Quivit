@@ -1,4 +1,5 @@
 var React = require('react'),
+    Link = require('react-router').Link,
     authenticationStore = require('../../stores/authenticationStore.js'),
     authenticationActions = require('../../actions/authenticationActions.js'),
     History = require('react-router').History;
@@ -44,6 +45,7 @@ var Login = React.createClass({
 
                     <input type="submit" value="Login" className="btn primary" />
                 </form>
+                <Link to="/register">Register</Link>
             </section>
         );
     }

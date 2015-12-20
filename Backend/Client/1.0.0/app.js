@@ -21,8 +21,6 @@ var routeGame = require('./routes/api/game.js'),
     routeRoot = require('./routes/root.js'),
     routeAuthenticate = require('./routes/authenticate.js');
 
-var authenticator = require('./modules/authenticator.js');
-
 /*
 ** Setup
  */
@@ -51,16 +49,13 @@ app.use(bodyParser.json({type : 'application/json', limit : '50mb' }));
 ** Routes
  */
 
-//Should be available without authentication
 app.use('/', routeRoot);
 app.use('/api/user', routeUser);
 app.use('/authenticate', routeAuthenticate);
-
-//Should be authenticated
-app.use('/api/game', authenticator, routeGame);
-app.use('/api/player', authenticator, routePlayer);
-app.use('/api/team', authenticator, routeTeam);
-app.use('/api/estimoteLocation', authenticator, routeEstimoteLocation);
+app.use('/api/game', routeGame);
+app.use('/api/player', routePlayer);
+app.use('/api/team', routeTeam);
+app.use('/api/estimoteLocation', routeEstimoteLocation);
 
 /*
 ** Errors
