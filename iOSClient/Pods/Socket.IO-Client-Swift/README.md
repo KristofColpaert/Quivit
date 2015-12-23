@@ -69,7 +69,7 @@ Carthage
 -----------------
 Add this line to your `Cartfile`:
 ```
-github "socketio/socket.io-client-swift" ~> 4.1.3 # Or latest version
+github "socketio/socket.io-client-swift" ~> 4.1.4 # Or latest version
 ```
 
 Run `carthage update --platform ios,macosx`.
@@ -83,7 +83,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Socket.IO-Client-Swift', '~> 4.1.3' # Or latest version
+pod 'Socket.IO-Client-Swift', '~> 4.1.4' # Or latest version
 ```
 
 Install pods:
@@ -111,7 +111,7 @@ CocoaSeeds
 Add this line to your `Seedfile`:
 
 ```
-github "socketio/socket.io-client-swift", "v4.1.3", :files => "SocketIOClientSwift/*.swift" # Or latest version
+github "socketio/socket.io-client-swift", "v4.1.4", :files => "SocketIOClientSwift/*.swift" # Or latest version
 ```
 
 Run `seed install`.
@@ -146,12 +146,13 @@ case ExtraHeaders([String: String]) // Adds custom headers to the initial reques
 case HandleQueue(dispatch_queue_t) // The dispatch queue that handlers are run on. Default is the main queue.
 case VoipEnabled(Bool) // Only use this option if you're using the client with VoIP services. Changes the way the WebSocket is created. Default is false
 case Secure(Bool) // If the connection should use TLS. Default is false.
+case SelfSigned(Bool) // Sets WebSocket.selfSignedSSL (Don't do this, iOS will yell at you)
 
 ```
 Methods
 -------
-1. `on(event: String, callback: NormalCallback)` - Adds a handler for an event. Items are passed by an array. `ack` can be used to send an ack when one is requested. See example.
-2. `once(event: String, callback: NormalCallback)` - Adds a handler that will only be executed once.
+1. `on(event: String, callback: NormalCallback) -> NSUUID` - Adds a handler for an event. Items are passed by an array. `ack` can be used to send an ack when one is requested. See example. Returns a unique id for the handler.
+2. `once(event: String, callback: NormalCallback) -> NSUUID` - Adds a handler that will only be executed once. Returns a unique id for the handler.
 3. `onAny(callback:((event: String, items: AnyObject?)) -> Void)` - Adds a handler for all events. It will be called on any received event.
 4. `emit(event: String, _ items: AnyObject...)` - Sends a message. Can send multiple items.
 5. `emit(event: String, withItems items: [AnyObject])` - `emit` for Objective-C
@@ -164,7 +165,8 @@ Methods
 12. `joinNamespace()` - Causes the client to join nsp. Shouldn't need to be called unless you change nsp manually.
 13. `leaveNamespace()` - Causes the client to leave the nsp and go back to /
 14. `off(event: String)` - Removes all event handlers for event.
-15. `removeAllHandlers()` - Removes all handlers.
+15. `off(id id: NSUUID)` - Removes the event that corresponds to id.
+16. `removeAllHandlers()` - Removes all handlers.
 
 Client Events
 ------

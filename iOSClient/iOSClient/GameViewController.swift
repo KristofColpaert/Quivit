@@ -72,7 +72,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		self.indoorLocationView.backgroundColor = UIColor.clearColor()
 		self.indoorLocationView.showTrace = true
 		self.indoorLocationView.showWallLengthLabels = true
-		self.indoorLocationView.rotateOnPositionUpdate = false
+		self.indoorLocationView.rotateOnPositionUpdate = true
 		
 		self.indoorLocationView.locationBorderColor = UIColor.blackColor()
 		self.indoorLocationView.locationBorderThickness = 6
