@@ -3,16 +3,17 @@
 var React = require('react'),
     Pitch = require('./Pitch.jsx'),
     PitchElementCircle = require('./PitchElementCircle.jsx'),
+    playerStore = require('../../stores/playerStore.js'),
     constants = require('../../helpers/urlConstants.js');
 
 var PastGame = React.createClass({
 
-    _localVariables : {
-        isSocketsInit : false,
-        pageCount : 0,
-        socket : null,
-        playerPositions : {},
-        interval : null
+    _localVariables: {
+        isSocketsInit: false,
+        pageCount: 0,
+        socket: null,
+        playerPositions: {},
+        interval: null
     },
 
     contextTypes: {
@@ -22,7 +23,11 @@ var PastGame = React.createClass({
 
     getInitialState : function() {
         return({
-            finalPlayerPositions : []
+            players: playerStore.getHomeAwayPlayers(),
+            kitNumber: 'X',
+            playerName: 'player',
+            currentPlayer: null,
+            finalPlayerPositions: []
         });
     },
 
@@ -54,13 +59,27 @@ var PastGame = React.createClass({
         }
     },
 
-    _playerClicked: function(e) {
-        // TODO look at this
-        // players[playerID];
-        // console.log(e);
+    _getPlayer: function(playerId) {
+        for (var i = this.state.players.home.length - 1; i >= 0; i--) {
+            if (this.state.players.home[i]._id === playerId) {
+                return this.state.players.home[i];
+            };
+        };
+        for (var i = this.state.players.away.length - 1; i >= 0; i--) {
+            if (this.state.players.away[i]._id === playerId) {
+                return this.state.players.away[i];
+            };
+        };
+    },
+
+    _playerClicked: function(p) {
+        console.log(p);
+        this.state.kitNumber = p.kitNumber;
+        this.state.playerName = p.firstName + ' ' + p.lastName;
     },
 
     _initSockets : function() {
+        console.log(this.state.players);
         var self = this;
         var gameId = this.props.game._id;
         var query = this.context.location.pathname;
@@ -79,15 +98,16 @@ var PastGame = React.createClass({
 
             //Get data.
             this._localVariables.socket.on('data', function(data) {
-                console.log(data);
                 var tempPlayerPositions = self._localVariables.playerPositions;
 
                 if(typeof tempPlayerPositions[data.playerId] === 'undefined'){
                     tempPlayerPositions[data.playerId] = [];
                 }
 
-                var playerPosition = <PitchElementCircle onClick={ this._playerClicked }
+                var player = self._getPlayer( data.playerId ),
+                playerPosition = <PitchElementCircle
                                         key = {data.playerId}
+                                        handleClick = { self._playerClicked.bind( null, player ) }
                                         y = {(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
                                         x = {(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
                                         radius = '15'
@@ -134,7 +154,7 @@ var PastGame = React.createClass({
 
     _askMore : function() {
         this._localVariables.pageCount++;
-        console.log(this._localVariables.pageCount);
+        // console.log(this._localVariables.pageCount);
         this._localVariables.socket.emit('more', this._localVariables.pageCount);
     },
 
@@ -149,8 +169,14 @@ var PastGame = React.createClass({
 
         return (
             <section className="live game">
+                <section className="playerSheet">
+                    <h3 className="kit number" ref="kitnumber">{ this.state.kitNumber }</h3>
+                    <span className="name" ref="player"> { this.state.playerName }</span>
+                </section>
+                <div className="clearfix"></div>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
-                <button onClick={this._initWatching} value="start">Play</button>
+                <button onClick={this._initWatching} className="btn primary" value="start">Play</button>
+                <div className="clearfix"></div>
             </section>
         );
     }

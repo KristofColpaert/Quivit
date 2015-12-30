@@ -75,6 +75,7 @@
 ::1 - - [17/Dec/2015:14:01:48 +0000] "POST /api/game/ HTTP/1.1" 413 1538 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2591.0 Safari/537.36"
 ::1 - - [17/Dec/2015:14:01:49 +0000] "POST /api/game/ HTTP/1.1" 413 1538 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2591.0 Safari/537.36"
 ::1 - - [17/Dec/2015:14:01:49 +0000] "POST /api/game/ HTTP/1.1" 413 1538 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2591.0 Safari/537.36"
+<<<<<<< Updated upstream
 ::1 - - [19/Dec/2015:15:00:21 +0000] "POST /api/user/ HTTP/1.1" 400 1009 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36"
 ::1 - - [19/Dec/2015:15:01:33 +0000] "POST /api/user/ HTTP/1.1" 400 1009 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36"
 ::1 - - [19/Dec/2015:16:14:50 +0000] "GET /favicon.ico HTTP/1.1" 401 62 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36"
@@ -558,3 +559,6 @@
 ::1 - - [20/Dec/2015:13:29:42 +0000] "POST /upload HTTP/1.1" 400 1009 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36"
 ::1 - - [20/Dec/2015:13:46:26 +0000] "POST /upload HTTP/1.1" 400 1606 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36"
 ::1 - - [20/Dec/2015:14:24:08 +0000] "POST /upload HTTP/1.1" 500 1848 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36"
+=======
+::1 - - [26/Dec/2015:11:01:16 +0000] "GET /favicon.ico HTTP/1.1" 404 1423 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2601.0 Safari/537.36"
+>>>>>>> Stashed changes

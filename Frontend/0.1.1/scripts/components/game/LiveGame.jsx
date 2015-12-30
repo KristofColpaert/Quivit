@@ -146,7 +146,7 @@ var LiveGame = React.createClass({
     _playerClicked: function(e) {
         // TODO look at this
         // players[playerID];
-        // console.log(e);
+        console.log(e);
     },
 
     _update : function(data) {
