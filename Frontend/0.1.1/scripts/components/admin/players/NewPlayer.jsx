@@ -5,29 +5,20 @@ var React = require('react'),
     playerActions = require('../../../actions/playerActions.js'),
     playerStore = require('../../../stores/playerStore.js'),
     teamActions = require('../../../actions/teamActions.js'),
-    teamStore = require('../../../stores/teamStore.js'),
-    Validator = require('validator'),
-    Validation = require('react-validation');
+    teamStore = require('../../../stores/teamStore.js');
 
-Validation.extendErrors({
-    isRequired: {
-        className: 'input error',
-        message: 'required',
-        rule: function(value) {
-            return Boolean(validator.trim(value));
-        }
-    }
-});
 
 var NewPlayer = React.createClass({
-    mixins : [History],
 
     getInitialState : function() {
         return({
-            teams : teamStore.getAllTeams()
+            teams: teamStore.getAllTeams(),
+            fname: false,
+            lname: false,
+            knumber: false,
+            canSubmit: false
         });
     },
-
     componentWillMount : function() {
         teamStore.addChangeListener(this._onChange);
         playerStore.addChangeListener(this._onChange);
@@ -53,8 +44,31 @@ var NewPlayer = React.createClass({
         })
     },
 
+    _checkTextInput: function(e) {
+        console.log(e);
+        if (e.target.value.length <= 0) {
+            e.target.className = 'input error';
+            this.state[e.target.name] = false;
+            console.log(e.target.name + ' is ' + this.state[e.target.name]);
+        } else {
+            e.target.className = '';
+            this.state[e.target.name] = true;
+            console.log(e.target.name + ' is ' + this.state[e.target.name]);
+        }
+        if (this.state.fname && this.state.lname && this.state.knumber) {
+            this.setState({
+                canSubmit: true
+            });
+        } else {
+            this.setState({
+                canSubmit: false
+            });
+        }
+        console.log(this.state.canSubmit);
+    },
+
     submitHandler : function(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         var newPlayer = {
             firstName : this.refs.firstName.value,
@@ -62,53 +76,39 @@ var NewPlayer = React.createClass({
             kitNumber : this.refs.kitNumber.value,
             teamId : this.refs.team.value
         }
-
-        playerActions.savePlayerRequest(newPlayer);
+        console.log(newPlayer);
+        // playerActions.savePlayerRequest(newPlayer);
     },
 
     render : function() {
         return(
             <section className="new player">
                 <h2>New Player</h2>
-                <Validation.Form onSubmit={this.submitHandler}>
+                <form onSubmit={this.submitHandler}>
                     <section className="col50 left">
-                        <label htmlFor="firstName">First name</label>
-                        <Validation.Input
-                            name=""
+                        <label htmlFor="firstName" required>First name</label>
+                        <input
+                            onBlur = { this._checkTextInput }
+                            name="fname"
                             id="firstName"
                             type="text"
-                            ref="firstName"
-                            validations={[
-                              { rule: 'isRequired' }
-                            ]}
-                            invalidClassName="input error" />
-
+                            ref="firstName" />
                         <label htmlFor="lastName">Last name</label>
-                        <Validation.Input
-                            name=""
+                        <input
+                            onBlur = { this._checkTextInput }
+                            name="lname"
                             id="lastName"
-                            type="text"
                             ref="lastName"
-                            validations={[
-                            {
-                                rule: 'isRequired'
-                            }
-                            ]}
-                            invalidClassName="input error" />
+                            type="text" />
                     </section>
                     <section className="col50 right">
                         <label htmlFor="kitNumber">Kit number</label>
-                        <Validation.Input
-                            name=""
+                        <input
+                            onBlur = { this._checkTextInput }
+                            name="knumber"
                             id="kitNumber"
                             type="text"
-                            ref="kitNumber"
-                            validations={[
-                            {
-                                rule: 'isRequired'
-                            }
-                            ]}
-                            invalidClassName="input error" />
+                            ref="kitNumber" />
 
                         <label htmlFor="team">Team</label>
                         <select id="team" ref="team">
@@ -117,8 +117,8 @@ var NewPlayer = React.createClass({
                             })}
                         </select>
                     </section>
-                    <input className="btn primary" type="submit" value="Make" />
-                </Validation.Form>
+                    <button className="btn primary right" disabled={ !this.state.canSubmit } type="submit">Make</button>
+                </form>
             </section>
         );
     }

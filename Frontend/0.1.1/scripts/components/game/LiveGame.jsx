@@ -32,7 +32,8 @@ var LiveGame = React.createClass({
             spaceWidth : 0,
             spaceHeight : 0,
             players : playerStore.getHomeAwayPlayers(),
-            kitnumber: 'X',
+            playerName: 'player',
+            kitNumber: 'X',
             teams : teamStore.getHomeAwayTeams(),
             game : gameStore.getSingleGame(),
             estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation(),
@@ -143,15 +144,15 @@ var LiveGame = React.createClass({
         });
     },
 
-    _playerClicked: function(e) {
-        // TODO look at this
-        // players[playerID];
-        console.log(e);
+    _playerClicked: function(p) {
+        this.state.playerName = p.firstName + ' ' + p.lastName;
+        this.state.kitNumber = p.kitNumber;
     },
 
     _update : function(data) {
         var tempPlayerPositions = this.state.playerPositions;
-        var playerPosition = <PitchElementCircle onClick={ this._playerClicked }
+        var playerPosition = <PitchElementCircle
+                                handleClick={ this._playerClicked.bind( null, tempPlayerPositions[data.playerId]) }
                                 key={data.playerId}
                                 y={(data.x * (-100)) + ((this.state.spaceWidth * 100) / 2)}
                                 x={(data.y * (-100)) + ((this.state.spaceHeight * 100) / 2)}
@@ -231,8 +232,8 @@ var LiveGame = React.createClass({
         return(
         	    <section className="live game">
                     <section className="playerSheet">
-                        <h3 className="kit number" ref="kitnumber">{ this.state.kitnumber }</h3>
-                        <span className="name">Karel Verhulst</span>
+                        <h3 className="kit number" ref="kitnumber">{ this.state.kitNumber }</h3>
+                        <span className="name">{ this.state.playerName }</span>
                     </section>
                     <section className="gameSheet">
                         <span className="score">{scoreHome + '-' + scoreAway}</span>

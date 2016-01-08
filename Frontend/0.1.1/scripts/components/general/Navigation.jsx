@@ -15,18 +15,13 @@ var Navigation = React.createClass({
             console.log(state.isOpen);
             return state.isOpen;
         };
-        // <div className="list" onClick={ this.toggleMenu }></div>
-        // <div id="outer-container">
-        //  id="page-wrap" 
-
+        
         return (
             <header className="header">
                 <nav className="navigation">
                     <h1><Link to="/">🐤 Quivit</Link></h1>
                     <Menu right width={ 270 } >
                         <Link to="/" className="menu-item" >Home</Link>
-                        <Link to="about" className="menu-item" >About</Link>
-                        <Link to="contact" className="menu-item" >Contact</Link>
                         <Link to="/admin" className="menu-item">Admin</Link>
                     </Menu>
                 </nav>

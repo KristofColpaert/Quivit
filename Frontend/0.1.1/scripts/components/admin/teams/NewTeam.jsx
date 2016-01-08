@@ -8,7 +8,12 @@ var React = require('react'),
 
 var NewTeam = React.createClass({
     mixins: [History],
-
+    getInitialState: function() {
+        return({
+            name: false,
+            canSubmit: false
+        });
+    },
     componentWillMount : function() {
         teamStore.addChangeListener(this._onChange);
     },
@@ -24,6 +29,28 @@ var NewTeam = React.createClass({
         }
     },
 
+    _checkTextInput: function(e) {
+    if (e.target.value.length <= 0) {
+        e.target.className = 'input error';
+        this.state[e.target.name] = false;
+        console.log(e.target.name + ' is ' + this.state[e.target.name]);
+    } else {
+        e.target.className = '';
+        this.state[e.target.name] = true;
+        console.log(e.target.name + ' is ' + this.state[e.target.name]);
+    }
+    if (this.state.name) {
+        this.setState({
+            canSubmit: true
+        });
+    } else {
+        this.setState({
+            canSubmit: false
+        });
+    }
+
+    },
+
     submitHandler : function(event) {
         event.preventDefault();
 
@@ -36,14 +63,13 @@ var NewTeam = React.createClass({
         teamActions.saveTeamRequest(newTeam);
     },
 
-    // <input id="secondaryColor" type="text" ref="secondaryColor" />
     render : function() {
         return(
             <section>
                 <h2>New Team</h2>
                 <form onSubmit={this.submitHandler} className="new team">
                     <label htmlFor="name">Team name</label>
-                    <input id="name" type="text" ref="name" />
+                    <input onBlur={ this._checkTextInput } name="name" id="name" type="text" ref="name" />
 
                     <div className="col50 left">
                         <label htmlFor="primaryColor">Primary color</label>
@@ -54,7 +80,7 @@ var NewTeam = React.createClass({
                         <ColorPicker id="primaryColor" type="chrome" ref="secondaryColor" />
                     </div>
                     <div className="clearfix"></div>
-                    <input type="submit" value="Create Team" className="btn primary" />
+                    <button type="submit" disabled={ !this.state.canSubmit } className="btn primary">Create Team</button>
                 </form>
             </section>
         );

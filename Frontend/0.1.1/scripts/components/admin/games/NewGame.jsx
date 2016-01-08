@@ -7,19 +7,16 @@ var React = require('react'),
     teamActions = require('../../../actions/teamActions.js'),
     teamStore = require('../../../stores/teamStore.js'),
     estimoteLocationActions = require('../../../actions/estimoteLocationActions.js'),
-    estimoteLocationStore = require('../../../stores/estimoteLocationStore.js'),
-    Validator = require('validator'),
-    Validation = require('react-validation');
+    estimoteLocationStore = require('../../../stores/estimoteLocationStore.js');
 
 var NewGame = React.createClass({
-    mixins: [History],
-
     getInitialState : function() {
         return({
             teams : teamStore.getAllTeams(),
             estimoteLocations : estimoteLocationStore.getAllEstimoteLocations(),
             image: 'images/gameTemp.jpg',
-            imageUrl : gameStore.getImageUrl()
+            imageUrl : gameStore.getImageUrl(),
+            canSubmit: false
         });
     },
 
@@ -32,6 +29,29 @@ var NewGame = React.createClass({
     componentDidMount : function() {
         teamActions.getTeamsRequest();
         estimoteLocationActions.getEstimoteLocationsRequest();
+    },
+    
+    _checkTextInput: function(e) {
+
+        if (e.target.value.length <= 0) {
+            e.target.className = 'input error';
+            this.state[e.target.name] = false;
+            console.log(e.target.name + ' is ' + this.state[e.target.name]);
+        } else {
+            e.target.className = '';
+            this.state[e.target.name] = true;
+            console.log(e.target.name + ' is ' + this.state[e.target.name]);
+        }
+        if (this.state.fname && this.state.lname && this.state.knumber) {
+            this.setState({
+                canSubmit: true
+            });
+        } else {
+            this.setState({
+                canSubmit: false
+            });
+        }
+        console.log(this.state.canSubmit);
     },
 
     componentWillUnmount : function() {
@@ -129,16 +149,16 @@ var NewGame = React.createClass({
     render : function() {
         var submitButton = null;
         if(gameStore.isImageUrlSet()) {
-            submitButton = <Validation.Button blocking="button" className="btn primary" type="submit" value="Add Game"/>;
+            submitButton = <button className="btn primary" type="submit">Add game</button>;
         }
         else {
-            submitButton = <Validation.Button blocking="button" className="btn primary" type="submit" value="Add Game" disabled/>
+            submitButton = <button className="btn primary" type="submit" disabled>Add game</button>
         }
 
         return(
             <section>
                 <h2>New Game</h2>
-                <Validation.Form onSubmit={this.submitHandler} className="new game">
+                <form onSubmit={this.submitHandler} className="new game">
                     <section className="col50 left">
                         <label htmlFor="teamHome">Home team</label>
                         <select id="teamHome" ref="teamHome">
@@ -148,7 +168,7 @@ var NewGame = React.createClass({
                         </select>
 
                         <label htmlFor="gameDate">Game date</label>
-                        <Validation.Input
+                        <input
                             name="gameDate"
                             id="gameDate"
                             type="date"
@@ -188,7 +208,7 @@ var NewGame = React.createClass({
                     </section>
                     <div className="clearfix"></div>
                     {submitButton}
-                </ Validation.Form>
+                </form>
             </section>
         );
     }
