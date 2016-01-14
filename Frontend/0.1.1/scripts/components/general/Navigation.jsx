@@ -28,7 +28,6 @@ var Navigation = React.createClass({
             </header>
         );
     }
-
 });
 
 module.exports = Navigation;

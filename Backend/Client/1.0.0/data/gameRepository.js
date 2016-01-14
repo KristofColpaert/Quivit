@@ -81,10 +81,12 @@ var gameRepository = (function() {
 
     var getPast = function(year, month, day, callback) {
         var maxGameDateString = '' + year + month + day;
-        var minGameDate = dateCalculator.addMonths(new Date(year, month - 1, day), -1);
-        var minGameDateString = '' + minGameDate.getFullYear() + (minGameDate.getMonth() + 1) + minGameDate.getDate();
+        var minGameDate = dateCalculator.addMonths(new Date(year, month - 1, day), -6);
+        var minGameDateMonth = (minGameDate.getMonth() + 1) < 10 ? '0' + (minGameDate.getMonth() + 1) : (minGameDate.getMonth() + 1);
+        var minGameDateDay = (minGameDate.getDate()) < 10 ? '0' + minGameDate.getDate() : minGameDate.getDate();
+        var minGameDateString = '' + minGameDate.getFullYear() + minGameDateMonth  + minGameDateDay;
 
-        db.collection('games').find({ gameDate : { $gt : minGameDateString, $lt : maxGameDateString }}).toArray(function(error, result) {
+        db.collection('games').find({ gameDate : { $gt : minGameDateString, $lt : maxGameDateString }}).sort({ gameDate : -1 }).toArray(function(error, result) {
             if(error) {
                 errorLogger.log(error);
             }
