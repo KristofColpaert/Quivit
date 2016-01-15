@@ -12,7 +12,8 @@ var constants = {
     baseApiUserUrl : 'http://localhost:3000/api/user/',
     baseApiPlayerPositionUrl : 'http://localhost:3000/api/playerPosition/',
     socketsUrl : 'http://localhost:3000',
-    authenticationUrl : 'http://localhost:3000/authenticate'
+    authenticationUrl : 'http://localhost:3000/authenticate',
+    gameImageUrl : 'http://localhost:3000/images/game.png'
 };
 
 module.exports = constants;

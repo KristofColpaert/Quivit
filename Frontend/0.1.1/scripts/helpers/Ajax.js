@@ -21,6 +21,12 @@ var ajax = (function() {
             }
         }
 
+        request.onreadystatechange = function(e) {
+            if(request.status < 200 || request.status > 307) {
+                callback('offline', null);
+            }
+        }
+
         request.onerror = function(e) {
             callback(request.statusText, null);
         }

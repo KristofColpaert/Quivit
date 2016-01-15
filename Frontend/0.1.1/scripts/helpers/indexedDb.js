@@ -6,13 +6,14 @@ var indexedDb = (function() {
     var db;
 
     //Functions
-    var init = function() {
+    var initialize = function() {
         if(!indexedDB) {
             window.alert('Your browser doesn\'t support an offline mode.');
         }
 
         else {
-            var request = indexedDB.open('Quivit', 4);
+            var request = indexedDB.open('Quivit', 5);
+
             request.onsuccess = function(event) {
                 db = event.target.result;
             }
@@ -43,6 +44,46 @@ var indexedDb = (function() {
         }
     };
 
+    var init = function(callback) {
+        if(!indexedDB) {
+            window.alert('Your browser doesn\'t support an offline mode.');
+        }
+
+        else {
+            var request = indexedDB.open('Quivit', 5);
+
+            request.onsuccess = function(event) {
+                callback(event.target.result);
+            }
+
+            request.onupgradeneeded = function(event) {
+                var db = event.target.result;
+
+                if(!db.objectStoreNames.contains('games')) {
+                    db.createObjectStore('games');
+                }
+
+                if(!db.objectStoreNames.contains('teams')) {
+                    db.createObjectStore('teams');
+                }
+
+                if(!db.objectStoreNames.contains('playerPositions')) {
+                    db.createObjectStore('playerPositions');
+                }
+
+                if(!db.objectStoreNames.contains('estimoteLocations')) {
+                    db.createObjectStore('estimoteLocations');
+                }
+
+                callback(db);
+            }
+
+            request.onerror = function(event) {
+                window.alert('Your browser doesn\'t support an offline mode.');
+            }
+        }
+    };
+
     var add = function(collection, data, callback) {
         var transaction = db.transaction(['games', 'teams', 'playerPositions', 'estimoteLocations'], 'readwrite');
         var store = transaction.objectStore(collection);
@@ -62,10 +103,28 @@ var indexedDb = (function() {
         };
     };
 
+    var get = function(collection, callback) {
+        init(function(db) {
+            var transaction = db.transaction(['games', 'teams', 'playerPositions', 'estimoteLocations'], 'readonly');
+            var store = transaction.objectStore(collection);
+
+            var cursor = store.openCursor();
+
+            cursor.onerror = function(event) {
+                alert('Quivit failed to synchronize the offline data.');
+            }
+
+            cursor.onsuccess = function(event) {
+                callback(event.target.result);
+            }
+        });
+    };
+
     //Return
     return {
-        init : init,
-        add : add
+        initialize : initialize,
+        add : add,
+        get : get
     };
 })();
 

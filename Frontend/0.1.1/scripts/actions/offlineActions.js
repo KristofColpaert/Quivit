@@ -4,7 +4,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
     ajax = require('../helpers/ajax.js'),
     indexedDb = require('../helpers/indexedDb.js');
 
-indexedDb.init();
+indexedDb.initialize();
 
 var offlineActions = {
     //Get positions of player in a game

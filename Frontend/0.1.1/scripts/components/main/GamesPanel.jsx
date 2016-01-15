@@ -20,6 +20,7 @@ var GamesPanel = React.createClass({
         }
 
         else if(this.props.mode === 'past') {
+            console.log(this.props.games);
             return (
                 <section className="games">
                     <h2>{this.props.title}</h2>

@@ -1,9 +1,14 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
     gameConstants = require('../helpers/gameConstants.js'),
     constants = require('../helpers/urlConstants.js'),
-    ajax = require('../helpers/ajax.js');
+    ajax = require('../helpers/ajax.js'),
+    indexedDb = require('../helpers/indexedDb.js');
 
 var gameActions = {
+
+    _localVariables : {
+        isOnline : null
+    },
 
     //Games of today
     getTodaysGamesResponse : function(games) {
@@ -67,6 +72,12 @@ var gameActions = {
             if(!error) {
                 gameActions.getGameResponse(data[0]);
             }
+
+            else {
+                indexedDb.get('games', function(data) {
+                    gameActions.getGameResponse(data.value);
+                });
+            }
         });
     },
 
@@ -82,6 +93,16 @@ var gameActions = {
         ajax.getData(constants.baseApiGamePastUrl, function(error, data) {
             if(!error) {
                 gameActions.getPastGamesResponse(data);
+            }
+
+            else {
+                indexedDb.get('games', function(data) {
+                    console.log(data);
+                    data.next();
+                    console.log(data);
+                    data.value.image = '/images/game.png';
+                    gameActions.getPastGamesResponse([data.value]);
+                });
             }
         });
     },

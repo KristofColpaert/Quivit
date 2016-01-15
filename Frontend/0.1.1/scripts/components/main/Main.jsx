@@ -54,20 +54,38 @@ var Main = React.createClass({
     },
 
     render: function() {
-        return (
-            <main>
-                <Navigation />
-                <section className="content-holder">
-                    <GamesPanel title={this.state.titleGamesLive} games={this.state.todaysGames} mode="normal"/>
-                    <div className="clearfix"></div>
-                    <GamesPanel title={this.state.titleGamesFuture} games={this.state.futureGames} mode="normal"/>
-                    <div className="clearfix"></div>
-                    <GamesPanel title={this.state.titleGamesPast} games={this.state.pastGames} mode="past"/>
-                    <div className="clearfix"></div>
-                </section>
-                <Footer />
-            </main>
-        );
+        var pastGames = this.state.pastGames ? this.state.pastGames : [];
+        var todaysGames = this.state.todaysGames ? this.state.todaysGames : [];
+        var futureGames = this.state.futureGames ? this.state.futureGames : [];
+
+        if(pastGames, todaysGames, futureGames) {
+            console.log(pastGames);
+            return (
+                <main>
+                    <Navigation />
+                    <section className="content-holder">
+                        <GamesPanel title={this.state.titleGamesLive} games={todaysGames} mode="normal"/>
+                        <div className="clearfix"></div>
+                        <GamesPanel title={this.state.titleGamesFuture} games={futureGames} mode="normal"/>
+                        <div className="clearfix"></div>
+                        <GamesPanel title={this.state.titleGamesPast} games={pastGames} mode="past"/>
+                        <div className="clearfix"></div>
+                    </section>
+                    <Footer />
+                </main>
+            );
+        }
+
+        else {
+            return (
+                <main>
+                    <Navigation />
+                    <section className="content-holder">
+                    </section>
+                    <Footer />
+                </main>
+            )
+        }
     }
 });
 
