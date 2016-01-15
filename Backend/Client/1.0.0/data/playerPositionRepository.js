@@ -38,6 +38,18 @@ var playerPositionRepository = (function() {
         });
     };
 
+    var getPlayerPositions = function(gameId, playerId, page, callback){
+        var collectionName = gameId + playerId;
+        db.collection(collectionName).find({}).sort({ timestamp : 1 }).skip(page * 500).limit(500).toArray(function(error, data) {
+            if(error) {
+                errorLogger.log(error);
+            }
+            else {
+                callback(data);
+            }
+        });
+    };
+
     var add = function(newPlayerPosition){
         db.collection(newPlayerPosition.toString()).insert(newPlayerPosition, function(error, result){
             if(error) {
@@ -49,6 +61,7 @@ var playerPositionRepository = (function() {
     //Return
     return {
         getNumberOfPositionsInZones : getNumberOfPositionsInZones,
+        getPlayerPositions : getPlayerPositions,
         add : add
     };
 })();

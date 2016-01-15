@@ -22,7 +22,8 @@ var routeGame = require('./routes/api/game.js'),
     routeUser = require('./routes/api/user.js'),
     routeRoot = require('./routes/root.js'),
     routeAuthenticate = require('./routes/authenticate.js'),
-    routeUpload = require('./routes/upload.js');
+    routeUpload = require('./routes/upload.js'),
+    routePlayerPosition = require('./routes/api/playerPosition.js');
 
 /*
 ** Setup
@@ -61,6 +62,7 @@ app.use('/api/game', routeGame);
 app.use('/api/player', routePlayer);
 app.use('/api/team', routeTeam);
 app.use('/api/estimoteLocation', routeEstimoteLocation);
+app.use('/api/playerPosition', routePlayerPosition);
 
 /*
 ** Errors
