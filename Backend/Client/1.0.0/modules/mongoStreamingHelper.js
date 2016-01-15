@@ -26,8 +26,8 @@ var MongoStreamingHelper = function() {
         })
     };
 
-    self.getStreamingData = function(collectionName, limit, page) {
-        var stream = dbConnection.collection(collectionName).find().limit(limit).skip(page * limit).stream();
+    self.getStreamingData = function(collectionName, limit, page, sort) {
+        var stream = dbConnection.collection(collectionName).find().sort(sort).limit(limit).skip(page * limit).stream();
 
         stream.on('end', function() {
             self.emit('connection', 'close');

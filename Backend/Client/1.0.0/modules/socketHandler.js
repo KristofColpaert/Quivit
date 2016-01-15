@@ -28,7 +28,7 @@ var socketHandler = function(io) {
                 //If connection is open, start streaming.
                 stream.on('connection', function(state) {
                     if(state === 'open') {
-                        stream.getStreamingData(collectionName, 500, page);
+                        stream.getStreamingData(collectionName, 500, page, { timestamp : 1 });
                     }
                 });
 
