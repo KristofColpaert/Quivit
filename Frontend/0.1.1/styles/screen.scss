@@ -360,6 +360,12 @@ section.players {
       text-align: right
     }
 
+    > .date {
+      display: block;
+      margin: 2px 0 0 80px;
+      clear: right;
+    }
+
     > .name {
       display: block;
       margin: 10px 0 0 80px;

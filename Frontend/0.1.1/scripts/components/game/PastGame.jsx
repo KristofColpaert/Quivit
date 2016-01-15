@@ -13,7 +13,8 @@ var PastGame = React.createClass({
         pageCount: 0,
         socket: null,
         playerPositions: {},
-        interval: null
+        interval: null,
+        isInterval: false,
     },
 
     contextTypes: {
@@ -27,7 +28,11 @@ var PastGame = React.createClass({
             kitNumber: 'X',
             playerName: 'player',
             currentPlayer: null,
-            finalPlayerPositions: []
+            finalPlayerPositions: [],
+            playStop: 'Play',
+            intervalFreq: 2,
+            fastForwardClass: 'primary',
+            slowForwardClass: 'primary disabled'
         });
     },
 
@@ -54,8 +59,25 @@ var PastGame = React.createClass({
             (typeof this.props.teams[this.props.game._id] !== 'undefined') &&
             (typeof this.props.estimoteLocation._id !== 'undefined')){
             //Init sockets.
+            this.setState({
+                playStop : 'Stop'
+            })
             this._localVariables.isSocketsInit = true;
             this._initSockets();
+        }
+
+        else if(this._localVariables.isInterval) {
+            this.setState({
+                playStop : 'Play'
+            });
+            this._stopShow();
+        }
+
+        else if(!this._localVariables.isInterval) {
+            this.setState({
+                playStop : 'Stop'
+            });
+            this._startShow();
         }
     },
 
@@ -73,13 +95,11 @@ var PastGame = React.createClass({
     },
 
     _playerClicked: function(p) {
-        console.log(p);
         this.state.kitNumber = p.kitNumber;
         this.state.playerName = p.firstName + ' ' + p.lastName;
     },
 
     _initSockets : function() {
-        console.log(this.state.players);
         var self = this;
         var gameId = this.props.game._id;
         var query = this.context.location.pathname;
@@ -127,9 +147,21 @@ var PastGame = React.createClass({
         }
     },
 
-    _startShow : function() {
+    _startShow : function(interval) {
+        console.log(interval);
         var self = this;
 
+        if(!interval) {
+            this.setState({
+                intervalFreq : 2,
+                fastForwardClass: 'primary',
+                slowForwardClass: 'primary disabled'
+            });
+        }
+
+        interval = interval ? interval : 200;
+
+        this._localVariables.isInterval = true
         this._localVariables.interval = setInterval(function() {
             //Make playerpositions
             var finalPlayerPositions = [];
@@ -149,13 +181,50 @@ var PastGame = React.createClass({
                     self._askMore();
                 }
             }
-        }, 200);
+        }, interval);
+    },
+
+    _stopShow : function() {
+        this._localVariables.isInterval = false;
+        clearInterval(this._localVariables.interval);
     },
 
     _askMore : function() {
         this._localVariables.pageCount++;
-        // console.log(this._localVariables.pageCount);
         this._localVariables.socket.emit('more', this._localVariables.pageCount);
+    },
+
+    _fastForward : function() {
+        if(this.state.intervalFreq < 16) {
+            this._stopShow();
+            this._startShow(200 / this.state.intervalFreq);
+            this.setState({
+                intervalFreq : this.state.intervalFreq * 2,
+            });
+        }
+
+        if(this.state.intervalFreq >= 16) {
+            this.setState({
+               fastForwardClass: 'primary disabled'
+            });
+        }
+    },
+
+    _slowForward : function() {
+        if(this.state.intervalFreq > 2) {
+            this._stopShow();
+            console.log('Freq:' + this.state.intervalFreq);
+            this._startShow(200 / (this.state.intervalFreq / 4));
+            this.setState({
+                intervalFreq : this.state.intervalFreq / 2
+            });
+        }
+
+        if(this.state.intervalFreq <= 2) {
+            this.setState({
+                slowForwardClass: 'primary disbled'
+            });
+        }
     },
 
     render : function() {
@@ -167,15 +236,22 @@ var PastGame = React.createClass({
             clearInterval(this._localVariables.interval);
         }
 
+        var gameDate = this.props.game.gameDate ? this.props.game.gameDate : 'gameDate';
+        gameDate = [gameDate.slice(0, 4), '/' , gameDate.slice(4, 6), '/', gameDate.slice(6)].join('');
+        gameDate += ' - finished';
+
         return (
             <section className="live game">
                 <section className="playerSheet">
                     <h3 className="kit number" ref="kitnumber">{ this.state.kitNumber }</h3>
-                    <span className="name" ref="player"> { this.state.playerName }</span>
+                    <span className="name" ref="player">{ this.state.playerName }</span>
+                    <span className="date">{gameDate}</span>
                 </section>
                 <div className="clearfix"></div>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
-                <button onClick={this._initWatching} className="btn primary" value="start">Play</button>
+                <button onClick={this._slowForward} className={'btn ' + this.state.slowForwardClass} value="fastForward">Fast forward * {this.state.intervalFreq / 2}</button>
+                <button onClick={this._initWatching} className="btn primary" value={this.state.playStop}>{this.state.playStop}</button>
+                <button onClick={this._fastForward} className={'btn ' + this.state.fastForwardClass} value="fastForward">Fast forward * {this.state.intervalFreq}</button>
                 <div className="clearfix"></div>
             </section>
         );
