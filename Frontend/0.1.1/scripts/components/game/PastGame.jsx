@@ -4,7 +4,8 @@ var React = require('react'),
     Pitch = require('./Pitch.jsx'),
     PitchElementCircle = require('./PitchElementCircle.jsx'),
     playerStore = require('../../stores/playerStore.js'),
-    constants = require('../../helpers/urlConstants.js');
+    constants = require('../../helpers/urlConstants.js'),
+    offlineActions = require('../../actions/offlineActions.js');
 
 var PastGame = React.createClass({
 
@@ -227,6 +228,28 @@ var PastGame = React.createClass({
         }
     },
 
+    _saveOffline : function() {
+        //Make game offline available
+        offlineActions.offlineSaveGameRequest(this.props.game._id);
+
+        //Make teams offline available
+        var tempTeams = this.props.teams[this.props.game._id];
+        offlineActions.offlineSaveTeamRequest(tempTeams.home._id);
+        offlineActions.offlineSaveTeamRequest(tempTeams.away._id);
+
+        //Make player positions offline available
+        for (var i = this.state.players.home.length - 1; i >= 0; i--) {
+            offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.home[i]._id);
+        }
+
+        for (var i = this.state.players.away.length - 1; i >= 0; i--) {
+            offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.away[i]._id);
+        }
+
+        //Make estimote locations offline available
+        offlineActions.offlineSaveEstimoteLocationRequest(this.props.estimoteLocation._id);
+    },
+
     render : function() {
         var spaceWidth = typeof this.props.estimoteLocation.spaceWidth === 'undefined' ? 0 : this.props.estimoteLocation.spaceWidth * 100;
         var spaceHeight = typeof this.props.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.props.estimoteLocation.spaceHeight * 100;
@@ -249,9 +272,10 @@ var PastGame = React.createClass({
                 </section>
                 <div className="clearfix"></div>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
-                <button onClick={this._slowForward} className={'btn ' + this.state.slowForwardClass} value="fastForward">Fast forward * {this.state.intervalFreq / 2}</button>
+                <button onClick={this._slowForward} className={'btn ' + this.state.slowForwardClass} value="slowForward">Slow forward * {this.state.intervalFreq / 2}</button>
                 <button onClick={this._initWatching} className="btn primary" value={this.state.playStop}>{this.state.playStop}</button>
                 <button onClick={this._fastForward} className={'btn ' + this.state.fastForwardClass} value="fastForward">Fast forward * {this.state.intervalFreq}</button>
+                <button onClick={this._saveOffline} className="btn primary" value="makeOffline">Make offline</button>
                 <div className="clearfix"></div>
             </section>
         );
