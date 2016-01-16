@@ -23,19 +23,42 @@
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZj-ty-hzg">
+                                <rect key="frame" x="20" y="567.5" width="45.5" height="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disconnected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyf-wt-nRS">
+                                <rect key="frame" x="70.5" y="568" width="89.5" height="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fyf-wt-nRS" secondAttribute="bottom" constant="15" id="1Dw-Rq-osf"/>
                             <constraint firstItem="ZNF-LI-1id" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="521-pM-Ohp"/>
+                            <constraint firstItem="eZj-ty-hzg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NUS-ES-WaE"/>
+                            <constraint firstItem="fyf-wt-nRS" firstAttribute="leading" secondItem="eZj-ty-hzg" secondAttribute="trailing" constant="5" id="WYD-cR-Q3p"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eZj-ty-hzg" secondAttribute="bottom" constant="15" id="Y5G-4h-LxI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZNF-LI-1id" secondAttribute="bottom" id="a7d-TX-qKQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fyf-wt-nRS" secondAttribute="trailing" id="hqv-sd-8ym"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZNF-LI-1id" secondAttribute="trailing" id="kJ7-9t-iZE"/>
                             <constraint firstItem="ZNF-LI-1id" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="mEt-yZ-tcK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hqv-sd-8ym"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="🐤 Quivit" id="1mv-sp-pHh"/>
                     <connections>
                         <outlet property="indoorLocationView" destination="ZNF-LI-1id" id="Yce-3S-FlC"/>
+                        <outlet property="statusLabel" destination="fyf-wt-nRS" id="lfE-xT-lgm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -244,7 +267,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Choose Player" id="WfW-Pc-DRs">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="UEc-2S-gpF">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="UEc-2S-gpF">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="segueGameVC" id="OPk-TS-w4p"/>
                             </connections>

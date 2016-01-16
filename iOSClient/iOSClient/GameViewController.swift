@@ -13,6 +13,7 @@ import SwiftyJSON
 class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 {
 	@IBOutlet weak var indoorLocationView: EILIndoorLocationView!
+	@IBOutlet weak var statusLabel: UILabel!
 	
 	var quivit = Quivit()
 	
@@ -43,9 +44,26 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 			})
 			
 			self.socket = SocketIOClient(socketURL: "http://\(self.quivit.host):\(self.quivit.port)")
-			self.socket!.on("connect") {data, ack in
+			self.socket!.on("connect", callback: {data, ack in
 				print("[Socket] Connected")
-			}
+				self.statusLabel.text = "Connected"
+			})
+			self.socket!.on("disconnect", callback: {data, ack in
+				print("[Socket] Disconnected")
+				self.statusLabel.text = "Disconnected"
+			})
+			self.socket!.on("error", callback: {data, ack in
+				print("[Socket] Error")
+				self.statusLabel.text = "Error"
+			})
+			self.socket!.on("reconnect", callback: {data, ack in
+				print("[Socket] Reconnected")
+				self.statusLabel.text = "Reconnect"
+			})
+			self.socket!.on("reconnectAttempt", callback: {data, ack in
+				print("[Socket] Reconnect Attempt")
+				self.statusLabel.text = "Reconnect Attempt"
+			})
 			self.socket!.connect()
 		}
 		else { Quivit.showAlert(self, title: "No match selected!", message: "Please select a match first!") }
@@ -68,6 +86,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 	{
 		self.indoorLocationManager.stopPositionUpdates()
 		print("[GameVC] Stop Position Updates")
+		self.socket?.disconnect()
 	}
 	
 	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, withAccuracy positionAccuracy: EILPositionAccuracy, inLocation location: EILLocation!)
