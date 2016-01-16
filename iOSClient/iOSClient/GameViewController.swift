@@ -63,7 +63,6 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		self.indoorLocationView.doorThickness = 6
 		self.indoorLocationView.traceColor = UIColor.lightGrayColor()
 		self.indoorLocationView.traceThickness = 2
-		self.indoorLocationView.wallLengthLabelsColor = UIColor.blackColor()
 	}
 	override func viewWillDisappear(animated: Bool)
 	{
