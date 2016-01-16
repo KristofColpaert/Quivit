@@ -12,10 +12,10 @@ import SwiftyJSON
 
 class ConnectTableViewController: UITableViewController
 {
+	let quivit = Quivit()
+	
 	let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 	var advanced = false
-	var host = "quivit.herokuapp.com"
-	var port = "80"
 	var matches:JSON = []
 	
 	@IBOutlet weak var inputIPAddress: UITextField!
@@ -65,11 +65,11 @@ class ConnectTableViewController: UITableViewController
 		
 		if self.advanced
 		{
-			if let h = inputIPAddress.text where h != "" { self.host = h }
-			if let p = inputPort.text where p != "" { self.port = p }
+			if let h = inputIPAddress.text where h != "" { self.quivit.host = h }
+			if let p = inputPort.text where p != "" { self.quivit.port = p }
 		}
 		
-		Quivit.getMatches(self.host, port: self.port, completionHandler: {(responseObject:JSON?, error:NSError?) in
+		quivit.getMatches({(responseObject:JSON?, error:NSError?) in
 			
 			self.hideActivityIndicator()
 			
@@ -103,8 +103,7 @@ class ConnectTableViewController: UITableViewController
 			print("[ConnectTVC] Segue to MatchTVC")
 			
 			let vc = segue.destinationViewController as! MatchTableViewController
-			vc.host = self.host
-			vc.port = self.port
+			vc.quivit = self.quivit
 			vc.matches = self.matches
 		}
     }

@@ -14,15 +14,13 @@ typealias QuivitResponse = (JSON?, NSError?) -> Void
 
 class Quivit
 {
-	static func showAlert(view:UIViewController, title:String, message:String)
-	{
-		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-		
-		let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
-		alertController.addAction(okAction)
-		
-		view.presentViewController(alertController, animated: true) { }
-	}
+	var host:String = "quivit.herokuapp.com"
+	var port:String = "80"
+	var match:JSON?
+	var selectedTeam:JSON?
+	var selectedPlayer:JSON?
+	let estimoteAppID:String = "quivit-cw1"
+	let estimoteAppToken:String = "f157d0a442bf7fe7815ffd53076492cc"
 	
 	static func makeRequest(url:String, completionHandler:QuivitResponse)
 	{
@@ -47,9 +45,9 @@ class Quivit
 		}
 	}
 	
-	static func getMatches(host:String, port:String, completionHandler: QuivitResponse)
+	func getMatches(completionHandler: QuivitResponse)
 	{
-		print("[Quivit - getMatches] IP: \(host) PORT: \(port)")
+		print("[Quivit - getMatches] IP: \(self.host) PORT: \(self.port)")
 		
 		let date = NSDate()
 		let calendar = NSCalendar.currentCalendar()
@@ -59,12 +57,12 @@ class Quivit
 		
 		print("[Quivit - getMatches] Day: \(day) Month: \(month) Year: \(year)")
 		
-		let url = "http://\(host):\(port)/api/game/\(year)/\(month)/\(day)/included"
+		let url = "http://\(self.host):\(self.port)/api/game/\(year)/\(month)/\(day)/included"
 		
 		Quivit.makeRequest(url, completionHandler: completionHandler)
 	}
 	
-	static func getPlayers(host:String, port:String, teamId:String, completionHandler: QuivitResponse)
+	func getPlayers(teamId teamId:String, completionHandler: QuivitResponse)
 	{
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 
@@ -74,5 +72,15 @@ class Quivit
 		let url = "http://\(host):\(port)/api/player/team/\(teamId)"
 		
 		Quivit.makeRequest(url, completionHandler: completionHandler)
+	}
+	
+	static func showAlert(view:UIViewController, title:String, message:String)
+	{
+		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+		
+		let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
+		alertController.addAction(okAction)
+		
+		view.presentViewController(alertController, animated: true) { }
 	}
 }

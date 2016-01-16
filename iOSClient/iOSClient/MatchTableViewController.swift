@@ -12,8 +12,7 @@ import SwiftyJSON
 
 class MatchTableViewController: UITableViewController
 {
-	var host = "quivit.herokuapp.com"
-	var port = "80"
+	var quivit = Quivit()
 	var matches:JSON = []
 	
     override func viewDidLoad()
@@ -27,7 +26,7 @@ class MatchTableViewController: UITableViewController
 	
 	func refresh(sender:AnyObject)
 	{
-		Quivit.getMatches(self.host, port: self.port, completionHandler: {(responseObject:JSON?, error:NSError?) in
+		quivit.getMatches({(responseObject:JSON?, error:NSError?) in
 			
 			if let matches = responseObject
 			{
@@ -92,10 +91,10 @@ class MatchTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
+				self.quivit.match = self.matches[cs.row]
+				
 				let vc = segue.destinationViewController as! PlayerTableViewController
-				vc.host = host
-				vc.port = port
-				vc.match = self.matches[cs.row]
+				vc.quivit = self.quivit
 			}
 			else { Quivit.showAlert(self, title: "No match selected!", message: "Please select a match first!") }
 		}

@@ -12,9 +12,7 @@ import SwiftyJSON
 
 class PlayerTableViewController: UITableViewController
 {
-	var host = "quivit.herokuapp.com"
-	var port = "80"
-	var match:JSON?
+	var quivit = Quivit()
 	
 	var teams:[JSON] = []
 	var players:[JSON] = [[], []]
@@ -23,7 +21,7 @@ class PlayerTableViewController: UITableViewController
 	{
         super.viewDidLoad()
 
-		if let m = match
+		if let m = quivit.match
 		{
 			self.refreshControl = UIRefreshControl()
 			self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -39,9 +37,9 @@ class PlayerTableViewController: UITableViewController
 	
 	func refresh(sender:AnyObject)
 	{
-		let m = match!
+		let m = quivit.match!
 		
-		Quivit.getPlayers(self.host, port: self.port, teamId: m["teamHomeId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
+		quivit.getPlayers(teamId: m["teamHomeId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
 			
 			if let players = responseObject
 			{
@@ -61,7 +59,7 @@ class PlayerTableViewController: UITableViewController
 			else { Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.") }
 		})
 		
-		Quivit.getPlayers(self.host, port: self.port, teamId: m["teamHomeId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
+		quivit.getPlayers(teamId: m["teamHomeId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
 			
 			if let players = responseObject
 			{
@@ -139,18 +137,11 @@ class PlayerTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
-				let host = self.host
-				let port = self.port
-				let match = self.match
-				let selectedTeam = self.teams[cs.section]
-				let selectedPlayer = self.players[cs.section][cs.row]
+				self.quivit.selectedTeam = self.teams[cs.section]
+				self.quivit.selectedPlayer = self.players[cs.section][cs.row]
 				
 				let vc = segue.destinationViewController as! GameViewController
-				vc.host = host
-				vc.port = port
-				vc.match = match
-				vc.selectedTeam = selectedTeam
-				vc.selectedPlayer = selectedPlayer
+				vc.quivit = self.quivit
 			}
 			else { Quivit.showAlert(self, title: "No player selected!", message: "Please select a player first.") }
 		}
