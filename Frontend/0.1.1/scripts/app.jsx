@@ -42,9 +42,8 @@ var AuthenticationWrapper = function(page) {
     });
 };
 
-// history={createBrowserHistory()}
 ReactDOM.render((
-    <Router  >
+    <Router history={createBrowserHistory()} >
         <Route name="/canvasGame/:gameId" path="/canvasGame/:gameId" component={GameWrapper('LiveGame')} />
         <Route name="/heatMap/:gameId/:playerId" path="/heatMap/:gameId/:playerId" component={GameWrapper('HeatMap')} />
         <Route name="/gameOverview/:gameId" path="/gameOverview/:gameId" component={GameWrapper('GameOverview')} />

@@ -10,6 +10,8 @@ var React = require('react'),
     estimoteLocationStore = require('../../../stores/estimoteLocationStore.js');
 
 var NewGame = React.createClass({
+    mixins: [History],
+
     getInitialState : function() {
         return({
             teams : teamStore.getAllTeams(),
@@ -99,7 +101,7 @@ var NewGame = React.createClass({
         event.preventDefault();
         var self = this;
 
-        var tempGameDate = new Date(this.refs.gameDate.state.value);
+        var tempGameDate = new Date(this.refs.gameDate.value);
         var tempDate = '00';
         var tempMonth = '00';
 

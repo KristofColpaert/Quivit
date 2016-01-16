@@ -9,6 +9,7 @@ var React = require('react'),
 
 
 var NewPlayer = React.createClass({
+    mixins: [History],
 
     getInitialState : function() {
         return({

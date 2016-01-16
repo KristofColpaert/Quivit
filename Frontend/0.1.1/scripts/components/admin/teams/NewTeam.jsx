@@ -8,6 +8,7 @@ var React = require('react'),
 
 var NewTeam = React.createClass({
     mixins: [History],
+
     getInitialState: function() {
         return({
             name: false,
