@@ -31,16 +31,13 @@ class Quivit
 			
 			switch response.result
 			{
-			case .Success(let data as NSData):
-				print("[Quivit - makeRequest] .GET Request matches success")
-				let jsonData = JSON(data: data)
+			case .Success(let data):
+				print("[Quivit - makeRequest] .GET Request success")
+				let jsonData = JSON(arrayLiteral: data)[0]
 				completionHandler(jsonData, nil)
 			case .Failure(let error):
-				print("[Quivit - makeRequest] .GET Request matches error")
+				print("[Quivit - makeRequest] .GET Request error")
 				completionHandler(nil, error)
-			default:
-				print("[Quivit - makeRequest] Error with response")
-				completionHandler(nil, nil)
 			}
 		}
 	}

@@ -39,16 +39,14 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 				self.location = location
 				self.indoorLocationView.drawLocation(location)
 				self.indoorLocationManager.startPositionUpdatesForLocation(location)
+				print("[GameVC] Start Position Updates")
 			})
-			
 			
 			self.socket = SocketIOClient(socketURL: "http://\(self.quivit.host):\(self.quivit.port)")
 			self.socket!.on("connect") {data, ack in
 				print("[Socket] Connected")
 			}
 			self.socket!.connect()
-			
-			print("unwrapping complete")
 		}
 		else { Quivit.showAlert(self, title: "No match selected!", message: "Please select a match first!") }
 	}
@@ -57,20 +55,20 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 	{
 		self.indoorLocationView.backgroundColor = UIColor.clearColor()
 		self.indoorLocationView.showTrace = true
-		self.indoorLocationView.showWallLengthLabels = true
 		self.indoorLocationView.rotateOnPositionUpdate = true
 		
 		self.indoorLocationView.locationBorderColor = UIColor.blackColor()
 		self.indoorLocationView.locationBorderThickness = 6
-		self.indoorLocationView.doorColor = UIColor.brownColor()
-		self.indoorLocationView.doorThickness = 5
-		self.indoorLocationView.traceColor = UIColor.yellowColor()
+		self.indoorLocationView.doorColor = UIColor.blackColor()
+		self.indoorLocationView.doorThickness = 6
+		self.indoorLocationView.traceColor = UIColor.lightGrayColor()
 		self.indoorLocationView.traceThickness = 2
 		self.indoorLocationView.wallLengthLabelsColor = UIColor.blackColor()
 	}
 	override func viewWillDisappear(animated: Bool)
 	{
 		self.indoorLocationManager.stopPositionUpdates()
+		print("[GameVC] Stop Position Updates")
 	}
 	
 	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, withAccuracy positionAccuracy: EILPositionAccuracy, inLocation location: EILLocation!)

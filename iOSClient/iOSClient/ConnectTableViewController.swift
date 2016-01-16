@@ -78,14 +78,8 @@ class ConnectTableViewController: UITableViewController
 				self.matches = matches
 				self.performSegueWithIdentifier("segueMatchTVC", sender: nil)
 			}
-			else if let _ = error
-			{
-				Quivit.showAlert(self, title: "Unable to connect!", message: "Could not connect to server. Check the host and the port, then try again.")
-			}
-			else
-			{
-				Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.")
-			}
+			else if let _ = error { Quivit.showAlert(self, title: "Unable to connect!", message: "Could not connect to server. Check the host and the port, then try again.") }
+			else { Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.") }
 		})
 	}
 	
