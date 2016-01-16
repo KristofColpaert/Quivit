@@ -107,15 +107,23 @@ var indexedDb = (function() {
         init(function(db) {
             var transaction = db.transaction(['games', 'teams', 'playerPositions', 'estimoteLocations'], 'readonly');
             var store = transaction.objectStore(collection);
-
             var cursor = store.openCursor();
+            var data = [];
 
             cursor.onerror = function(event) {
                 alert('Quivit failed to synchronize the offline data.');
             }
 
             cursor.onsuccess = function(event) {
-                callback(event.target.result);
+                var result = event.target.result;
+                if(result) {
+                    data.push(result.value);
+                    result.continue();
+                }
+
+                else {
+                    callback(data);
+                }
             }
         });
     };

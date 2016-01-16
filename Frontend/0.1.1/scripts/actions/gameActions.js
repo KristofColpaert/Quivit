@@ -97,11 +97,7 @@ var gameActions = {
 
             else {
                 indexedDb.get('games', function(data) {
-                    console.log(data);
-                    data.next();
-                    console.log(data);
-                    data.value.image = '/images/game.png';
-                    gameActions.getPastGamesResponse([data.value]);
+                    gameActions.getPastGamesResponse(data);
                 });
             }
         });
