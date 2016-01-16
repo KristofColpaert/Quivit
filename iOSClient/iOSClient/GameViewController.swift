@@ -56,15 +56,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 			
 			print("unwrapping complete")
 		}
-		else
-		{
-			let alertController = UIAlertController(title: "No match selected!", message: "Please select a match first!", preferredStyle: .Alert)
-			
-			let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
-			alertController.addAction(okAction)
-			
-			self.presentViewController(alertController, animated: true) { }
-		}
+		else { Quivit.showAlert(self, title: "No match selected!", message: "Please select a match first!") }
 	}
 	
 	override func viewWillAppear(animated: Bool)
