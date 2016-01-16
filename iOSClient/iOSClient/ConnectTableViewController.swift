@@ -70,7 +70,6 @@ class ConnectTableViewController: UITableViewController
 		}
 		
 		quivit.getMatches({(responseObject:JSON?, error:NSError?) in
-			
 			self.hideActivityIndicator()
 			
 			if let matches = responseObject

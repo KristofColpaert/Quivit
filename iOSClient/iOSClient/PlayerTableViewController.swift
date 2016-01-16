@@ -39,7 +39,6 @@ class PlayerTableViewController: UITableViewController
 		let m = quivit.match!
 		
 		quivit.getPlayers(teamId: m["teamHomeId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
-			
 			if let players = responseObject
 			{
 				if players.count > 0
@@ -59,7 +58,6 @@ class PlayerTableViewController: UITableViewController
 		})
 		
 		quivit.getPlayers(teamId: m["teamAwayId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
-			
 			if let players = responseObject
 			{
 				if players.count > 0
@@ -138,6 +136,8 @@ class PlayerTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
+				print("[PlayerTVC] Segue to GameTVC")
+				
 				self.quivit.selectedTeam = self.teams[cs.section]
 				self.quivit.selectedPlayer = self.players[cs.section][cs.row]
 				

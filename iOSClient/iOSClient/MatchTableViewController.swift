@@ -27,7 +27,6 @@ class MatchTableViewController: UITableViewController
 	func refresh(sender:AnyObject)
 	{
 		quivit.getMatches({(responseObject:JSON?, error:NSError?) in
-			
 			if let matches = responseObject
 			{
 				print("[MatchesTVC] Matches Available")
@@ -93,6 +92,8 @@ class MatchTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
+				print("[MatchTVC] Segue to PlayerTVC")
+				
 				self.quivit.match = self.matches[cs.row]
 				
 				let vc = segue.destinationViewController as! PlayerTableViewController

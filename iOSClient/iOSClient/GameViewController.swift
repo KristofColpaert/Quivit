@@ -32,7 +32,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		
 		if let m = self.quivit.match, _ = self.quivit.selectedTeam, _ = self.quivit.selectedPlayer
 		{
-			print(m["estimoteLocationId"])
+			print("[GameVC] Location ID: \(m["estimoteLocationId"])")
 			
 			let request = EILRequestFetchLocation(locationIdentifier: m["estimoteLocationId"].string)
 			request.sendRequestWithCompletion({(location, error) in
