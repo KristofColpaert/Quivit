@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class PlayerTableViewController: UITableViewController
 {
-	var ipAddress:String?
+	var host:String?
 	var port:String?
 	var match:JSON?
 	
@@ -27,7 +27,7 @@ class PlayerTableViewController: UITableViewController
 		self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
 		self.tableView.addSubview(refreshControl!)
 
-		if let _ = ipAddress, _ = port, m = match
+		if let _ = host, _ = port, m = match
 		{
 			teams = [m["teamHome", "name"], m["teamAway", "name"]]
 			print(teams)
@@ -49,11 +49,11 @@ class PlayerTableViewController: UITableViewController
 	{
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 		
-		let ipAddress = self.ipAddress!
+		let host = self.host!
 		let port = self.port!
 		let m = match!
 		
-		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/player/team/\(m["teamHomeId"])").responseJSON { response in
+		Alamofire.request(.GET, "http://\(host):\(port)/api/player/team/\(m["teamHomeId"])").responseJSON { response in
 			//print(response.request)  // original URL request
 			//print(response.response) // URL response
 			//print(response.data)     // server data
@@ -88,7 +88,7 @@ class PlayerTableViewController: UITableViewController
 			self.refreshControl!.endRefreshing()
 		}
 		
-		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/player/team/\(m["teamAwayId"])").responseJSON { response in
+		Alamofire.request(.GET, "http://\(host):\(port)/api/player/team/\(m["teamAwayId"])").responseJSON { response in
 			//print(response.request)  // original URL request
 			//print(response.response) // URL response
 			print(response.data)     // server data
@@ -183,14 +183,14 @@ class PlayerTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
-				let ipAddress = self.ipAddress
+				let host = self.host
 				let port = self.port
 				let match = self.match
 				let selectedTeam = self.teams[cs.section]
 				let selectedPlayer = self.players[cs.section][cs.row]
 				
 				let vc = segue.destinationViewController as! GameViewController
-				vc.ipAddress = ipAddress
+				vc.host = host
 				vc.port = port
 				vc.match = match
 				vc.selectedTeam = selectedTeam

@@ -12,8 +12,8 @@ import SwiftyJSON
 
 class MatchTableViewController: UITableViewController
 {
-	var ipAddress:String?
-	var port:String?
+	var host = "quivit.herokuapp.com"
+	var port = "80"
 	var matches:JSON = []
 	
     override func viewDidLoad()
@@ -24,7 +24,8 @@ class MatchTableViewController: UITableViewController
 		self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
 		self.tableView.addSubview(refreshControl!)
 		
-		if let _ = ipAddress, _ = port
+		/*
+		if let _ = self.host, _ = self.port
 		{
 			self.refreshControl!.beginRefreshing()
 			refresh("")
@@ -38,16 +39,14 @@ class MatchTableViewController: UITableViewController
 			
 			self.presentViewController(alertController, animated: true) { }
 		}
+		*/
     }
 	
 	func refresh(sender:AnyObject)
 	{
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 		
-		let ipAddress = self.ipAddress!
-		let port = self.port!
-		
-		print("[MatchTVC] IP: \(ipAddress) PORT: \(port)")
+		print("[MatchTVC] IP: \(self.host) PORT: \(self.port)")
 		
 		let date = NSDate()
 		let calendar = NSCalendar.currentCalendar()
@@ -57,7 +56,7 @@ class MatchTableViewController: UITableViewController
 		
 		print("[MatchTVC] Day: \(day) Month: \(month) Year: \(year)")
 		
-		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/game/\(year)/\(month)/\(day)/included").responseJSON { response in
+		Alamofire.request(.GET, "http://\(self.host):\(self.port)/api/game/\(year)/\(month)/\(day)/included").responseJSON { response in
 			//print(response.request)  // original URL request
 			//print(response.response) // URL response
 			//print(response.data)     // server data
@@ -147,7 +146,7 @@ class MatchTableViewController: UITableViewController
 			if let cs = self.currentSelected
 			{
 				let vc = segue.destinationViewController as! PlayerTableViewController
-				vc.ipAddress = ipAddress
+				vc.host = host
 				vc.port = port
 				vc.match = self.matches[cs.row]
 			}
