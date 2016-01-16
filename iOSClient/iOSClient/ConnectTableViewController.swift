@@ -12,10 +12,10 @@ import SwiftyJSON
 
 class ConnectTableViewController: UITableViewController
 {
+	let quivit = Quivit()
+	
 	let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 	var advanced = false
-	var host = "quivit.herokuapp.com"
-	var port = "80"
 	var matches:JSON = []
 	
 	@IBOutlet weak var inputIPAddress: UITextField!
@@ -50,62 +50,43 @@ class ConnectTableViewController: UITableViewController
 		self.navigationController?.view.addSubview(overlayView)
 	}
 	
+	func hideActivityIndicator()
+	{
+		let subviews = self.navigationController?.view.subviews
+		for subview in subviews!
+		{
+			if subview.tag == 1111 { subview.removeFromSuperview() }
+		}
+	}
+	
 	@IBAction func connectHandler(sender: AnyObject)
 	{
 		self.showActivityIndicator()
 		
 		if self.advanced
 		{
-			if let h = inputIPAddress.text where h != "" { self.host = h }
-			if let p = inputPort.text where p != "" { self.port = p }
+			if let h = inputIPAddress.text where h != "" { self.quivit.host = h }
+			if let p = inputPort.text where p != "" { self.quivit.port = p }
 		}
-
-		print("[ConnectTVC] IP: \(self.host) PORT: \(self.port)")
 		
-		let date = NSDate()
-		let calendar = NSCalendar.currentCalendar()
-		let day = String(format: "%02d", calendar.component(.Day, fromDate: date))
-		let month = String(format: "%02d", calendar.component(.Month, fromDate: date))
-		let year = calendar.component(.Year, fromDate: date)
-		
-		print("[ConnectTVC] Day: \(day) Month: \(month) Year: \(year)")
-		
-		let url = "http://\(self.host):\(self.port)/api/game/\(year)/\(month)/\(day)/included"
-
-		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-		Alamofire.request(.GET, url).responseJSON { response in
+		quivit.getMatches({(responseObject:JSON?, error:NSError?) in
 			
-			let subviews = self.navigationController?.view.subviews
-			for subview in subviews!
-			{
-				if subview.tag == 1111 { subview.removeFromSuperview() }
-			}
+			self.hideActivityIndicator()
 			
-			switch response.result
+			if let matches = responseObject
 			{
-			case .Success(let data as NSData):
-				print("[ConnectTVC] .GET Request matches success")
-				self.matches = JSON(data: data)
+				self.matches = matches
 				self.performSegueWithIdentifier("segueMatchTVC", sender: nil)
-			case .Failure(let error):
-				print("[ConnectTVC] .GET Request matches error")
-				self.showAlert("Unable to connect!", message: "Could not connect to server. Check the host and the port, then try again.")
-			default:
-				self.showAlert("Someting went wrong!", message: "Please try again.")
 			}
-			
-			UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-		}
-	}
-	
-	func showAlert(title: String, message: String)
-	{
-		let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-		
-		let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
-		alertController.addAction(okAction)
-		
-		self.presentViewController(alertController, animated: true) { }
+			else if let _ = error
+			{
+				Quivit.showAlert(self, title: "Unable to connect!", message: "Could not connect to server. Check the host and the port, then try again.")
+			}
+			else
+			{
+				Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.")
+			}
+		})
 	}
 	
 
@@ -122,8 +103,7 @@ class ConnectTableViewController: UITableViewController
 			print("[ConnectTVC] Segue to MatchTVC")
 			
 			let vc = segue.destinationViewController as! MatchTableViewController
-			vc.host = self.host
-			vc.port = self.port
+			vc.quivit = self.quivit
 			vc.matches = self.matches
 		}
     }
