@@ -6,7 +6,8 @@ var React = require('react'),
     playerStore = require('../../stores/playerStore.js'),
     constants = require('../../helpers/urlConstants.js'),
     offlineActions = require('../../actions/offlineActions.js'),
-    offlineHelper = require('../../helpers/offlineHelper.js');
+    offlineHelper = require('../../helpers/offlineHelper.js'),
+    offlineStore = require('../../stores/offlineStore.js');
 
 var PastGame = React.createClass({
 
@@ -17,7 +18,7 @@ var PastGame = React.createClass({
         playerPositions: {},
         interval: null,
         isInterval: false,
-        isUserOnline : true
+        isUserOnline : true,
     },
 
     contextTypes: {
@@ -37,6 +38,10 @@ var PastGame = React.createClass({
             fastForwardClass: 'primary',
             slowForwardClass: 'primary disabled'
         });
+    },
+
+    componentWillMount : function() {
+        offlineStore.addChangeListener(this._onChange);
     },
 
     componentDidMount : function() {
@@ -184,8 +189,43 @@ var PastGame = React.createClass({
             });
 
             this.props.players['away'].forEach(function(player) {
-
+                offlineActions.offlineGetPlayerPositionsRequest(self.props.game._id, player._id);
             });
+        }
+    },
+
+    _onChange : function() {
+        var self = this;
+        var tempPlayerPositions = offlineStore.getPlayerPositions();
+        var tempFinalPlayerPositions = {};
+        var homeCount = this.props.players['home'].length;
+        var awayCount = this.props.players['away'].length;
+
+        if(Object.keys(tempPlayerPositions).length === homeCount + awayCount &&
+            Object.keys(tempPlayerPositions).length > 0) {
+            Object.keys(tempPlayerPositions).forEach(function(tempPlayerPosition) {
+                tempPlayerPositions[tempPlayerPosition].forEach(function(tempPos) {
+                    if(typeof tempFinalPlayerPositions[tempPos.playerId] === 'undefined'){
+                        tempFinalPlayerPositions[tempPos.playerId] = [];
+                    }
+
+                    var player = self._getPlayer( tempPos.playerId ),
+                        playerPosition = <PitchElementCircle
+                            key = {tempPos.playerId}
+                            handleClick = { self._playerClicked.bind( null, player ) }
+                            y = {(tempPos.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
+                            x = {(tempPos.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
+                            radius = '15'
+                            fillElement = 'rgb(170,170,170)'
+                            fillText = 'white'
+                            fontSize = '16' />
+                    tempFinalPlayerPositions[tempPos.playerId].push(playerPosition);
+                });
+            });
+            self._localVariables.playerPositions = tempFinalPlayerPositions;
+
+            //Enable showing players
+            this._startShow();
         }
     },
 

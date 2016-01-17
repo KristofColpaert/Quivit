@@ -119,12 +119,15 @@ var offlineActions = {
 
     //Get offline player positions
     offlineGetPlayerPositionsResponse : function(playerPositions) {
-
+        AppDispatcher.handleServerAction({
+            actionType : offlineConstants.OFFLINE_GET_PLAYER_POSITIONS_RESPONSE,
+            playerPositions : playerPositions
+        });
     },
 
     offlineGetPlayerPositionsRequest : function(gameId, playerId) {
         indexedDb.getByKey('playerPositions', gameId + playerId, function(data) {
-            console.log(data[0].playerPositions);
+            offlineActions.offlineGetPlayerPositionsResponse(data[0]);
         });
     }
 };

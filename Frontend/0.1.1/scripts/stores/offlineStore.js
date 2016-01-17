@@ -1,6 +1,6 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
     EventEmitter = require('events').EventEmitter,
-    objectAssign = require('object-asign'),
+    objectAssign = require('object-assign'),
     offlineConstants = require('../helpers/offlineConstants.js');
 
 var CHANGE_EVENT = 'change';
@@ -11,6 +11,7 @@ var storeOfflineObjects = {
     teamsSavedCount : 0,
     playersSavedCount : 0,
     isGameSaved : false,
+    playerPositions : {}
 };
 
 var offlineStore = objectAssign({}, EventEmitter.prototype, {
@@ -40,6 +41,10 @@ var offlineStore = objectAssign({}, EventEmitter.prototype, {
 
     getIsGameSaved : function() {
         return storeOfflineObjects.isGameSaved;
+    },
+
+    getPlayerPositions : function() {
+        return storeOfflineObjects.playerPositions;
     }
 });
 
@@ -47,9 +52,10 @@ AppDispatcher.register(function(payload) {
     var action = payload.action;
 
     switch(action.actionType) {
-        case offlineConstants.GET_PLAYER_POSITIONS_RESPONSE: {
-            storeOfflineObjects.playerPositionsSavedCount++;
-        }
+        case offlineConstants.OFFLINE_GET_PLAYER_POSITIONS_RESPONSE:
+            var playerPositionObject = payload.action.playerPositions;
+            storeOfflineObjects.playerPositions[playerPositionObject._id] = playerPositionObject.playerPositions;
+            break;
     }
 
     offlineStore.emitChange();
