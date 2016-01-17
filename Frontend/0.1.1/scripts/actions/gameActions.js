@@ -69,13 +69,19 @@ var gameActions = {
 
     getGameRequest : function(id) {
         ajax.getData(constants.baseApiGameUrl + id, function(error, data) {
-            if(!error) {
+            if(!error && data) {
                 gameActions.getGameResponse(data[0]);
             }
 
             else {
                 indexedDb.get('games', function(data) {
-                    gameActions.getGameResponse(data.value);
+                    var resultGame = {}
+                    data.forEach(function(game) {
+                        if(game._id === id) {
+                            resultGame = game;
+                        }
+                    });
+                    gameActions.getGameResponse(resultGame);
                 });
             }
         });
@@ -97,6 +103,7 @@ var gameActions = {
 
             else {
                 indexedDb.get('games', function(data) {
+                    data.sort(gameActions.sort);
                     gameActions.getPastGamesResponse(data);
                 });
             }
@@ -140,6 +147,11 @@ var gameActions = {
         AppDispatcher.handleServerAction({
             actionType : gameConstants.FALSIFY_IS_GAME_SAVED,
         });
+    },
+
+    //Sort games
+    sort : function(a, b) {
+        return b.gameDate - a.gameDate;
     }
 };
 

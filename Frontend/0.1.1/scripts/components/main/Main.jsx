@@ -59,7 +59,6 @@ var Main = React.createClass({
         var futureGames = this.state.futureGames ? this.state.futureGames : [];
 
         if(pastGames, todaysGames, futureGames) {
-            console.log(pastGames);
             return (
                 <main>
                     <Navigation />

@@ -1,7 +1,8 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
     estimoteLocationConstants = require('../helpers/estimoteLocationConstants.js'),
     constants = require('../helpers/urlConstants.js'),
-    ajax = require('../helpers/ajax.js');
+    ajax = require('../helpers/ajax.js'),
+    indexedDb = require('../helpers/indexedDb.js');
 
 var estimoteLocationActions = {
 
@@ -25,14 +26,19 @@ var estimoteLocationActions = {
     getEstimoteLocationByEstimoteLocationIdResponse : function(estimoteLocation) {
         AppDispatcher.handleServerAction({
             actionType : estimoteLocationConstants.GET_ESTIMOTE_LOCATION_BY_ESTIMOTE_LOCATION_ID_RESPONSE,
-            estimoteLocation : estimoteLocation
+            estimoteLocation : estimoteLocation,
         });
     },
 
     getEstimoteLocationByEstimoteLocationIdRequest : function(estimoteLocationId) {
         ajax.getData(constants.baseApiEstimoteLocationUrl + "estimoteLocationId/" + estimoteLocationId, function(error, data) {
-            if(!error) {
+            if(!error && data) {
                 estimoteLocationActions.getEstimoteLocationByEstimoteLocationIdResponse(data[0]);
+            }
+            else {
+                indexedDb.get('estimoteLocations', function(data) {
+                    estimoteLocationActions.getEstimoteLocationByEstimoteLocationIdResponse(data[0]);
+                });
             }
         });
     },

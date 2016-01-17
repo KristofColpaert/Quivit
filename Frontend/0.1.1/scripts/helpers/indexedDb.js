@@ -3,6 +3,7 @@ var indexedDb = (function() {
 
     //Variables
     var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+    var indexedDBVersion = 6;
     var db;
 
     //Functions
@@ -12,7 +13,7 @@ var indexedDb = (function() {
         }
 
         else {
-            var request = indexedDB.open('Quivit', 5);
+            var request = indexedDB.open('Quivit', indexedDBVersion);
 
             request.onsuccess = function(event) {
                 db = event.target.result;
@@ -27,6 +28,10 @@ var indexedDb = (function() {
 
                 if(!db.objectStoreNames.contains('teams')) {
                     db.createObjectStore('teams');
+                }
+
+                if(!db.objectStoreNames.contains('players')) {
+                    db.createObjectStore('players');
                 }
 
                 if(!db.objectStoreNames.contains('playerPositions')) {
@@ -50,7 +55,7 @@ var indexedDb = (function() {
         }
 
         else {
-            var request = indexedDB.open('Quivit', 5);
+            var request = indexedDB.open('Quivit', indexedDBVersion);
 
             request.onsuccess = function(event) {
                 callback(event.target.result);
@@ -85,7 +90,7 @@ var indexedDb = (function() {
     };
 
     var add = function(collection, data, callback) {
-        var transaction = db.transaction(['games', 'teams', 'playerPositions', 'estimoteLocations'], 'readwrite');
+        var transaction = db.transaction(['games', 'teams', 'players', 'playerPositions', 'estimoteLocations'], 'readwrite');
         var store = transaction.objectStore(collection);
         var request = store.add(data, data._id);
 
@@ -105,7 +110,7 @@ var indexedDb = (function() {
 
     var get = function(collection, callback) {
         init(function(db) {
-            var transaction = db.transaction(['games', 'teams', 'playerPositions', 'estimoteLocations'], 'readonly');
+            var transaction = db.transaction(['games', 'teams', 'players', 'playerPositions', 'estimoteLocations'], 'readonly');
             var store = transaction.objectStore(collection);
             var cursor = store.openCursor();
             var data = [];
@@ -128,11 +133,38 @@ var indexedDb = (function() {
         });
     };
 
+    var getByKey = function(collection, key, callback) {
+        init(function(db) {
+            var transaction = db.transaction(['games', 'teams', 'players', 'playerPositions', 'estimoteLocations'], 'readonly');
+            var store = transaction.objectStore(collection);
+            var cursor = store.openCursor();
+            var data = [];
+
+            cursor.onerror = function(event) {
+                alert('Quivit failed to synchronize the offline data.');
+            }
+
+            cursor.onsuccess = function(event) {
+                var result = event.target.result;
+                if(result) {
+                    if(result.key === key) {
+                        data.push(result.value);
+                        callback(data);
+                    }
+                    else {
+                        result.continue();
+                    }
+                }
+            }
+        });
+    };
+
     //Return
     return {
         initialize : initialize,
         add : add,
-        get : get
+        get : get,
+        getByKey : getByKey
     };
 })();
 

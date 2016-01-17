@@ -5,7 +5,8 @@ var React = require('react'),
     PitchElementCircle = require('./PitchElementCircle.jsx'),
     playerStore = require('../../stores/playerStore.js'),
     constants = require('../../helpers/urlConstants.js'),
-    offlineActions = require('../../actions/offlineActions.js');
+    offlineActions = require('../../actions/offlineActions.js'),
+    offlineHelper = require('../../helpers/offlineHelper.js');
 
 var PastGame = React.createClass({
 
@@ -16,6 +17,7 @@ var PastGame = React.createClass({
         playerPositions: {},
         interval: null,
         isInterval: false,
+        isUserOnline : true
     },
 
     contextTypes: {
@@ -38,9 +40,21 @@ var PastGame = React.createClass({
     },
 
     componentDidMount : function() {
-        this._localVariables.playerPositions = {};
-        this._localVariables.isSocketsInit = false;
-        this._localVariables.socket = require('socket.io-client')(constants.socketsUrl, {forceNew : true});
+        var self = this;
+        offlineHelper.isOnline(function(online) {
+            self._localVariables.isUserOnline = online;
+
+            if(self._localVariables.isUserOnline) {
+                self._localVariables.playerPositions = {};
+                self._localVariables.isSocketsInit = false;
+                self._localVariables.socket = require('socket.io-client')(constants.socketsUrl, {forceNew : true});
+            }
+
+            else {
+                self._localVariables.playerPositions = {};
+                self._localVariables.isSocketsInit = false;
+            }
+        });
     },
 
     componentWillUnmount : function() {
@@ -49,7 +63,10 @@ var PastGame = React.createClass({
             clearInterval(this._localVariables.interval);
         }
         this._localVariables.isSocketsInit = false;
-        this._localVariables.socket.emit('goaway', 'disconnect');
+
+        if(this._localVariables.isUserOnline){
+            this._localVariables.socket.emit('goaway', 'disconnect');
+        }
     },
 
     _initWatching : function() {
@@ -62,9 +79,16 @@ var PastGame = React.createClass({
             //Init sockets.
             this.setState({
                 playStop : 'Stop'
-            })
-            this._localVariables.isSocketsInit = true;
-            this._initSockets();
+            });
+
+            if(this._localVariables.isUserOnline) {
+                this._localVariables.isSocketsInit = true;
+                this._initSockets();
+            }
+
+            else {
+                this._initLocal();
+            }
         }
 
         else if(this._localVariables.isInterval) {
@@ -148,8 +172,24 @@ var PastGame = React.createClass({
         }
     },
 
+    _initLocal : function() {
+        var self = this;
+        var gameId = this.props.game._id;
+        var query = this.context.location.pathname;
+        query = query.substr(14);
+
+        if(query === gameId) {
+            this.props.players['home'].forEach(function(player) {
+                offlineActions.offlineGetPlayerPositionsRequest(self.props.game._id, player._id);
+            });
+
+            this.props.players['away'].forEach(function(player) {
+
+            });
+        }
+    },
+
     _startShow : function(interval) {
-        console.log(interval);
         var self = this;
 
         if(!interval) {
@@ -214,7 +254,6 @@ var PastGame = React.createClass({
     _slowForward : function() {
         if(this.state.intervalFreq > 2) {
             this._stopShow();
-            console.log('Freq:' + this.state.intervalFreq);
             this._startShow(200 / (this.state.intervalFreq / 4));
             this.setState({
                 intervalFreq : this.state.intervalFreq / 2
@@ -240,10 +279,12 @@ var PastGame = React.createClass({
         //Make player positions offline available
         for (var i = this.state.players.home.length - 1; i >= 0; i--) {
             offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.home[i]._id);
+            offlineActions.offlineSavePlayerRequest(this.state.players.home[i]._id);
         }
 
         for (var i = this.state.players.away.length - 1; i >= 0; i--) {
             offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.away[i]._id);
+            offlineActions.offlineSavePlayerRequest(this.state.players.away[i]._id);
         }
 
         //Make estimote locations offline available

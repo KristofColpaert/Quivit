@@ -43,7 +43,8 @@ var AuthenticationWrapper = function(page) {
 };
 
 ReactDOM.render((
-    <Router history={createBrowserHistory()} >
+    //history={createBrowserHistory()}
+    <Router >
         <Route name="/canvasGame/:gameId" path="/canvasGame/:gameId" component={GameWrapper('LiveGame')} />
         <Route name="/heatMap/:gameId/:playerId" path="/heatMap/:gameId/:playerId" component={GameWrapper('HeatMap')} />
         <Route name="/gameOverview/:gameId" path="/gameOverview/:gameId" component={GameWrapper('GameOverview')} />

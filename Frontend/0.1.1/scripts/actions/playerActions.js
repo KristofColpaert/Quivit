@@ -1,7 +1,8 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
     playerConstants = require('../helpers/playerConstants.js'),
     constants = require('../helpers/urlConstants.js'),
-    ajax = require('../helpers/ajax.js');
+    ajax = require('../helpers/ajax.js'),
+    indexedDb = require('../helpers/indexedDb.js');
 
 var playerActions = {
 
@@ -65,13 +66,29 @@ var playerActions = {
 
     getPlayersByTeamRequest : function(teamHomeId, teamAwayId) {
         ajax.getData(constants.baseApiPlayerUrl + 'team/' + teamHomeId, function(error, homeData) {
-           if(!error) {
-               ajax.getData(constants.baseApiPlayerUrl + 'team/' + teamAwayId, function(error, awayData) {
-                  if(!error) {
-                      playerActions.getPlayersByTeamResponse(homeData, awayData);
-                  }
-               });
-           }
+            if(!error && homeData) {
+                ajax.getData(constants.baseApiPlayerUrl + 'team/' + teamAwayId, function(error, awayData) {
+                    if(!error && awayData) {
+                        playerActions.getPlayersByTeamResponse(homeData, awayData);
+                    }
+                });
+            }
+
+            else {
+                var homePlayers = [];
+                var awayPlayers = [];
+                indexedDb.get('players', function(data) {
+                    data.forEach(function(player) {
+                        if(player.teamId === teamHomeId) {
+                            homePlayers.push(player);
+                        }
+                        if(player.teamId === teamAwayId) {
+                            awayPlayers.push(player);
+                        }
+                    });
+                    playerActions.getPlayersByTeamResponse(homePlayers, awayPlayers);
+                })
+            }
         });
     },
 

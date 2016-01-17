@@ -97,6 +97,35 @@ var offlineActions = {
                 offlineActions.offlineSaveEstimoteLocationResponse(result[0]);
             }
         });
+    },
+
+    //Get players and save them local
+    offlineSavePlayerResponse : function(player) {
+        indexedDb.add('players', player, function(success) {
+            AppDispatcher.handleServerAction({
+                actionType : offlineConstants.OFFLINE_SAVE_PLAYER_RESPONSE,
+                player : player
+            });
+        });
+    },
+
+    offlineSavePlayerRequest : function(playerId) {
+        ajax.getData(constants.baseApiPlayerUrl + '/id/' + playerId, function(error, result) {
+            if(!error) {
+                offlineActions.offlineSavePlayerResponse(result[0]);
+            }
+        });
+    },
+
+    //Get offline player positions
+    offlineGetPlayerPositionsResponse : function(playerPositions) {
+
+    },
+
+    offlineGetPlayerPositionsRequest : function(gameId, playerId) {
+        indexedDb.getByKey('playerPositions', gameId + playerId, function(data) {
+            console.log(data[0].playerPositions);
+        });
     }
 };
 

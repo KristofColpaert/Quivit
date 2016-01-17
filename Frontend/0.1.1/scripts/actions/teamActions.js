@@ -1,7 +1,8 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
     teamConstants = require('../helpers/teamConstants.js'),
     constants = require('../helpers/urlConstants.js'),
-    ajax = require('../helpers/ajax.js');
+    ajax = require('../helpers/ajax.js'),
+    indexedDb = require('../helpers/indexedDb.js');
 
 var teamActions = {
 
@@ -50,13 +51,28 @@ var teamActions = {
     getTeamHomeAwayByidRequest : function(idHome , idAway, gameId) {
         var teams = [];
         ajax.getData(constants.baseApiTeamUrl + idHome, function(error, dataHome) {
-            if(!error) {
+            if(!error && dataHome) {
                 teams['home'] = dataHome[0];
                 ajax.getData(constants.baseApiTeamUrl + idAway, function(error, dataAway) {
-                    if(!error) {
+                    if(!error && dataAway) {
                         teams['away'] = dataAway[0];
                         teamActions.getTeamHomeAwayByIdResponse(teams, gameId);
                     }
+                });
+            }
+
+            else {
+                indexedDb.get('teams', function(data) {
+                    data.forEach(function(team) {
+                        if(team._id === idHome) {
+                            teams['home'] = team;
+                        }
+
+                        if(team._id === idAway) {
+                            teams['away'] = team;
+                        }
+                    });
+                    teamActions.getTeamHomeAwayByIdResponse(teams, gameId);
                 });
             }
         });
