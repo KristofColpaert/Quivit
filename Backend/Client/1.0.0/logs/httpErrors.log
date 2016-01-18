@@ -775,3 +775,4 @@
 ::1 - - [16/Jan/2016:18:34:42 +0000] "GET /favicon.ico HTTP/1.1" 404 1523 "http://localhost:3000/api/game/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
 ::1 - - [17/Jan/2016:10:04:57 +0000] "OPTIONS /api/player/565d706d9b971a0d10f9a5ec HTTP/1.1" 404 1505 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
 ::1 - - [17/Jan/2016:10:04:57 +0000] "OPTIONS /api/player/565d706d9b971a0d10f9a5ec HTTP/1.1" 404 1505 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
+::1 - - [18/Jan/2016:10:30:38 +0000] "GET /api/estimoteLocation/ HTTP/1.1" 401 62 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"

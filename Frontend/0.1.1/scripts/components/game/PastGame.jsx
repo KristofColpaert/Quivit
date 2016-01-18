@@ -7,7 +7,8 @@ var React = require('react'),
     constants = require('../../helpers/urlConstants.js'),
     offlineActions = require('../../actions/offlineActions.js'),
     offlineHelper = require('../../helpers/offlineHelper.js'),
-    offlineStore = require('../../stores/offlineStore.js');
+    offlineStore = require('../../stores/offlineStore.js'),
+    FontAwesome = require('react-fontawesome');
 
 var PastGame = React.createClass({
 
@@ -19,7 +20,7 @@ var PastGame = React.createClass({
         interval: null,
         isInterval: false,
         isUserOnline : true,
-        arrivedOnPage : true,
+        arrivedOnPage : true
     },
 
     contextTypes: {
@@ -38,7 +39,8 @@ var PastGame = React.createClass({
             playStop: 'Play',
             intervalFreq: 2,
             fastForwardClass: 'primary',
-            slowForwardClass: 'primary disabled'
+            slowForwardClass: 'primary disabled',
+            sync : 'none'
         });
     },
 
@@ -77,6 +79,10 @@ var PastGame = React.createClass({
         if(this._localVariables.isUserOnline){
             this._localVariables.socket.emit('goaway', 'disconnect');
         }
+
+        this.setState({
+            sync : 'none'
+        });
     },
 
     _initWatching : function() {
@@ -238,6 +244,16 @@ var PastGame = React.createClass({
                 }
             }
         }
+
+        if(offlineStore.getIsGameSaved() &&
+            offlineStore.getIsEstimoteLocationSaved() &&
+            offlineStore.getTeamsSavedCount() === 2 &&
+            offlineStore.getPlayersSavedCount() === (homeCount + awayCount) &&
+            offlineStore.getPlayerPositionsSavedCount() === (homeCount + awayCount)){
+            this.setState({
+                sync : 'done'
+            });
+        }
     },
 
     _startShow : function(interval) {
@@ -287,59 +303,72 @@ var PastGame = React.createClass({
     },
 
     _fastForward : function() {
-        if(this.state.intervalFreq < 16) {
-            this._stopShow();
-            this._startShow(200 / this.state.intervalFreq);
-            this.setState({
-                intervalFreq : this.state.intervalFreq * 2,
-            });
-        }
+        if(this.state.playStop === 'Stop'){
+            if(this.state.intervalFreq < 16) {
+                this._stopShow();
+                this._startShow(200 / this.state.intervalFreq);
+                this.setState({
+                    intervalFreq : this.state.intervalFreq * 2,
+                    slowForwardClass : 'primary',
+                });
+            }
 
-        if(this.state.intervalFreq >= 16) {
-            this.setState({
-               fastForwardClass: 'primary disabled'
-            });
+            if(this.state.intervalFreq >= 16) {
+                this.setState({
+                    fastForwardClass: 'primary disabled',
+                });
+            }
         }
     },
 
     _slowForward : function() {
-        if(this.state.intervalFreq > 2) {
-            this._stopShow();
-            this._startShow(200 / (this.state.intervalFreq / 4));
-            this.setState({
-                intervalFreq : this.state.intervalFreq / 2
-            });
-        }
+        if(this.state.playStop === 'Stop') {
+            if(this.state.intervalFreq > 2) {
+                this._stopShow();
+                this._startShow(200 / (this.state.intervalFreq / 4));
+                this.setState({
+                    intervalFreq : this.state.intervalFreq / 2,
+                    fastForwardClass : 'primary',
+                });
+            }
 
-        if(this.state.intervalFreq <= 2) {
-            this.setState({
-                slowForwardClass: 'primary disbled'
-            });
+            if(this.state.intervalFreq <= 2) {
+                console.log('hier');
+                this.setState({
+                    slowForwardClass: 'primary disabled',
+                });
+            }
         }
     },
 
     _saveOffline : function() {
-        //Make game offline available
-        offlineActions.offlineSaveGameRequest(this.props.game._id);
+        if(this.state.sync === 'none') {
+            this.setState({
+                sync : 'syncing'
+            });
 
-        //Make teams offline available
-        var tempTeams = this.props.teams[this.props.game._id];
-        offlineActions.offlineSaveTeamRequest(tempTeams.home._id);
-        offlineActions.offlineSaveTeamRequest(tempTeams.away._id);
+            //Make game offline available
+            offlineActions.offlineSaveGameRequest(this.props.game._id);
 
-        //Make player positions offline available
-        for (var i = this.state.players.home.length - 1; i >= 0; i--) {
-            offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.home[i]._id);
-            offlineActions.offlineSavePlayerRequest(this.state.players.home[i]._id);
+            //Make teams offline available
+            var tempTeams = this.props.teams[this.props.game._id];
+            offlineActions.offlineSaveTeamRequest(tempTeams.home._id);
+            offlineActions.offlineSaveTeamRequest(tempTeams.away._id);
+
+            //Make player positions offline available
+            for (var i = this.state.players.home.length - 1; i >= 0; i--) {
+                offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.home[i]._id);
+                offlineActions.offlineSavePlayerRequest(this.state.players.home[i]._id);
+            }
+
+            for (var i = this.state.players.away.length - 1; i >= 0; i--) {
+                offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.away[i]._id);
+                offlineActions.offlineSavePlayerRequest(this.state.players.away[i]._id);
+            }
+
+            //Make estimote locations offline available
+            offlineActions.offlineSaveEstimoteLocationRequest(this.props.estimoteLocation._id);
         }
-
-        for (var i = this.state.players.away.length - 1; i >= 0; i--) {
-            offlineActions.offlineSavePlayerPositionsRequest(this.props.game._id, this.state.players.away[i]._id);
-            offlineActions.offlineSavePlayerRequest(this.state.players.away[i]._id);
-        }
-
-        //Make estimote locations offline available
-        offlineActions.offlineSaveEstimoteLocationRequest(this.props.estimoteLocation._id);
     },
 
     render : function() {
@@ -347,9 +376,12 @@ var PastGame = React.createClass({
         var spaceHeight = typeof this.props.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.props.estimoteLocation.spaceHeight * 100;
         var finalPlayerPositions = this.state.finalPlayerPositions;
 
+        var replay = null;
         if(finalPlayerPositions.length > 0 && typeof finalPlayerPositions[0] === 'undefined') {
             clearInterval(this._localVariables.interval);
+            replay = 'Replay';
         }
+        var playText = replay ? replay : this.state.playStop;
 
         var gameDate = this.props.game.gameDate ? this.props.game.gameDate : 'gameDate';
         gameDate = [gameDate.slice(0, 4), '/' , gameDate.slice(4, 6), '/', gameDate.slice(6)].join('');
@@ -358,6 +390,25 @@ var PastGame = React.createClass({
         var makeOfflineHidden = '';
         if(!this._localVariables.isUserOnline) {
             makeOfflineHidden = 'hidden';
+        }
+
+        //Syncing
+        var buttons = [
+            <button key="slowForward" onClick={this._slowForward} className={'btn ' + this.state.slowForwardClass} value="slowForward">Slow forward * {this.state.intervalFreq / 2}</button>,
+            <button key="play" onClick={this._initWatching} className="btn primary" value={this.state.playStop}>{playText}</button>,
+            <button key="fastForward" onClick={this._fastForward} className={'btn ' + this.state.fastForwardClass} value="fastForward">Fast forward * {this.state.intervalFreq}</button>,
+        ];
+
+        if(this.state.sync === 'none') {
+            buttons.push(<button key="sync" onClick={this._saveOffline} className={'btn primary ' + makeOfflineHidden} value="makeOffline">Make offline</button>);
+        }
+
+        else if(this.state.sync === 'syncing') {
+            buttons.push(<button key="sync" onClick={this._saveOffline} className={'btn primary ' + makeOfflineHidden} value="makeOffline"><FontAwesome name="cog" spin /> Syncing</button>);
+        }
+
+        else if(this.state.sync === 'done') {
+            buttons.push(<button key="sync" onClick={this._saveOffline} className={'btn primary disabled ' + makeOfflineHidden} value="makeOffline"><FontAwesome name="check" /> Done</button>);
         }
 
         return (
@@ -369,10 +420,9 @@ var PastGame = React.createClass({
                 </section>
                 <div className="clearfix"></div>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
-                <button onClick={this._slowForward} className={'btn ' + this.state.slowForwardClass} value="slowForward">Slow forward * {this.state.intervalFreq / 2}</button>
-                <button onClick={this._initWatching} className="btn primary" value={this.state.playStop}>{this.state.playStop}</button>
-                <button onClick={this._fastForward} className={'btn ' + this.state.fastForwardClass} value="fastForward">Fast forward * {this.state.intervalFreq}</button>
-                <button onClick={this._saveOffline} className={'btn primary ' + makeOfflineHidden} value="makeOffline">Make offline</button>
+                {buttons.map(function(button) {
+                    return button;
+                })}
                 <div className="clearfix"></div>
             </section>
         );

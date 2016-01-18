@@ -56,6 +56,16 @@ a {
       background: #333;
       color: #eee;
     }
+
+    &.disabled {
+      background: #333;
+      color: #eee;
+      cursor: default;
+
+      &:active {
+        cursor: default;
+      }
+    }
   }
 }
 
