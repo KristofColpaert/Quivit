@@ -56,12 +56,24 @@ var playerRepository = (function() {
         });
     };
 
+    var remove = function(id, callback) {
+        db.collection('players').remove({ _id : ObjectID(id) }, function(error, result) {
+            if(error) {
+                errorLogger.log(error);
+            }
+            else {
+                callback(result);
+            }
+        });
+    };
+
     //Return
     return {
         getSingle : getSingle,
         getAll : getAll,
         getByTeam : getByTeam,
-        add : add
+        add : add,
+        remove : remove
     }
 })();
 

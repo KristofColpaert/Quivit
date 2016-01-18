@@ -128,3 +128,9 @@
 {"name":"MongoError","driver":true,"level":"info","timestamp":"2016-01-15T20:54:19.477Z"}
 {"name":"MongoError","driver":true,"level":"info","timestamp":"2016-01-15T20:54:19.477Z"}
 {"name":"MongoError","driver":true,"level":"info","timestamp":"2016-01-15T20:54:19.478Z"}
+{"name":"MongoError","level":"info","timestamp":"2016-01-18T12:53:08.888Z"}
+{"name":"MongoError","level":"info","timestamp":"2016-01-18T12:53:08.895Z"}
+{"name":"MongoError","level":"info","timestamp":"2016-01-18T12:53:17.780Z"}
+{"name":"MongoError","level":"info","timestamp":"2016-01-18T12:53:17.793Z"}
+{"name":"MongoError","level":"info","timestamp":"2016-01-18T12:53:17.794Z"}
+{"name":"MongoError","level":"info","timestamp":"2016-01-18T12:53:17.794Z"}

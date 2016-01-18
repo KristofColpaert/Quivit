@@ -141,6 +141,17 @@ var gameRepository = (function() {
         })
     };
 
+    var remove = function(id, callback) {
+        db.collection('games').remove({ _id : ObjectID(id) }, function(error, result) {
+            if(error) {
+                errorLogger.log(error);
+            }
+            else {
+                callback(result);
+            }
+        });
+    };
+
     //Return
     return {
         getSingle : getSingle,
@@ -150,7 +161,8 @@ var gameRepository = (function() {
         getPast : getPast,
         add : add,
         addToHomeScore : addToHomeScore,
-        addToAwayScore : addToAwayScore
+        addToAwayScore : addToAwayScore,
+        remove : remove
     };
 })();
 

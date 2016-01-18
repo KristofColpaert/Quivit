@@ -53,24 +53,15 @@ router.get('/:year/:month/:day/:method', function(req, res) {
 
 //GET: get future games
 router.get('/', function(req, res) {
-    var tempGameDate = new Date();
-    var tempDate = '00';
+    var tempYear = new Date().getFullYear();
+    var tempMonth = ((new Date().getMonth() + 1) < 10 ? ('0' + (new Date().getMonth() + 1)) : (new Date().getMonth() + 1));
+    var tempDate = ((new Date().getDate()) < 10 ? ('0' + (new Date().getDate())) : (new Date().getDate()));
+    var gameDate = '' + tempYear + tempMonth + tempDate;
 
-    if(tempGameDate.getDate() < 10) {
-        tempDate = '0' + tempGameDate.getDate();
-    }
-
-    else {
-        tempDate = tempGameDate.getDate();
-    }
-
-    var gameDate = '' + tempGameDate.getFullYear() + (tempGameDate.getMonth() + 1) + tempDate;
     gameRepository.getFuture(gameDate, function(result) {
        res.json(result);
     });
 });
-
-
 
 //POST: insert new game
 router.post('/', authenticator, function(req, res) {

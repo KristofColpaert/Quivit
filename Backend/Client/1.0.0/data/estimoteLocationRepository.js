@@ -56,12 +56,24 @@ var estimoteLocationRepository = (function() {
         });
     };
 
+    var remove = function(id, callback) {
+        db.collection('estimoteLocations').remove({ _id : ObjectID(id)}, function(error, result) {
+            if(error) {
+                errorLogger.log(error);
+            }
+            else {
+                callback(result);
+            }
+        });
+    }
+
     //Return
     return {
         getSingle : getSingle,
         getByEstimoteLocationId : getByEstimoteLocationId,
         getAll : getAll,
-        add : add
+        add : add,
+        remove : remove
     };
 })();
 

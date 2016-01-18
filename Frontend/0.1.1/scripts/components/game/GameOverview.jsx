@@ -112,21 +112,21 @@ var GameOverview = React.createClass({
         return(
             <section className="overview game">
                 <section className="reviewGame">
-                    <h2>{homeTeam + ' (' + this.state.game.scoreHome + ')'} vs {awayTeam + ' (' + this.state.game.scoreAway + ')'} - View game again</h2>
+                    <h2>View game again - {homeTeam + ' (' + this.state.game.scoreHome + ')'} vs {awayTeam + ' (' + this.state.game.scoreAway + ')'}</h2>
                     <PastGame game={this.state.game} teams={this.state.teams} players={this.state.players} estimoteLocation={this.state.estimoteLocation} />
                 </section>
                 <section className={'playersSection ' + heatmapVisible}>
-                    <h2>Players {homeTeam}</h2>
+                    <h2>Heat maps {homeTeam}</h2>
                     {this.state.players['home'].map(function(player) {
                         return (
-                            <Link className="playerHolder" key={player._id} to={'/heatMap/' + gameId + '/' + player._id}><p>{player.firstName + ' ' + player.lastName}</p></Link>
+                            <Link className="playerHolder" key={player._id} to={'/heatMap/' + gameId + '/' + player._id}><p>{player.kitNumber + '. ' + player.firstName + ' ' + player.lastName}</p></Link>
                         );
                     })}
 
-                    <h2>Players {awayTeam}</h2>
+                    <h2>Heat maps {awayTeam}</h2>
                     {this.state.players['away'].map(function(player) {
                         return (
-                            <Link className="playerHolder" key={player._id} to={'/heatMap/' + gameId + '/' + player._id}><p>{player.firstName + ' ' + player.lastName}</p></Link>
+                            <Link className="playerHolder" key={player._id} to={'/heatMap/' + gameId + '/' + player._id}><p>{player.kitNumber + '. ' + player.firstName + ' ' + player.lastName}</p></Link>
                         );
                     })}
                 </section>

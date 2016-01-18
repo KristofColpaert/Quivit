@@ -29,7 +29,7 @@ router.get('/', authenticator, function(req, res) {
     });
 });
 
-//POST: insert new game
+//POST: insert new EstimoteLocation
 router.post('/', authenticator, function(req, res) {
     var estimoteLocationId = req.body.estimoteLocationId;
     var spaceWidth = req.body.spaceWidth;

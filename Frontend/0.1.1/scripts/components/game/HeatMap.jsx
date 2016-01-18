@@ -5,6 +5,8 @@ var React = require('react'),
     gameActions  = require('../../actions/gameActions.js'),
     playerStore = require('../../stores/playerStore.js'),
     playerActions = require('../../actions/playerActions.js'),
+    teamStore = require('../../stores/teamStore.js'),
+    teamActions = require('../../actions/teamActions.js'),
     estimoteLocationStore = require('../../stores/estimoteLocationStore.js'),
     estimoteLocationActions = require('../../actions/estimoteLocationActions.js'),
     Pitch = require('./Pitch.jsx'),
@@ -56,16 +58,14 @@ var HeatMap = React.createClass({
             player : playerStore.getSinglePlayer(),
             game : gameStore.getSingleGame(),
             heatMap : gameStore.getPlayerGameHeatMap(),
-            estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation()
+            estimoteLocation : estimoteLocationStore.getSingleEstimoteLocation(),
+            teams : teamStore.getHomeAwayTeams()
         });
 
         if((typeof this.state.estimoteLocation._id === 'undefined') && (typeof this.state.game._id !== 'undefined')){
+            teamActions.getTeamHomeAwayByidRequest(this.state.game.teamHomeId, this.state.game.teamAwayId, this.state.game._id);
             estimoteLocationActions.getEstimoteLocationByEstimoteLocationIdRequest(this.state.game.estimoteLocationId);
         }
-    },
-
-    _getColor : function() {
-
     },
 
     render : function() {
@@ -84,10 +84,27 @@ var HeatMap = React.createClass({
         });
 
         var headerText = this.state.player.firstName + ' ' + this.state.player.lastName;
+        var gameDateText = '';
+        if(this.state.game.gameDate) {
+            var gameDateYear = this.state.game.gameDate.substr(0, 4);
+            var gameDateMonth = this.state.game.gameDate.substr(4, 2);
+            var gameDateDay = this.state.game.gameDate.substr(6, 2);
+            gameDateText = gameDateYear + '/' + gameDateMonth + '/' + gameDateDay;
+        }
+
+        var homeTeam = "Home";
+        var awayTeam = "Away";
+        if(this.state.teams) {
+            if((typeof this.state.game._id !== 'undefined' && typeof this.state.teams[this.state.game._id] === 'object')) {
+                homeTeam = this.state.teams[this.state.game._id].home.name;
+                awayTeam = this.state.teams[this.state.game._id].away.name;
+            }
+        }
 
         return (
             <section className="live game">
-                <h2>{headerText}</h2>
+                <h2>Heat map {headerText} - {homeTeam + ' (' + this.state.game.scoreHome + ')'} vs {awayTeam + ' (' + this.state.game.scoreAway + ')'}</h2>
+                <h3>{gameDateText} - finished</h3>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalHeatMapPositions} />
             </section>
         );

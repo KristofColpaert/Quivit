@@ -24,6 +24,18 @@ describe('Test of the Team repository.', function() {
             expect(addedTeam).to.not.be.undefined;
             done();
         });
+
+        it('Newly added team should have name "TestTeam".', function(done) {
+            expect(addedTeam.name).to.equal('TestTeam');
+            done();
+        });
+
+        it('Getting newly added team from database should result in an object.', function(done) {
+            teamRepository.getSingle(addedTeam._id, function(queryResult) {
+                expect(queryResult[0].name).to.equal('TestTeam');
+                done();
+            });
+        });
     });
 
     describe('Testing the deletion of a Team.', function() {
