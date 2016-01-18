@@ -376,12 +376,13 @@ var PastGame = React.createClass({
         var spaceHeight = typeof this.props.estimoteLocation.spaceHeight === 'undefined' ? 0 : this.props.estimoteLocation.spaceHeight * 100;
         var finalPlayerPositions = this.state.finalPlayerPositions;
 
-        var replay = null;
+        var finished = null;
         if(finalPlayerPositions.length > 0 && typeof finalPlayerPositions[0] === 'undefined') {
             clearInterval(this._localVariables.interval);
-            replay = 'Replay';
+            this._localVariables.isSocketsInit = false;
+            finished = 'Finished';
         }
-        var playText = replay ? replay : this.state.playStop;
+        var playText = finished ? finished : this.state.playStop;
 
         var gameDate = this.props.game.gameDate ? this.props.game.gameDate : 'gameDate';
         gameDate = [gameDate.slice(0, 4), '/' , gameDate.slice(4, 6), '/', gameDate.slice(6)].join('');

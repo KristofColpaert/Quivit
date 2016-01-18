@@ -10,7 +10,9 @@ var React = require('react'),
     estimoteLocationStore = require('../../stores/estimoteLocationStore.js'),
     estimoteLocationActions = require('../../actions/estimoteLocationActions.js'),
     Pitch = require('./Pitch.jsx'),
-    PitchElementRect = require('./PitchElementRect.jsx');
+    PitchElementRect = require('./PitchElementRect.jsx'),
+    FontAwesomte = require('react-fontawesome'),
+    Link = require('react-router').Link;
 
 var HeatMap = React.createClass({
 
@@ -101,11 +103,19 @@ var HeatMap = React.createClass({
             }
         }
 
+        //Loader image
+        var loader = null;
+        if(finalHeatMapPositions.length < 1) {
+            loader = <section className="loader"><FontAwesomte name="cog" spin size="3x" /></section>;
+        }
+
         return (
             <section className="live game">
                 <h2>Heat map {headerText}</h2>
                 <h3>{gameDateText}</h3>
+                <Link to={'/gameOverview/' + this.state.game._id} ><p>Back</p></Link>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalHeatMapPositions} />
+                {loader}
                 <h2 className="team home">{homeTeam}</h2><h2 className="team away">{awayTeam}</h2>
                 <div className="clearfix"></div>
             </section>

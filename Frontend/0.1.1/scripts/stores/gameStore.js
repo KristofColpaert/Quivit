@@ -28,6 +28,7 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     removeChangeListener : function(callback) {
         this.removeListener(CHANGE_EVENT, callback);
+        storedGames.playerGameHeatMap = [];
     },
 
     getTodaysGames : function() {
