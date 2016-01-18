@@ -116,8 +116,8 @@ var EditGame = React.createClass({
         return (
             <section>
                 <h2>{homeTeam + ' (' + homeScore + ') - (' + awayScore + ') ' + awayTeam}</h2>
-                <button onClick={this._addHome}>Home scored</button>
-                <button onClick={this._addAway}>Away scored</button>
+                <button className="btn primary" onClick={this._addHome}>{homeTeam} scored</button>
+                <button className="btn primary" onClick={this._addAway}>{awayTeam} scored</button>
             </section>
         );
     }

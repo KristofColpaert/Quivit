@@ -112,7 +112,7 @@ var GameOverview = React.createClass({
         return(
             <section className="overview game">
                 <section className="reviewGame">
-                    <h2>View game again - {homeTeam + ' (' + this.state.game.scoreHome + ')'} vs {awayTeam + ' (' + this.state.game.scoreAway + ')'}</h2>
+                    <h2>View game again</h2>
                     <PastGame game={this.state.game} teams={this.state.teams} players={this.state.players} estimoteLocation={this.state.estimoteLocation} />
                 </section>
                 <section className={'playersSection ' + heatmapVisible}>

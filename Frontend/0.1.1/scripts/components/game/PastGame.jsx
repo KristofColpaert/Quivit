@@ -411,6 +411,14 @@ var PastGame = React.createClass({
             buttons.push(<button key="sync" onClick={this._saveOffline} className={'btn primary disabled ' + makeOfflineHidden} value="makeOffline"><FontAwesome name="check" /> Done</button>);
         }
 
+        //Team names
+        var homeTeam = "Home";
+        var awayTeam = "Away";
+        if((typeof this.props.game._id !== 'undefined' && typeof this.props.teams[this.props.game._id] === 'object')) {
+            homeTeam = this.props.teams[this.props.game._id].home.name + ' (' + this.props.game.scoreHome + ')';
+            awayTeam = this.props.teams[this.props.game._id].away.name + ' (' + this.props.game.scoreAway + ')';
+        }
+
         return (
             <section className="live game">
                 <section className="playerSheet">
@@ -420,6 +428,7 @@ var PastGame = React.createClass({
                 </section>
                 <div className="clearfix"></div>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
+                <h2 className="team home">{homeTeam}</h2><h2 className="team away">{awayTeam}</h2>
                 {buttons.map(function(button) {
                     return button;
                 })}

@@ -195,8 +195,12 @@ var LiveGame = React.createClass({
 
         //Calculate time passed.
         var timePassed = 0;
-        var currentDate = '' + new Date().getFullYear() + (new Date().getMonth() + 1) + new Date().getDate();
-        if(this.state.game.gameDate === currentDate) {
+        var currentYear = new Date().getFullYear();
+        var currentMonth = ((new Date().getMonth() + 1) < 10 ? ('0' + (new Date().getMonth() + 1)) : (new Date().getMonth() + 1));
+        var currentDate = ((new Date().getDate()) < 10 ? ('0' + (new Date().getDate())) : (new Date().getDate()));
+        var currentDateText = '' + currentYear + currentMonth + currentDate;
+
+        if(this.state.game.gameDate === currentDateText) {
             var gameDateYear = this.state.game.gameDate.substr(0, 4);
             var gameDateMonth = this.state.game.gameDate.substr(4, 2);
             var gameDateDay = this.state.game.gameDate.substr(6, 2);
@@ -206,26 +210,23 @@ var LiveGame = React.createClass({
 
             var currentTime = new Date();
             var gameTime = new Date('' + gameDateYear + '-' + gameDateMonth + '-' + gameDateDay + 'T' + (gameHour - 1) + ':' + gameMinute + ':00');
-            var difference = Math.abs(currentTime.getTime - gameTime.getTime());
-            var differenceMinutes = Math.ceil(difference / (1000 * 3600));
+            var difference = Math.abs(currentTime.getTime() - gameTime.getTime());
+            var differenceMinutes = Math.ceil(difference / (1000 * 60));
 
-            console.log(differenceMinutes);
+            if(differenceMinutes < 45) {
+                timePassed = differenceMinutes + '\'';
+            }
 
-            var timePassed = currentTime - this.state.game.gameTime;
-            if(this.state.game.gameTime < currentTime) {
-                var timePassed = currentTime - this.state.game.gameTime;
+            else if(differenceMinutes >= 45 && differenceMinutes <= 60) {
+                timePassed = 'pause';
+            }
 
-                if(timePassed > 45 && timePassed <= 60) {
-                    timePassed = 'Pause';
-                }
+            else if(differenceMinutes <= 90) {
+                timePassed = (differenceMinutes - 15) + '\'';
+            }
 
-                else if(timePassed > 60 && timePassed <= 105) {
-                    timePassed = timePassed - 15;
-                }
-
-                else if(timePassed > 105) {
-                    timePassed = 'Finished';
-                }
+            else{
+                timePassed = 'finished';
             }
         }
 

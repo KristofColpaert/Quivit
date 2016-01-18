@@ -96,16 +96,18 @@ var HeatMap = React.createClass({
         var awayTeam = "Away";
         if(this.state.teams) {
             if((typeof this.state.game._id !== 'undefined' && typeof this.state.teams[this.state.game._id] === 'object')) {
-                homeTeam = this.state.teams[this.state.game._id].home.name;
-                awayTeam = this.state.teams[this.state.game._id].away.name;
+                homeTeam = this.state.teams[this.state.game._id].home.name + ' (' + this.state.game.scoreHome + ')';
+                awayTeam = this.state.teams[this.state.game._id].away.name + ' (' + this.state.game.scoreAway + ')';
             }
         }
 
         return (
             <section className="live game">
-                <h2>Heat map {headerText} - {homeTeam + ' (' + this.state.game.scoreHome + ')'} vs {awayTeam + ' (' + this.state.game.scoreAway + ')'}</h2>
-                <h3>{gameDateText} - finished</h3>
+                <h2>Heat map {headerText}</h2>
+                <h3>{gameDateText}</h3>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalHeatMapPositions} />
+                <h2 className="team home">{homeTeam}</h2><h2 className="team away">{awayTeam}</h2>
+                <div className="clearfix"></div>
             </section>
         );
     }

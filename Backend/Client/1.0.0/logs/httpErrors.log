@@ -778,3 +778,6 @@
 ::1 - - [18/Jan/2016:10:30:38 +0000] "GET /api/estimoteLocation/ HTTP/1.1" 401 62 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
 ::1 - - [18/Jan/2016:18:09:03 +0000] "GET /favicon.ico HTTP/1.1" 404 1523 "http://localhost:3000/api/team" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
 ::ffff:127.0.0.1 - - [18/Jan/2016:18:29:53 +0000] "GET /api/estimotelocation HTTP/1.1" 401 62 "-" "-"
+::1 - - [18/Jan/2016:20:14:37 +0000] "GET /api/estimoteLocation/ HTTP/1.1" 401 62 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
+::1 - - [18/Jan/2016:20:14:39 +0000] "GET /api/estimoteLocation/ HTTP/1.1" 401 62 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
+::1 - - [18/Jan/2016:20:14:39 +0000] "GET /api/estimoteLocation/ HTTP/1.1" 401 62 "http://localhost:3001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36"
