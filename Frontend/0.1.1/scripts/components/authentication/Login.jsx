@@ -43,9 +43,9 @@ var Login = React.createClass({
                     <label htmlFor="password">Password</label>
                     <input id="password" type="password" ref="password" />
 
-                    <input type="submit" value="Login" className="btn primary" />
+                    <input type="submit" value="Login" className="btn primary formbtn" />
                 </form>
-                <Link to="/register">Register</Link>
+                <Link className="registerLink" to="/register">Register</Link>
             </section>
         );
     }

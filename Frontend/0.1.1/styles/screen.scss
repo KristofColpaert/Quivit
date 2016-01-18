@@ -431,7 +431,7 @@ section.players {
 }
 
 // ADMIN
-.new.game, .new.team, .new.player {
+.new.game, .new.team, .new.player, .login, .register {
 
   .input.error {
     border: 2px solid #E55E5F;
@@ -460,6 +460,10 @@ section.players {
     font-family: 'Open Sans';
   }
 
+  .formbtn {
+    float: none;
+  }
+
   .gameImg.preview {
     border: $border;
     margin-top: 31px;
@@ -471,6 +475,10 @@ section.players {
       margin-top: 0px;
     }
   }
+}
+
+.registerLink {
+  display: block;
 }
 
 .footer {
