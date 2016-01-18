@@ -14,8 +14,6 @@ var titleLive = 'Live games';
 var titleFuture = 'Future games';
 var titlePast = 'Past games';
 
-
-
 var Main = React.createClass({
     getInitialState : function() {
         return ({

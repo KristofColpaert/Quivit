@@ -10,14 +10,16 @@ var React = require('react'),
     teamStore = require('../../stores/teamStore.js'),
     teamActions = require('../../actions/teamActions.js'),
     estimoteLocationStore = require('../../stores/estimoteLocationStore.js'),
-    estimoteLocationActions = require('../../actions/estimoteLocationActions.js');
+    estimoteLocationActions = require('../../actions/estimoteLocationActions.js'),
+    offlineHelper = require('../../helpers/offlineHelper.js');
 
 var GameOverview = React.createClass({
 
     _localVariables : {
         isPlayersSet : false,
         isTeamsSet : false,
-        isEstimoteLocationSet : false
+        isEstimoteLocationSet : false,
+        isUserOnline : true
     },
 
     contextTypes: {
@@ -35,10 +37,14 @@ var GameOverview = React.createClass({
     },
 
     componentWillMount : function() {
-        gameStore.addChangeListener(this._onChange);
-        playerStore.addChangeListener(this._onChange);
-        teamStore.addChangeListener(this._onChange);
-        estimoteLocationStore.addChangeListener(this._onChange);
+        var self = this;
+        offlineHelper.isOnline(function(online) {
+            self._localVariables.isUserOnline = online;
+            gameStore.addChangeListener(self._onChange);
+            playerStore.addChangeListener(self._onChange);
+            teamStore.addChangeListener(self._onChange);
+            estimoteLocationStore.addChangeListener(self._onChange);
+        });
     },
 
     componentDidMount : function() {
@@ -97,13 +103,19 @@ var GameOverview = React.createClass({
             awayTeam = this.state.teams[this.state.game._id].away.name;
         }
 
+        //Check if user is online
+        var heatmapVisible = '';
+        if(!this._localVariables.isUserOnline) {
+            heatmapVisible = 'hidden';
+        }
+
         return(
             <section className="overview game">
                 <section className="reviewGame">
-                    <h2>View game again</h2>
+                    <h2>{homeTeam + ' (' + this.state.game.scoreHome + ')'} vs {awayTeam + ' (' + this.state.game.scoreAway + ')'} - View game again</h2>
                     <PastGame game={this.state.game} teams={this.state.teams} players={this.state.players} estimoteLocation={this.state.estimoteLocation} />
                 </section>
-                <section className="playersSection">
+                <section className={'playersSection ' + heatmapVisible}>
                     <h2>Players {homeTeam}</h2>
                     {this.state.players['home'].map(function(player) {
                         return (

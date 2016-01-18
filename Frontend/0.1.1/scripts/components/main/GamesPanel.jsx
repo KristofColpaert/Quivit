@@ -2,13 +2,30 @@
 
 var React = require('react'),
     Link = require('react-router').Link,
-    Game = require('./Game.jsx');
+    Game = require('./Game.jsx'),
+    offlineHelper = require('../../helpers/offlineHelper.js');
 
 var GamesPanel = React.createClass({
+    _localVariables : {
+        isUserOnline : true
+    },
+
+    componentWillMount : function() {
+        var self = this;
+        offlineHelper.isOnline(function(online) {
+             self._localVariables.isUserOnline = online;
+        });
+    },
+
     render : function() {
+        var normalHidden = '';
+        if(!this._localVariables.isUserOnline) {
+            normalHidden = 'hidden';
+        }
+
         if(this.props.mode === 'normal') {
             return (
-                <section className="games">
+                <section className={'games ' + normalHidden}>
                     <h2>{this.props.title}</h2>
                     {this.props.games.map(function(game) {
                         return (

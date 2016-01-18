@@ -24,6 +24,7 @@ var offlineStore = objectAssign({}, EventEmitter.prototype, {
     },
 
     removeChangeListener : function(callback) {
+        storeOfflineObjects.playerPositions = {};
         this.removeListener(CHANGE_EVENT, callback);
     },
 
