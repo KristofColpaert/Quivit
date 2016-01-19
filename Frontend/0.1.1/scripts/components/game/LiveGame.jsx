@@ -46,6 +46,7 @@ var LiveGame = React.createClass({
         playerStore.addChangeListener(this._onChange);
         teamStore.addChangeListener(this._onChange);
         estimoteLocationStore.addChangeListener(this._onChange);
+        console.log(this.props);
     },
 
     componentDidMount : function() {
@@ -150,7 +151,6 @@ var LiveGame = React.createClass({
     },
 
     _setCurrentColor: function(p) {
-        console.log(this.props);
             if (this.props.teams[this.props.game._id].away._id === p.teamId) {
                 return this.props.teams[this.props.game._id].away.primaryColor;
             } else {
