@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyJSON
 
 class MatchTableViewController: UITableViewController
@@ -27,7 +26,6 @@ class MatchTableViewController: UITableViewController
 	func refresh(sender:AnyObject)
 	{
 		quivit.getMatches({(responseObject:JSON?, error:NSError?) in
-			
 			if let matches = responseObject
 			{
 				print("[MatchesTVC] Matches Available")
@@ -37,6 +35,8 @@ class MatchTableViewController: UITableViewController
 			else if let _ = error { Quivit.showAlert(self, title: "Unable to connect!", message: "Could not connect to server. Check the host and the port, then try again.") }
 			else { Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.") }
 		})
+		
+		self.refreshControl?.endRefreshing()
 	}
 
     // MARK: - Table view data source
@@ -91,6 +91,8 @@ class MatchTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
+				print("[MatchTVC] Segue to PlayerTVC")
+				
 				self.quivit.match = self.matches[cs.row]
 				
 				let vc = segue.destinationViewController as! PlayerTableViewController

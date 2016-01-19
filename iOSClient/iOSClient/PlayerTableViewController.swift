@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyJSON
 
 class PlayerTableViewController: UITableViewController
@@ -28,7 +27,6 @@ class PlayerTableViewController: UITableViewController
 			self.tableView.addSubview(refreshControl!)
 			
 			teams = [m["teamHome", "name"], m["teamAway", "name"]]
-			print(teams)
 			self.refreshControl!.beginRefreshing()
 			refresh("")
 		}
@@ -40,7 +38,6 @@ class PlayerTableViewController: UITableViewController
 		let m = quivit.match!
 		
 		quivit.getPlayers(teamId: m["teamHomeId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
-			
 			if let players = responseObject
 			{
 				if players.count > 0
@@ -59,8 +56,7 @@ class PlayerTableViewController: UITableViewController
 			else { Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.") }
 		})
 		
-		quivit.getPlayers(teamId: m["teamHomeId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
-			
+		quivit.getPlayers(teamId: m["teamAwayId"].stringValue, completionHandler: {(responseObject:JSON?, error:NSError?) in
 			if let players = responseObject
 			{
 				if players.count > 0
@@ -78,6 +74,8 @@ class PlayerTableViewController: UITableViewController
 			else if let _ = error { Quivit.showAlert(self, title: "Unable to connect!", message: "Could not connect to server. Check the host and the port, then try again.") }
 			else { Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.") }
 		})
+		
+		self.refreshControl?.endRefreshing()
 	}
 
     // MARK: - Table view data source
@@ -137,6 +135,8 @@ class PlayerTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
+				print("[PlayerTVC] Segue to GameTVC")
+				
 				self.quivit.selectedTeam = self.teams[cs.section]
 				self.quivit.selectedPlayer = self.players[cs.section][cs.row]
 				
