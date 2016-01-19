@@ -104,6 +104,9 @@ var gameActions = {
             else {
                 indexedDb.get('games', function(data) {
                     data.sort(gameActions.sort);
+                    data.forEach(function(game) {
+                        game.image = '/images/game.jpg';
+                    });
                     gameActions.getPastGamesResponse(data);
                 });
             }
