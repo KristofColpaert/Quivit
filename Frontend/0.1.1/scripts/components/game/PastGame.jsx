@@ -142,19 +142,19 @@ var PastGame = React.createClass({
     },
 
     _setCurrentColor: function(p) {
-            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
-                return this.props.teams[this.props.game._id].away.primaryColor;
-            } else {
-                return this.props.teams[this.props.game._id].away.primaryColor;
-            }
+        if (this.props.teams[this.props.game._id].away._id === p.teamId) {
+            return this.props.teams[this.props.game._id].away.primaryColor;
+        } else {
+            return this.props.teams[this.props.game._id].home.primaryColor;
+        }
     },
 
     _setSecondColor: function(p) {
-            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
-                return this.props.teams[this.props.game._id].away.secondaryColor;
-            } else {
-                return this.props.teams[this.props.game._id].away.secondaryColor;
-            }
+        if (this.props.teams[this.props.game._id].away._id === p.teamId) {
+            return this.props.teams[this.props.game._id].away.secondaryColor;
+        } else {
+            return this.props.teams[this.props.game._id].home.secondaryColor;
+        }
     },
 
     _initSockets : function() {
@@ -188,8 +188,8 @@ var PastGame = React.createClass({
                     playerPosition = <PitchElementCircle
                                         key = {data.playerId}
                                         handleClick = { self._playerClicked.bind( null, player ) }
-                                        y = {(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
-                                        x = {(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
+                                        y={(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
+                                        x={(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
                                         radius = '11'
                                         strokeElement = { color2 }
                                         fillElement = { color } />
@@ -242,13 +242,16 @@ var PastGame = React.createClass({
                             }
 
                             var player = self._getPlayer( tempPos.playerId ),
+                                color = self._setCurrentColor(tempPos),
+                                color2 = self._setSecondColor(tempPos),
                                 playerPosition = <PitchElementCircle
                                     key = {tempPos.playerId}
                                     handleClick = { self._playerClicked.bind( null, player ) }
                                     y = {(tempPos.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
                                     x = {(tempPos.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
                                     radius = '15'
-                                    fillElement = { self._getPlayerColor.bind( null, player )}
+                                    strokeElement = { color2 }
+                                    fillElement = { color }
                                     fillText = 'white'
                                     fontSize = '16' />
                             tempFinalPlayerPositions[tempPos.playerId].push(playerPosition);

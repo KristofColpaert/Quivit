@@ -46,7 +46,6 @@ var LiveGame = React.createClass({
         playerStore.addChangeListener(this._onChange);
         teamStore.addChangeListener(this._onChange);
         estimoteLocationStore.addChangeListener(this._onChange);
-        console.log(this.props);
     },
 
     componentDidMount : function() {
@@ -108,14 +107,14 @@ var LiveGame = React.createClass({
         this.state.players['home'].forEach(function(player) {
             self._localVariables.socket.on(player._id, function(data) {
                 requestAnimationFrame(() => {self._update(data)});
-                //console.log(data);
+                console.log(data);
             });
         });
 
         this.state.players['away'].forEach(function(player) {
             self._localVariables.socket.on(player._id, function(data) {
                 requestAnimationFrame(() => {self._update(data)});
-                //console.log(data);
+                console.log(data);
             });
         });
 
@@ -151,25 +150,25 @@ var LiveGame = React.createClass({
     },
 
     _setCurrentColor: function(p) {
-            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
-                return this.props.teams[this.props.game._id].away.primaryColor;
+            if (this.state.teams[this.state.game._id].away._id === p.teamId) {
+                return this.state.teams[this.state.game._id].away.primaryColor;
             } else {
-                return this.props.teams[this.props.game._id].away.primaryColor;
+                return this.state.teams[this.state.game._id].home.primaryColor;
             }
     },
 
     _setSecondColor: function(p) {
-            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
-                return this.props.teams[this.props.game._id].away.secondaryColor;
+            if (this.state.teams[this.state.game._id].away._id === p.teamId) {
+                return this.state.teams[this.state.game._id].away.secondaryColor;
             } else {
-                return this.props.teams[this.props.game._id].away.secondaryColor;
+                return this.state.teams[this.state.game._id].home.secondaryColor;
             }
     },
 
     _update : function(data) {
         var tempPlayerPositions = this.state.playerPositions;
-        var color = self._setCurrentColor( data ),
-            color2 = self._setSecondColor( data ),
+        var color = this._setCurrentColor( data ),
+            color2 = this._setSecondColor( data ),
             playerPosition = <PitchElementCircle
                                 handleClick={ this._playerClicked.bind( null, tempPlayerPositions[data.playerId]) }
                                 key={data.playerId}
@@ -228,10 +227,10 @@ var LiveGame = React.createClass({
 
             var currentTime = new Date();
             var gameTime = new Date('' + gameDateYear + '-' + gameDateMonth + '-' + gameDateDay + 'T' + (gameHour - 1) + ':' + gameMinute + ':00');
-            var difference = Math.abs(currentTime.getTime() - gameTime.getTime());
+            var difference = (currentTime.getTime() - gameTime.getTime());
             var differenceMinutes = Math.ceil(difference / (1000 * 60));
 
-            if(differenceMinutes < 45) {
+            if(differenceMinutes >= 0 && differenceMinutes < 45) {
                 timePassed = differenceMinutes + '\'';
             }
 
@@ -239,12 +238,16 @@ var LiveGame = React.createClass({
                 timePassed = 'pause';
             }
 
-            else if(differenceMinutes <= 90) {
+            else if(differenceMinutes > 60 && differenceMinutes <= 105) {
                 timePassed = (differenceMinutes - 15) + '\'';
             }
 
-            else{
+            else if(differenceMinutes > 105) {
                 timePassed = 'finished';
+            }
+
+            else {
+                timePassed = gameHour + ':' + gameMinute;
             }
         }
 
