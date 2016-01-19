@@ -8,7 +8,6 @@ import TestUtils from 'react-addons-test-utils';
 jest.dontMock('../../../scripts/components/general/Error.jsx');
 const Error = require('../../../scripts/components/general/Error.jsx');
 
-
 describe('Error', () =>
 {
     var error, errorNode;

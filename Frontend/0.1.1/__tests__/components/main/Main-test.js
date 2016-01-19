@@ -7,18 +7,22 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 jest.dontMock('../../../node_modules/object-assign/');
 
+/*
 jest.dontMock('../../../scripts/components/main/Main.jsx');
 jest.dontMock('../../../scripts/stores/gameStore.js');
+jest.dontMock('../../../scripts/actions/gameActions.js');
 
 const Main = require('../../../scripts/components/main/Main.jsx');
 
+
 describe('Main', () =>
 {
+
     var mainNode;
 
     beforeEach(() =>
     {
-        var main = TestUtils.renderIntoDocument(<Main />);
+        var main = TestUtils.renderIntoDocument(<main />);
         mainNode = ReactDOM.findDOMNode(main);
     });
 
@@ -36,7 +40,8 @@ describe('Main', () =>
     {
         var fc = mainNode.firstChild;
         expect(fc.nodeName).toBe("HEADER");
-        expect(fc.classList.contains('header')).toBe(true);
+        expect(fc.classList.co
+        ntains('header')).toBe(true);
     });
 
     it("Second child has to be a content-holder", () =>
@@ -51,4 +56,6 @@ describe('Main', () =>
         expect(lc.nodeName).toBe("FOOTER");
         expect(lc.classList.contains('footer')).toBe(true);
     });
+
 });
+*/
