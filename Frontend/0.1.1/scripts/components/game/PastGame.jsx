@@ -4,7 +4,6 @@ var React = require('react'),
     Pitch = require('./Pitch.jsx'),
     PitchElementCircle = require('./PitchElementCircle.jsx'),
     playerStore = require('../../stores/playerStore.js'),
-    teamStore = require('../../stores/teamStore.js'),
     constants = require('../../helpers/urlConstants.js'),
     offlineActions = require('../../actions/offlineActions.js'),
     offlineHelper = require('../../helpers/offlineHelper.js'),
@@ -33,7 +32,6 @@ var PastGame = React.createClass({
         this._localVariables.arrivedOnPage = true;
         return({
             players: playerStore.getHomeAwayPlayers(),
-            teams: teamStore.getAllTeams(),
             kitNumber: 'X',
             playerName: 'player',
             currentPlayer: null,
@@ -126,16 +124,13 @@ var PastGame = React.createClass({
     },
 
     _getPlayer: function(playerId) {
-        console.log(this.state.teams);
         for (var i = this.state.players.home.length - 1; i >= 0; i--) {
             if (this.state.players.home[i]._id === playerId) {
-                console.log(teamStore.getSingleTeam(this.state.players.home[i].playerId));
                 return this.state.players.home[i];
             };
         };
         for (var i = this.state.players.away.length - 1; i >= 0; i--) {
             if (this.state.players.away[i]._id === playerId) {
-                console.log(teamStore.getSingleTeam(this.state.players.away[i].playerId));
                 return this.state.players.away[i];
             };
         };
@@ -144,6 +139,22 @@ var PastGame = React.createClass({
     _playerClicked: function(p) {
         this.state.kitNumber = p.kitNumber;
         this.state.playerName = p.firstName + ' ' + p.lastName;
+    },
+
+    _setCurrentColor: function(p) {
+            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
+                return this.props.teams[this.props.game._id].away.primaryColor;
+            } else {
+                return this.props.teams[this.props.game._id].away.primaryColor;
+            }
+    },
+
+    _setSecondColor: function(p) {
+            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
+                return this.props.teams[this.props.game._id].away.secondaryColor;
+            } else {
+                return this.props.teams[this.props.game._id].away.secondaryColor;
+            }
     },
 
     _initSockets : function() {
@@ -172,13 +183,16 @@ var PastGame = React.createClass({
                 }
 
                 var player = self._getPlayer( data.playerId ),
-                playerPosition = <PitchElementCircle
+                    color = self._setCurrentColor( data ),
+                    color2 = self._setSecondColor( data ),
+                    playerPosition = <PitchElementCircle
                                         key = {data.playerId}
                                         handleClick = { self._playerClicked.bind( null, player ) }
                                         y = {(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
                                         x = {(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
-                                        radius = '15'
-                                        fillElement = 'rgb(170,170,170)' />
+                                        radius = '11'
+                                        strokeElement = { color2 }
+                                        fillElement = { color } />
                 tempPlayerPositions[data.playerId].push(playerPosition);
 
                 self._localVariables.playerPositions = tempPlayerPositions;
@@ -234,7 +248,7 @@ var PastGame = React.createClass({
                                     y = {(tempPos.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
                                     x = {(tempPos.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
                                     radius = '15'
-                                    fillElement = 'rgb(170,170,170)'
+                                    fillElement = { self._getPlayerColor.bind( null, player )}
                                     fillText = 'white'
                                     fontSize = '16' />
                             tempFinalPlayerPositions[tempPos.playerId].push(playerPosition);
