@@ -4,6 +4,7 @@ var React = require('react'),
     Pitch = require('./Pitch.jsx'),
     PitchElementCircle = require('./PitchElementCircle.jsx'),
     playerStore = require('../../stores/playerStore.js'),
+    teamStore = require('../../stores/teamStore.js'),
     constants = require('../../helpers/urlConstants.js'),
     offlineActions = require('../../actions/offlineActions.js'),
     offlineHelper = require('../../helpers/offlineHelper.js'),
@@ -32,6 +33,7 @@ var PastGame = React.createClass({
         this._localVariables.arrivedOnPage = true;
         return({
             players: playerStore.getHomeAwayPlayers(),
+            teams: teamStore.getAllTeams(),
             kitNumber: 'X',
             playerName: 'player',
             currentPlayer: null,
@@ -124,13 +126,16 @@ var PastGame = React.createClass({
     },
 
     _getPlayer: function(playerId) {
+        console.log(this.state.teams);
         for (var i = this.state.players.home.length - 1; i >= 0; i--) {
             if (this.state.players.home[i]._id === playerId) {
+                console.log(teamStore.getSingleTeam(this.state.players.home[i].playerId));
                 return this.state.players.home[i];
             };
         };
         for (var i = this.state.players.away.length - 1; i >= 0; i--) {
             if (this.state.players.away[i]._id === playerId) {
+                console.log(teamStore.getSingleTeam(this.state.players.away[i].playerId));
                 return this.state.players.away[i];
             };
         };
@@ -173,9 +178,7 @@ var PastGame = React.createClass({
                                         y = {(data.x * (-100)) + ((self.props.estimoteLocation.spaceWidth * 100) / 2)}
                                         x = {(data.y * (-100)) + ((self.props.estimoteLocation.spaceHeight * 100) / 2)}
                                         radius = '15'
-                                        fillElement = 'rgb(170,170,170)'
-                                        fillText = 'white'
-                                        fontSize = '16' />
+                                        fillElement = 'rgb(170,170,170)' />
                 tempPlayerPositions[data.playerId].push(playerPosition);
 
                 self._localVariables.playerPositions = tempPlayerPositions;
@@ -333,7 +336,6 @@ var PastGame = React.createClass({
             }
 
             if(this.state.intervalFreq <= 2) {
-                console.log('hier');
                 this.setState({
                     slowForwardClass: 'primary disabled',
                 });
@@ -395,9 +397,9 @@ var PastGame = React.createClass({
 
         //Syncing
         var buttons = [
-            <button key="slowForward" onClick={this._slowForward} className={'btn ' + this.state.slowForwardClass} value="slowForward">Slow forward * {this.state.intervalFreq / 2}</button>,
-            <button key="play" onClick={this._initWatching} className="btn primary" value={this.state.playStop}>{playText}</button>,
-            <button key="fastForward" onClick={this._fastForward} className={'btn ' + this.state.fastForwardClass} value="fastForward">Fast forward * {this.state.intervalFreq}</button>,
+            <button key="slowForward" onClick={this._slowForward} className={'btn ' + this.state.slowForwardClass + ' slowFwd'} value="slowForward">Slow forward * {this.state.intervalFreq / 2}</button>,
+            <button key="play" onClick={this._initWatching} className="btn primary play" value={this.state.playStop}>{playText}</button>,
+            <button key="fastForward" onClick={this._fastForward} className={'btn ' + this.state.fastForwardClass + ' fastFwd'} value="fastForward">Fast forward * {this.state.intervalFreq}</button>,
         ];
 
         if(this.state.sync === 'none') {
@@ -430,9 +432,11 @@ var PastGame = React.createClass({
                 <div className="clearfix"></div>
                 <Pitch width={spaceWidth} height={spaceHeight} pitchElements={finalPlayerPositions} />
                 <h2 className="team home">{homeTeam}</h2><h2 className="team away">{awayTeam}</h2>
-                {buttons.map(function(button) {
-                    return button;
-                })}
+                <div className="buttonHolder">
+                    {buttons.map(function(button) {
+                        return button;
+                    })}
+                </div>
                 <div className="clearfix"></div>
             </section>
         );
