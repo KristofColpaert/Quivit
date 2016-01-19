@@ -20,6 +20,7 @@ var NewPlayer = React.createClass({
             canSubmit: false
         });
     },
+
     componentWillMount : function() {
         teamStore.addChangeListener(this._onChange);
         playerStore.addChangeListener(this._onChange);
@@ -46,16 +47,25 @@ var NewPlayer = React.createClass({
     },
 
     _checkTextInput: function(e) {
-        console.log(e);
         if (e.target.value.length <= 0) {
             e.target.className = 'input error';
             this.state[e.target.name] = false;
-            console.log(e.target.name + ' is ' + this.state[e.target.name]);
         } else {
             e.target.className = '';
             this.state[e.target.name] = true;
-            console.log(e.target.name + ' is ' + this.state[e.target.name]);
         }
+
+        if(e.target.id === 'kitNumber') {
+            if(isNaN(e.target.value) || e.target.value.length <= 0){
+                e.target.className = 'input error';
+                this.state[e.target.name] = false;
+            }
+            else {
+                e.target.className = '';
+                this.state[e.target.name] = true;
+            }
+        }
+
         if (this.state.fname && this.state.lname && this.state.knumber) {
             this.setState({
                 canSubmit: true
@@ -65,7 +75,6 @@ var NewPlayer = React.createClass({
                 canSubmit: false
             });
         }
-        console.log(this.state.canSubmit);
     },
 
     submitHandler : function(event) {
@@ -93,14 +102,16 @@ var NewPlayer = React.createClass({
                             name="fname"
                             id="firstName"
                             type="text"
-                            ref="firstName" />
+                            ref="firstName"
+                            className="input error"/>
                         <label htmlFor="lastName">Last name</label>
                         <input
                             onBlur = { this._checkTextInput }
                             name="lname"
                             id="lastName"
                             ref="lastName"
-                            type="text" />
+                            type="text"
+                            className="input error"/>
                     </section>
                     <section className="col50 right">
                         <label htmlFor="kitNumber">Kit number</label>
@@ -109,7 +120,8 @@ var NewPlayer = React.createClass({
                             name="knumber"
                             id="kitNumber"
                             type="text"
-                            ref="kitNumber" />
+                            ref="kitNumber"
+                            className="input error"/>
 
                         <label htmlFor="team">Team</label>
                         <select id="team" ref="team">
@@ -118,7 +130,8 @@ var NewPlayer = React.createClass({
                             })}
                         </select>
                     </section>
-                    <button className="btn primary right" disabled={ !this.state.canSubmit } type="submit">Make</button>
+                    <div className="clearfix"></div>
+                    <button className="btn primary" disabled={ !this.state.canSubmit } type="submit">Make</button>
                 </form>
             </section>
         );

@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
     User = require('../../models/User.js'),
-    userRepository = require('../../data/userRepository.js');
+    userRepository = require('../../data/userRepository.js'),
+    userValidator = require('../../modules/validators/userValidator.js');
 
 //GET: single user
 router.get('/:id', function(req, res) {
@@ -20,7 +21,7 @@ router.get('/', function(req, res) {
 });
 
 //POST: new user
-router.post('/', function(req, res) {
+router.post('/', userValidator, function(req, res) {
     //Make new object
     var email = req.body.email;
     var password = req.body.password;

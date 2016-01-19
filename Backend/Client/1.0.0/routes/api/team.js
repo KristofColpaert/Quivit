@@ -2,7 +2,8 @@ var express = require('express'),
     router = express.Router(),
     Team = require('../../models/Team.js'),
     teamRepository = require('../../data/teamRepository.js'),
-    authenticator = require('../../modules/authenticator.js');
+    authenticator = require('../../modules/authenticator.js'),
+    teamValidator = require('../../modules/validators/teamValidator.js');
 
 //GET: get team by id
 router.get('/:id', function(req, res) {
@@ -21,7 +22,7 @@ router.get('/', function(req, res) {
 });
 
 //POST: insert new team
-router.post('/', authenticator, function(req, res) {
+router.post('/', authenticator, teamValidator, function(req, res) {
     //Make new object
     var name = req.body.name;
     var primaryColor = req.body.primaryColor;

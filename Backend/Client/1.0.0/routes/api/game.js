@@ -3,7 +3,8 @@ var express = require('express'),
     Game = require('../../models/Game.js'),
     gameRepository = require('../../data/gameRepository.js'),
     heatMapGenerator = require('../../modules/heatMapGenerator.js'),
-    authenticator = require('../../modules/authenticator.js');
+    authenticator = require('../../modules/authenticator.js'),
+    gameValidator = require('../../modules/validators/gameValidator.js');
 
 //GET: get game by id
 router.get('/:id', function(req, res) {
@@ -64,7 +65,7 @@ router.get('/', function(req, res) {
 });
 
 //POST: insert new game
-router.post('/', authenticator, function(req, res) {
+router.post('/', authenticator, gameValidator, function(req, res) {
     //Make new object
     var gameDate = req.body.gameDate;
     var gameTime = req.body.gameTime;

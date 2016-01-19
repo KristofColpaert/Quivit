@@ -183,6 +183,7 @@ var Admin = React.createClass({
                         <section className="content-holder">
                             <ManageEstimoteLocations title={this.state.titleEstimoteLocations} estimoteLocations={this.state.estimoteLocations} />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;
@@ -194,6 +195,7 @@ var Admin = React.createClass({
                         <section className="content-holder">
                             <NewEstimoteLocation />
                         </section>
+                        <Footer />
                     </main>
                 );
                 break;

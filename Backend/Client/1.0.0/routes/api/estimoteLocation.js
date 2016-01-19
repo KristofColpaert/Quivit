@@ -2,7 +2,8 @@ var express = require('express'),
     router = express.Router(),
     EstimoteLocation = require('../../models/EstimoteLocation.js'),
     estimoteLocationRepository = require('../../data/estimoteLocationRepository.js'),
-    authenticator = require('../../modules/authenticator.js');
+    authenticator = require('../../modules/authenticator.js'),
+    estimoteLocationValidator = require('../../modules/validators/estimoteLocationValidator.js');
 
 //GET: get EstimoteLocation by id
 router.get('/:method/:value', function(req, res) {
@@ -30,7 +31,7 @@ router.get('/', authenticator, function(req, res) {
 });
 
 //POST: insert new EstimoteLocation
-router.post('/', authenticator, function(req, res) {
+router.post('/', authenticator, estimoteLocationValidator, function(req, res) {
     var estimoteLocationId = req.body.estimoteLocationId;
     var spaceWidth = req.body.spaceWidth;
     var spaceHeight = req.body.spaceHeight;

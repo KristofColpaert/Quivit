@@ -31,29 +31,29 @@ var NewTeam = React.createClass({
     },
 
     _checkTextInput: function(e) {
-    if (e.target.value.length <= 0) {
-        e.target.className = 'input error';
-        this.state[e.target.name] = false;
-        console.log(e.target.name + ' is ' + this.state[e.target.name]);
-    } else {
-        e.target.className = '';
-        this.state[e.target.name] = true;
-        console.log(e.target.name + ' is ' + this.state[e.target.name]);
-    }
-    if (this.state.name) {
-        this.setState({
-            canSubmit: true
-        });
-    } else {
-        this.setState({
-            canSubmit: false
-        });
-    }
+        if (e.target.value.length <= 0) {
+            e.target.className = 'input error';
+            this.state[e.target.name] = false;
+        } else {
+            e.target.className = '';
+            this.state[e.target.name] = true;
+        }
 
+        if (this.state.name) {
+            this.setState({
+                canSubmit: true
+            });
+        } else {
+            this.setState({
+                canSubmit: false
+            });
+        }
     },
 
     submitHandler : function(event) {
         event.preventDefault();
+
+        console.log('hier');
 
         var newTeam = {
             name : this.refs.name.value,
@@ -70,7 +70,7 @@ var NewTeam = React.createClass({
                 <h2>New Team</h2>
                 <form onSubmit={this.submitHandler} className="new team">
                     <label htmlFor="name">Team name</label>
-                    <input onBlur={ this._checkTextInput } name="name" id="name" type="text" ref="name" />
+                    <input onChange={this._checkTextInput} className="input error" name="name" id="name" type="text" ref="name" />
 
                     <div className="col50 left">
                         <label htmlFor="primaryColor">Primary color</label>

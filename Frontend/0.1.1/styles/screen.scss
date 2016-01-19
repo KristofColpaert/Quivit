@@ -346,6 +346,25 @@ section.players {
   }
 }
 
+section.estimoteLocations {
+  > .card.estimoteLocation {
+    @extend %card;
+    @extend %subtle-shadow;
+    width: 18%;
+    padding: 5px;
+    margin: 10px 2% 0 0;
+
+    > &:nth-child(1), > &:nth-child(6n + 1) {
+      margin-left: 0;
+    }
+
+    &.new {
+      @extend %background--new;
+      min-height: 66px;
+    }
+  }
+}
+
 ::selection {
   background: #333;
   color: $accent-color;
@@ -438,7 +457,7 @@ section.players {
 }
 
 // ADMIN
-.new.game, .new.team, .new.player, .login, .register {
+.new.game, .new.team, .new.player, .login, .register, .new.estimoteLocation {
 
   .input.error {
     border: 2px solid #E55E5F;

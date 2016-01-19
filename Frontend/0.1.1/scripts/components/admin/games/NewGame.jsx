@@ -18,7 +18,18 @@ var NewGame = React.createClass({
             estimoteLocations : estimoteLocationStore.getAllEstimoteLocations(),
             image: 'images/gameTemp.jpg',
             imageUrl : gameStore.getImageUrl(),
-            canSubmit: false
+            teamHomeClass : '',
+            teamHomeValid : true,
+            teamAwayClass : '',
+            teamAwayValid : true,
+            gameDateClass : 'input error',
+            gameDateValid : false,
+            gameTimeClass : 'input error',
+            gameTimeValid : false,
+            estimoteLocationClass : '',
+            estimoteLocationValid : true,
+            gameImgClass : 'input error',
+            gameImgValid : false
         });
     },
 
@@ -33,27 +44,86 @@ var NewGame = React.createClass({
         estimoteLocationActions.getEstimoteLocationsRequest();
     },
     
-    _checkTextInput: function(e) {
+    _checkTextInput: function(event) {
+        var value = event.target.value;
+        var id = event.target.id;
 
-        if (e.target.value.length <= 0) {
-            e.target.className = 'input error';
-            this.state[e.target.name] = false;
-            console.log(e.target.name + ' is ' + this.state[e.target.name]);
-        } else {
-            e.target.className = '';
-            this.state[e.target.name] = true;
-            console.log(e.target.name + ' is ' + this.state[e.target.name]);
+        switch(id) {
+            case 'teamHome':
+                if(value && value !== '') {
+                    this.setState({
+                        teamHomeClass : '',
+                        teamHomeValid : true
+                    });
+                }
+                else {
+                    this.setState({
+                        teamHomeClass : 'input error',
+                        teamHomeValid : false
+                    });
+                }
+                break;
+
+            case 'teamAway':
+                if(value && value !== '') {
+                    this.setState({
+                        teamAwayClass : '',
+                        teamAwayValid : true
+                    });
+                }
+                else {
+                    this.setState({
+                        teamAwayClass : 'input error',
+                        teamAwayValid : false
+                    });
+                }
+                break;
+
+            case 'gameDate':
+                if(value && value !== '' && value.match(/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/)){
+                    this.setState({
+                        gameDateClass : '',
+                        gameDateValid : true,
+                    });
+                }
+                else {
+                    this.setState({
+                        gameDateClass : 'input error',
+                        gameDateValid : false
+                    });
+                }
+                break;
+
+            case 'gameTime':
+                if(value && value !== '' && value.match(/^[0-9]{2}[:][0-9]{2}$/)) {
+                    this.setState({
+                        gameTimeClass : '',
+                        gameTimeValid : true,
+                    });
+                }
+                else {
+                    this.setState({
+                        gameTimeClass : 'input error',
+                        gameTimeValid : false
+                    });
+                }
+                break;
+
+            case 'estimoteLocationId':
+                if(value && value !== '') {
+                    this.setState({
+                        estimoteLocationClass : '',
+                        estimoteLocationValid : true
+                    });
+                }
+                else {
+                    this.setState({
+                        estimoteLocationClass : 'input error',
+                        estimoteLocationValid : false
+                    });
+                }
+                break;
         }
-        if (this.state.fname && this.state.lname && this.state.knumber) {
-            this.setState({
-                canSubmit: true
-            });
-        } else {
-            this.setState({
-                canSubmit: false
-            });
-        }
-        console.log(this.state.canSubmit);
     },
 
     componentWillUnmount : function() {
@@ -78,6 +148,18 @@ var NewGame = React.createClass({
             var formData = new FormData();
             formData.append('image', img.files[0], 'game.jpg');
             gameActions.uploadImageRequest(formData);
+
+            this.setState({
+                gameImgClass : '',
+                gameImgValid : true
+            });
+        }
+
+        else {
+            this.setState({
+                gameImgClass : 'input error',
+                gameImgValid : false
+            });
         }
     },
 
@@ -125,7 +207,7 @@ var NewGame = React.createClass({
 
         var tempGameTime = this.refs.gameTime.value;
         var tempGameTime = tempGameTime.replace(':', '');
-        
+
         var image = this.refs.gameImg;
         var reader = new FileReader();
 
@@ -150,7 +232,8 @@ var NewGame = React.createClass({
 
     render : function() {
         var submitButton = null;
-        if(gameStore.isImageUrlSet()) {
+        if(gameStore.isImageUrlSet() && this.state.teamHomeValid && this.state.teamAwayValid && this.state.gameDateValid
+            && this.state.gameTimeValid && this.state.estimoteLocationValid && this.state.gameImgValid) {
             submitButton = <button className="btn primary" type="submit">Add game</button>;
         }
         else {
@@ -163,7 +246,7 @@ var NewGame = React.createClass({
                 <form onSubmit={this.submitHandler} className="new game">
                     <section className="col50 left">
                         <label htmlFor="teamHome">Home team</label>
-                        <select id="teamHome" ref="teamHome">
+                        <select id="teamHome" ref="teamHome" className={this.state.teamHomeClass} onChange={this._checkTextInput}>
                             {this.state.teams.map(function(team) {
                                 return <option value={team._id} key={team._id}>{team.name}</option>
                             })}
@@ -175,10 +258,11 @@ var NewGame = React.createClass({
                             id="gameDate"
                             type="date"
                             ref="gameDate"
-                            className="" />
+                            className={this.state.gameDateClass}
+                            onChange={this._checkTextInput} />
 
                         <label htmlFor="gameTime">Game time</label>
-                        <input id="gameTime" type="time" ref="gameTime"/>
+                        <input id="gameTime" type="time" ref="gameTime" className={this.state.gameTimeClass} onChange={this._checkTextInput} />
 
                         <label htmlFor="estimoteLocationId">Estimote Location ID</label>
                         <select id="estimoteLocationId" ref="estimoteLocationId">
@@ -194,7 +278,7 @@ var NewGame = React.createClass({
 
                     <section className="col50 right">
                         <label htmlFor="teamAway">Away team</label>
-                        <select id="teamAway" ref="teamAway">
+                        <select id="teamAway" ref="teamAway" className={this.state.teamAwayClass} onChange={this._checkTextInput}>
                             {this.state.teams.map(function(team) {
                                 return <option value={team._id} key={team._id}>{team.name}</option>
                             })}
@@ -202,7 +286,7 @@ var NewGame = React.createClass({
 
 
                         <label htmlFor="gameImg">Game Image</label>
-                        <input id="gameImg" onChange={ this._handleImage } ref="gameImg" type="file" accept="image/*" />
+                        <input id="gameImg" onChange={this._handleImage} className={this.state.gameImgClass} ref="gameImg" type="file" accept="image/*" />
 
                         <img className="gameImg preview" ref="preview" src={ this.state.image } />
                         <p>Best 284 x 189.</p>
