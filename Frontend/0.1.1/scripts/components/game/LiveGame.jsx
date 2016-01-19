@@ -149,17 +149,35 @@ var LiveGame = React.createClass({
         this.state.kitNumber = p.kitNumber;
     },
 
+    _setCurrentColor: function(p) {
+        console.log(this.props);
+            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
+                return this.props.teams[this.props.game._id].away.primaryColor;
+            } else {
+                return this.props.teams[this.props.game._id].away.primaryColor;
+            }
+    },
+
+    _setSecondColor: function(p) {
+            if (this.props.teams[this.props.game._id].away._id === p.teamId) {
+                return this.props.teams[this.props.game._id].away.secondaryColor;
+            } else {
+                return this.props.teams[this.props.game._id].away.secondaryColor;
+            }
+    },
+
     _update : function(data) {
         var tempPlayerPositions = this.state.playerPositions;
-        var playerPosition = <PitchElementCircle
+        var color = self._setCurrentColor( data ),
+            color2 = self._setSecondColor( data ),
+            playerPosition = <PitchElementCircle
                                 handleClick={ this._playerClicked.bind( null, tempPlayerPositions[data.playerId]) }
                                 key={data.playerId}
                                 y={(data.x * (-100)) + ((this.state.spaceWidth * 100) / 2)}
                                 x={(data.y * (-100)) + ((this.state.spaceHeight * 100) / 2)}
-                                radius= '15'
-                                fillElement= 'rgb(170,170,170)'
-                                fillText = 'white'
-                                fontSize = '16' />
+                                radius= '11'
+                                strokeElement = { color2 }
+                                fillElement = { color }/>
         tempPlayerPositions[data.playerId] = playerPosition;
 
         this.setState({
