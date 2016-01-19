@@ -1,4 +1,4 @@
-var Game = function(gameDate, gameTime, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, scoreHome, scoreAway) {
+var Game = function(gameDate, gameTime, teamHomeId, teamAwayId, estimoteLocationId, isGameFinished, scoreHome, scoreAway, image) {
     'use strict';
 
     var self = this;
@@ -11,6 +11,7 @@ var Game = function(gameDate, gameTime, teamHomeId, teamAwayId, estimoteLocation
     this.isGameFinished = isGameFinished;
     this.scoreHome = scoreHome;
     this.scoreAway = scoreAway;
+    this.image = image;
 }
 
 Game.prototype = {
@@ -27,7 +28,8 @@ Game.prototype = {
             estimoteLocationId : this.estimoteLocationId,
             isGameFinished : this.isGameFinished,
             scoreHome : this.scoreHome,
-            scoreAway : this.scoreAway
+            scoreAway : this.scoreAway,
+            image : this.image
         };
     }
 }

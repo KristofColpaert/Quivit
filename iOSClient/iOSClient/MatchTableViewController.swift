@@ -12,8 +12,7 @@ import SwiftyJSON
 
 class MatchTableViewController: UITableViewController
 {
-	var ipAddress:String?
-	var port:String?
+	var quivit = Quivit()
 	var matches:JSON = []
 	
     override func viewDidLoad()
@@ -23,75 +22,21 @@ class MatchTableViewController: UITableViewController
 		self.refreshControl = UIRefreshControl()
 		self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
 		self.tableView.addSubview(refreshControl!)
-		
-		if let _ = ipAddress, _ = port
-		{
-			self.refreshControl!.beginRefreshing()
-			refresh("")
-		}
-		else
-		{
-			let alertController = UIAlertController(title: "No IP address or port provided!", message: "Please provide an IP address and a port first!", preferredStyle: .Alert)
-			
-			let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
-			alertController.addAction(okAction)
-			
-			self.presentViewController(alertController, animated: true) { }
-		}
     }
 	
 	func refresh(sender:AnyObject)
 	{
-		UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-		
-		let ipAddress = self.ipAddress!
-		let port = self.port!
-		
-		print("[MatchTVC] IP: \(ipAddress) PORT: \(port)")
-		
-		let date = NSDate()
-		let calendar = NSCalendar.currentCalendar()
-		let day = String(format: "%02d", calendar.component(.Day, fromDate: date))
-		let month = String(format: "%02d", calendar.component(.Month, fromDate: date))
-		let year = calendar.component(.Year, fromDate: date)
-		
-		print("[MatchTVC] Day: \(day) Month: \(month) Year: \(year)")
-		
-		Alamofire.request(.GET, "http://\(ipAddress):\(port)/api/game/\(year)/\(month)/\(day)/included").responseJSON { response in
-			//print(response.request)  // original URL request
-			//print(response.response) // URL response
-			//print(response.data)     // server data
-			//print(response.result)   // result of response serialization
+		quivit.getMatches({(responseObject:JSON?, error:NSError?) in
 			
-			print("[MatchTVC] .GET Request Succes")
-			
-			let matches = JSON(data: response.data!)
-			
-			if matches.count > 0
+			if let matches = responseObject
 			{
-				print("[MatchTVC] Matches Available")
-				
-				print("JSON: \(matches)")
-				
+				print("[MatchesTVC] Matches Available")
 				self.matches = matches
-				
 				self.tableView.reloadData()
 			}
-			else
-			{
-				print("[MatchTVC] No Matches Available")
-				
-				let alertController = UIAlertController(title: "No matches found!", message: "Currently there are no matches available!", preferredStyle: .Alert)
-				
-				let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
-				alertController.addAction(okAction)
-				
-				self.presentViewController(alertController, animated: true) { }
-			}
-			
-			UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-			self.refreshControl!.endRefreshing()
-		}
+			else if let _ = error { Quivit.showAlert(self, title: "Unable to connect!", message: "Could not connect to server. Check the host and the port, then try again.") }
+			else { Quivit.showAlert(self, title: "Someting went wrong!", message: "Please try again.") }
+		})
 	}
 
     // MARK: - Table view data source
@@ -146,21 +91,12 @@ class MatchTableViewController: UITableViewController
 		{
 			if let cs = self.currentSelected
 			{
+				self.quivit.match = self.matches[cs.row]
+				
 				let vc = segue.destinationViewController as! PlayerTableViewController
-				vc.ipAddress = ipAddress
-				vc.port = port
-				vc.match = self.matches[cs.row]
+				vc.quivit = self.quivit
 			}
-			else
-			{
-				let alertController = UIAlertController(title: "No match selected!", message: "Please select a match first!", preferredStyle: .Alert)
-				
-				let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
-				alertController.addAction(okAction)
-				
-				self.presentViewController(alertController, animated: true) { }
-			}
+			else { Quivit.showAlert(self, title: "No match selected!", message: "Please select a match first!") }
 		}
     }
-
 }

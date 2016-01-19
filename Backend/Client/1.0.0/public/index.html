@@ -13,48 +13,66 @@
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-    var socket = io();
+    var socket = io({forceNew : true});
     $('form').submit(function() {
-        var msgObject = {
-            x: 0,
-            y: 0,
-            orientation: 0,
-            timestamp: new Date().getMilliseconds(),
-            estimoteLocationId: 'BlaBla',
-            playerId: '565d6fe29b971a0d10f9a5e7',
-            teamId: 'teamId2',
-            gameId: 'gameId3'
-        };
-        socket.emit('position', msgObject);
+        socket.emit('create', '56699d1c1d6979315414f45b565d706d9b971a0d10f9a5ec');
+        socket.emit('more', 0);
         return false;
     });
 
-    var tmr = setInterval(
-        function(){
-            var msgObject = {
-                x : Math.random() * 1200,
-                y : Math.random() * 600,
-                orientation : 0,
-                timestamp : new Date().getMilliseconds(),
-                estimoteLocationId : 'BlaBla',
-                playerId : '565d6fe29b971a0d10f9a5e7',
-                teamId : 'teamId2',
-                gameId : 'gameId3'
-            };
-            //var msg = JSON.stringify(msgObject);
-            socket.emit('position', msgObject)
-        }, 100
-    );
-            //socket.emit('position', msg);
-    
+    var counter = 0;
     $('#STOP').click(function() {
-        console.log('clicked');
-        clearInterval(tmr);
+        socket.emit('goaway', 'disconnect');
+        counter++;
+        console.log(counter);
     });
 
-    socket.on('565d6fe29b971a0d10f9a5e7', function(msg){
-        $('#root').append($('<li>').text(JSON.stringify(msg)));
+    socket.on('data', function(data) {
+        console.log(data);
     });
+
+//    var socket = io();
+//    $('form').submit(function() {
+//        var msgObject = {
+//            x: 0,
+//            y: 0,
+//            orientation: 0,
+//            timestamp: new Date().getMilliseconds(),
+//            estimoteLocationId: 'BlaBla',
+//            playerId: '565d6fe29b971a0d10f9a5e7',
+//            teamId: 'teamId2',
+//            gameId: 'gameId3'
+//        };
+//        socket.emit('position', msgObject);
+//        return false;
+//    });
+//
+//    var tmr = setInterval(
+//        function(){
+//            var msgObject = {
+//                x : Math.random() * 1200,
+//                y : Math.random() * 600,
+//                orientation : 0,
+//                timestamp : new Date().getMilliseconds(),
+//                estimoteLocationId : 'BlaBla',
+//                playerId : '565d6fe29b971a0d10f9a5e7',
+//                teamId : 'teamId2',
+//                gameId : 'gameId3'
+//            };
+//            //var msg = JSON.stringify(msgObject);
+//            socket.emit('position', msgObject)
+//        }, 100
+//    );
+//            //socket.emit('position', msg);
+//
+//    $('#STOP').click(function() {
+//        console.log('clicked');
+//        clearInterval(tmr);
+//    });
+//
+//    socket.on('565d6fe29b971a0d10f9a5e7', function(msg){
+//        $('#root').append($('<li>').text(JSON.stringify(msg)));
+//    });
 </script>
 </body>
 </html>

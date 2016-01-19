@@ -1,0 +1,27 @@
+CACHE MANIFEST
+# 2016-01-15:v2
+
+CACHE:
+fonts/BebasNeue.otf
+fonts/BebasNeue.ttf
+images/favi/favicon.ico
+images/favi/favicon-57.png
+images/favi/favicon-72.png
+images/favi/favicon-114.png
+images/favi/favicon-120.png
+images/favi/favicon-144.png
+images/favi/favicon-152.png
+images/add.png
+images/game.jpg
+images/gameTemp.jpg
+images/menu.png
+scripts/app.min.js
+scripts/app.min.js.map
+styles/screen.min.css
+index.html
+
+NETWORK:
+*
+
+FALLBACK
+# /offline.html

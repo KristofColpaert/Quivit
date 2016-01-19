@@ -12,14 +12,17 @@ var React = require('react'),
 //Variables
 var titleLive = 'Live games';
 var titleFuture = 'Future games';
+var titlePast = 'Past games';
 
 var Main = React.createClass({
     getInitialState : function() {
         return ({
             titleGamesLive : titleLive,
             titleGamesFuture : titleFuture,
+            titleGamesPast : titlePast,
             todaysGames : gameStore.getTodaysGames(),
-            futureGames : gameStore.getFutureGames()
+            futureGames : gameStore.getFutureGames(),
+            pastGames : gameStore.getPastGames()
         });
     },
 
@@ -30,6 +33,7 @@ var Main = React.createClass({
     componentDidMount : function() {
         gameActions.getTodayGamesRequest();
         gameActions.getFutureGamesRequest();
+        gameActions.getPastGamesRequest();
     },
 
     componentWillUnmount : function() {
@@ -38,26 +42,47 @@ var Main = React.createClass({
 
     _onChange : function() {
         this.setState({
+            titleGamesLive : titleLive,
+            titleGamesFuture : titleFuture,
+            titleGamesPast : titlePast,
             todaysGames : gameStore.getTodaysGames(),
-            futureGames : gameStore.getFutureGames()
+            futureGames : gameStore.getFutureGames(),
+            pastGames : gameStore.getPastGames()
         });
     },
 
     render: function() {
-        return (
-            <main>
-                <Navigation />
-                <section className="content-holder">
-                    <GamesPanel title={this.state.titleGamesLive} games={this.state.todaysGames} />
-                    <div className="clearfix"></div>
-                    <GamesPanel title={this.state.titleGamesFuture} games={this.state.futureGames} />
-                    <div className="clearfix"></div>
-                    <Link to="/admin">Admin</Link>
-                    <div className="clearfix"></div>
-                </section>
-                <Footer />
-            </main>
-        );
+        var pastGames = this.state.pastGames ? this.state.pastGames : [];
+        var todaysGames = this.state.todaysGames ? this.state.todaysGames : [];
+        var futureGames = this.state.futureGames ? this.state.futureGames : [];
+
+        if(pastGames, todaysGames, futureGames) {
+            return (
+                <main>
+                    <Navigation />
+                    <section className="content-holder">
+                        <GamesPanel title={this.state.titleGamesLive} games={todaysGames} mode="normal"/>
+                        <div className="clearfix"></div>
+                        <GamesPanel title={this.state.titleGamesFuture} games={futureGames} mode="normal"/>
+                        <div className="clearfix"></div>
+                        <GamesPanel title={this.state.titleGamesPast} games={pastGames} mode="past"/>
+                        <div className="clearfix"></div>
+                    </section>
+                    <Footer />
+                </main>
+            );
+        }
+
+        else {
+            return (
+                <main>
+                    <Navigation />
+                    <section className="content-holder">
+                    </section>
+                    <Footer />
+                </main>
+            )
+        }
     }
 });
 

@@ -10,7 +10,10 @@ var storedGames = {
     isGameSaved : false,
     todaysGames : [],
     futureGames : [],
-    singleGame : {}
+    pastGames : [],
+    playerGameHeatMap : [],
+    singleGame : {},
+    imageUrl : null
 };
 
 //GameStore
@@ -25,6 +28,7 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     removeChangeListener : function(callback) {
         this.removeListener(CHANGE_EVENT, callback);
+        storedGames.playerGameHeatMap = [];
     },
 
     getTodaysGames : function() {
@@ -37,6 +41,27 @@ var gameStore = objectAssign({}, EventEmitter.prototype, {
 
     getSingleGame : function() {
         return storedGames.singleGame;
+    },
+
+    getPastGames : function() {
+        return storedGames.pastGames;
+    },
+
+    getPlayerGameHeatMap : function() {
+        return storedGames.playerGameHeatMap;
+    },
+
+    getImageUrl : function() {
+        return storedGames.imageUrl;
+    },
+
+    isImageUrlSet : function() {
+        if(storedGames.imageUrl === null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     },
 
     isGameSaved : function() {
@@ -75,8 +100,20 @@ AppDispatcher.register(function(payload) {
             storedGames.singleGame = payload.action.game;
             break;
 
+        case gameConstants.GET_GAMES_PAST_RESPONSE:
+            storedGames.pastGames = payload.action.games;
+            break;
+
+        case gameConstants.GET_PLAYER_GAME_HEAT_MAP_RESPONSE:
+            storedGames.playerGameHeatMap = payload.action.heatMap;
+            break;
+
         case gameConstants.FALSIFY_IS_GAME_SAVED:
             storedGames.isGameSaved = false;
+            break;
+
+        case gameConstants.UPLOAD_FILE_RESPONSE:
+            storedGames.imageUrl = payload.action.url.url;
             break;
     }
 

@@ -1,0 +1,9 @@
+var userConstants = {
+    SAVE_USER_REQUEST : 'SAVE_USER_REQUEST',
+    SAVE_USER_RESPONSE : 'SAVE_USER_RESPONSE',
+
+    FALSIFY_IS_USER_SAVED : 'FALSIFY_IS_USER_SAVED',
+    FALSIFY_IS_USER_ERROR : 'FALSIFY_IS_USER_ERROR'
+};
+
+module.exports = userConstants;

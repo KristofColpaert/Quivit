@@ -2,16 +2,19 @@ var gameRepository = (function() {
     'use strict';
 
     //Variables
-    var mongoskin = require('mongoskin')
-    var db = mongoskin.db('mongodb://quivitUser:Test123@quivitdb.cloudapp.net/quivitserver', {safe : true});
+    var constants = require('./constants.js');
+    var mongoskin = require('mongoskin');
     var errorLogger = require('../modules/errorLogger.js');
+    var db = mongoskin.db(constants.DATABASE_URL, {safe : true});
     var ObjectID = require('mongoskin').ObjectID;
+    var dateCalculator = require('../modules/dateCalculator.js');
+    var MongoStreamingHelper = require('../modules/MongoStreamingHelper.js');
 
     //Functions
     var getSingle = function(id, callback) {
         db.collection('games').find({ _id : ObjectID(id) }).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -22,7 +25,7 @@ var gameRepository = (function() {
     var getByDateExcluded = function(gameDate, callback) {
         db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -33,20 +36,20 @@ var gameRepository = (function() {
     var getByDateIncluded = function(gameDate, callback) {
         db.collection('games').find({ gameDate : gameDate }).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 var counter = 0;
                 result.forEach(function(resultObject) {
                     db.collection('teams').find({ _id : ObjectID(resultObject.teamHomeId) }).toArray(function(error, teamHomeResult) {
                         if(error) {
-                            errorLogger.log('database', error);
+                            errorLogger.log(error);
                         }
                         else {
                             resultObject.teamHome = teamHomeResult[0];
                             db.collection('teams').find({ _id : ObjectID(resultObject.teamAwayId) }).toArray(function(error, teamAwayResult) {
                                 if(error) {
-                                    errorLogger.log('database', error);
+                                    errorLogger.log(error);
                                 }
                                 else {
                                     resultObject.teamAway = teamAwayResult[0];
@@ -68,7 +71,24 @@ var gameRepository = (function() {
     var getFuture = function(gameDate, callback) {
         db.collection('games').find({ gameDate : { $gt : gameDate }}).toArray(function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
+            }
+            else {
+                callback(result);
+            }
+        });
+    };
+
+    var getPast = function(year, month, day, callback) {
+        var maxGameDateString = '' + year + month + day;
+        var minGameDate = dateCalculator.addMonths(new Date(year, month - 1, day), -6);
+        var minGameDateMonth = (minGameDate.getMonth() + 1) < 10 ? '0' + (minGameDate.getMonth() + 1) : (minGameDate.getMonth() + 1);
+        var minGameDateDay = (minGameDate.getDate()) < 10 ? '0' + minGameDate.getDate() : minGameDate.getDate();
+        var minGameDateString = '' + minGameDate.getFullYear() + minGameDateMonth  + minGameDateDay;
+
+        db.collection('games').find({ gameDate : { $gt : minGameDateString, $lt : maxGameDateString }}).sort({ gameDate : -1 }).toArray(function(error, result) {
+            if(error) {
+                errorLogger.log(error);
             }
             else {
                 callback(result);
@@ -79,16 +99,58 @@ var gameRepository = (function() {
     var add = function(newGame, callback) {
         db.collection('games').insert(newGame, function(error, result) {
             if(error) {
-                errorLogger.log('database', error);
+                errorLogger.log(error);
             }
             else {
                 var gameId = result.insertedIds[0];
                 var resultObject = newGame.toJSON();
                 resultObject._id = gameId;
+                callback(resultObject);
+            }
+        });
+    };
+
+    var addToHomeScore = function(gameId, callback) {
+        getSingle(gameId, function(result) {
+            var score = result[0].scoreHome + 1;
+            db.collection('games').update({ _id : ObjectID(gameId)}, { $set : { scoreHome : score }}, function(error) {
+                if(error) {
+                    errorLogger.log(error);
+                }
+
+                else {
+                    callback(score);
+                }
+
+            });
+        })
+    };
+
+    var addToAwayScore = function(gameId, callback) {
+        getSingle(gameId, function(result) {
+            var score = result[0].scoreAway + 1;
+            db.collection('games').update({ _id : ObjectID(gameId)}, { $set : { scoreAway : score }}, function(error) {
+                if(error) {
+                    errorLogger.log(error);
+                }
+
+                else {
+                    callback(score);
+                }
+            });
+        })
+    };
+
+    var remove = function(id, callback) {
+        db.collection('games').remove({ _id : ObjectID(id) }, function(error, result) {
+            if(error) {
+                errorLogger.log(error);
+            }
+            else {
                 callback(result);
             }
         });
-    }
+    };
 
     //Return
     return {
@@ -96,7 +158,11 @@ var gameRepository = (function() {
         getByDateExcluded : getByDateExcluded,
         getByDateIncluded : getByDateIncluded,
         getFuture : getFuture,
-        add : add
+        getPast : getPast,
+        add : add,
+        addToHomeScore : addToHomeScore,
+        addToAwayScore : addToAwayScore,
+        remove : remove
     };
 })();
 

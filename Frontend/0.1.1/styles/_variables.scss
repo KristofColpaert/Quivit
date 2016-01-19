@@ -15,16 +15,13 @@ $primary-color: #eee;
 $font-color: #333;
 $accent-color: #FFDD4A;
 $main-background: #eee;
+$border: 2px solid #333;
 
 // Measurements
 $max-width: 1200px;
 $header-height: 45px;
 $break: 940px;
-
-// Snippets
-%border {
-  border-bottom: 2px solid #333;
-}
+$break-small: 400px;
 
 %centered--full--screen {
   margin: 0 auto;
@@ -37,9 +34,15 @@ $break: 940px;
   box-shadow: 0 6px 6px 0 rgba(0,0,0,.2);
 }
 
+%background--new {
+  background: #efefef url(../images/add.png) no-repeat center;
+}
+
 %card {
   display: block;
-  position: relative;
+  float: left;
+  box-sizing: border-box;
+  border: $border;
 }
 
 %card-background {

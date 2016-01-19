@@ -14,16 +14,10 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 {
 	@IBOutlet weak var indoorLocationView: EILIndoorLocationView!
 	
-	var ipAddress:String?
-	var port:String?
-	var match:JSON?
-	var selectedTeam:JSON?
-	var selectedPlayer:JSON?
+	var quivit = Quivit()
 	
 	var location:EILLocation?
 	let indoorLocationManager = EILIndoorLocationManager()
-	let appID = "quivit-cw1"
-	let appToken = "f157d0a442bf7fe7815ffd53076492cc"
 	var socket:SocketIOClient?
 	
 	override func viewDidLoad()
@@ -31,12 +25,12 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
-		ESTConfig.setupAppID(appID, andAppToken: appToken)
+		ESTConfig.setupAppID(self.quivit.estimoteAppID, andAppToken: self.quivit.estimoteAppToken)
 		ESTConfig.isAuthorized()
 		
 		self.indoorLocationManager.delegate = self
 		
-		if let ipAddress = ipAddress, port = port, m = match, _ = selectedTeam, _ = selectedPlayer
+		if let m = self.quivit.match, _ = self.quivit.selectedTeam, _ = self.quivit.selectedPlayer
 		{
 			print(m["estimoteLocationId"])
 			
@@ -48,7 +42,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 			})
 			
 			
-			self.socket = SocketIOClient(socketURL: "http://\(ipAddress):\(port)")
+			self.socket = SocketIOClient(socketURL: "http://\(self.quivit.host):\(self.quivit.port)")
 			self.socket!.on("connect") {data, ack in
 				print("[Socket] Connected")
 			}
@@ -56,15 +50,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 			
 			print("unwrapping complete")
 		}
-		else
-		{
-			let alertController = UIAlertController(title: "No match selected!", message: "Please select a match first!", preferredStyle: .Alert)
-			
-			let okAction = UIAlertAction(title: "Ok", style: .Default) { (action) in }
-			alertController.addAction(okAction)
-			
-			self.presentViewController(alertController, animated: true) { }
-		}
+		else { Quivit.showAlert(self, title: "No match selected!", message: "Please select a match first!") }
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -72,7 +58,7 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 		self.indoorLocationView.backgroundColor = UIColor.clearColor()
 		self.indoorLocationView.showTrace = true
 		self.indoorLocationView.showWallLengthLabels = true
-		self.indoorLocationView.rotateOnPositionUpdate = false
+		self.indoorLocationView.rotateOnPositionUpdate = true
 		
 		self.indoorLocationView.locationBorderColor = UIColor.blackColor()
 		self.indoorLocationView.locationBorderThickness = 6
@@ -89,20 +75,21 @@ class GameViewController: UIViewController, EILIndoorLocationManagerDelegate
 	
 	func indoorLocationManager(manager: EILIndoorLocationManager!, didUpdatePosition position: EILOrientedPoint!, withAccuracy positionAccuracy: EILPositionAccuracy, inLocation location: EILLocation!)
 	{
-		print("[IndoorLocationManager] Player: \(self.selectedPlayer!)")
+		print("[IndoorLocationManager] Player: \(self.quivit.selectedPlayer!)")
 		print("[IndoorLocationManager] Position: x:\(position.x) y:\(position.y) orientation:\(position.orientation)")
 		print("[IndoorLocationManager] Location: \(location.name)")
 		
 		self.indoorLocationView.updatePosition(position)
 		
-		let eli = self.match!["estimoteLocationId"].string!
-		let pi = self.selectedPlayer!["_id"].string!
-		let ti = self.selectedPlayer!["teamId"].string!
-		let gi = self.match!["_id"].string!
+		let eli = self.quivit.match!["estimoteLocationId"].string!
+		let pi = self.quivit.selectedPlayer!["_id"].string!
+		let ti = self.quivit.selectedPlayer!["teamId"].string!
+		let kn = self.quivit.selectedPlayer!["kitNumber"].string!
+		let gi = self.quivit.match!["_id"].string!
 		let date = NSDate().timeIntervalSince1970
 		
 		// msgObject.x, msgObject.y, msgObject.orientation, msgObject.timestamp, msgObject.estimoteLocationId, msgObject.playerId, msgObject.teamId, msgObject.gameId
-		self.socket!.emit("position", ["x": position.x, "y": position.y, "orientation": position.orientation, "timestamp": date, "estimoteLocationId": eli, "playerId": pi, "teamId": ti, "gameId": gi])
+		self.socket!.emit("position", ["x": position.x, "y": position.y, "orientation": position.orientation, "timestamp": date, "estimoteLocationId": eli, "playerId": pi, "kitNumber": kn, "teamId": ti, "gameId": gi])
 	}
 	
 	func indoorLocationManager(manager: EILIndoorLocationManager!, didFailToUpdatePositionWithError error: NSError!)

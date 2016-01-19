@@ -20,6 +20,7 @@
 		9BCD8C3F1BFEA5890008A741 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFB5371BFE9CB200FEFF51 /* MediaPlayer.framework */; };
 		9BCD8C401BFEA5900008A741 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFB5391BFE9CBF00FEFF51 /* MessageUI.framework */; };
 		9BCD8C411BFEA59A0008A741 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BFFB53B1BFE9CC800FEFF51 /* libz.tbd */; };
+		9BD95E5A1C49EA3100A84219 /* Quivit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD95E591C49EA3100A84219 /* Quivit.swift */; };
 		C94DAD3DFB0AAB1880817271 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5EF457B5F2909AF68504E30 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		9B3FFD621C0CFD7900752C56 /* MatchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewController.swift; sourceTree = "<group>"; };
 		9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTableViewController.swift; sourceTree = "<group>"; };
 		9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectTableViewController.swift; sourceTree = "<group>"; };
+		9BD95E591C49EA3100A84219 /* Quivit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quivit.swift; sourceTree = "<group>"; };
 		9BFFB5331BFE9C9F00FEFF51 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9BFFB5351BFE9CAA00FEFF51 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9BFFB5371BFE9CB200FEFF51 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -115,6 +117,7 @@
 				9B7947AE1C02738B0069F8EF /* ConnectTableViewController.swift */,
 				9B6EE8D51C02B2FC006FC4CE /* PlayerTableViewController.swift */,
 				9B3FFD621C0CFD7900752C56 /* MatchTableViewController.swift */,
+				9BD95E591C49EA3100A84219 /* Quivit.swift */,
 			);
 			path = iOSClient;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				9B07DDDE1BFE14B4005B4763 /* GameViewController.swift in Sources */,
 				9B07DDDC1BFE14B4005B4763 /* AppDelegate.swift in Sources */,
 				9B6EE8D61C02B2FC006FC4CE /* PlayerTableViewController.swift in Sources */,
+				9BD95E5A1C49EA3100A84219 /* Quivit.swift in Sources */,
 				9B3FFD631C0CFD7900752C56 /* MatchTableViewController.swift in Sources */,
 				9B7947AF1C02738B0069F8EF /* ConnectTableViewController.swift in Sources */,
 			);

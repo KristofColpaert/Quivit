@@ -10,7 +10,7 @@ var storedTeams = {
     isTeamSaved : false,
     allTeams : [],
     singleTeam : [],
-    homeAwayTeams : []
+    homeAwayTeams : {}
 };
 
 //TeamStore
@@ -28,6 +28,7 @@ var teamStore = objectAssign({}, EventEmitter.prototype, {
     },
 
     getAllTeams : function() {
+        console.log(storedTeams);
         return storedTeams.allTeams;
     },
 

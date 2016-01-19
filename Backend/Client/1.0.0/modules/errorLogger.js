@@ -1,23 +1,14 @@
-var errorLoger = (function() {
+var errorLogger = (function() {
     'use strict';
 
     //Variables
-    var fs = require('fs');
-    var logPaths = {
-        database : '../logs/databaseLog.csv'
-    };
+    var winston = require('winston');
+    winston.add(winston.transports.File, { filename: 'logs/errorLog.log'});
 
-    //Methods
-    var log = function(file, logMessage) {
-        var path = logPaths[file];
-        fs.stats(path, function(error, stats) {
-            if(!error) {
-                fs.appendFile(path, logMessage, function(error) {
-                   console.log('Failed to write in error logs.');
-                });
-            }
-        });
-    }
+    //Function
+    var log = function(message) {
+        winston.log('info', message);
+    };
 
     //Return
     return {
@@ -25,4 +16,4 @@ var errorLoger = (function() {
     };
 })();
 
-module.exports = errorLoger;
+module.exports = errorLogger;

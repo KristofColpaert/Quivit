@@ -7,12 +7,17 @@ var React = require('react'),
     teamActions = require('../../../actions/teamActions.js'),
     teamStore = require('../../../stores/teamStore.js');
 
+
 var NewPlayer = React.createClass({
     mixins: [History],
 
     getInitialState : function() {
         return({
-            teams : teamStore.getAllTeams()
+            teams: teamStore.getAllTeams(),
+            fname: false,
+            lname: false,
+            knumber: false,
+            canSubmit: false
         });
     },
 
@@ -41,8 +46,39 @@ var NewPlayer = React.createClass({
         })
     },
 
+    _checkTextInput: function(e) {
+        if (e.target.value.length <= 0) {
+            e.target.className = 'input error';
+            this.state[e.target.name] = false;
+        } else {
+            e.target.className = '';
+            this.state[e.target.name] = true;
+        }
+
+        if(e.target.id === 'kitNumber') {
+            if(isNaN(e.target.value) || e.target.value.length <= 0){
+                e.target.className = 'input error';
+                this.state[e.target.name] = false;
+            }
+            else {
+                e.target.className = '';
+                this.state[e.target.name] = true;
+            }
+        }
+
+        if (this.state.fname && this.state.lname && this.state.knumber) {
+            this.setState({
+                canSubmit: true
+            });
+        } else {
+            this.setState({
+                canSubmit: false
+            });
+        }
+    },
+
     submitHandler : function(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
         var newPlayer = {
             firstName : this.refs.firstName.value,
@@ -50,32 +86,52 @@ var NewPlayer = React.createClass({
             kitNumber : this.refs.kitNumber.value,
             teamId : this.refs.team.value
         }
-
-        playerActions.savePlayerRequest(newPlayer);
+        console.log(newPlayer);
+        // playerActions.savePlayerRequest(newPlayer);
     },
 
     render : function() {
         return(
-            <section>
+            <section className="new player">
                 <h2>New Player</h2>
                 <form onSubmit={this.submitHandler}>
-                    <label htmlFor="firstName">First name</label>
-                    <input id="firstName" type="text" ref="firstName" />
+                    <section className="col50 left">
+                        <label htmlFor="firstName" required>First name</label>
+                        <input
+                            onBlur = { this._checkTextInput }
+                            name="fname"
+                            id="firstName"
+                            type="text"
+                            ref="firstName"
+                            className="input error"/>
+                        <label htmlFor="lastName">Last name</label>
+                        <input
+                            onBlur = { this._checkTextInput }
+                            name="lname"
+                            id="lastName"
+                            ref="lastName"
+                            type="text"
+                            className="input error"/>
+                    </section>
+                    <section className="col50 right">
+                        <label htmlFor="kitNumber">Kit number</label>
+                        <input
+                            onBlur = { this._checkTextInput }
+                            name="knumber"
+                            id="kitNumber"
+                            type="text"
+                            ref="kitNumber"
+                            className="input error"/>
 
-                    <label htmlFor="lastName">Last name</label>
-                    <input id="lastName" type="text" ref="lastName" />
-
-                    <label htmlFor="kitNumber">Kit number</label>
-                    <input id="kitNumber" type="text" ref="kitNumber" />
-
-                    <label htmlFor="team">Team</label>
-                    <select id="team" ref="team">
-                        {this.state.teams.map(function(team) {
-                            return <option value={team._id} key={team._id}>{team.name}</option>
-                        })}
-                    </select>
-
-                    <input type="submit" value="Make" />
+                        <label htmlFor="team">Team</label>
+                        <select id="team" ref="team">
+                            {this.state.teams.map(function(team) {
+                                return <option value={team._id} key={team._id}>{team.name}</option>
+                            })}
+                        </select>
+                    </section>
+                    <div className="clearfix"></div>
+                    <button className="btn primary" disabled={ !this.state.canSubmit } type="submit">Make</button>
                 </form>
             </section>
         );

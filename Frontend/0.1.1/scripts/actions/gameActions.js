@@ -1,9 +1,14 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher.js'),
     gameConstants = require('../helpers/gameConstants.js'),
     constants = require('../helpers/urlConstants.js'),
-    ajax = require('../helpers/ajax.js');
+    ajax = require('../helpers/ajax.js'),
+    indexedDb = require('../helpers/indexedDb.js');
 
 var gameActions = {
+
+    _localVariables : {
+        isOnline : null
+    },
 
     //Games of today
     getTodaysGamesResponse : function(games) {
@@ -54,6 +59,7 @@ var gameActions = {
         });
     },
 
+    //Get single game
     getGameResponse : function(game) {
         AppDispatcher.handleServerAction({
             actionType : gameConstants.GET_GAME_RESPONSE,
@@ -63,8 +69,75 @@ var gameActions = {
 
     getGameRequest : function(id) {
         ajax.getData(constants.baseApiGameUrl + id, function(error, data) {
-            if(!error) {
+            if(!error && data) {
                 gameActions.getGameResponse(data[0]);
+            }
+
+            else {
+                indexedDb.get('games', function(data) {
+                    var resultGame = {}
+                    data.forEach(function(game) {
+                        if(game._id === id) {
+                            resultGame = game;
+                        }
+                    });
+                    gameActions.getGameResponse(resultGame);
+                });
+            }
+        });
+    },
+
+    //Get past games
+    getPastGamesResponse : function(games) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.GET_GAMES_PAST_RESPONSE,
+            games : games
+        });
+    },
+
+    getPastGamesRequest : function() {
+        ajax.getData(constants.baseApiGamePastUrl, function(error, data) {
+            if(!error) {
+                gameActions.getPastGamesResponse(data);
+            }
+
+            else {
+                indexedDb.get('games', function(data) {
+                    data.sort(gameActions.sort);
+                    gameActions.getPastGamesResponse(data);
+                });
+            }
+        });
+    },
+
+    //Get heat map of player in game
+    getPlayerGameHeatMapResponse : function(heatMap) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.GET_PLAYER_GAME_HEAT_MAP_RESPONSE,
+            heatMap : heatMap
+        });
+    },
+
+    getPlayerGameHeatMapRequest : function(gameId, playerId) {
+        ajax.getData(constants.baseApiGameUrl + gameId + '/' + playerId, function(error, data) {
+            if(!error) {
+                gameActions.getPlayerGameHeatMapResponse(data);
+            }
+        });
+    },
+
+    //Upload image
+    uploadImageResponse : function(url) {
+        AppDispatcher.handleServerAction({
+            actionType : gameConstants.UPLOAD_FILE_RESPONSE,
+            url : url
+        })
+    },
+
+    uploadImageRequest : function(formData) {
+        ajax.uploadFile('http://localhost:3000/upload', formData, function(error, data) {
+            if(!error) {
+                gameActions.uploadImageResponse(data);
             }
         });
     },
@@ -74,6 +147,11 @@ var gameActions = {
         AppDispatcher.handleServerAction({
             actionType : gameConstants.FALSIFY_IS_GAME_SAVED,
         });
+    },
+
+    //Sort games
+    sort : function(a, b) {
+        return b.gameDate - a.gameDate;
     }
 };
 
