@@ -56,6 +56,8 @@ class Quivit
 		
 		let url = "http://\(self.host):\(self.port)/api/game/\(year)/\(month)/\(day)/included"
 		
+		print(url)
+		
 		Quivit.makeRequest(url, completionHandler: completionHandler)
 	}
 	
