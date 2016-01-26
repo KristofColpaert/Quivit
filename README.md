@@ -4,6 +4,8 @@
 
 Deze applicatie streeft ernaar om realtime de posities van spelers en bal in een voetbalspel weer te geven. Deze data wordt live gepresenteerd via een webinterface en opgeslagen in een database voor latere analyse. Op basis van de opgeslagen data worden bijvoorbeeld ook heat maps opgesteld. 
 
+Quivit werd gemaakt door: Bart Callant, Martijn Loth en Kristof Colpaert.
+
 ##Implementatie
 
 ###Hardware
@@ -20,11 +22,25 @@ Wanneer de iPhone via de Estimote Indoor Location SDK informatie ontvangt over z
 -	Er is een managementinterface voorzien waarin kan aangegeven worden welke speler gekoppeld is aan welke iPhone. 
 -	Wedstrijden kunnen lokaal opgeslagen worden om offline bekeken te worden. 
 
+###Technologie front-end
+- React in combinatie met Flux
+- Sass
+- Gulp
+- Jest
+
 ###Functionaliteit back-end
 
 - Registreren van locatiebepalingen en opslag in een database. 
 -	Het genereren van rapporten (bijvoorbeeld heat maps) op basis van de opgeslagen data van een match (zie frontend). 
 -	Authenticatie en beveiliging.
+
+##Technologie back-end
+
+- Node.js en Express
+- MongoDB
+- Socket.io
+- Mocha
+- JSON Web Tokens (auth0)
 
 ## Snelle links
 
