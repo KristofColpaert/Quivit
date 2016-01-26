@@ -12,6 +12,15 @@ De data die we in onze applicatie gebruiken, wordt gegenereerd door een wisselwe
 
 Wanneer de iPhone via de Estimote Indoor Location SDK informatie ontvangt over zijn eigen positie, zendt hij die via sockets door naar een server. Deze server slaat de locatiedata op in een database (MongoDB) en stuurt ze tegelijkertijd via sockets verder naar aangesloten clients.  
 
+###Functionaliteit front-end
+
+-	Liveweergave van een voetbalmatch wanneer deze bezig is. Veld, spelers en bal zijn op voldoende wijze van elkaar te onderscheiden. 
+-	Achteraf kunnen wedstrijden opnieuw bekeken worden. 
+- Er kunnen heatmaps van speler gegenereerd worden. 
+-	Er is een managementinterface voorzien waarin kan aangegeven worden welke speler gekoppeld is aan welke iPhone. 
+-	Wedstrijden kunnen lokaal opgeslagen worden om offline bekeken te worden. 
+
+
 ## Inhoud
 
 - [Finaal projectdossier](https://github.com/KristofColpaert/NMCTBackFront/blob/master/Projectdossier_MartijnLoth_BartCallant_KristofColpaert.docx)
