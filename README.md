@@ -4,7 +4,7 @@
 
 Deze applicatie streeft ernaar om realtime de posities van spelers en bal in een voetbalspel weer te geven. Deze data wordt live gepresenteerd via een webinterface en opgeslagen in een database voor latere analyse. Op basis van de opgeslagen data worden bijvoorbeeld ook heat maps opgesteld. 
 
-Quivit werd gemaakt door: Bart Callant, Martijn Loth en Kristof Colpaert.
+Quivit werd gemaakt door: [Bart Callant](https://github.com/bartcallant), [Martijn Loth](https://github.com/MLoth) en Kristof Colpaert.
 
 ##Implementatie
 
