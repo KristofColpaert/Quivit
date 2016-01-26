@@ -26,8 +26,9 @@ Wanneer de iPhone via de Estimote Indoor Location SDK informatie ontvangt over z
 -	Het genereren van rapporten (bijvoorbeeld heat maps) op basis van de opgeslagen data van een match (zie frontend). 
 -	Authenticatie en beveiliging.
 
-## Inhoud
+## Snelle links
 
 - [Finaal projectdossier](https://github.com/KristofColpaert/NMCTBackFront/blob/master/Projectdossier_MartijnLoth_BartCallant_KristofColpaert.docx)
 - [Finale versie frontend](https://github.com/KristofColpaert/NMCTBackFront/tree/master/Frontend/0.1.1)
 - [Finale versie backend](https://github.com/KristofColpaert/NMCTBackFront/tree/master/Backend/Client/1.0.0)
+- [Finale versie iPhone-applicatie](https://github.com/KristofColpaert/Quivit/tree/master/iOSClient)
