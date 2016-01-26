@@ -16,10 +16,15 @@ Wanneer de iPhone via de Estimote Indoor Location SDK informatie ontvangt over z
 
 -	Liveweergave van een voetbalmatch wanneer deze bezig is. Veld, spelers en bal zijn op voldoende wijze van elkaar te onderscheiden. 
 -	Achteraf kunnen wedstrijden opnieuw bekeken worden. 
-- Er kunnen heatmaps van speler gegenereerd worden. 
+- Er kunnen heat maps van speler gegenereerd worden. 
 -	Er is een managementinterface voorzien waarin kan aangegeven worden welke speler gekoppeld is aan welke iPhone. 
 -	Wedstrijden kunnen lokaal opgeslagen worden om offline bekeken te worden. 
 
+###Functionaliteit back-end
+
+- Registreren van locatiebepalingen en opslag in een database. 
+-	Het genereren van rapporten (bijvoorbeeld heat maps) op basis van de opgeslagen data van een match (zie frontend). 
+-	Authenticatie en beveiliging.
 
 ## Inhoud
 
